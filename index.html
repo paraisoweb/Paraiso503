@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paraíso 503 — Plantilla lista para tus fotos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home">
+
+<header>
+  <nav>
+    <a class="logo" href="index.html" id="logoHome" aria-label="Ir al inicio">
+      <img class="mark" src="img/logo/logo.jpg" alt="Paraíso 503">
+      <div class="word">Paraíso 503</div>
+    </a>
+    <a class="nav-follow" href="#redes" aria-label="Síguenos en redes sociales"><i class="fa-solid fa-share-nodes"></i><span>Síguenos</span></a>
+    <ul class="desktop-links">
+      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="#adopciones">Adopciones</a></li>
+      <li><a href="#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLink"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="#ayudar">Cómo ayudar</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta nav-cta-ghost" href="adopciones.html">Adopta</a>
+      <a class="nav-cta" href="#donar">Dona</a>
+      <button class="burger" id="burgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="#adopciones">Adopciones</a></li>
+      <li><a href="#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLinkMobile"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="#ayudar">Cómo ayudar</a></li>
+      <li><a href="#donar">Donar</a></li>
+    </ul>
+    <div class="mobile-follow">
+      <span class="mobile-follow-label">Síguenos</span>
+      <div class="mobile-follow-icons">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1DLVnJV9aw/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- Reemplaza el src de abajo por tu foto real: hero-perrito.jpg -->
+  <div class="bg"><img src="img/heroes/hero.png" alt="Perrito rescatado en Paraíso 503"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><i class="fa-solid fa-heart"></i> Donde cada vida importa</div>
+    <h1 class="hero-title">Toda vida merece una segunda oportunidad</h1>
+    <p class="hero-sub">Brindamos alimento, cuidados y esperanza a perros en situación de abandono. Con tu ayuda, podemos cambiar su historia.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#programas">Conoce nuestros programas</a>
+      <a class="btn-ghost" href="#donar">Dona ahora</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#somos" aria-label="Bajar para descubrir más">
+    <span class="scroll-cue-line"></span>
+    <span>Descubre cómo ayudamos</span>
+    <span class="scroll-cue-line"></span>
+  </a>
+  <a class="scroll-cue-arrow" href="#somos" aria-label="Bajar"><i class="fa-solid fa-chevron-down"></i></a>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><b>+300</b><span>animalitos rescatados</span></div>
+    <div class="stat"><b>+160</b><span>perritos en la ruta de alimentación</span></div>
+    <div class="stat"><b>9</b><span>programas activos</span></div>
+    <div class="stat"><b>100%</b><span>transparencia en el uso de donaciones</span></div>
+  </div>
+</div>
+
+<section id="somos">
+  <div class="wrap">
+    <div class="somos-grid">
+      <!-- Reemplaza el src de abajo por tu foto real: nuestra-historia.jpg -->
+      <div class="somos-photo reveal"><img src="img/nosotros/nosotros.jpg" alt="Voluntario de Paraíso 503 con los perros"></div>
+      <div class="somos-text">
+        <div class="kicker">Todo comenzó con una decisión</div>
+        <h2 class="section-title">Nuestra historia</h2>
+        <div class="timeline">
+          <div class="t-item"><div class="t-dot"><i class="fa-solid fa-heart-crack"></i></div><p>Cada día, muchos perros son abandonados o pasan desapercibidos en las calles. Algunos llegan desnutridos, heridos o luchando contra enfermedades como el cáncer. Otros simplemente nunca conocieron lo que significa sentirse seguros.</p></div>
+          <div class="t-item"><div class="t-dot"><i class="fa-solid fa-hand-holding-heart"></i></div><p>Un día decidimos no seguir de largo. Lo que comenzó ayudando a un solo perro, poco a poco se convirtió en un compromiso con quienes más lo necesitan. Hoy brindamos alimento, atención veterinaria, tratamientos, esterilización y una nueva oportunidad a cientos de perros.</p></div>
+          <div class="t-item"><div class="t-dot"><i class="fa-solid fa-shield-heart"></i></div><p>Nuestro objetivo no es solo salvar vidas. Queremos que cada perro recupere su salud, vuelva a confiar y encuentre una familia donde pueda vivir la vida que siempre mereció.</p></div>
+        </div>
+        <p class="quote">"No podemos ayudar a todos, pero para cada perro que ayudamos, su mundo cambia por completo."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carrusel de "Urgencias de este mes": TODAS las tarjetas, incluida
+     "Necesidades prioritarias", las genera js/content-loader.js a partir de
+     content/configuracion.js (ver "carruselUrgencia" en ese archivo). El
+     orden en que aparecen aquí es exactamente el orden de ese arreglo, así
+     que para reordenar, agregar o activar una tarjeta no hace falta tocar
+     este HTML: solo el contenido en configuracion.js. -->
+<section id="urgencia-wrap">
+  <div class="wrap">
+    <div class="urgencia-carousel" id="urgenciaCarousel">
+      <div class="urgencia-viewport">
+        <div class="urgencia-track" id="urgenciaTrack">
+          <!-- Las tarjetas activas de content/configuracion.js (carruselUrgencia)
+               se insertan aquí en tiempo de carga, en el orden del arreglo. -->
+        </div>
+      </div>
+      <button class="urgencia-nav urgencia-prev" id="urgenciaPrev" type="button" aria-label="Tarjeta anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="urgencia-nav urgencia-next" id="urgenciaNext" type="button" aria-label="Tarjeta siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="urgencia-dots" id="urgenciaDots"></div>
+    </div>
+  </div>
+</section>
+
+<section class="programas" id="programas">
+  <div class="wrap">
+    <div class="kicker">Cada programa tiene un propósito</div>
+    <h2 class="section-title">Nuestros programas</h2>
+    <p class="lede">Detrás de cada animalito que recupera su salud, encuentra alimento o consigue una familia, hay un programa que lo hace posible. Estos son los proyectos que sostienen el trabajo de Paraíso 503.</p>
+    <div class="prog-list" id="progListDestacados">
+      
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: ruta-alimentacion.jpg -->
+      <div class="prog-photo"><img src="img/program/rutas.jpg" alt="Ruta de Alimentación"></div>
+      <div class="prog-body">
+        <span class="p-badge">Programa principal</span>
+        <div class="prog-head"><span class="prog-icon" style="background:#3E7A4E"><i class="fa-solid fa-bone"></i></span><h3>Ruta de Alimentación</h3></div>
+        <p>El corazón de Paraíso. Llevamos alimento y agua a perros en abandono; desde aquí nacen muchos de nuestros rescates y programas.</p>
+        <a class="prog-link" href="programas.html#alimentacion">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: lucha-cancer.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBMdWNoYSBjb250cmEgZWwgQ8OhbmNlcjwvdGV4dD4KPC9zdmc+" alt="Lucha contra el Cáncer"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#8B5FBF"><i class="fa-solid fa-ribbon"></i></span><h3>Lucha contra el Cáncer</h3></div>
+        <p>Brindamos apoyo y tratamiento a perros con distintos tipos de cáncer, como el tumor de Sticker (TVT), para darles una nueva oportunidad.</p>
+        <a class="prog-link" href="programas.html#cancer">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: adopciones.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBBZG9wY2lvbmVzIFJlc3BvbnNhYmxlczwvdGV4dD4KPC9zdmc+" alt="Adopciones Responsables"></div>
+      <div class="prog-body">
+        <div class="prog-head"><span class="prog-icon" style="background:#E08B7D"><i class="fa-solid fa-house"></i></span><h3>Adopciones Responsables</h3></div>
+        <p>Buscamos familias comprometidas que ofrezcan un hogar seguro y lleno de amor para cada perro.</p>
+        <a class="prog-link" href="programas.html#adopciones-prog">Ver programa →</a>
+      </div>
+    </div>
+    </div>
+    <div class="toggle-row">
+      <button class="btn-outline-dark btn-toggle-progs" id="toggleProgs" aria-expanded="false" aria-controls="restWrap">
+        <span id="toggleLabel">Mostrar todos los programas</span>
+        <span id="toggleArrow" class="toggle-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+      </button>
+      <div class="or-divider"><span>o</span></div>
+      <a class="btn-ver-detalle" href="programas.html"><i class="fa-solid fa-book-open"></i> Ver todos los programas en detalle</a>
+    </div>
+    <p class="toggle-hint">Te llevará a la página completa de programas.</p>
+    <div class="rest-wrap" id="restWrap">
+      <div class="prog-list" id="progListExpandibles">
+        
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: esterilizacion.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBFc3RlcmlsaXphY2nDs248L3RleHQ+Cjwvc3ZnPg==" alt="Esterilización"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#2F9E8F"><i class="fa-solid fa-scissors"></i></span><h3>Esterilización</h3></div>
+        <p>Promovemos la esterilización como una forma responsable de prevenir el abandono y mejorar el bienestar animal.</p>
+        <a class="prog-link" href="programas.html#esterilizacion">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: hogar-paraiso.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBIb2dhciBQYXJhw61zbzwvdGV4dD4KPC9zdmc+" alt="Hogar Paraíso"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#D9636B"><i class="fa-solid fa-heart"></i></span><h3>Hogar Paraíso</h3></div>
+        <p>Un lugar donde viven y reciben cuidados los perros rescatados mientras esperan una familia o continúan su recuperación.</p>
+        <a class="prog-link" href="programas.html#hogar">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: atencion-veterinaria.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBBdGVuY2nDs24gVmV0ZXJpbmFyaWE8L3RleHQ+Cjwvc3ZnPg==" alt="Atención Veterinaria"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#3E7FBF"><i class="fa-solid fa-stethoscope"></i></span><h3>Atención Veterinaria</h3></div>
+        <p>Ofrecemos atención médica para recuperar la salud y mejorar la calidad de vida de los perros rescatados.</p>
+        <a class="prog-link" href="programas.html#veterinaria">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: apoyo-bajos-recursos.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBBcG95byBCYWpvcyBSZWN1cnNvczwvdGV4dD4KPC9zdmc+" alt="Apoyo a Mascotas de Familias de Bajos Recursos"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#E08A3D"><i class="fa-solid fa-handshake-angle"></i></span><h3>Apoyo a Mascotas de Familias de Bajos Recursos</h3></div>
+        <p>Brindamos ayuda para que más familias puedan cuidar y mantener saludables a sus mascotas.</p>
+        <a class="prog-link" href="programas.html#apoyo">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: visitas-solidarias.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBWaXNpdGFzIFNvbGlkYXJpYXM8L3RleHQ+Cjwvc3ZnPg==" alt="Visitas Solidarias"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#D9A62E"><i class="fa-solid fa-truck"></i></span><h3>Visitas Solidarias</h3></div>
+        <p>Acercamos a personas, grupos y empresas para que conozcan el proyecto y compartan tiempo con nuestros perros.</p>
+        <a class="prog-link" href="programas.html#visitas">Ver programa →</a>
+      </div>
+    </div>
+
+    <div class="prog-card">
+      <!-- Reemplaza el src de abajo por tu foto real: transparencia.jpg -->
+      <div class="prog-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvOiBUcmFuc3BhcmVuY2lhPC90ZXh0Pgo8L3N2Zz4=" alt="Transparencia"></div>
+      <div class="prog-body">
+        
+        <div class="prog-head"><span class="prog-icon" style="background:#8A6D4E"><i class="fa-solid fa-clipboard-list"></i></span><h3>Transparencia</h3></div>
+        <p>Mostramos con claridad cómo se utilizan las donaciones y el impacto que generan en cada programa.</p>
+        <a class="prog-link" href="programas.html#transparencia">Ver programa →</a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="adopciones" style="background:var(--cream-2);">
+  <div class="wrap">
+    <div class="kicker">Un hogar cambia todo</div>
+    <h2 class="section-title">Perritos esperando un hogar</h2>
+    <p class="lede">Ellos ya fueron rescatados, atendidos y están listos para ser adoptados. Conoce a algunos de nuestros protagonistas.</p>
+    <div class="pet-grid" style="padding:0; max-width:none;">
+
+      <!-- Tarjeta de mascota destacada 1 -->
+      <div class="pet-card reveal">
+        <div class="pet-photo">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvIGRlbCBwZXJyaXRvPC90ZXh0Pgo8L3N2Zz4=" alt="Yak">
+          <span class="pet-status">Disponible</span>
+          <button class="pet-fav" data-name="Yak" aria-label="Agregar a favoritos"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="pet-body">
+          <div class="pet-name-row">
+            <h3>Yak</h3>
+            <span class="pet-sex"><i class="fa-solid fa-mars"></i> Macho</span>
+          </div>
+          <p>Cariñoso, tranquilo y muy sociable. Le encanta estar acompañado.</p>
+          <a class="adopt-btn" href="https://wa.me/50374055877?text=Hola%2C%20me%20interesa%20adoptar%20a%20Yak.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%20sobre%20%C3%A9l%3F"><i class="fa-brands fa-whatsapp"></i> Adóptame</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta de mascota destacada 2 -->
+      <div class="pet-card reveal">
+        <div class="pet-photo">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvIGRlbCBwZXJyaXRvPC90ZXh0Pgo8L3N2Zz4=" alt="Nina">
+          <span class="pet-status">Disponible</span>
+          <button class="pet-fav" data-name="Nina" aria-label="Agregar a favoritos"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="pet-body">
+          <div class="pet-name-row">
+            <h3>Nina</h3>
+            <span class="pet-sex"><i class="fa-solid fa-venus"></i> Hembra</span>
+          </div>
+          <p>Muy dulce y juguetona. Se lleva bien con otros perritos.</p>
+          <a class="adopt-btn" href="https://wa.me/50374055877?text=Hola%2C%20me%20interesa%20adoptar%20a%20Nina.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%20sobre%20%C3%A9l%3F"><i class="fa-brands fa-whatsapp"></i> Adóptame</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta de mascota destacada 3 -->
+      <div class="pet-card reveal">
+        <div class="pet-photo">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5NjgzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBGb3RvIGRlbCBwZXJyaXRvPC90ZXh0Pgo8L3N2Zz4=" alt="Coco">
+          <span class="pet-status">Disponible</span>
+          <button class="pet-fav" data-name="Coco" aria-label="Agregar a favoritos"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="pet-body">
+          <div class="pet-name-row">
+            <h3>Coco</h3>
+            <span class="pet-sex"><i class="fa-solid fa-mars"></i> Macho</span>
+          </div>
+          <p>Cachorro alegre, curioso y lleno de energía. Ideal para una familia activa.</p>
+          <a class="adopt-btn" href="https://wa.me/50374055877?text=Hola%2C%20me%20interesa%20adoptar%20a%20Coco.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%20sobre%20%C3%A9l%3F"><i class="fa-brands fa-whatsapp"></i> Adóptame</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="historias-cta">
+      <a class="btn-outline-dark" style="display:inline-flex; width:auto;" href="adopciones.html">Ver todos los perritos en adopción →</a>
+    </div>
+  </div>
+</section>
+
+<section id="historias">
+  <div class="wrap">
+    <div class="kicker">De grave a sano</div>
+    <h2 class="section-title">Historias del Paraíso</h2>
+    <p class="lede">Cada rescate es la prueba de que sí se puede. Estos son solo dos ejemplos.</p>
+    <div class="historias-grid">
+      <div class="caso-card">
+        <div class="caso-ba">
+          <!-- Reemplaza por: caso1-antes.jpg -->
+          <div class="ba-item"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVjMmExZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNhMWExNCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBBbnRlczx0c3BhbiB4PSI1MCUiIGR5PSIyMiI+KG5vbWJyZSBkZWwgcGVycml0byk8L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Antes del rescate"><span class="ba-label">Antes</span></div>
+          <!-- Reemplaza por: caso1-despues.jpg -->
+          <div class="ba-item"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNFN0E0RSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBEZXNwdcOpczx0c3BhbiB4PSI1MCUiIGR5PSIyMiI+KG5vbWJyZSBkZWwgcGVycml0byk8L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Después del rescate"><span class="ba-label">Después</span></div>
+        </div>
+        <div class="caso-body">
+          <span class="status-badge status-recuperado">💚 Recuperado</span>
+          <h4>[Nombre del perrito]</h4>
+          <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+        </div>
+      </div>
+      <div class="caso-card">
+        <div class="caso-ba">
+          <!-- Reemplaza por: caso2-antes.jpg -->
+          <div class="ba-item"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVjMmExZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNhMWExNCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBBbnRlczx0c3BhbiB4PSI1MCUiIGR5PSIyMiI+KG5vbWJyZSBkZWwgcGVycml0byk8L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Antes del rescate"><span class="ba-label">Antes</span></div>
+          <!-- Reemplaza por: caso2-despues.jpg -->
+          <div class="ba-item"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDUwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFFM0QyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNFN0E0RSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnKSIvPgo8dGV4dCB4PSI1MCUiIHk9IjQ2JSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TtyBEZXNwdcOpczx0c3BhbiB4PSI1MCUiIGR5PSIyMiI+KG5vbWJyZSBkZWwgcGVycml0byk8L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Después del rescate"><span class="ba-label">Después</span></div>
+        </div>
+        <div class="caso-body">
+          <span class="status-badge status-adoptado">🏡 Adoptado</span>
+          <h4>[Nombre del perrito]</h4>
+          <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+        </div>
+      </div>
+    </div>
+    <div class="historias-cta">
+      <a class="btn-outline-dark" style="display:inline-flex; width:auto;" href="historias.html">Conocer más historias →</a>
+    </div>
+    <div class="sanivet-credit">
+      <span class="sanivet-credit-icon"><i class="fa-solid fa-stethoscope"></i></span>
+      <div class="sanivet-credit-text">
+        <p>Gracias al trabajo del equipo veterinario de <b>Clínica Veterinaria Sanivet</b>, muchas vidas han podido sanar y seguir adelante.</p>
+        <a href="#redes">Conocer Sanivet <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contigo">
+  <div class="wrap">
+    <!-- El contenido de este banner (texto, foto y datos del modal) se llena
+         dinámicamente desde content/contigo.js — ver js/content-loader.js -> renderContigo().
+         Al hacer clic en cualquier parte del banner (o en su botón) se abre
+         el modal informativo del programa (ver js/script.js -> openP503ContigoModal). -->
+    <div class="contigo-banner" id="contigoBanner" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ver más sobre el programa Contigo"></div>
+  </div>
+</section>
+
+<section id="ayudar">
+  <div class="wrap">
+    <div class="kicker">Tú también puedes cambiar una vida</div>
+    <h2 class="section-title">¿Cómo puedes ayudar?</h2>
+    <p class="lede">Hay muchas formas de apoyar esta misión. Cada acción, por pequeña que parezca, ayuda a cambiar una vida.</p>
+    <div class="ayudar-grid">
+      <div class="ayudar-card"><div class="icon" style="background:#3E7A4E;"><i class="fa-solid fa-box"></i></div><div><h4>Donar productos</h4><p>Alimento, medicamentos, productos de limpieza o artículos de uso diario.</p></div></div>
+      <div class="ayudar-card"><div class="icon" style="background:#8B5FBF;"><i class="fa-solid fa-hand-holding-heart"></i></div><div><h4>Ser voluntario</h4><p>Comparte tu tiempo y ayuda directamente en las actividades del proyecto.</p></div></div>
+      <div class="ayudar-card"><div class="icon" style="background:#3E7FBF;"><i class="fa-solid fa-store"></i></div><div><h4>Que tu negocio apoye</h4><p>Invita a tu empresa o emprendimiento a formar parte de este cambio.</p></div></div>
+      <div class="ayudar-card"><div class="icon" style="background:#2F9E8F;"><i class="fa-solid fa-share-nodes"></i></div><div><h4>Compartir en redes</h4><p>Compartir nuestras publicaciones ayuda a que más personas conozcan el proyecto.</p></div></div>
+      <div class="ayudar-card"><div class="icon" style="background:#D9A62E;"><i class="fa-solid fa-hand-holding-dollar"></i></div><div><h4>Apoyar económicamente</h4><p>Puedes apoyar a partir de un dólar, o convertirte en donante mensual.</p></div></div>
+      <div class="ayudar-card"><div class="icon" style="background:#C9683D;"><i class="fa-solid fa-paw"></i></div><div><h4>Apadrinar un animalito</h4><p>Brinda apoyo mensual a un animalito y acompáñalo en su recuperación.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="donar" id="donar">
+  <div class="wrap">
+    <div class="kicker">Toda ayuda suma</div>
+    <h2 class="section-title">Formas de donar</h2>
+    <p class="lede">Elige el método que te resulte más cómodo. Cada aporte nos ayuda a seguir cambiando vidas.</p>
+    <div class="monthly-note"><i class="fa-solid fa-hand-holding-heart"></i> 💛 Conviértete en donante mensual. Escríbenos por WhatsApp.</div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="local">Local</button>
+      <button class="tab-btn" data-tab="intl">Internacional</button>
+      <button class="tab-btn" data-tab="persona">En persona</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-local">
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-building-columns"></i></div><div><h4>Banco BAC</h4><p>Cuenta de ahorro</p></div><button class="copy-num" data-copy="Eder Martins">Eder Martins <i class="fa-regular fa-copy"></i></button><button class="copy-num" data-copy="114944333">114944333 <i class="fa-regular fa-copy"></i></button></div>
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-mobile-screen"></i></div><div><h4>Chivo Wallet</h4><p>Ingresa este número en la app</p></div><button class="copy-num" data-copy="7171-4259">7171-4259 <i class="fa-regular fa-copy"></i></button></div>
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-mobile-screen"></i></div><div><h4>Nequi</h4><p>Ingresa este número en la app</p></div><button class="copy-num" data-copy="7171-4259">7171-4259 <i class="fa-regular fa-copy"></i></button></div>
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-mobile-screen"></i></div><div><h4>Nico</h4><p>Ingresa este número en la app</p></div><button class="copy-num" data-copy="7171-4259">7171-4259 <i class="fa-regular fa-copy"></i></button></div>
+      <a class="via-card" href="https://www.paypal.me/paraisodelosanimales" target="_blank" rel="noopener"><div class="icon"><i class="fa-brands fa-paypal"></i></div><div><h4>PayPal</h4><p>Dona desde cualquier parte del mundo de forma segura.</p></div></a>
+    </div>
+
+    <div class="tab-panel" id="tab-intl">
+      <a class="via-card" href="https://www.paypal.me/paraisodelosanimales" target="_blank" rel="noopener"><div class="icon"><i class="fa-brands fa-paypal"></i></div><div><h4>PayPal</h4><p>Dona desde cualquier parte del mundo de forma segura.</p></div></a>
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-globe"></i></div><div><h4>Remesas — Ria / MoneyGram / Western Union</h4><p>Escríbenos por WhatsApp y te damos los datos para enviarla.</p></div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-persona">
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-paw"></i></div><div><h4>Visitas solidarias</h4><p>Visítanos, conoce a los perritos y comparte tu apoyo en persona — La Libertad, El Salvador.</p></div></div>
+      <div class="via-card"><div class="icon"><i class="fa-solid fa-box"></i></div><div><h4>Donaciones físicas</h4><p>Si no puedes trasladarte, escríbenos y coordinamos la recolección.</p></div></div>
+    </div>
+
+    <a class="btn-primary" style="display:block; margin-top:20px;" href="#redes">Escríbenos por WhatsApp →</a>
+    <p class="donar-note">Cada gesto de tu parte hace posible un futuro mejor para ellos. ¡Gracias por ser parte de Paraíso!</p>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="wrap">
+    <div class="kicker">Conecta con Paraíso</div>
+    <h2 class="section-title">Síguenos y sé parte</h2>
+    <div class="redes-grid">
+      <!-- Cada tarjeta ya es un enlace: cambia el href="#" por el link real de cada red -->
+      <a class="red-card" href="https://wa.me/50377476318"><div class="ico" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></div><h5>WhatsApp</h5><span>7747-6318</span></a>
+      <a class="red-card" href="https://www.facebook.com/share/1DLVnJV9aw/"><div class="ico" style="background:#1877F2;"><i class="fa-brands fa-facebook-f"></i></div><h5>Facebook</h5><span>@paraiso.503</span></a>
+      <a class="red-card" href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP"><div class="ico" style="background:#111;"><i class="fa-brands fa-tiktok"></i></div><h5>TikTok</h5><span>@paraiso.503</span></a>
+      <a class="red-card" href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I"><div class="ico" style="background:#FF0000;"><i class="fa-brands fa-youtube"></i></div><h5>YouTube</h5><span>@paraiso503sv</span></a>
+      <a class="red-card" href="#"><div class="ico" style="background:#C13584;"><i class="fa-brands fa-instagram"></i></div><h5>Instagram</h5><span>Próximamente</span></a>
+      <a class="red-card" href="mailto:paraiso.prj@gmail.com"><div class="ico" style="background:#4285F4;"><i class="fa-solid fa-envelope"></i></div><h5>Correo</h5><span>paraiso.prj@gmail.com</span></a>
+    </div>
+
+    <div class="redes-sanivet">
+      <div class="kicker">Nuestra aliada veterinaria</div>
+      <h3 class="section-title" style="font-size:22px;">Clínica Veterinaria Sanivet</h3>
+      <p class="lede">Conoce nuestros casos clínicos, consejos de salud y el trabajo veterinario que hace posible muchas de las recuperaciones de Paraíso 503.</p>
+      <div class="redes-grid">
+        <!-- Espacios preparados: agrega el enlace real cuando esté disponible -->
+        <a class="red-card" href="#"><div class="ico" style="background:#1877F2;"><i class="fa-brands fa-facebook-f"></i></div><h5>Facebook</h5><span>Próximamente</span></a>
+        <a class="red-card" href="#"><div class="ico" style="background:#C13584;"><i class="fa-brands fa-instagram"></i></div><h5>Instagram</h5><span>Próximamente</span></a>
+        <a class="red-card" href="#"><div class="ico" style="background:#111;"><i class="fa-brands fa-tiktok"></i></div><h5>TikTok</h5><span>Próximamente</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="brand">
+      <!-- LOGO: reemplaza este div por tu logo real, ej: <img src="logo.png" alt="Paraíso 503"> -->
+      <div class="mark logo-placeholder"><i class="fa-solid fa-image"></i></div>
+      <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
+    </div>
+    <div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>
+  </div>
+  <nav class="foot-nav">
+    <a href="#somos">Nosotros</a>
+    <a href="programas.html">Programas</a>
+    <a href="#adopciones">Adopciones</a>
+    <a href="#historias">Historias</a>
+    <a href="#ayudar">Cómo ayudar</a>
+    <a href="#donar">Formas de donar</a>
+    <a href="#redes">Contacto</a>
+  </nav>
+  <hr>
+  <div class="bottom"><span>© 2026 Paraíso de los Animales.</span><span>Aviso de privacidad</span></div>
+</footer>
+
+<!-- Confirma/actualiza el número de WhatsApp en el href de abajo cuando quieras -->
+<a class="fab-whats" href="https://wa.me/50377476318?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Para%C3%ADso%20503." aria-label="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver al inicio"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- Contenido dinámico (JS en vez de JSON para que fetch() no falle al abrir el sitio con doble clic / file://) -->
+<script src="content/configuracion.js"></script>
+<script src="content/estadisticas.js"></script>
+<script src="content/programas.js"></script>
+<script src="content/adopciones.js"></script>
+<script src="content/historias.js"></script>
+<script src="content/contigo.js"></script>
+<script src="js/script.js"></script>
+<script src="js/content-loader.js"></script>
+
+</body>
+</html>

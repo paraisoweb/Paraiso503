@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historias del Paraíso — Paraíso 503</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="index.html" id="logoHome" aria-label="Ir al inicio">
+      <!-- LOGO: reemplaza este div por tu logo real, ej: <img src="logo.png" alt="Paraíso 503"> -->
+      <div class="mark logo-placeholder"><i class="fa-solid fa-image"></i></div>
+      <div class="word">Paraíso 503</div>
+    </a>
+    <a class="nav-follow" href="index.html#redes" aria-label="Síguenos en redes sociales"><i class="fa-solid fa-share-nodes"></i><span>Síguenos</span></a>
+    <ul class="desktop-links">
+      <li><a href="index.html#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="index.html#adopciones">Adopciones</a></li>
+      <li><a href="index.html#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLink"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="index.html#ayudar">Cómo ayudar</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta nav-cta-ghost" href="adopciones.html">Adopta</a>
+      <a class="nav-cta" href="index.html#donar">Dona</a>
+      <button class="burger" id="burgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="index.html#adopciones">Adopciones</a></li>
+      <li><a href="index.html#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLinkMobile"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="index.html#ayudar">Cómo ayudar</a></li>
+      <li><a href="index.html#donar">Donar</a></li>
+    </ul>
+    <div class="mobile-follow">
+      <span class="mobile-follow-label">Síguenos</span>
+      <div class="mobile-follow-icons">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1DLVnJV9aw/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="adopta-hero">
+  <div class="kicker">De grave a sano</div>
+  <h1>Historias del Paraíso</h1>
+  <p>Cada rescate es la prueba de que sí se puede. Estas son todas las historias que hemos ido documentando.</p>
+</section>
+
+<div class="filter-bar">
+  <div class="filter-group">
+    <span class="filter-label">Estado</span>
+    <div class="filter-btns" id="statusFilter">
+      <button class="filter-btn active" data-status="todos">Todos</button>
+      <button class="filter-btn" data-status="recuperado">💚 Recuperados</button>
+      <button class="filter-btn" data-status="adoptado">🏡 Adoptados</button>
+      <button class="filter-btn" data-status="tratamiento">🩺 En tratamiento</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:26px; padding-bottom:50px;">
+  <div class="historias-grid" id="historiasGrid">
+
+    <!-- Historia 1 -->
+    <div class="caso-card reveal" data-status="recuperado">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-recuperado">💚 Recuperado</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Historia 2 -->
+    <div class="caso-card reveal" data-status="adoptado">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-adoptado">🏡 Adoptado</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Historia 3 -->
+    <div class="caso-card reveal" data-status="tratamiento">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-tratamiento">🩺 En tratamiento</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Historia 4 -->
+    <div class="caso-card reveal" data-status="recuperado">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-recuperado">💚 Recuperado</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Historia 5 -->
+    <div class="caso-card reveal" data-status="adoptado">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-adoptado">🏡 Adoptado</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Historia 6 -->
+    <div class="caso-card reveal" data-status="tratamiento">
+      <div class="caso-ba">
+        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
+        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
+      </div>
+      <div class="caso-body">
+        <span class="status-badge status-tratamiento">🩺 En tratamiento</span>
+        <h4>[Nombre del perrito]</h4>
+        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
+      </div>
+    </div>
+
+    <!-- Para agregar más historias, copia y pega uno de estos bloques "caso-card" completo. Recuerda incluir data-status ("recuperado" / "adoptado" / "tratamiento") y la etiqueta status-badge correspondiente -->
+
+  </div>
+  <p class="no-results" id="noResultsHistorias" style="display:none;">No hay historias que coincidan con este filtro por ahora. Prueba con otra opción 🐾</p>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="brand">
+      <!-- LOGO: reemplaza este div por tu logo real, ej: <img src="logo.png" alt="Paraíso 503"> -->
+      <div class="mark logo-placeholder"><i class="fa-solid fa-image"></i></div>
+      <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
+    </div>
+    <div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>
+  </div>
+  <nav class="foot-nav">
+    <a href="index.html#somos">Nosotros</a>
+    <a href="programas.html">Programas</a>
+    <a href="index.html#adopciones">Adopciones</a>
+    <a href="index.html#historias">Historias</a>
+    <a href="index.html#ayudar">Cómo ayudar</a>
+    <a href="index.html#donar">Formas de donar</a>
+    <a href="index.html#redes">Contacto</a>
+  </nav>
+  <hr>
+  <div class="bottom"><span>© 2026 Paraíso de los Animales.</span><span>Aviso de privacidad</span></div>
+</footer>
+
+<!-- Confirma/actualiza el número de WhatsApp en el href de abajo cuando quieras -->
+<a class="fab-whats" href="https://wa.me/50377476318?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Para%C3%ADso%20503." aria-label="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver al inicio"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- Contenido dinámico (JS en vez de JSON para que fetch() no falle al abrir el sitio con doble clic / file://) -->
+<script src="content/configuracion.js"></script>
+<script src="content/estadisticas.js"></script>
+<script src="content/programas.js"></script>
+<script src="content/adopciones.js"></script>
+<script src="content/historias.js"></script>
+<script src="content/contigo.js"></script>
+<script src="js/script.js"></script>
+<script src="js/content-loader.js"></script>
+
+</body>
+</html>

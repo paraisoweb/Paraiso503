@@ -1,0 +1,1224 @@
+/* =============================================================================
+   PARAÍSO 503 — Interacciones del sitio
+   =============================================================================
+   Este archivo SOLO contiene comportamiento (menú, tabs, favoritos, filtros,
+   acordeón, animaciones al hacer scroll, etc.). No contiene contenido/texto:
+   eso vive en los archivos JSON de /content y lo inserta js/content-loader.js.
+
+   Todo el código está dentro de initSiteInteractions() y se ejecuta UNA vez,
+   llamado por content-loader.js justo después de insertar en la página el
+   HTML dinámico (programas, adopciones, historias, etc.). Así los botones,
+   filtros y el acordeón funcionan sin importar si el contenido es estático
+   (como el menú) o generado desde JSON (como las tarjetas de programas).
+
+   No es necesario tocar este archivo para agregar contenido nuevo — ver
+   content/*.json y js/content-loader.js para eso.
+   ============================================================================= */
+
+/* =============================================================================
+   LIGHTBOX de galería — modal reutilizable para recorrer todas las fotos/videos
+   de un programa. Se construye una sola vez y se alimenta con los datos que
+   content-loader.js ya genera a partir de content/programas.js, así que agregar
+   más fotos en el futuro no requiere tocar este archivo.
+   ============================================================================= */
+(function () {
+  let modal = null;
+  let items = [];
+  let currentIndex = 0;
+
+  function buildModal() {
+    if (modal) return;
+    modal = document.createElement('div');
+    modal.className = 'p503-lightbox';
+    modal.innerHTML =
+      '<div class="p503-lightbox-overlay"></div>' +
+      '<div class="p503-lightbox-inner">' +
+        '<button class="p503-lightbox-close" type="button" aria-label="Cerrar galería"><i class="fa-solid fa-xmark"></i></button>' +
+        '<button class="p503-lightbox-nav p503-lightbox-prev" type="button" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>' +
+        '<div class="p503-lightbox-media"></div>' +
+        '<button class="p503-lightbox-nav p503-lightbox-next" type="button" aria-label="Foto siguiente"><i class="fa-solid fa-chevron-right"></i></button>' +
+        '<div class="p503-lightbox-footer"><span class="p503-lightbox-title"></span><span class="p503-lightbox-counter"></span></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    const overlayEl = modal.querySelector('.p503-lightbox-overlay');
+    const closeBtn = modal.querySelector('.p503-lightbox-close');
+    const prevBtn = modal.querySelector('.p503-lightbox-prev');
+    const nextBtn = modal.querySelector('.p503-lightbox-next');
+
+    closeBtn.addEventListener('click', closeLightbox);
+    overlayEl.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', () => showItem(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showItem(currentIndex + 1));
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showItem(currentIndex - 1);
+      if (e.key === 'ArrowRight') showItem(currentIndex + 1);
+    });
+  }
+
+  function showItem(idx) {
+    if (!modal || !items.length) return;
+    currentIndex = (idx + items.length) % items.length;
+    const item = items[currentIndex];
+    const mediaWrap = modal.querySelector('.p503-lightbox-media');
+    const titleEl = modal.querySelector('.p503-lightbox-title');
+    const counterEl = modal.querySelector('.p503-lightbox-counter');
+    const altText = (titleEl.textContent || 'Paraíso 503') + ' — foto ' + (currentIndex + 1);
+    mediaWrap.innerHTML = item.isVideo
+      ? '<video src="' + item.src + '" controls autoplay playsinline></video>'
+      : '<img src="' + item.src + '" alt="' + altText + '">';
+    counterEl.textContent = items.length > 1 ? (currentIndex + 1) + ' / ' + items.length : '';
+    const prevBtn = modal.querySelector('.p503-lightbox-prev');
+    const nextBtn = modal.querySelector('.p503-lightbox-next');
+    const hasMultiple = items.length > 1;
+    prevBtn.style.display = hasMultiple ? '' : 'none';
+    nextBtn.style.display = hasMultiple ? '' : 'none';
+  }
+
+  function closeLightbox() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('p503-lightbox-lock');
+    setTimeout(() => {
+      const mediaWrap = modal.querySelector('.p503-lightbox-media');
+      if (mediaWrap) mediaWrap.innerHTML = '';
+    }, 280);
+  }
+
+  window.openP503Lightbox = function (galleryItems, startIndex, title) {
+    if (!Array.isArray(galleryItems) || !galleryItems.length) return;
+    buildModal();
+    items = galleryItems;
+    modal.querySelector('.p503-lightbox-title').textContent = title || '';
+    showItem(startIndex || 0);
+    modal.classList.add('open');
+    document.body.classList.add('p503-lightbox-lock');
+  };
+})();
+
+/* =============================================================================
+   MODAL DE HISTORIA — modal único y reutilizable para "Historias del
+   Paraíso". Se construye una sola vez (igual que el lightbox de arriba) y se
+   rellena con los datos que content-loader.js ya dejó listos en el atributo
+   data-historia de cada tarjeta ".caso-card", así que agregar una historia
+   nueva en content/historias.js nunca requiere tocar este archivo.
+
+   Cada sección del modal (diagnóstico, tratamientos, línea de tiempo,
+   galería, etc.) solo se muestra si la historia trae contenido para ella.
+   La galería reutiliza el mismo visor de fotos/videos (openP503Lightbox)
+   que ya usa la sección de Programas.
+   ============================================================================= */
+(function () {
+  let modal = null;
+
+  function escapeHtmlLocal(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function buildModal() {
+    if (modal) return;
+    modal = document.createElement('div');
+    modal.className = 'p503-historia-modal';
+    modal.innerHTML =
+      '<div class="p503-historia-overlay"></div>' +
+      '<div class="p503-historia-inner">' +
+        '<button class="p503-historia-close" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>' +
+        '<div class="p503-historia-scroll"><div class="p503-historia-content"></div></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelector('.p503-historia-overlay').addEventListener('click', closeHistoriaModal);
+    modal.querySelector('.p503-historia-close').addEventListener('click', closeHistoriaModal);
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('open') && e.key === 'Escape') closeHistoriaModal();
+    });
+  }
+
+  function closeHistoriaModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('p503-lightbox-lock');
+  }
+
+  function fotoBox(src, nombre, label, gradient) {
+    return src
+      ? '<div class="ba-item"><img src="' + src + '" alt="' + label + ' del rescate — ' + escapeHtmlLocal(nombre) + '"><span class="ba-label">' + label + '</span></div>'
+      : '<div class="ba-item" style="background:' + gradient + ';"><span class="ba-label">' + label + '</span></div>';
+  }
+
+  function buildContentHtml(h) {
+    const antes = fotoBox(h.fotoAntes, h.nombre, 'Antes', 'linear-gradient(135deg,#3a2a1a,#2a1a10)');
+    const despues = fotoBox(h.fotoDespues, h.nombre, 'Después', 'linear-gradient(135deg,#1E3D2B,#3E7A4E)');
+
+    const fraseHtml = h.frase
+      ? '<p class="p503-historia-frase">“' + escapeHtmlLocal(h.frase) + '”</p>'
+      : '';
+
+    const metaItems = [];
+    if (h.lugarRescate) {
+      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-location-dot"></i><div><span>Lugar del rescate</span><b>' + escapeHtmlLocal(h.lugarRescate) + '</b></div></div>');
+    }
+    if (h.fechaRescate) {
+      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-calendar-day"></i><div><span>Fecha del rescate</span><b>' + escapeHtmlLocal(h.fechaRescate) + '</b></div></div>');
+    }
+    if (h.diagnostico) {
+      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-stethoscope"></i><div><span>Diagnóstico</span><b>' + escapeHtmlLocal(h.diagnostico) + '</b></div></div>');
+    }
+    const metaHtml = metaItems.length ? '<div class="p503-historia-meta">' + metaItems.join('') + '</div>' : '';
+
+    const tratamientosHtml = (h.tratamientos && h.tratamientos.length)
+      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-kit-medical"></i> Tratamientos</h4><ul class="p503-historia-list">' +
+          h.tratamientos.map(t => '<li><i class="fa-solid fa-check"></i>' + escapeHtmlLocal(t) + '</li>').join('') +
+        '</ul></div>'
+      : '';
+
+    const timelineHtml = (h.lineaTiempo && h.lineaTiempo.length)
+      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-timeline"></i> Línea de tiempo</h4><ol class="p503-historia-timeline">' +
+          h.lineaTiempo.map(ev =>
+            '<li><span class="tl-dot"><i class="fa-solid ' + ev.icono + '"></i></span><div class="tl-content"><b>' + escapeHtmlLocal(ev.evento) + '</b>' +
+            (ev.fecha ? '<span>' + escapeHtmlLocal(ev.fecha) + '</span>' : '') + '</div></li>'
+          ).join('') +
+        '</ol></div>'
+      : '';
+
+    const historiaHtml = h.historiaCompleta
+      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-book-open"></i> Su historia</h4><p>' + escapeHtmlLocal(h.historiaCompleta) + '</p></div>'
+      : '';
+
+    // En escritorio, Tratamientos e Historia se acomodan lado a lado (uno a
+    // cada costado) si hay espacio; en móvil siguen apilados como siempre.
+    // Si una historia solo trae uno de los dos, ese ocupa todo el ancho.
+    const colsHtml = (tratamientosHtml || historiaHtml)
+      ? '<div class="p503-historia-twocol">' + tratamientosHtml + historiaHtml + '</div>'
+      : '';
+
+    const galeria = Array.isArray(h.galeria) ? h.galeria : [];
+    const galeriaHtml = galeria.length
+      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-images"></i> Galería</h4><div class="gallery-grid p503-historia-gallery">' +
+          galeria.map((item, idx) => {
+            const media = item.isVideo
+              ? '<video src="' + item.src + '" muted playsinline preload="metadata"></video>'
+              : '<img src="' + item.src + '" alt="' + escapeHtmlLocal(h.nombre) + ' — foto ' + (idx + 1) + '" loading="lazy">';
+            return '<div class="gallery-item" data-lightbox-index="' + idx + '">' + media + '</div>';
+          }).join('') +
+        '</div></div>'
+      : '';
+
+    return (
+      '<div class="p503-historia-ba">' + antes + despues + '</div>' +
+      '<div class="p503-historia-body">' +
+        '<span class="status-badge status-' + h.estado + '">' + h.estadoEmoji + ' ' + escapeHtmlLocal(h.estadoLabel) + '</span>' +
+        '<h3 class="p503-historia-nombre">' + escapeHtmlLocal(h.nombre) + '</h3>' +
+        fraseHtml +
+        metaHtml +
+        colsHtml +
+        timelineHtml +
+        galeriaHtml +
+      '</div>'
+    );
+  }
+
+  window.openP503HistoriaModal = function (h) {
+    if (!h) return;
+    buildModal();
+    const contentEl = modal.querySelector('.p503-historia-content');
+    contentEl.innerHTML = buildContentHtml(h);
+    modal.querySelector('.p503-historia-scroll').scrollTop = 0;
+
+    // La galería de esta historia reutiliza el mismo visor (lightbox) que
+    // ya usa "Programas" — no hace falta un visor aparte.
+    const galeria = Array.isArray(h.galeria) ? h.galeria : [];
+    contentEl.querySelectorAll('.p503-historia-gallery .gallery-item').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const idx = parseInt(thumb.dataset.lightboxIndex, 10) || 0;
+        if (typeof window.openP503Lightbox === 'function') window.openP503Lightbox(galeria, idx, h.nombre);
+      });
+    });
+
+    modal.classList.add('open');
+    document.body.classList.add('p503-lightbox-lock');
+  };
+})();
+
+/* =============================================================================
+   MODAL DE CONTIGO — modal único y reutilizable para el banner "Contigo" de
+   la portada. Se construye una sola vez (mismo patrón que el modal de
+   Historias, arriba) y se rellena con los datos que content-loader.js ya
+   dejó listos en el atributo data-contigo del banner (#contigoBanner), así
+   que editar el programa en content/contigo.js nunca requiere tocar este
+   archivo.
+   ============================================================================= */
+(function () {
+  let modal = null;
+
+  function escapeHtmlLocal(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function buildModal() {
+    if (modal) return;
+    modal = document.createElement('div');
+    modal.className = 'p503-contigo-modal';
+    modal.innerHTML =
+      '<div class="p503-contigo-overlay"></div>' +
+      '<div class="p503-contigo-inner">' +
+        '<button class="p503-contigo-close" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>' +
+        '<div class="p503-contigo-scroll"><div class="p503-contigo-content"></div></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelector('.p503-contigo-overlay').addEventListener('click', closeContigoModal);
+    modal.querySelector('.p503-contigo-close').addEventListener('click', closeContigoModal);
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('open') && e.key === 'Escape') closeContigoModal();
+    });
+  }
+
+  function closeContigoModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('p503-lightbox-lock');
+  }
+
+  function buildContentHtml(c) {
+    const fotoHtml = c.foto
+      ? '<div class="p503-contigo-photo"><img src="' + c.foto + '" alt="' + escapeHtmlLocal(c.titulo) + '"></div>'
+      : '<div class="p503-contigo-photo p503-contigo-photo-fallback"><i class="fa-solid fa-paw"></i></div>';
+
+    const serviciosHtml = (c.servicios && c.servicios.length)
+      ? '<div class="p503-contigo-section">' +
+          '<h4 class="p503-contigo-subtitle">¿Cómo podemos ayudarte?</h4>' +
+          '<div class="p503-contigo-servicios">' +
+            c.servicios.map(s =>
+              '<div class="p503-contigo-servicio">' +
+                '<span class="icon" style="background:' + escapeHtmlLocal(s.color || '#1E3D2B') + '"><i class="' + escapeHtmlLocal(s.icono || 'fa-solid fa-paw') + '"></i></span>' +
+                '<h5>' + escapeHtmlLocal(s.titulo) + '</h5>' +
+                '<p>' + escapeHtmlLocal(s.descripcion) + '</p>' +
+              '</div>'
+            ).join('') +
+          '</div>' +
+        '</div>'
+      : '';
+
+    const requisitosHtml = (c.requisitos && c.requisitos.length)
+      ? '<div class="p503-contigo-req">' +
+          '<span class="p503-contigo-req-icon"><i class="fa-solid fa-paw"></i></span>' +
+          '<div class="p503-contigo-req-body">' +
+            '<h4><i class="fa-solid fa-heart"></i> ¿Quiénes pueden solicitarlo?</h4>' +
+            '<ul>' + c.requisitos.map(r => '<li><i class="fa-solid fa-circle-check"></i>' + escapeHtmlLocal(r) + '</li>').join('') + '</ul>' +
+          '</div>' +
+        '</div>'
+      : '';
+
+    const whatsappNumero = (window.PARAISO503_CONTENT && window.PARAISO503_CONTENT.configuracion && window.PARAISO503_CONTENT.configuracion.contacto && window.PARAISO503_CONTENT.configuracion.contacto.whatsappPrincipal) || '';
+    const mensaje = encodeURIComponent(c.mensajeWhatsapp || '¡Hola! Me gustaría recibir orientación sobre el programa Contigo.');
+    const enlacePagina = c.enlacePagina || 'contigo.html';
+
+    return (
+      fotoHtml +
+      '<div class="p503-contigo-body">' +
+        '<h3 class="p503-contigo-nombre">' + escapeHtmlLocal(c.titulo || 'Contigo') + ' <i class="fa-regular fa-heart"></i></h3>' +
+        (c.subtitulo ? '<p class="p503-contigo-frase">' + escapeHtmlLocal(c.subtitulo) + '</p>' : '') +
+        (c.descripcion ? '<p class="p503-contigo-desc">' + escapeHtmlLocal(c.descripcion) + '</p>' : '') +
+        serviciosHtml +
+        requisitosHtml +
+        '<div class="p503-contigo-actions">' +
+          '<a class="p503-contigo-btn-whats" href="https://wa.me/' + escapeHtmlLocal(whatsappNumero) + '?text=' + mensaje + '" target="_blank" rel="noopener">' +
+            '<i class="fa-brands fa-whatsapp"></i><span><b>Enviar mensaje</b><small>Te responderemos por WhatsApp</small></span>' +
+          '</a>' +
+          '<a class="p503-contigo-btn-info" href="' + escapeHtmlLocal(enlacePagina) + '">' +
+            '<i class="fa-solid fa-circle-info"></i><span><b>Ver más sobre el programa</b><small>Conoce requisitos, proceso y más información</small></span>' +
+          '</a>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  window.openP503ContigoModal = function (c) {
+    if (!c) return;
+    buildModal();
+    const contentEl = modal.querySelector('.p503-contigo-content');
+    contentEl.innerHTML = buildContentHtml(c);
+    modal.querySelector('.p503-contigo-scroll').scrollTop = 0;
+    modal.classList.add('open');
+    document.body.classList.add('p503-lightbox-lock');
+  };
+})();
+
+/* =============================================================================
+   MODAL DE TARJETA DEL CARRUSEL — modal único y reutilizable para las
+   tarjetas adicionales del carrusel "Urgencias de este mes" (Rescate
+   reciente, y en el futuro Adopciones / Historia destacada). Mismo patrón
+   que los modales de arriba: se construye una sola vez y se rellena con el
+   JSON que content-loader.js ya dejó listo en el atributo data-carrusel-modal
+   de cada botón, así que agregar o activar una tarjeta nueva en
+   content/configuracion.js nunca requiere tocar este archivo.
+   ============================================================================= */
+(function () {
+  let modal = null;
+
+  function escapeHtmlLocal(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function buildModal() {
+    if (modal) return;
+    modal = document.createElement('div');
+    modal.className = 'p503-carrusel-modal';
+    modal.innerHTML =
+      '<div class="p503-carrusel-overlay"></div>' +
+      '<div class="p503-carrusel-inner">' +
+        '<button class="p503-carrusel-close" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>' +
+        '<div class="p503-carrusel-scroll"><div class="p503-carrusel-content"></div></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelector('.p503-carrusel-overlay').addEventListener('click', closeCarruselModal);
+    modal.querySelector('.p503-carrusel-close').addEventListener('click', closeCarruselModal);
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('open') && e.key === 'Escape') closeCarruselModal();
+    });
+  }
+
+  function closeCarruselModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('p503-lightbox-lock');
+  }
+
+  // 'foto' puede venir como una sola ruta (string) o como una lista de rutas
+  // (array) cuando la tarjeta tiene varias imágenes; esto normaliza ambos
+  // casos a un array simple, sin tocar cómo llega la información desde
+  // content/configuracion.js.
+  function getFotos(m) {
+    if (Array.isArray(m.foto)) return m.foto.filter(Boolean);
+    if (m.foto) return [m.foto];
+    return [];
+  }
+
+  function buildContentHtml(m) {
+    const fotos = getFotos(m);
+    let fotoHtml = '';
+    if (fotos.length === 1) {
+      // Una sola imagen: mismo markup de siempre, sin flechas ni puntos.
+      fotoHtml = '<div class="p503-carrusel-photo"><img src="' + escapeHtmlLocal(fotos[0]) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '"></div>';
+    } else if (fotos.length > 1) {
+      // Varias imágenes: mini carrusel con flechas sobre la foto y puntos debajo.
+      const slides = fotos.map((f) =>
+        '<div class="p503-carrusel-photo-slide"><img src="' + escapeHtmlLocal(f) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '"></div>'
+      ).join('');
+      const dots = fotos.map((f, i) =>
+        '<button type="button" class="' + (i === 0 ? 'active' : '') + '" data-p503-photo-dot="' + i + '" aria-label="Ir a foto ' + (i + 1) + '"></button>'
+      ).join('');
+      fotoHtml =
+        '<div class="p503-carrusel-photo-wrap">' +
+          '<div class="p503-carrusel-photo p503-carrusel-photo-multi">' +
+            '<div class="p503-carrusel-photo-track">' + slides + '</div>' +
+            '<button class="p503-carrusel-photo-nav p503-carrusel-photo-prev" type="button" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>' +
+            '<button class="p503-carrusel-photo-nav p503-carrusel-photo-next" type="button" aria-label="Foto siguiente"><i class="fa-solid fa-chevron-right"></i></button>' +
+          '</div>' +
+          '<div class="p503-carrusel-photo-dots">' + dots + '</div>' +
+        '</div>';
+    }
+    return (
+      fotoHtml +
+      '<div class="p503-carrusel-body">' +
+        '<h3 class="p503-carrusel-titulo">' + escapeHtmlLocal(m.titulo || '') + '</h3>' +
+        (m.texto ? '<p class="p503-carrusel-texto">' + escapeHtmlLocal(m.texto).replace(/\n/g, '<br>') + '</p>' : '') +
+      '</div>'
+    );
+  }
+
+  // Activa las flechas, los puntos y el deslizar con el dedo/mouse del mini
+  // carrusel de fotos del modal, cuando hay más de una imagen. Mismo patrón
+  // (pointerdown/move/up) que el carrusel "Urgencias de este mes" de la
+  // portada, más abajo en este archivo.
+  function initPhotoCarousel(contentEl) {
+    const track = contentEl.querySelector('.p503-carrusel-photo-track');
+    if (!track) return;
+    const slides = Array.from(track.children);
+    const prevBtn = contentEl.querySelector('.p503-carrusel-photo-prev');
+    const nextBtn = contentEl.querySelector('.p503-carrusel-photo-next');
+    const dots = Array.from(contentEl.querySelectorAll('.p503-carrusel-photo-dots button'));
+    let index = 0;
+
+    function update() {
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      update();
+    }
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    let startX = 0, deltaX = 0, dragging = false;
+    track.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      startX = e.clientX;
+      deltaX = 0;
+      track.style.transition = 'none';
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      deltaX = e.clientX - startX;
+      track.style.transform = 'translateX(calc(-' + (index * 100) + '% + ' + deltaX + 'px))';
+    });
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = '';
+      const threshold = track.clientWidth * 0.18;
+      if (deltaX > threshold) goTo(index - 1);
+      else if (deltaX < -threshold) goTo(index + 1);
+      else update();
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointerleave', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    update();
+  }
+
+  window.openP503CarruselModal = function (m) {
+    if (!m) return;
+    buildModal();
+    const contentEl = modal.querySelector('.p503-carrusel-content');
+    contentEl.innerHTML = buildContentHtml(m);
+    initPhotoCarousel(contentEl);
+    modal.querySelector('.p503-carrusel-scroll').scrollTop = 0;
+    modal.classList.add('open');
+    document.body.classList.add('p503-lightbox-lock');
+  };
+})();
+
+/* =============================================================================
+   MODAL DE TARJETA DE PROGRAMA (portada) — modal único y reutilizable para
+   las tarjetas de "Nuestros Programas" en la portada (index.html). Se
+   construye una sola vez y se rellena con el JSON que content-loader.js ya
+   dejó listo en el atributo data-programa de cada tarjeta (ver
+   serializarProgramaParaModal en js/content-loader.js), así que agregar o
+   editar un programa en content/programas.js nunca requiere tocar este
+   archivo. El botón "Conocer el programa" de la tarjeta sigue funcionando
+   igual: enlaza directo a programas.html#id sin pasar por este modal (el
+   listener que abre el modal, más abajo, lo excluye explícitamente).
+   ============================================================================= */
+(function () {
+  let modal = null;
+
+  function escapeHtmlLocal(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function buildModal() {
+    if (modal) return;
+    modal = document.createElement('div');
+    modal.className = 'p503-programa-modal';
+    modal.innerHTML =
+      '<div class="p503-programa-overlay"></div>' +
+      '<div class="p503-programa-inner">' +
+        '<button class="p503-programa-close" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>' +
+        '<div class="p503-programa-scroll"><div class="p503-programa-content"></div></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelector('.p503-programa-overlay').addEventListener('click', closeProgramaModal);
+    modal.querySelector('.p503-programa-close').addEventListener('click', closeProgramaModal);
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('open') && e.key === 'Escape') closeProgramaModal();
+    });
+  }
+
+  function closeProgramaModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('p503-lightbox-lock');
+  }
+
+  // "queEs", "enQueConsiste" y "porQueExiste" pueden llegar como un solo
+  // texto o como una lista de párrafos (string[]); esto normaliza ambos
+  // casos, igual que hace el acordeón de programas.html.
+  function parrafosHtml(valor) {
+    const lista = Array.isArray(valor) ? valor : (valor ? [valor] : []);
+    return lista.map(par => '<p>' + escapeHtmlLocal(par) + '</p>').join('');
+  }
+
+  function buildContentHtml(p) {
+    return (
+      '<div class="p503-programa-body">' +
+        '<h3 class="p503-programa-titulo">' + escapeHtmlLocal(p.titulo || '') + '</h3>' +
+        '<div class="p503-programa-section">' +
+          '<h4>¿Qué es?</h4>' +
+          parrafosHtml(p.queEs) +
+        '</div>' +
+        '<div class="p503-programa-section">' +
+          '<h4>¿En qué consiste?</h4>' +
+          parrafosHtml(p.enQueConsiste) +
+        '</div>' +
+        '<div class="p503-programa-section">' +
+          '<h4>¿Por qué existe?</h4>' +
+          parrafosHtml(p.porQueExiste) +
+        '</div>' +
+        '<a class="btn-primary p503-programa-cta" href="' + escapeHtmlLocal(p.link || '#') + '">Conocer el programa completo</a>' +
+      '</div>'
+    );
+  }
+
+  window.openP503ProgramaModal = function (p) {
+    if (!p) return;
+    buildModal();
+    const contentEl = modal.querySelector('.p503-programa-content');
+    contentEl.innerHTML = buildContentHtml(p);
+    modal.querySelector('.p503-programa-scroll').scrollTop = 0;
+    modal.classList.add('open');
+    document.body.classList.add('p503-lightbox-lock');
+  };
+})();
+
+function initSiteInteractions() {
+
+  // ===== Mantiene --header-h sincronizado con la altura real del header, para
+  // que las secciones internas (Nosotros, Cómo ayudar, Historias, etc.) queden
+  // completamente visibles debajo del menú fijo al navegar por anclas =====
+  const headerEl = document.querySelector('header');
+  if (headerEl) {
+    const syncHeaderVar = () => {
+      document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
+    };
+    syncHeaderVar();
+    window.addEventListener('resize', syncHeaderVar);
+  }
+
+  // ===== Header transparente sobre el hero (solo en la home) que se pone verde al hacer scroll =====
+  if (document.body.classList.contains('home')) {
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
+    if (header && hero) {
+      const syncHeroOffset = () => { hero.style.marginTop = '-' + header.offsetHeight + 'px'; };
+      syncHeroOffset();
+      window.addEventListener('resize', syncHeroOffset);
+      const onScroll = () => {
+        if (window.scrollY > header.offsetHeight * 0.6) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+        header.classList.toggle('scrolled-deep', window.scrollY > 340);
+      };
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    }
+  } else {
+    // ===== En el resto de páginas el header ya tiene fondo sólido; solo agregamos
+    // una sombra muy sutil en cuanto el usuario empieza a desplazarse =====
+    const header = document.querySelector('header');
+    if (header) {
+      const onScrollShadow = () => {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+        header.classList.toggle('scrolled-deep', window.scrollY > 340);
+      };
+      window.addEventListener('scroll', onScrollShadow, {passive:true});
+      onScrollShadow();
+    }
+  }
+
+  // ===== Logo: vuelve suavemente al inicio de la página en la home, o navega
+  // al Home (index.html) con normalidad desde el resto de páginas =====
+  const logoHome = document.getElementById('logoHome');
+  if (logoHome && document.body.classList.contains('home')) {
+    logoHome.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  // ===== Botón flotante de WhatsApp: se oculta suavemente mientras el usuario
+  // se desplaza hacia abajo activamente, y reaparece al detenerse o al subir =====
+  const fabWhats = document.querySelector('.fab-whats');
+  if (fabWhats) {
+    let lastScrollY = window.scrollY;
+    let hideTimer = null;
+    const showFab = () => fabWhats.classList.remove('fab-hidden');
+    const onFabScroll = () => {
+      const currentY = window.scrollY;
+      const goingDown = currentY > lastScrollY + 4;
+      const goingUp = currentY < lastScrollY - 4;
+      if (goingDown && currentY > 60) {
+        fabWhats.classList.add('fab-hidden');
+      } else if (goingUp) {
+        showFab();
+      }
+      lastScrollY = currentY;
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(showFab, 650); // reaparece al detenerse el scroll
+    };
+    window.addEventListener('scroll', onFabScroll, {passive:true});
+  }
+
+  // ===== Botón "Volver al inicio": aparece solo tras bajar una parte
+  // considerable de la página, permanece visible mientras el usuario sigue
+  // desplazándose y se oculta suavemente en cuanto se detiene a leer =====
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    let hideTimer = null;
+    const onBackToTopScroll = () => {
+      const pastThreshold = window.scrollY > window.innerHeight * 0.8;
+      clearTimeout(hideTimer);
+      if (pastThreshold) {
+        backToTop.classList.add('show');
+        hideTimer = setTimeout(() => backToTop.classList.remove('show'), 1000);
+      } else {
+        backToTop.classList.remove('show');
+      }
+    };
+    window.addEventListener('scroll', onBackToTopScroll, {passive:true});
+    onBackToTopScroll();
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  // ===== Menú móvil =====
+  const mobileMenuEl = document.getElementById('mobileMenu');
+  document.getElementById('burgerBtn').addEventListener('click', () => {
+    const isOpen = mobileMenuEl.classList.toggle('open');
+    // Mientras el menú está abierto, el encabezado mantiene siempre el mismo
+    // color sólido (aunque estemos al inicio de la home), para que no se vea
+    // un fondo blanco de por medio al desplegarse.
+    if (headerEl) headerEl.classList.toggle('menu-open', isOpen);
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href') || '';
+      const isSamePageAnchor = href.startsWith('#') && href.length > 1 && document.querySelector(href);
+      mobileMenuEl.classList.remove('open');
+      if (headerEl) headerEl.classList.remove('menu-open');
+      if (isSamePageAnchor) {
+        // Evita que el navegador calcule el destino del scroll mientras el
+        // menú todavía está colapsando: esperamos a que termine la
+        // transición (la misma duración definida en CSS) y recién ahí
+        // desplazamos, usando la altura real y actual del encabezado.
+        e.preventDefault();
+        const target = document.querySelector(href);
+        setTimeout(() => {
+          const headerH = headerEl ? headerEl.offsetHeight : 0;
+          const y = target.getBoundingClientRect().top + window.scrollY - headerH - 12;
+          window.scrollTo({top: Math.max(y, 0), behavior: 'smooth'});
+        }, 260);
+      }
+    });
+  });
+
+  // ===== Tabs de "Formas de donar" =====
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ===== Copiar número de cuenta/billetera (las tarjetas se generan desde content/configuracion.json) =====
+  document.querySelectorAll('.copy-num').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.copy;
+      navigator.clipboard && navigator.clipboard.writeText(val);
+      const orig = btn.innerHTML;
+      btn.innerHTML = '¡Copiado! <i class="fa-solid fa-check"></i>';
+      setTimeout(() => btn.innerHTML = orig, 1400);
+    });
+  });
+
+  // ===== Mostrar/ocultar el resto de los programas en la portada =====
+  const restWrap = document.getElementById('restWrap');
+  const toggleBtn = document.getElementById('toggleProgs');
+  const toggleLabel = document.getElementById('toggleLabel');
+  if (toggleBtn && restWrap && toggleLabel) {
+    let progsOpen = false;
+    toggleBtn.addEventListener('click', () => {
+      progsOpen = !progsOpen;
+      restWrap.style.maxHeight = progsOpen ? restWrap.scrollHeight + 'px' : '0';
+      toggleLabel.textContent = progsOpen ? 'Ocultar programas' : 'Mostrar todos los programas';
+      toggleBtn.classList.toggle('open', progsOpen);
+      toggleBtn.setAttribute('aria-expanded', progsOpen ? 'true' : 'false');
+    });
+  }
+
+  // ===== Extiende la animación "reveal" (fade + ligero desplazamiento) a más
+  // bloques de contenido, sin tocar el HTML de cada página una por una =====
+  document.querySelectorAll(
+    '.prog-card, .ayudar-card, .red-card, .via-card, .req-col, .somos-grid, .pfc-card, .prog-detail-card'
+  ).forEach(el => el.classList.add('reveal'));
+
+  // ===== Animación "reveal" al hacer scroll (aplica a elementos estáticos y a los generados desde JSON) =====
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ===== Favoritos (corazón) — funciona en cualquier página con tarjetas .pet-card =====
+  const FAV_KEY = 'p503-favoritos';
+  const getFavs = () => { try { return JSON.parse(localStorage.getItem(FAV_KEY)) || []; } catch (e) { return []; } };
+  const setFavs = (arr) => { try { localStorage.setItem(FAV_KEY, JSON.stringify(arr)); } catch (e) {} };
+  const isFav = (name) => getFavs().includes(name);
+  const toggleFav = (name) => {
+    let favs = getFavs();
+    favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
+    setFavs(favs);
+    return favs.includes(name);
+  };
+  const refreshFavButtons = () => {
+    document.querySelectorAll('.pet-fav').forEach(btn => {
+      const active = isFav(btn.dataset.name);
+      btn.classList.toggle('active', active);
+      btn.innerHTML = active ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>';
+    });
+  };
+  document.querySelectorAll('.pet-fav').forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleFav(btn.dataset.name);
+      refreshFavButtons();
+      if (typeof window.applyPetFilters === 'function') window.applyPetFilters();
+    });
+  });
+  refreshFavButtons();
+
+  // ===== Contador dinámico de animalitos disponibles (adopciones.html) =====
+  const petCounterNum = document.getElementById('petCounterNum');
+  if (petCounterNum) {
+    const totalPets = document.querySelectorAll('#petGrid .pet-card').length;
+    petCounterNum.textContent = totalPets;
+  }
+
+  // ===== Filtros de la página de Adopciones =====
+  const petGrid = document.getElementById('petGrid');
+  if (petGrid) {
+    let speciesActive = 'todos';
+    let sexActive = 'todos';
+    let ageActive = 'todos';
+    let onlyFavs = false;
+
+    const speciesBtns = document.querySelectorAll('#speciesFilter .filter-btn');
+    const sexBtns = document.querySelectorAll('#sexFilter .filter-btn');
+    const ageBtns = document.querySelectorAll('#ageFilter .filter-btn');
+    const favToggle = document.getElementById('favToggle');
+    const noResults = document.getElementById('noResults');
+
+    window.applyPetFilters = function () {
+      let visibleCount = 0;
+      document.querySelectorAll('#petGrid .pet-card').forEach(card => {
+        const matchesSpecies = speciesActive === 'todos' || card.dataset.species === speciesActive;
+        const matchesSex = sexActive === 'todos' || card.dataset.sex === sexActive;
+        const matchesAge = ageActive === 'todos' || card.dataset.age === ageActive;
+        const matchesFav = !onlyFavs || isFav(card.dataset.name);
+        const visible = matchesSpecies && matchesSex && matchesAge && matchesFav;
+        card.classList.toggle('hidden', !visible);
+        if (visible) visibleCount++;
+      });
+      if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    };
+
+    speciesBtns.forEach(btn => btn.addEventListener('click', () => {
+      speciesBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      speciesActive = btn.dataset.species;
+      window.applyPetFilters();
+    }));
+    sexBtns.forEach(btn => btn.addEventListener('click', () => {
+      sexBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sexActive = btn.dataset.sex;
+      window.applyPetFilters();
+    }));
+    ageBtns.forEach(btn => btn.addEventListener('click', () => {
+      ageBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      ageActive = btn.dataset.age;
+      window.applyPetFilters();
+    }));
+    if (favToggle) favToggle.addEventListener('click', () => {
+      onlyFavs = !onlyFavs;
+      favToggle.classList.toggle('active', onlyFavs);
+      window.applyPetFilters();
+    });
+
+    window.applyPetFilters();
+  }
+
+  // ===== Filtro de Historias (historias.html) =====
+  const historiasGrid = document.getElementById('historiasGrid');
+  const statusFilterEl = document.getElementById('statusFilter');
+  if (historiasGrid && statusFilterEl) {
+    const statusBtns = statusFilterEl.querySelectorAll('.filter-btn');
+    const noResultsHistorias = document.getElementById('noResultsHistorias');
+
+    const applyStatusFilter = (status) => {
+      let visibleCount = 0;
+      historiasGrid.querySelectorAll('.caso-card').forEach(card => {
+        const visible = status === 'todos' || card.dataset.status === status;
+        card.classList.toggle('hidden', !visible);
+        if (visible) visibleCount++;
+      });
+      if (noResultsHistorias) noResultsHistorias.style.display = visibleCount === 0 ? 'block' : 'none';
+    };
+
+    statusBtns.forEach(btn => btn.addEventListener('click', () => {
+      statusBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyStatusFilter(btn.dataset.status);
+    }));
+  }
+
+  // ===== Acordeón de Programas (programas.html) =====
+  // El HTML del acordeón (#progAccordion) y del índice de pastillas (#progIndex)
+  // ya fue generado por js/content-loader.js a partir de content/programas.json
+  // antes de que esta función se ejecute. Aquí solo se activa el comportamiento.
+  const progAccordionEl = document.getElementById('progAccordion');
+  const progIndexEl = document.getElementById('progIndex');
+  if (progAccordionEl && progIndexEl) {
+
+    const accItems = Array.from(progAccordionEl.querySelectorAll('.acc-item'));
+
+    const setOpen = (item, open) => {
+      const header = item.querySelector('.acc-header');
+      const panel = item.querySelector('.acc-panel');
+      item.classList.toggle('open', open);
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
+    };
+
+    // Cuando se abre un programa distinto mientras otro ya está abierto, el
+    // panel anterior se cierra (max-height .45s) al mismo tiempo que el nuevo
+    // se abre. Si no se hace nada, el cierre del panel de arriba empuja todo
+    // el contenido hacia arriba y el header que el usuario acaba de tocar
+    // "salta" en pantalla. Esta función compensa el scroll cuadro a cuadro
+    // durante la transición para que ese header permanezca fijo en su lugar:
+    // visualmente el programa anterior se cierra "por debajo" mientras el
+    // nuevo se despliega, sin que la página brinque. No se usa cuando el
+    // usuario simplemente cierra el mismo programa (ese caso no cambia).
+    const ACC_TRANSITION_MS = 470; // .45s de la transición CSS + margen
+    function keepAnchorStableDuringTransition(anchorEl) {
+      if (!anchorEl) return;
+      // El sitio usa "scroll-behavior: smooth" en <html>, lo que animaría
+      // cada corrección de scroll por separado y desfasaría la compensación.
+      // Se desactiva solo mientras dura esta transición y se restaura al final.
+      const htmlEl = document.documentElement;
+      const prevScrollBehavior = htmlEl.style.scrollBehavior;
+      htmlEl.style.scrollBehavior = 'auto';
+
+      let anchorTop = anchorEl.getBoundingClientRect().top;
+      const start = performance.now();
+      const step = (now) => {
+        const currentTop = anchorEl.getBoundingClientRect().top;
+        const delta = currentTop - anchorTop;
+        if (delta !== 0) window.scrollBy(0, delta);
+        anchorTop = anchorEl.getBoundingClientRect().top;
+        if (now - start < ACC_TRANSITION_MS) {
+          requestAnimationFrame(step);
+        } else {
+          htmlEl.style.scrollBehavior = prevScrollBehavior;
+        }
+      };
+      requestAnimationFrame(step);
+    }
+
+    accItems.forEach(item => {
+      item.querySelector('.acc-header').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        const previouslyOpen = !isOpen && accItems.find(other => other !== item && other.classList.contains('open'));
+
+        if (previouslyOpen) keepAnchorStableDuringTransition(item);
+
+        accItems.forEach(other => { if (other !== item) setOpen(other, false); });
+        setOpen(item, !isOpen);
+      });
+    });
+
+    // Galería de cada programa: se ven 3 fotos de vista previa; el botón
+    // "Ver más fotos" y las miniaturas abren el lightbox para recorrer todas
+    // las imágenes (incluidas las que aún no caben en la vista previa).
+    accItems.forEach(item => {
+      const galleryWrap = item.querySelector('.prog-gallery');
+      if (!galleryWrap) return;
+      const verMasBtn = galleryWrap.querySelector('.btn-ver-fotos');
+      let galeria = [];
+      try { galeria = JSON.parse(galleryWrap.dataset.gallery || '[]'); } catch (e) { galeria = []; }
+      const title = galleryWrap.dataset.galleryTitle || '';
+      if (verMasBtn) {
+        verMasBtn.addEventListener('click', () => {
+          const start = parseInt(verMasBtn.dataset.galleryStart, 10) || 0;
+          if (typeof window.openP503Lightbox === 'function') window.openP503Lightbox(galeria, start, title);
+        });
+      }
+      galleryWrap.querySelectorAll('.gallery-item').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const idx = parseInt(thumb.dataset.lightboxIndex, 10) || 0;
+          if (typeof window.openP503Lightbox === 'function') window.openP503Lightbox(galeria, idx, title);
+        });
+      });
+    });
+
+    // Recalcula la altura del panel abierto si cambia el layout (ej. rotación de pantalla)
+    window.addEventListener('resize', () => {
+      accItems.forEach(item => {
+        if (item.classList.contains('open')) {
+          item.querySelector('.acc-panel').style.maxHeight = item.querySelector('.acc-panel').scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Pills del índice: abren el programa correspondiente y hacen scroll hasta él
+    progIndexEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(a.dataset.target);
+        if (!target) return;
+        const item = accItems.find(it => it.id === a.dataset.target);
+        if (item && !item.classList.contains('open')) {
+          accItems.forEach(other => { if (other !== item) setOpen(other, false); });
+          setOpen(item, true);
+        }
+        setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+      });
+    });
+
+    // Abre el programa indicado por el hash de la URL. Si no hay hash,
+    // todos quedan cerrados por defecto (el usuario abre el que quiera).
+    if (accItems.length && location.hash) {
+      const initialId = document.getElementById(location.hash.slice(1)) ? location.hash.slice(1) : null;
+      const initialItem = initialId ? accItems.find(it => it.id === initialId) : null;
+      if (initialItem) {
+        setOpen(initialItem, true);
+        setTimeout(() => initialItem.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+      }
+    }
+
+    accItems.forEach(el => io.observe(el));
+  }
+
+  // ===== Tarjetas de Programas en la portada: al tocar cualquier parte de
+  // la tarjeta (excepto el botón "Conocer el programa") se abre el modal
+  // con el resumen del programa. El botón "Conocer el programa" no se toca:
+  // sigue siendo un enlace normal a programas.html#id =====
+  document.querySelectorAll('.prog-card[data-programa]').forEach(card => {
+    const abrirProgramaModal = () => {
+      let datos = null;
+      try { datos = JSON.parse(card.dataset.programa); } catch (e) { datos = null; }
+      if (datos && typeof window.openP503ProgramaModal === 'function') {
+        window.openP503ProgramaModal(datos);
+      }
+    };
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.prog-link')) return;
+      abrirProgramaModal();
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.target.closest('.prog-link')) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        abrirProgramaModal();
+      }
+    });
+  });
+
+  // ===== Historias del Paraíso: abre el modal reutilizable al hacer clic en
+  // la tarjeta o en el botón "Conocer su historia" (en la portada y en
+  // historias.html). Los datos de cada historia ya vienen listos en el
+  // atributo data-historia de la tarjeta (ver js/content-loader.js) =====
+  document.querySelectorAll('.caso-card[data-historia]').forEach(card => {
+    const abrir = () => {
+      let historia = null;
+      try { historia = JSON.parse(card.dataset.historia); } catch (e) { historia = null; }
+      if (historia && typeof window.openP503HistoriaModal === 'function') {
+        window.openP503HistoriaModal(historia);
+      }
+    };
+    card.addEventListener('click', abrir);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        abrir();
+      }
+    });
+  });
+
+  // ===== Programa Contigo: abre el modal reutilizable al hacer clic en
+  // cualquier parte del banner (o al presionar el botón que hay dentro).
+  // Los datos ya vienen listos en el atributo data-contigo del banner (ver
+  // js/content-loader.js) =====
+  const contigoBanner = document.getElementById('contigoBanner');
+  if (contigoBanner) {
+    const abrirContigo = () => {
+      let contigo = null;
+      try { contigo = JSON.parse(contigoBanner.dataset.contigo); } catch (e) { contigo = null; }
+      if (contigo && typeof window.openP503ContigoModal === 'function') {
+        window.openP503ContigoModal(contigo);
+      }
+    };
+    contigoBanner.addEventListener('click', (e) => {
+      // El botón "Ver más sobre el programa" es ahora un enlace directo a
+      // la página de Contigo: si el clic vino de él, dejamos que navegue
+      // con normalidad y no abrimos el modal.
+      if (e.target.closest('.contigo-btn')) return;
+      abrirContigo();
+    });
+    contigoBanner.addEventListener('keydown', (e) => {
+      if (e.target.closest('.contigo-btn')) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        abrirContigo();
+      }
+    });
+  }
+
+  // ===== Enlace "Contigo" del menú (encabezado y menú móvil): abre el
+  // mismo modal informativo del programa, usando el contenido ya cargado
+  // desde content/contigo.js. No navega a ninguna sección ni página. =====
+  const navContigoLinks = document.querySelectorAll('.nav-contigo-link');
+  if (navContigoLinks.length) {
+    navContigoLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const content = window.PARAISO503_CONTENT && window.PARAISO503_CONTENT.contigo;
+        const modalData = content && content.modal;
+        if (modalData && typeof window.openP503ContigoModal === 'function') {
+          window.openP503ContigoModal(modalData);
+        }
+      });
+    });
+  }
+
+  // ===== Carrusel "Urgencias de este mes": deslizar entre tarjetas con las
+  // flechas, los puntos o arrastrando/deslizando con el dedo o el mouse.
+  // Funciona igual sin importar cuántas tarjetas estén activas — con una
+  // sola tarjeta simplemente oculta flechas y puntos (ver clase "single"
+  // en css/style.css). Agregar o activar una tarjeta nueva en
+  // content/configuracion.js no requiere tocar este bloque. =====
+  const urgenciaCarousel = document.getElementById('urgenciaCarousel');
+  const urgenciaTrack = document.getElementById('urgenciaTrack');
+  if (urgenciaCarousel && urgenciaTrack) {
+    const slides = Array.from(urgenciaTrack.children);
+    const prevBtn = document.getElementById('urgenciaPrev');
+    const nextBtn = document.getElementById('urgenciaNext');
+    const dotsWrap = document.getElementById('urgenciaDots');
+    let index = 0;
+
+    if (slides.length <= 1) {
+      urgenciaCarousel.classList.add('single');
+    } else {
+      if (dotsWrap) {
+        dotsWrap.innerHTML = slides.map((_, i) =>
+          '<button type="button" aria-label="Ir a la tarjeta ' + (i + 1) + '"></button>'
+        ).join('');
+      }
+
+      const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
+
+      function goTo(i) {
+        index = (i + slides.length) % slides.length;
+        urgenciaTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach((d, di) => d.classList.toggle('active', di === index));
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+      dots.forEach((d, di) => d.addEventListener('click', () => goTo(di)));
+
+      // Deslizar con el dedo (touch) o arrastrando con el mouse.
+      let dragging = false;
+      let startX = 0;
+      let deltaX = 0;
+
+      urgenciaTrack.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        startX = e.clientX;
+        deltaX = 0;
+        urgenciaTrack.style.transition = 'none';
+      });
+      urgenciaTrack.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        deltaX = e.clientX - startX;
+        const pct = (deltaX / urgenciaTrack.clientWidth) * 100;
+        urgenciaTrack.style.transform = 'translateX(calc(-' + (index * 100) + '% + ' + deltaX + 'px))';
+      });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        urgenciaTrack.style.transition = '';
+        const threshold = urgenciaTrack.clientWidth * 0.18;
+        if (deltaX < -threshold) goTo(index + 1);
+        else if (deltaX > threshold) goTo(index - 1);
+        else goTo(index);
+      };
+      urgenciaTrack.addEventListener('pointerup', endDrag);
+      urgenciaTrack.addEventListener('pointerleave', endDrag);
+      urgenciaTrack.addEventListener('pointercancel', endDrag);
+
+      goTo(0);
+    }
+  }
+
+  // ===== Tarjetas del carrusel de urgencia (ej. "Rescate reciente"): el
+  // botón de cada una trae su contenido de modal ya listo en JSON en el
+  // atributo data-carrusel-modal (ver js/content-loader.js) =====
+  document.querySelectorAll('[data-carrusel-modal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      let data = null;
+      try { data = JSON.parse(btn.dataset.carruselModal); } catch (e) { data = null; }
+      if (data && typeof window.openP503CarruselModal === 'function') {
+        window.openP503CarruselModal(data);
+      }
+    });
+  });
+}
+
+// content-loader.js llama a initSiteInteractions() después de insertar el
+// contenido dinámico (esperando a que TODOS los JSON terminen de cargar,
+// sin importar cuánto tarde la conexión). Si por alguna razón
+// content-loader.js no está incluido en la página, activamos igual el
+// comportamiento al cargar el DOM para que el menú y demás sigan
+// funcionando (aunque sin contenido dinámico).
+//
+// Importante: ya NO usamos un temporizador fijo como respaldo. Antes, un
+// setTimeout de 2.5s ejecutaba initSiteInteractions() si content-loader.js
+// tardaba más que eso en responder (típico en conexiones móviles lentas),
+// dejando el acordeón de programas.html vacío porque las tarjetas todavía
+// no existían en el DOM en ese momento. Ahora content-loader.js avisa de
+// forma síncrona (window.__p503ContentLoaderPresent) que se va a encargar
+// de llamar a initSiteInteractions() él mismo, así que el respaldo solo
+// se activa cuando ese aviso nunca llegó, es decir, cuando content-loader.js
+// realmente no está presente en la página.
+if (typeof window !== 'undefined') {
+  window.initSiteInteractions = initSiteInteractions;
+
+  const runFallbackIfNeeded = () => {
+    if (!window.__p503InteractionsRan && !window.__p503ContentLoaderPresent) {
+      initSiteInteractions();
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runFallbackIfNeeded);
+  } else {
+    runFallbackIfNeeded();
+  }
+
+  const _origInit = initSiteInteractions;
+  initSiteInteractions = function () {
+    if (window.__p503InteractionsRan) return; // evita doble inicialización
+    window.__p503InteractionsRan = true;
+    _origInit();
+  };
+  window.initSiteInteractions = initSiteInteractions;
+}

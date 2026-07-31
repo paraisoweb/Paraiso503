@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa Contigo — Paraíso 503</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="index.html" id="logoHome" aria-label="Ir al inicio">
+      <img class="mark" src="img/logo/logo.jpg" alt="Paraíso 503">
+      <div class="word">Paraíso 503</div>
+    </a>
+    <a class="nav-follow" href="index.html#redes" aria-label="Síguenos en redes sociales"><i class="fa-solid fa-share-nodes"></i><span>Síguenos</span></a>
+    <ul class="desktop-links">
+      <li><a href="index.html#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="index.html#adopciones">Adopciones</a></li>
+      <li><a href="index.html#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLink"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="index.html#ayudar">Cómo ayudar</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta nav-cta-ghost" href="adopciones.html">Adopta</a>
+      <a class="nav-cta" href="index.html#donar">Dona</a>
+      <button class="burger" id="burgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html#somos">Nosotros</a></li>
+      <li><a href="programas.html">Programas</a></li>
+      <li><a href="index.html#adopciones">Adopciones</a></li>
+      <li><a href="index.html#historias">Historias</a></li>
+      <li><a href="#" class="nav-contigo-link" id="navContigoLinkMobile"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+      <li><a href="index.html#ayudar">Cómo ayudar</a></li>
+      <li><a href="index.html#donar">Donar</a></li>
+    </ul>
+    <div class="mobile-follow">
+      <span class="mobile-follow-label">Síguenos</span>
+      <div class="mobile-follow-icons">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1DLVnJV9aw/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero — reutiliza la misma clase "adopta-hero" que ya usan historias.html
+     y adopciones.html para las páginas internas (no se duplica CSS nuevo). -->
+<section class="adopta-hero">
+  <div class="kicker"><i class="fa-solid fa-heart"></i> Programa Contigo</div>
+  <h1>Porque quienes rescatan también merecen apoyo</h1>
+  <p>Cada día, muchas personas rescatan animales por iniciativa propia. Algunas les dan un hogar temporal, otras los alimentan, los llevan al veterinario o hacen todo lo posible por encontrarles una familia. Sabemos que ese esfuerzo implica tiempo, dedicación y gastos que muchas veces son difíciles de asumir.</p>
+  <span class="contigo-hero-highlight">Programa Contigo nació para acompañarte en ese camino.</span>
+</section>
+
+<!-- ¿Qué es Programa Contigo? + ¿Cómo funciona? -->
+<section class="contigo-top-grid">
+  <div class="contigo-card">
+    <div class="contigo-card-head">
+      <span class="contigo-card-icon"><i class="fa-solid fa-heart"></i></span>
+      <h3>¿Qué es Programa Contigo?</h3>
+    </div>
+    <p>Programa Contigo es una iniciativa de Paraíso 503 creada para apoyar a las personas que rescatan animales o les brindan un hogar temporal mientras encuentran una familia definitiva.</p>
+    <p>Nuestro objetivo es que quienes ya están haciendo la diferencia también puedan contar con orientación, apoyo y beneficios que les permitan seguir ayudando.</p>
+  </div>
+  <div class="contigo-card">
+    <div class="contigo-card-head">
+      <span class="contigo-card-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <h3>¿Cómo funciona?</h3>
+    </div>
+    <div class="contigo-steps">
+      <div class="contigo-step">
+        <span class="contigo-step-icon"><i class="fa-solid fa-paw"></i></span>
+        <b>1</b>
+        <span>Rescatas un animal o le das un hogar temporal</span>
+      </div>
+      <div class="contigo-step">
+        <span class="contigo-step-icon"><i class="fa-solid fa-comment-dots"></i></span>
+        <b>2</b>
+        <span>Te pones en contacto con nosotros</span>
+      </div>
+      <div class="contigo-step">
+        <span class="contigo-step-icon"><i class="fa-solid fa-user"></i></span>
+        <b>3</b>
+        <span>Conocemos tu caso y te orientamos</span>
+      </div>
+      <div class="contigo-step">
+        <span class="contigo-step-icon"><i class="fa-solid fa-heart"></i></span>
+        <b>4</b>
+        <span>Accedes a beneficios y acompañamiento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ¿Cómo podemos ayudarte? -->
+<section class="wrap" style="padding:46px 16px 0;">
+  <h2 class="section-title">¿Cómo podemos ayudarte?</h2>
+</section>
+<div class="contigo-help-grid">
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:var(--clay);"><i class="fa-solid fa-scissors"></i></span>
+    <h4>Esterilizaciones a tarifas preferenciales</h4>
+    <p>Apoyamos a quienes respetan el bienestar de los animales.</p>
+  </div>
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:var(--clay);"><i class="fa-solid fa-stethoscope"></i></span>
+    <h4>Consultas veterinarias</h4>
+    <p>Accede a atención veterinaria a precios accesibles.</p>
+  </div>
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:var(--clay);"><i class="fa-solid fa-syringe"></i></span>
+    <h4>Vacunación</h4>
+    <p>Protegemos su salud con vacunas esenciales a bajo costo.</p>
+  </div>
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:#d9636b;"><i class="fa-solid fa-heart-pulse"></i></span>
+    <h4>Evaluaciones médicas</h4>
+    <p>Revisamos su estado de salud para brindarle el mejor cuidado.</p>
+  </div>
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:var(--green-dark);"><i class="fa-solid fa-bullhorn"></i></span>
+    <h4>Difusión para adopciones</h4>
+    <p>Ayudamos a encontrar un hogar responsable para tu rescatado.</p>
+  </div>
+  <div class="contigo-help-card">
+    <span class="contigo-help-icon" style="background:var(--green-dark);"><i class="fa-solid fa-people-arrows"></i></span>
+    <h4>Orientación y apoyo para rescatistas</h4>
+    <p>Te acompañamos con consejos y seguimiento en tu labor.</p>
+  </div>
+</div>
+
+<!-- Beneficios del programa + ¿Quiénes pueden participar? -->
+<div class="adopta-info" style="max-width:1100px; padding-top:36px;">
+  <div class="req-columns">
+    <div class="req-col buscamos" style="background:rgba(217,99,64,0.09);">
+      <h4><i class="fa-solid fa-heart" style="color:var(--clay);"></i> Beneficios del programa</h4>
+      <div class="req-items two-col">
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-check"></i></span> Tarifas preferenciales en servicios veterinarios</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-check"></i></span> Difusión de animales en adopción</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-check"></i></span> Apoyo en esterilizaciones y atención médica</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-check"></i></span> Acompañamiento cuando más lo necesitas</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-check"></i></span> Orientación durante todo el proceso de rescate</div>
+      </div>
+    </div>
+    <div class="req-col ofrecemos" style="background:rgba(30,61,43,0.07);">
+      <h4><i class="fa-solid fa-paw" style="color:var(--green-dark);"></i> ¿Quiénes pueden participar?</h4>
+      <div class="req-items">
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-paw"></i></span> Personas que rescataron un animal de la calle</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-paw"></i></span> Familias que dan hogar temporal</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-paw"></i></span> Quienes alimentan animales comunitarios</div>
+        <div class="req-item"><span class="ico"><i class="fa-solid fa-paw"></i></span> Personas que desean ayudar a más animales</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cierre -->
+<p class="contigo-closing">Cada rescate comienza con una decisión. Si tú ya diste ese paso, nosotros queremos caminar Contigo.</p>
+
+<!-- CTA final -->
+<div class="contigo-cta-wrap">
+  <a class="contigo-cta-bar" href="https://wa.me/50377476318?text=Hola.%20Me%20interesa%20el%20Programa%20Contigo.%20Estoy%20ayudando%20a%20un%20animal%20y%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20funciona%20el%20programa%20y%20c%C3%B3mo%20puedo%20acceder%20al%20apoyo%20que%20ofrecen.">
+    <span class="contigo-cta-icon"><i class="fa-brands fa-whatsapp"></i></span>
+    <span>
+      <b>Quiero formar parte de Programa Contigo</b><br>
+      <span>Escríbenos por WhatsApp y te ayudamos.</span>
+    </span>
+  </a>
+  <span class="contigo-cta-note">Te contactaremos por WhatsApp.</span>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="brand">
+      <!-- LOGO: reemplaza este div por tu logo real, ej: <img src="logo.png" alt="Paraíso 503"> -->
+      <div class="mark logo-placeholder"><i class="fa-solid fa-image"></i></div>
+      <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
+    </div>
+    <div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>
+  </div>
+  <nav class="foot-nav">
+    <a href="index.html#somos">Nosotros</a>
+    <a href="programas.html">Programas</a>
+    <a href="index.html#adopciones">Adopciones</a>
+    <a href="index.html#historias">Historias</a>
+    <a href="index.html#ayudar">Cómo ayudar</a>
+    <a href="index.html#donar">Formas de donar</a>
+    <a href="index.html#redes">Contacto</a>
+  </nav>
+  <hr>
+  <div class="bottom"><span>© 2026 Paraíso de los Animales.</span><span>Aviso de privacidad</span></div>
+</footer>
+
+<!-- Confirma/actualiza el número de WhatsApp en el href de abajo cuando quieras -->
+<a class="fab-whats" href="https://wa.me/50377476318?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Para%C3%ADso%20503." aria-label="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver al inicio"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- Contenido dinámico (JS en vez de JSON para que fetch() no falle al abrir el sitio con doble clic / file://) -->
+<script src="content/configuracion.js"></script>
+<script src="content/estadisticas.js"></script>
+<script src="content/programas.js"></script>
+<script src="content/adopciones.js"></script>
+<script src="content/historias.js"></script>
+<script src="content/contigo.js"></script>
+<script src="js/script.js"></script>
+<script src="js/content-loader.js"></script>
+
+</body>
+</html>
