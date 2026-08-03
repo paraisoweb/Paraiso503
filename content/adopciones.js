@@ -40,7 +40,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "edad": "cachorro",
       "estado": "Disponible",
       "descripcion": "Cariñoso, tranquilo y muy sociable. Le encanta estar acompañado.",
-      "foto":"img/adopta/perro1.jpg",
+      "foto":"img/adopta/perro1.webp",
       "destacadoInicio": true
     },
     {
@@ -50,7 +50,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "edad": "cachorro",
       "estado": "Disponible",
       "descripcion": "Muy dulce y juguetona. Se lleva bien con otros perritos.",
-      "foto":"img/adopta/perro2.jpg",
+      "foto":"img/adopta/perro2.webp",
       "destacadoInicio": true
     },
     {
@@ -60,7 +60,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "edad": "cachorro",
       "estado": "Disponible",
       "descripcion": "Cachorro alegre, curioso y lleno de energía. Ideal para una familia activa.",
-      "foto":"img/adopta/perro3.jpg",
+      "foto":"img/adopta/perro3.webp",
       "destacadoInicio": true
     },
     {
@@ -70,7 +70,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "edad": "adulto",
       "estado": "Disponible",
       "descripcion": "Tierno y tranquilo. Le encanta dormir en lugares cálidos y recibir mimos.",
-      "foto":"img/adopta/gato1.jpg",
+      "foto":"img/adopta/gato1.webp",
       "destacadoInicio": false
     }
   ]

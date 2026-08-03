@@ -45,6 +45,7 @@
     const closeBtn = modal.querySelector('.p503-lightbox-close');
     const prevBtn = modal.querySelector('.p503-lightbox-prev');
     const nextBtn = modal.querySelector('.p503-lightbox-next');
+    const mediaEl = modal.querySelector('.p503-lightbox-media');
 
     closeBtn.addEventListener('click', closeLightbox);
     overlayEl.addEventListener('click', closeLightbox);
@@ -56,6 +57,29 @@
       if (e.key === 'ArrowLeft') showItem(currentIndex - 1);
       if (e.key === 'ArrowRight') showItem(currentIndex + 1);
     });
+
+    // Deslizar con el dedo en móvil: swipe a la izquierda = siguiente,
+    // swipe a la derecha = anterior. Se ignoran los gestos mayormente
+    // verticales para no interferir con el scroll.
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchTracking = false;
+    mediaEl.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchTracking = true;
+    }, { passive: true });
+    mediaEl.addEventListener('touchend', (e) => {
+      if (!touchTracking) return;
+      touchTracking = false;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - touchStartX;
+      const dy = touch.clientY - touchStartY;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+        showItem(currentIndex + (dx < 0 ? 1 : -1));
+      }
+    }, { passive: true });
   }
 
   function showItem(idx) {
@@ -65,16 +89,24 @@
     const mediaWrap = modal.querySelector('.p503-lightbox-media');
     const titleEl = modal.querySelector('.p503-lightbox-title');
     const counterEl = modal.querySelector('.p503-lightbox-counter');
-    const altText = (titleEl.textContent || 'Paraíso 503') + ' — foto ' + (currentIndex + 1);
-    mediaWrap.innerHTML = item.isVideo
-      ? '<video src="' + item.src + '" controls autoplay playsinline></video>'
-      : '<img src="' + item.src + '" alt="' + altText + '">';
-    counterEl.textContent = items.length > 1 ? (currentIndex + 1) + ' / ' + items.length : '';
     const prevBtn = modal.querySelector('.p503-lightbox-prev');
     const nextBtn = modal.querySelector('.p503-lightbox-next');
     const hasMultiple = items.length > 1;
-    prevBtn.style.display = hasMultiple ? '' : 'none';
-    nextBtn.style.display = hasMultiple ? '' : 'none';
+
+    // Transición suave: se atenúa la imagen actual y, una vez oculta, se
+    // cambia el contenido y se vuelve a mostrar — así cambiar de foto se
+    // siente pulido en vez de un salto brusco.
+    mediaWrap.classList.add('is-switching');
+    window.setTimeout(() => {
+      const altText = (titleEl.textContent || 'Paraíso 503') + ' — foto ' + (currentIndex + 1);
+      mediaWrap.innerHTML = item.isVideo
+        ? '<video src="' + item.src + '" controls autoplay playsinline></video>'
+        : '<img src="' + item.src + '" alt="' + altText + '">';
+      counterEl.textContent = hasMultiple ? (currentIndex + 1) + ' / ' + items.length : '';
+      prevBtn.style.display = hasMultiple ? '' : 'none';
+      nextBtn.style.display = hasMultiple ? '' : 'none';
+      mediaWrap.classList.remove('is-switching');
+    }, items.length > 1 ? 130 : 0);
   }
 
   function closeLightbox() {
@@ -688,6 +720,53 @@ function initSiteInteractions() {
     });
   }
 
+  // ===== Galería: la barra de categorías (.gal-toolbar) ya es "sticky" por
+  // CSS. Aquí solo detectamos el momento exacto en que queda fija para
+  // activar su modo compacto (clase .is-stuck) y devolverla a su diseño
+  // completo al subir. El umbral se calcula con offsetTop (posición del
+  // elemento en el flujo normal), que NO cambia aunque la barra se achique
+  // al volverse compacta — así se evita que su propio cambio de tamaño
+  // dispare el detector una y otra vez. =====
+  const galToolbar = document.getElementById('galToolbar');
+  if (galToolbar) {
+    let stickyThreshold = 0;
+    const computeStickyThreshold = () => {
+      let top = 0;
+      let el = galToolbar;
+      while (el) { top += el.offsetTop; el = el.offsetParent; }
+      const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 70;
+      stickyThreshold = top - headerH - 10;
+    };
+    computeStickyThreshold();
+    window.addEventListener('resize', computeStickyThreshold);
+    const onGalScroll = () => {
+      galToolbar.classList.toggle('is-stuck', window.scrollY > stickyThreshold + 1);
+    };
+    window.addEventListener('scroll', onGalScroll, {passive:true});
+    onGalScroll();
+  }
+
+  // ===== Galería (vista previa en la portada): las 4 fotos abren el mismo
+  // visor/lightbox reutilizable que ya usa el resto del sitio. Cuando se
+  // reemplacen los src de ejemplo por fotos reales, esto sigue funcionando
+  // sin cambios. =====
+  const galeriaPreviewGrid = document.getElementById('galeriaPreviewGrid');
+  if (galeriaPreviewGrid) {
+    const galeriaPreviewItems = Array.from(galeriaPreviewGrid.querySelectorAll('.galeria-preview-item'));
+    const galeriaPreviewImages = galeriaPreviewItems.map(item => {
+      const img = item.querySelector('img');
+      return { src: img ? img.getAttribute('src') : '', isVideo: false };
+    });
+    galeriaPreviewItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const idx = parseInt(item.dataset.lightboxIndex, 10) || 0;
+        if (typeof window.openP503Lightbox === 'function') {
+          window.openP503Lightbox(galeriaPreviewImages, idx, 'Galería del Paraíso');
+        }
+      });
+    });
+  }
+
   // ===== Menú móvil =====
   const mobileMenuEl = document.getElementById('mobileMenu');
   document.getElementById('burgerBtn').addEventListener('click', () => {
@@ -878,6 +957,139 @@ function initSiteInteractions() {
       btn.classList.add('active');
       applyStatusFilter(btn.dataset.status);
     }));
+  }
+
+  // ===== Galería (galeria.html) =====
+  // El HTML (filtros, tarjetas de fotos/videos, video destacado y playlists)
+  // ya fue generado por js/content-loader.js a partir de content/galeria.js
+  // antes de que esta función se ejecute. Aquí solo se activa el
+  // comportamiento: pestañas Fotos/Videos, filtro por categoría (compartido
+  // entre ambas pestañas), buscador, paginación "Cargar más" y el visor de
+  // fotos (reutiliza el mismo lightbox que el resto del sitio).
+  const galPhotoGrid = document.getElementById('galPhotoGrid');
+  if (galPhotoGrid) {
+    const PAGE_SIZE = 10;
+    const galTabs = document.querySelectorAll('.gal-tab');
+    const galPanels = document.querySelectorAll('.gal-panel');
+    const galCatBtns = document.querySelectorAll('#galCatFilters .filter-btn');
+    const galSearchInput = document.getElementById('galSearchInput');
+    const galLoadMoreBtn = document.getElementById('galLoadMoreBtn');
+    const galPhotoEmpty = document.getElementById('galPhotoEmpty');
+    const galVideoEmpty = document.getElementById('galVideoEmpty');
+    const galFeaturedVideo = document.getElementById('galFeaturedVideo');
+    const galRecentVideos = document.getElementById('galRecentVideos');
+
+    let categoriaActiva = 'todos';
+    let visiblesFotos = PAGE_SIZE;
+
+    function normalizarBusqueda(str) {
+      return String(str || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function coincide(el, termino) {
+      const matchCategoria = categoriaActiva === 'todos' || el.dataset.categoria === categoriaActiva;
+      const matchBusqueda = !termino || (el.dataset.search || '').includes(termino);
+      return matchCategoria && matchBusqueda;
+    }
+
+    function aplicarFiltros() {
+      const termino = normalizarBusqueda(galSearchInput ? galSearchInput.value : '');
+
+      // ----- Fotos: filtro + paginación "Cargar más" -----
+      const fotoCards = Array.from(galPhotoGrid.querySelectorAll('.gal-photo-card'));
+      const fotosCoinciden = fotoCards.filter(card => coincide(card, termino));
+      fotoCards.forEach(card => card.classList.toggle('gal-hidden', fotosCoinciden.indexOf(card) === -1));
+      fotosCoinciden.forEach((card, i) => card.classList.toggle('gal-hidden', i >= visiblesFotos));
+      if (galPhotoEmpty) galPhotoEmpty.style.display = fotosCoinciden.length === 0 ? 'block' : 'none';
+      if (galLoadMoreBtn) galLoadMoreBtn.style.display = fotosCoinciden.length > visiblesFotos ? '' : 'none';
+
+      // ----- Videos: video destacado + videos recientes -----
+      let videosVisibles = 0;
+      if (galFeaturedVideo && galFeaturedVideo.dataset.categoria) {
+        const visible = coincide(galFeaturedVideo, termino);
+        galFeaturedVideo.classList.toggle('gal-hidden', !visible);
+        if (visible) videosVisibles++;
+      }
+      if (galRecentVideos) {
+        galRecentVideos.querySelectorAll('.gal-video-card').forEach(card => {
+          const visible = coincide(card, termino);
+          card.classList.toggle('gal-hidden', !visible);
+          if (visible) videosVisibles++;
+        });
+      }
+      if (galVideoEmpty) galVideoEmpty.style.display = videosVisibles === 0 ? 'block' : 'none';
+    }
+
+    // Pestañas Fotografías / Videos
+    galTabs.forEach(tab => tab.addEventListener('click', () => {
+      galTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      galPanels.forEach(p => p.classList.toggle('active', p.id === 'galPanel' + (tab.dataset.tab === 'fotos' ? 'Fotos' : 'Videos')));
+    }));
+
+    // Filtro por categoría (aplica a fotos y videos a la vez)
+    galCatBtns.forEach(btn => btn.addEventListener('click', () => {
+      galCatBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      categoriaActiva = btn.dataset.categoria;
+      visiblesFotos = PAGE_SIZE;
+      aplicarFiltros();
+    }));
+
+    // Buscador (por título y por nombre de categoría)
+    if (galSearchInput) {
+      galSearchInput.addEventListener('input', () => {
+        visiblesFotos = PAGE_SIZE;
+        aplicarFiltros();
+      });
+    }
+
+    // "Cargar más fotografías"
+    if (galLoadMoreBtn) {
+      galLoadMoreBtn.addEventListener('click', () => {
+        visiblesFotos += PAGE_SIZE;
+        aplicarFiltros();
+      });
+    }
+
+    // Fotos: abren el visor/lightbox reutilizable y permiten recorrer todas
+    // las fotografías que coinciden con el filtro activo (no solo las ya
+    // cargadas en pantalla).
+    let galeriaCompleta = [];
+    try { galeriaCompleta = JSON.parse(galPhotoGrid.dataset.gallery || '[]'); } catch (e) { galeriaCompleta = []; }
+    galPhotoGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.gal-photo-card');
+      if (!card || card.classList.contains('gal-hidden')) return;
+      const termino = normalizarBusqueda(galSearchInput ? galSearchInput.value : '');
+      const fotoCards = Array.from(galPhotoGrid.querySelectorAll('.gal-photo-card')).filter(c => coincide(c, termino));
+      const items = fotoCards.map(c => galeriaCompleta[parseInt(c.dataset.lightboxIndex, 10)]).filter(Boolean);
+      const idx = fotoCards.indexOf(card);
+      if (idx > -1 && typeof window.openP503Lightbox === 'function') {
+        window.openP503Lightbox(items, idx, items[idx] ? items[idx].title : 'Galería del Paraíso');
+      }
+    });
+
+    // Video destacado y videos recientes: al hacer clic, abren el video en YouTube
+    function abrirYoutube(el) {
+      const url = el.dataset.youtube;
+      if (url) window.open(url, '_blank', 'noopener');
+    }
+    if (galFeaturedVideo) {
+      galFeaturedVideo.addEventListener('click', () => {
+        const media = galFeaturedVideo.querySelector('.gal-featured-media');
+        if (media) abrirYoutube(media);
+      });
+    }
+    if (galRecentVideos) {
+      galRecentVideos.addEventListener('click', (e) => {
+        const card = e.target.closest('.gal-video-card');
+        if (card && !card.classList.contains('gal-hidden')) abrirYoutube(card);
+      });
+    }
+
+    aplicarFiltros();
   }
 
   // ===== Acordeón de Programas (programas.html) =====

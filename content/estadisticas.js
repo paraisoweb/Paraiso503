@@ -13,11 +13,11 @@ window.PARAISO503_CONTENT.estadisticas = {
   "estadisticas": [
     {
       "valor": "+300",
-      "etiqueta": "animalitos rescatados"
+      "etiqueta": "Vidas rescatadas"
     },
     {
       "valor": "+160",
-      "etiqueta": "perritos en la ruta de alimentación"
+      "etiqueta": "Animalitos alimentados cada día"
     },
     {
       "valor": "+12",
@@ -25,7 +25,7 @@ window.PARAISO503_CONTENT.estadisticas = {
     },
     {
       "valor": "100%",
-      "etiqueta": "transparencia en el uso de donaciones"
+      "etiqueta": "Compromiso con la transparencia"
     }
   ]
 };

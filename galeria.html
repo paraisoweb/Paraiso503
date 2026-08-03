@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historias del Paraíso — Paraíso 503</title>
+<title>Galería del Paraíso — Paraíso 503</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -63,108 +63,72 @@
 </header>
 
 <section class="adopta-hero">
-  <div class="kicker">De grave a sano</div>
-  <h1>Historias del Paraíso</h1>
-  <p>Cada rescate es la prueba de que sí se puede. Estas son todas las historias que hemos ido documentando.</p>
+  <div class="kicker">Momentos que inspiran</div>
+  <h1>Galería del Paraíso</h1>
+  <p>Fotografías y videos organizados por programas para conocer más acerca del trabajo que realizamos cada día por nuestros peluditos.</p>
+  <div class="gal-hero-stats">
+    <div class="gal-stat-chip">
+      <span class="gal-stat-icon"><i class="fa-solid fa-camera"></i></span>
+      <div><b id="galPhotoCount">0</b><span>Fotografías</span></div>
+    </div>
+    <div class="gal-stat-chip">
+      <span class="gal-stat-icon"><i class="fa-solid fa-video"></i></span>
+      <div><b id="galVideoCount">0</b><span>Videos</span></div>
+    </div>
+  </div>
 </section>
 
-<div class="filter-bar">
-  <div class="filter-group">
-    <span class="filter-label">Estado</span>
-    <div class="filter-btns" id="statusFilter">
-      <button class="filter-btn active" data-status="todos">Todos</button>
-      <button class="filter-btn" data-status="recuperado">💚 Recuperados</button>
-      <button class="filter-btn" data-status="adoptado">🏡 Adoptados</button>
-      <button class="filter-btn" data-status="tratamiento">🩺 En tratamiento</button>
+<div class="gal-toolbar" id="galToolbar">
+  <div class="gal-tabs" role="tablist">
+    <button class="gal-tab active" type="button" data-tab="fotos" role="tab" aria-selected="true"><i class="fa-solid fa-camera"></i> Fotografías</button>
+    <button class="gal-tab" type="button" data-tab="videos" role="tab" aria-selected="false"><i class="fa-solid fa-video"></i> Videos</button>
+  </div>
+  <div class="gal-filters-row">
+    <div class="gal-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="galSearchInput" placeholder="Buscar fotografías o videos..." aria-label="Buscar en la galería">
+    </div>
+    <div class="filter-btns" id="galCatFilters">
+      <!-- Botones de categoría generados automáticamente desde content/galeria.js -->
     </div>
   </div>
 </div>
 
-<div class="wrap" style="padding-top:26px; padding-bottom:50px;">
-  <div class="historias-grid" id="historiasGrid">
+<div class="wrap" style="padding-top:26px; padding-bottom:20px;">
 
-    <!-- Historia 1 -->
-    <div class="caso-card reveal" data-status="recuperado">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-recuperado">💚 Recuperado</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
+  <!-- ============ PESTAÑA: FOTOGRAFÍAS ============ -->
+  <div class="gal-panel active" id="galPanelFotos">
+    <div class="gal-photo-grid" id="galPhotoGrid">
+      <!-- Fotografías generadas automáticamente desde content/galeria.js -->
     </div>
-
-    <!-- Historia 2 -->
-    <div class="caso-card reveal" data-status="adoptado">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-adoptado">🏡 Adoptado</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
+    <p class="no-results" id="galPhotoEmpty" style="display:none;">No encontramos fotografías con estos filtros. Prueba con otra combinación 🐾</p>
+    <div class="gal-loadmore-wrap">
+      <button class="btn-outline-dark" id="galLoadMoreBtn" type="button">Cargar más fotografías <i class="fa-solid fa-chevron-down"></i></button>
     </div>
-
-    <!-- Historia 3 -->
-    <div class="caso-card reveal" data-status="tratamiento">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-tratamiento">🩺 En tratamiento</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
-    </div>
-
-    <!-- Historia 4 -->
-    <div class="caso-card reveal" data-status="recuperado">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-recuperado">💚 Recuperado</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
-    </div>
-
-    <!-- Historia 5 -->
-    <div class="caso-card reveal" data-status="adoptado">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-adoptado">🏡 Adoptado</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
-    </div>
-
-    <!-- Historia 6 -->
-    <div class="caso-card reveal" data-status="tratamiento">
-      <div class="caso-ba">
-        <div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>
-        <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
-      </div>
-      <div class="caso-body">
-        <span class="status-badge status-tratamiento">🩺 En tratamiento</span>
-        <h4>[Nombre del perrito]</h4>
-        <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
-      </div>
-    </div>
-
-    <!-- Para agregar más historias, copia y pega uno de estos bloques "caso-card" completo. Recuerda incluir data-status ("recuperado" / "adoptado" / "tratamiento") y la etiqueta status-badge correspondiente -->
-
   </div>
-  <p class="no-results" id="noResultsHistorias" style="display:none;">No hay historias que coincidan con este filtro por ahora. Prueba con otra opción 🐾</p>
+
+  <!-- ============ PESTAÑA: VIDEOS ============ -->
+  <div class="gal-panel" id="galPanelVideos">
+    <div class="gal-featured" id="galFeaturedVideo">
+      <!-- Video destacado generado automáticamente desde content/galeria.js -->
+    </div>
+
+    <div class="gal-section-head"><h3><i class="fa-regular fa-clock"></i> Videos recientes</h3></div>
+    <div class="gal-video-grid" id="galRecentVideos">
+      <!-- Videos recientes generados automáticamente desde content/galeria.js -->
+    </div>
+    <p class="no-results" id="galVideoEmpty" style="display:none;">No encontramos videos con estos filtros. Prueba con otra combinación 🐾</p>
+
+    <div class="gal-section-head"><h3><i class="fa-solid fa-layer-group"></i> Explora por categorías (Playlists)</h3></div>
+    <div class="gal-playlist-grid" id="galPlaylists">
+      <!-- Playlists generadas automáticamente: una por cada categoría de content/galeria.js -->
+    </div>
+  </div>
+
+</div>
+
+<div class="gal-cta-strip">
+  <p><i class="fa-regular fa-heart"></i> Cada imagen cuenta una historia. Gracias por ser parte de ellas.</p>
 </div>
 
 <footer>
@@ -200,6 +164,7 @@
 <script src="content/adopciones.js"></script>
 <script src="content/historias.js"></script>
 <script src="content/contigo.js"></script>
+<script src="content/galeria.js"></script>
 <script src="js/script.js"></script>
 <script src="js/content-loader.js"></script>
 

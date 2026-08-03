@@ -14,6 +14,7 @@
      - Cambiar un número/estadística -> content/estadisticas.js
      - Cambiar teléfono, redes, formas de donar, necesidad del mes
                                   -> content/configuracion.js
+     - Nueva foto/video en galeria.html -> content/galeria.js
 
    Cada archivo trae comentarios explicando cada campo. El contenido está
    escrito en formato JSON dentro de una pequeña asignación de JavaScript
@@ -87,6 +88,34 @@
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
   }
 
+  // Placeholder para videos/playlists de ejemplo que todavía no tienen un
+  // enlace real de YouTube (ver renderGaleria más abajo).
+  function placeholderVideoImg(label) {
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450">' +
+      '<defs><linearGradient id="gv" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#1E3D2B"/><stop offset="1" stop-color="#3E7A4E"/></linearGradient></defs>' +
+      '<rect width="600" height="450" fill="url(#gv)"/>' +
+      '<text x="50%" y="46%" font-family="sans-serif" font-size="20" fill="#ffffff" fill-opacity="0.85" text-anchor="middle">🎬 ' +
+      escapeHtml(label) + '</text></svg>';
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+
+  // Extrae el ID de un video a partir de cualquier formato habitual de
+  // enlace de YouTube (youtu.be, watch?v=, /embed/, /shorts/). Con ese ID
+  // se puede pedir la miniatura oficial del video sin guardar ninguna
+  // imagen a mano: así, cuando se reemplaza un "youtubeUrl" de ejemplo por
+  // un enlace real, la miniatura aparece sola.
+  function idYoutube(url) {
+    if (!url) return null;
+    const m = String(url).match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    return m ? m[1] : null;
+  }
+  function miniaturaYoutube(url) {
+    const id = idYoutube(url);
+    return id ? ('https://img.youtube.com/vi/' + id + '/hqdefault.jpg') : null;
+  }
+
   // Evita que texto proveniente del JSON rompa el HTML si algún día contiene
   // caracteres como < > o comillas.
   function escapeHtml(str) {
@@ -146,7 +175,7 @@
           '<ul class="urgencia-lista">' + listaHtml + '</ul>' +
           '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
           '<div class="bar-label">' + escapeHtml(montoTexto) + '</div>' +
-          '<p class="placeholder-note">Este bloque queda listo — solo hace falta que me pases el dato del mes para completarlo.</p>' +
+          '<p class="placeholder-note">...</p>' +
         '</div>' +
         '<a class="btn-primary" href="#donar">' + escapeHtml(u.textoBoton) + '</a>' +
       '</div>'
@@ -497,17 +526,22 @@
   // hasta que alguien decida agregar una coincidencia nueva a este mapa.
   const ICONOS_LINEA_TIEMPO = {
     'rescate': 'fa-hand-holding-heart',
-    'primera consulta': 'fa-stethoscope',
-    'consulta': 'fa-stethoscope',
-    'diagnostico': 'fa-magnifying-glass',
-    'medicacion': 'fa-pills',
-    'quimioterapia': 'fa-syringe',
-    'cirugia': 'fa-kit-medical',
-    'esterilizacion': 'fa-syringe',
-    'recuperacion': 'fa-heart-pulse',
-    'alta medica': 'fa-clipboard-check',
-    'adoptado': 'fa-house',
-    'continua en tratamiento': 'fa-hourglass-half'
+  'primera consulta': 'fa-stethoscope',
+  'consulta': 'fa-stethoscope',
+  'diagnostico': 'fa-magnifying-glass',
+  'inicio del tratamiento': 'fa-syringe',
+  'medicacion': 'fa-pills',
+  'tratamiento': 'fa-pills',
+  'quimioterapia': 'fa-syringe',
+  'seguimiento medico': 'fa-stethoscope',
+  'rehabilitacion': 'fa-person-walking',
+  'cirugia': 'fa-kit-medical',
+  'esterilizacion': 'fa-syringe',
+  'recuperacion': 'fa-heart-pulse',
+  'alta medica': 'fa-clipboard-check',
+  'adoptado': 'fa-house',
+  'busca un hogar': 'fa-house',
+  'continua en tratamiento': 'fa-hourglass-half'
   };
   function iconoLineaTiempo(evento) {
     const key = String(evento || '')
@@ -676,6 +710,171 @@
       '</div>';
   }
 
+  /* ---------------------------------------------------------------------
+     GALERÍA (galeria.html) — fotos, video destacado, videos recientes y
+     playlists. Todo se genera desde content/galeria.js: para agregar una
+     foto o un video nuevo solo se edita ese archivo (ver sus comentarios).
+
+     Fotos y videos se renderizan TODOS de una vez (no solo los primeros),
+     usando la misma clase "gal-hidden" que ya usa el resto del sitio para
+     ocultar tarjetas que no coinciden con el filtro (ver .pet-card.hidden /
+     .caso-card en js/script.js): el filtro por categoría, el buscador, las
+     pestañas Fotos/Videos y el botón "Cargar más" son puro comportamiento
+     y viven en js/script.js, que alterna esa clase sobre las tarjetas que
+     ya están aquí en el DOM.
+     --------------------------------------------------------------------- */
+  function normalizarTexto(str) {
+    return String(str == null ? '' : str)
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function renderGaleria(data) {
+    if (!data) return;
+    const categorias = Array.isArray(data.categorias) ? data.categorias : [];
+    const fotos = Array.isArray(data.fotos) ? data.fotos : [];
+    const videos = Array.isArray(data.videos) ? data.videos : [];
+    const catById = {};
+    categorias.forEach(c => { catById[c.id] = c; });
+
+    // ----- Contadores del hero (se actualizan solos según el JSON) -----
+    const photoCountEl = document.getElementById('galPhotoCount');
+    if (photoCountEl) photoCountEl.textContent = fotos.length.toLocaleString('es-SV');
+    const videoCountEl = document.getElementById('galVideoCount');
+    if (videoCountEl) videoCountEl.textContent = videos.length.toLocaleString('es-SV');
+
+    // ----- Botones de filtro por categoría (compartidos por Fotos y Videos) -----
+    const catFiltersEl = document.getElementById('galCatFilters');
+    if (catFiltersEl) {
+      catFiltersEl.innerHTML =
+        '<button class="filter-btn active" data-categoria="todos"><i class="fa-solid fa-table-cells"></i> Todos</button>' +
+        categorias.map(c =>
+          '<button class="filter-btn" data-categoria="' + escapeHtml(c.id) + '"><i class="fa-solid ' + escapeHtml(c.icono || 'fa-paw') + '"></i> ' + escapeHtml(c.nombre) + '</button>'
+        ).join('');
+    }
+
+    // ----- Cuadrícula de fotografías -----
+    const photoGrid = document.getElementById('galPhotoGrid');
+    if (photoGrid) {
+      photoGrid.innerHTML = fotos.map((f, idx) => {
+        const cat = catById[f.categoria] || {};
+        const titulo = f.titulo || cat.nombre || 'Paraíso 503';
+        const buscable = escapeHtml(normalizarTexto(titulo + ' ' + (cat.nombre || '')));
+        return (
+          '<div class="gal-photo-card reveal" data-categoria="' + escapeHtml(f.categoria || '') + '" data-search="' + buscable + '" data-lightbox-index="' + idx + '" tabindex="0" role="button" aria-label="Ver foto: ' + escapeHtml(titulo) + '">' +
+            '<img src="' + escapeHtml(f.imagen || placeholderImg(titulo)) + '" alt="' + escapeHtml(titulo) + '" loading="lazy">' +
+            '<div class="gal-photo-caption">' +
+              '<span class="gal-cat-chip"><span class="gal-cat-dot" style="background:' + escapeHtml(cat.color || '#1E3D2B') + '"><i class="fa-solid ' + escapeHtml(cat.icono || 'fa-paw') + '"></i></span>' + escapeHtml(cat.nombre || '') + '</span>' +
+              (f.fecha ? '<span class="gal-photo-date">' + escapeHtml(f.fecha) + '</span>' : '') +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+      // Guarda la lista completa de fotos (para el visor/lightbox) en un
+      // atributo del propio contenedor: así js/script.js no necesita leer
+      // content/galeria.js directamente para saber qué mostrar al navegar.
+      const galeriaLightbox = fotos.map(f => ({ src: f.imagen || placeholderImg(f.titulo || ''), isVideo: false, title: f.titulo || (catById[f.categoria] || {}).nombre || 'Paraíso 503' }));
+      // OJO: aquí se usa setAttribute() directamente sobre el elemento (no
+      // se inserta como texto dentro de un innerHTML), así que el valor NO
+      // debe pasar por escapeHtml — el DOM ya guarda el string tal cual, y
+      // js/script.js lo vuelve a leer con JSON.parse() sin decodificar
+      // entidades HTML.
+      photoGrid.setAttribute('data-gallery', JSON.stringify(galeriaLightbox));
+    }
+
+    // ----- Video destacado -----
+    const featuredEl = document.getElementById('galFeaturedVideo');
+    if (featuredEl) {
+      const v = data.videoDestacado;
+      if (v) {
+        const cat = catById[v.categoria] || {};
+        const buscable = escapeHtml(normalizarTexto((v.titulo || '') + ' ' + (cat.nombre || '')));
+        const idVideo = idYoutube(v.youtubeUrl);
+        const esEjemplo = !idVideo;
+        const miniatura = idVideo ? miniaturaYoutube(v.youtubeUrl) : placeholderVideoImg(v.titulo || 'Video de ejemplo');
+        featuredEl.classList.toggle('gal-featured--placeholder', esEjemplo);
+        featuredEl.setAttribute('data-categoria', escapeHtml(v.categoria || ''));
+        featuredEl.setAttribute('data-search', buscable);
+        featuredEl.innerHTML =
+          '<div class="gal-featured-media" data-youtube="' + escapeHtml(esEjemplo ? '' : v.youtubeUrl) + '">' +
+            '<img src="' + escapeHtml(miniatura) + '" alt="' + escapeHtml(v.titulo || '') + '">' +
+            (esEjemplo ? '' : '<span class="gal-play-btn"><i class="fa-solid fa-play"></i></span>') +
+          '</div>' +
+          '<div class="gal-featured-content">' +
+            (esEjemplo
+              ? '<span class="gal-soon-tag"><i class="fa-regular fa-clock"></i> Próximamente</span>'
+              : '<span class="gal-featured-tag"><i class="fa-solid fa-star"></i> Destacado</span>') +
+            '<h3>' + escapeHtml(v.titulo || '') + '</h3>' +
+            (v.descripcion ? '<p>' + escapeHtml(v.descripcion) + '</p>' : '') +
+            '<div class="gal-featured-meta">' +
+              (v.duracion ? '<span><i class="fa-regular fa-clock"></i> ' + escapeHtml(v.duracion) + '</span>' : '') +
+              (v.fecha ? '<span><i class="fa-regular fa-calendar"></i> ' + escapeHtml(v.fecha) + '</span>' : '') +
+            '</div>' +
+            (esEjemplo ? '' : '<a class="btn-ver-detalle" href="' + escapeHtml(v.youtubeUrl) + '" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> Ver en YouTube</a>') +
+          '</div>';
+      } else {
+        featuredEl.style.display = 'none';
+      }
+    }
+
+    // ----- Videos recientes -----
+    const recentEl = document.getElementById('galRecentVideos');
+    if (recentEl) {
+      recentEl.innerHTML = videos.map(v => {
+        const cat = catById[v.categoria] || {};
+        const buscable = escapeHtml(normalizarTexto((v.titulo || '') + ' ' + (cat.nombre || '')));
+        const idVideo = idYoutube(v.youtubeUrl);
+        const esEjemplo = !idVideo;
+        const miniatura = idVideo ? miniaturaYoutube(v.youtubeUrl) : placeholderVideoImg(cat.nombre || 'Video de ejemplo');
+        return (
+          '<div class="gal-video-card reveal' + (esEjemplo ? ' gal-video-card--placeholder' : '') + '" data-categoria="' + escapeHtml(v.categoria || '') + '" data-search="' + buscable + '" data-youtube="' + escapeHtml(esEjemplo ? '' : v.youtubeUrl) + '" tabindex="0" role="button" aria-label="Ver video: ' + escapeHtml(v.titulo || '') + '">' +
+            '<div class="gal-video-thumb">' +
+              '<img src="' + escapeHtml(miniatura) + '" alt="' + escapeHtml(v.titulo || '') + '" loading="lazy">' +
+              '<span class="gal-video-play"><i class="fa-solid fa-play"></i></span>' +
+              (esEjemplo ? '<span class="gal-soon-tag" style="position:absolute;right:7px;bottom:7px;">Próximamente</span>' : (v.duracion ? '<span class="gal-video-duration">' + escapeHtml(v.duracion) + '</span>' : '')) +
+            '</div>' +
+            '<div class="gal-video-body">' +
+              '<h4>' + escapeHtml(v.titulo || '') + '</h4>' +
+              (v.fecha ? '<span>' + escapeHtml(v.fecha) + '</span>' : '') +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    // ----- Playlists (una tarjeta por categoría, siempre) -----
+    const playlistsEl = document.getElementById('galPlaylists');
+    if (playlistsEl) {
+      playlistsEl.innerHTML = categorias.map(c => {
+        const videosCategoria = videos.filter(v => v.categoria === c.id && idYoutube(v.youtubeUrl));
+        const cantidad = videosCategoria.length;
+        const miniatura = videosCategoria.length
+          ? miniaturaYoutube(videosCategoria[0].youtubeUrl)
+          : ((fotos.find(f => f.categoria === c.id) || {}).imagen || placeholderVideoImg(c.nombre));
+        const esEjemplo = !c.playlistUrl;
+        const tag = esEjemplo
+          ? '<span class="gal-soon-tag"><i class="fa-regular fa-clock"></i> Próximamente</span>'
+          : ('<span>' + cantidad + (cantidad === 1 ? ' video' : ' videos') + '</span>');
+        const link = esEjemplo
+          ? ''
+          : '<span class="gal-playlist-link">Ver playlist <i class="fa-solid fa-arrow-right"></i></span>';
+        const tagInner =
+          '<div class="gal-playlist-thumb">' +
+            '<img src="' + escapeHtml(miniatura) + '" alt="' + escapeHtml(c.nombre) + '" loading="lazy">' +
+            '<span class="gal-playlist-icon" style="background:' + escapeHtml(c.color || '#1E3D2B') + '"><i class="fa-solid ' + escapeHtml(c.icono || 'fa-paw') + '"></i></span>' +
+          '</div>' +
+          '<div class="gal-playlist-body">' +
+            '<h4>' + escapeHtml(c.nombre) + '</h4>' +
+            tag +
+            link +
+          '</div>';
+        return esEjemplo
+          ? '<div class="gal-playlist-card gal-playlist-card--placeholder reveal" aria-label="Playlist de ' + escapeHtml(c.nombre) + ' (próximamente)">' + tagInner + '</div>'
+          : '<a class="gal-playlist-card reveal" href="' + escapeHtml(c.playlistUrl) + '" target="_blank" rel="noopener" aria-label="Ver playlist de ' + escapeHtml(c.nombre) + ' en YouTube">' + tagInner + '</a>';
+      }).join('');
+    }
+  }
+
   // Ejecuta una función de renderizado protegida: si algo dentro de ella
   // lanza un error inesperado (por ejemplo, un JSON con una forma distinta
   // a la esperada), se avisa en la consola pero el resto de las secciones
@@ -703,6 +902,7 @@
     const adopciones = getContent('adopciones');
     const historias = getContent('historias');
     const contigo = getContent('contigo');
+    const galeria = window.PARAISO503_CONTENT && window.PARAISO503_CONTENT.galeria;
 
     // Cada sección se renderiza de forma aislada: si una falla, las demás
     // igual se muestran.
@@ -713,6 +913,7 @@
     safeRender('adopciones', () => renderAdopciones(adopciones, config));
     safeRender('historias', () => renderHistorias(historias));
     safeRender('contigo', () => renderContigo(contigo));
+    safeRender('galeria', () => renderGaleria(galeria));
 
     // Si el contenido de programas no pudo obtenerse, avisamos claramente
     // en los contenedores de programas en vez de dejarlos en blanco.

@@ -56,8 +56,8 @@ window.PARAISO503_CONTENT.configuracion = {
       "nombre": "Instagram",
       "icono": "fa-brands fa-instagram",
       "color": "#C13584",
-      "url": "#",
-      "dato": "Próximamente"
+      "url": "https://www.instagram.com/esperanzaanimal.503?igsh=MWU5ZHlienBwaGswMA==",
+      "dato": "@esperanzaanimal.503"
     },
     {
       "nombre": "Correo",
@@ -153,16 +153,14 @@ window.PARAISO503_CONTENT.configuracion = {
       "etiqueta": "🐾 Rescate reciente",
       "titulo": "Un rescate reciente",
       "descripcion": "Un rescate que cambió doce vidas. Once cachorritos y su mamá ahora están seguros mientras esperan una segunda oportunidad.",
-      "foto": "img/rescate/rescate1.jpg",
+      "foto": "img/rescate/rescate1.webp",
       "textoBoton": "Conocer la historia",
       "modal": {
         "titulo": "Un rescate reciente",
         "texto": "Hace unos días conocimos la historia de un señor que, con muy pocos recursos, ha dedicado parte de su vida a cuidar y proteger perros que fueron abandonados. Actualmente vive junto a ellos a un costado de la carretera de Los Chorros, un lugar que no le pertenece y del que pronto deberá retirarse debido a las obras que se realizan en la zona.\n\nEntre todos los perritos había once cachorritos y su mamá, expuestos diariamente al intenso tráfico de una de las carreteras más transitadas del país. Cada día que pasaba aumentaba el riesgo de que alguno de ellos sufriera un accidente.\n\nDespués de conversar con él y conocer de cerca su situación, decidimos recibir a los once cachorritos y a su mamá en Paraíso 503 para brindarles un lugar seguro, alimentación, atención veterinaria y todos los cuidados que necesitan mientras crecen sanos y se preparan para encontrar una familia responsable.\n\nEste rescate es solo el primer paso. Nuestro deseo también es seguir apoyando al señor y a los demás perritos que continúan bajo su cuidado, impulsando jornadas de esterilización y buscando alternativas que les permitan tener una vida más segura y digna.\n\nCada nuevo rescate representa una gran alegría, pero también un compromiso. Alimentar, desparasitar, vacunar y brindar atención médica a doce nuevos integrantes requiere un esfuerzo constante y el apoyo de muchas personas que creen en esta misión.\n\nGracias a cada persona que nos acompaña, comparte nuestro trabajo, adopta, dona o simplemente cree en esta causa. Su apoyo hace posible que Paraíso 503 continúe cambiando historias como esta y ofreciendo una segunda oportunidad a quienes más lo necesitan.\n\nHoy estos once cachorritos y su mamá están a salvo. Mañana esperamos verlos crecer sanos y encontrar el hogar lleno de amor que siempre merecieron.",
         "foto": [
-          "img/program/rescate1.jpg",
-          "img/program/rescate2.jpg",
-          "img/program/rescate3.jpg",
-          "img/program/rescate4.jpg"
+          "img/rescate/rescate1.webp",
+          "img/rescate/rescate2.webp",
          ]
       }
     },
