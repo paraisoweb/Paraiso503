@@ -194,7 +194,7 @@ footer .brand .logo-placeholder {
   transition: max-height .25s ease;
 }
 .mobile-menu.open {
-  max-height: 420px;
+  max-height: 560px;
 }
 .mobile-menu ul {
   padding: 6px 20px 16px;
@@ -570,6 +570,24 @@ h2.section-title {
 .urgencia-carousel.single .urgencia-nav,
 .urgencia-carousel.single .urgencia-dots {
   display: none;
+}
+/* En móvil: botones más discretos y más pegados al borde de la tarjeta,
+   para que no tapen el contenido ni se vean flotando fuera de ella. Mismo
+   estilo (círculo blanco con sombra) y misma función; solo cambia tamaño
+   y posición. En escritorio queda igual que antes. */
+@media (max-width:819px) {
+  .urgencia-nav {
+    width: 27px;
+    height: 27px;
+    font-size: 11px;
+    box-shadow: 0 2px 8px rgba(20,20,10,0.16);
+  }
+  .urgencia-prev {
+    left: -3px;
+  }
+  .urgencia-next {
+    right: -3px;
+  }
 }
 .urgencia-dots {
   display: flex;
@@ -1817,6 +1835,7 @@ h2.section-title {
 .pet-photo {
   position: relative;
   height: 250px;
+  cursor: pointer;
 }
 .pet-photo img {
   display: block;
@@ -2607,17 +2626,9 @@ footer .bottom {
   .nav-social {
     display: flex;
   }
-  /* En escritorio el botón "Síguenos" se elimina del header (los íconos
-     de .nav-social ya cumplen esa función); en móvil no se toca. */
-  .nav-follow {
-    display: none;
-  }
-  .nav-right {
-    gap: 16px;
-  }
   .desktop-links {
     display: flex;
-    gap: 32px;
+    gap: 22px;
     list-style: none;
   }
   .desktop-links a {
@@ -3236,7 +3247,11 @@ header.scrolled {
 .p503-lightbox {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  /* Debe quedar siempre por encima de cualquier modal del sitio (Historia,
+     Contigo, Carrusel, Programa — todos en z-index: 210), ya que el
+     Lightbox puede abrirse desde dentro de esos modales (p.ej. al hacer
+     clic en una foto de la galería de una Historia). */
+  z-index: 220;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3457,6 +3472,9 @@ body.p503-lightbox-lock {
 }
 .p503-historia-ba .ba-item {
   height: 190px;
+}
+.p503-historia-ba .ba-item.ba-item-clickable {
+  cursor: pointer;
 }
 .p503-historia-ba .ba-item:first-child {
   border-right: 2px solid #fff;
@@ -3811,6 +3829,26 @@ header.scrolled-deep .nav-follow {
     padding: 8px;
   }
 }
+/* En escritorio: sin botón "Síguenos" al hacer scroll y sin colapso del
+   nombre del logo, para que el encabezado fijo se mantenga siempre
+   alineado y con distribución uniforme entre logo, menú e íconos/botones.
+   En móvil no se toca nada: el colapso + botón "Síguenos" sigue igual. */
+@media (min-width:820px) {
+  nav {
+    gap: 24px;
+  }
+  .desktop-links a {
+    white-space: nowrap;
+  }
+  .nav-follow {
+    display: none;
+  }
+  header.scrolled-deep .logo .word {
+    max-width: 160px;
+    margin-left: 0;
+    opacity: 1;
+  }
+}
 /* Crédito discreto a la Clínica Veterinaria Sanivet, debajo del CTA de Historias */
 .sanivet-credit {
   display: flex;
@@ -3901,6 +3939,11 @@ header.scrolled-deep .nav-follow {
   color: #e9e6da;
   font-size: 14px;
   transition: background .2s ease, transform .2s ease, color .2s ease;
+}
+.mobile-follow-icons a .social-ico {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 .mobile-follow-icons a:hover {
   padding-left: 0;
@@ -4306,11 +4349,21 @@ header.scrolled-deep .nav-follow {
   color: var(--ink);
   transition: font-size .25s ease;
 }
-/* Modo compacto: al fijarse (sticky) el buscador se oculta para que los
-   filtros de categoría, que son lo esencial, usen todo el ancho disponible
-   y no se compriman. Aplica tanto en escritorio como en móvil. */
+/* Modo compacto: el buscador se mantiene solo si hay espacio (se oculta en
+   pantallas angostas para priorizar las categorías, que son lo esencial). */
 .gal-toolbar.is-stuck .gal-search {
-  display: none;
+  width: auto;
+  flex: 0 1 240px;
+  min-width: 130px;
+  padding: 7px 14px;
+}
+.gal-toolbar.is-stuck .gal-search input {
+  font-size: 13px;
+}
+@media (max-width: 680px) {
+  .gal-toolbar.is-stuck .gal-search {
+    display: none;
+  }
 }
 .gal-search input::placeholder {
   color: var(--ink-soft);

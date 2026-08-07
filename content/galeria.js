@@ -104,7 +104,7 @@ window.PARAISO503_CONTENT.galeria = {
     { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "img/adopta/gato1.webp", "fecha": "3 de junio, 2025" },
     { "categoria": "adopciones", "titulo": "Visita de seguimiento",   "imagen": "img/program/visita.webp", "fecha": "28 de mayo, 2025" },
 
-    { "categoria": "hogar", "titulo": "Hogar Paraíso", "imagen": "img/program/paraiso.png", "fecha": "15 de junio, 2025" },
+    { "categoria": "hogar", "titulo": "Hogar Paraíso", "imagen": "img/program/paraiso.webp", "fecha": "15 de junio, 2025" },
     { "categoria": "hogar", "titulo": "Un día en el refugio", "imagen": "img/program/familia.webp", "fecha": "9 de junio, 2025" },
     { "categoria": "hogar", "titulo": "Rincón de descanso", "imagen": "img/adopta/perro3.webp", "fecha": "2 de junio, 2025" },
     { "categoria": "hogar", "titulo": "Nuestro equipo", "imagen": "img/nosotros/nosotros.webp", "fecha": "27 de mayo, 2025" },

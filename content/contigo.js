@@ -35,13 +35,13 @@ window.PARAISO503_CONTENT.contigo = {
   "resaltado": "oportunidad",
   "texto": "No tienes que hacerlo solo. Si abriste las puertas de tu hogar o rescataste un perrito o un gatito, podemos orientarte y ayudarte a brindarle la atención que necesita.",
   "textoBoton": "Ver más sobre el programa",
-  "foto":"img/contigo/contigo.webp",
+  "foto":"img/Contigo/contigo.webp",
 
   "modal": {
     "titulo": "Contigo",
     "subtitulo": "Estamos aquí para ayudarte.",
     "descripcion": "Si rescataste un animal o encontraste uno en la calle, podemos apoyarte con servicios veterinarios a bajo costo y orientación.",
-    "foto":"img/contigo/contigo.webp",
+    "foto":"img/Contigo/contigo.webp",
 
     "_ayuda_servicios": "Tarjetas de '¿Cómo podemos ayudarte?'. Puedes agregar o quitar tarjetas libremente.",
     "servicios": [

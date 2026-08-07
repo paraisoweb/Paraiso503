@@ -8,13 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="img/heroes/hero.webp" fetchpriority="high">
 </head>
 <body class="home">
 
 <header>
   <nav>
     <a class="logo" href="index.html" id="logoHome" aria-label="Ir al inicio">
-      <img class="mark" src="img/logo/logo.jpg" alt="Paraíso 503">
+      <img class="mark" src="img/logo/logo.webp" alt="Paraíso 503">
       <div class="word">Paraíso 503</div>
     </a>
     <a class="nav-follow" href="#redes" aria-label="Síguenos en redes sociales"><i class="fa-solid fa-share-nodes"></i><span>Síguenos</span></a>
@@ -53,10 +54,10 @@
     <div class="mobile-follow">
       <span class="mobile-follow-label">Síguenos</span>
       <div class="mobile-follow-icons">
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/share/1DLVnJV9aw/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><svg class="social-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@paraiso.503?_r=1&_t=ZS-98MelIoNwgP" aria-label="TikTok"><svg class="social-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.3 2 4 4.3 4.3v3.2c-1.6 0-3-.5-4.3-1.3v6.3c0 3.6-2.9 6.5-6.5 6.5S3.6 19.1 3.6 15.5c0-3.5 2.8-6.3 6.2-6.5v3.3a3.2 3.2 0 1 0 3.2 3.2V3h3.6z"/></svg></a>
+        <a href="https://www.facebook.com/share/1DLVnJV9aw/" aria-label="Facebook"><svg class="social-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8.2h2.7l.4-3.2h-3.1V8.1c0-.9.3-1.6 1.7-1.6H16.7V3.6c-.4-.1-1.6-.2-2.9-.2-2.9 0-4.9 1.8-4.9 5v2.7H6v3.2h2.9v8.2h4.6z"/></svg></a>
+        <a href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I" aria-label="YouTube"><svg class="social-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.3 9.4 15.6 12l-5.3 2.6z" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
   </div>
@@ -64,7 +65,7 @@
 
 <section class="hero">
   <!-- Reemplaza el src de abajo por tu foto real: hero-perrito.jpg -->
-  <div class="bg"><img src="img/heroes/hero.webp" alt="Perrito rescatado en Paraíso 503"></div>
+  <div class="bg"><img src="img/heroes/hero.webp" alt="Perrito rescatado en Paraíso 503" fetchpriority="high" loading="eager" decoding="async"></div>
   <div class="hero-inner">
     <div class="eyebrow"><i class="fa-solid fa-heart"></i> Donde cada vida importa</div>
     <h1 class="hero-title">Toda vida merece una segunda oportunidad</h1>
@@ -95,7 +96,7 @@
   <div class="wrap">
     <div class="somos-grid">
       <!-- Reemplaza el src de abajo por tu foto real: nuestra-historia.jpg -->
-      <div class="somos-photo reveal"><img src="img/nosotros/nosotros.webp" alt="Voluntario de Paraíso 503 con los perros"></div>
+      <div class="somos-photo reveal"><img src="img/nosotros/nosotros.webp" alt="Voluntario de Paraíso 503 con los perros" loading="lazy" decoding="async"></div>
       <div class="somos-text">
         <div class="kicker">Todo comenzó con una decisión</div>
         <h2 class="section-title">Nuestra historia</h2>
@@ -141,7 +142,7 @@
       
     <div class="prog-card">
       <!-- Reemplaza el src de abajo por tu foto real: ruta-alimentacion.jpg -->
-      <div class="prog-photo"><img src="img/program/rutas.jpg" alt="Ruta de Alimentación"></div>
+      <div class="prog-photo"><img src="img/program/rutas.webp" alt="Ruta de Alimentación" loading="lazy" decoding="async"></div>
       <div class="prog-body">
         <span class="p-badge">Programa principal</span>
         <div class="prog-head"><span class="prog-icon" style="background:#3E7A4E"><i class="fa-solid fa-bone"></i></span><h3>Ruta de Alimentación</h3></div>
@@ -482,7 +483,7 @@
 <footer>
   <div class="foot-top">
     <div class="brand">
-      <img class="mark" src="img/logo/logo.jpg" alt="Paraíso 503">
+      <img class="mark" src="img/logo/logo.webp" alt="Paraíso 503">
       <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
     </div>
     <div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>

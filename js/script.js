@@ -16,6 +16,27 @@
    ============================================================================= */
 
 /* =============================================================================
+   BLOQUEO DE SCROLL COMPARTIDO — el Lightbox y los distintos modales del
+   sitio (Historia, Contigo, Carrusel, Programa) pueden abrirse unos encima
+   de otros (p.ej. el Lightbox se abre desde dentro del modal de Historia
+   al hacer clic en una foto de su galería). Se usa un contador en vez de
+   una sola clase booleana para que cerrar el que quedó abierto más arriba
+   no desbloquee el scroll del body si todavía queda otro modal abierto
+   debajo — así siempre se "regresa" correctamente al contenido anterior.
+   ============================================================================= */
+(function () {
+  let lockCount = 0;
+  window.p503LockScroll = function () {
+    lockCount++;
+    document.body.classList.add('p503-lightbox-lock');
+  };
+  window.p503UnlockScroll = function () {
+    lockCount = Math.max(0, lockCount - 1);
+    if (lockCount === 0) document.body.classList.remove('p503-lightbox-lock');
+  };
+})();
+
+/* =============================================================================
    LIGHTBOX de galería — modal reutilizable para recorrer todas las fotos/videos
    de un programa. Se construye una sola vez y se alimenta con los datos que
    content-loader.js ya genera a partir de content/programas.js, así que agregar
@@ -112,7 +133,7 @@
   function closeLightbox() {
     if (!modal) return;
     modal.classList.remove('open');
-    document.body.classList.remove('p503-lightbox-lock');
+    window.p503UnlockScroll();
     setTimeout(() => {
       const mediaWrap = modal.querySelector('.p503-lightbox-media');
       if (mediaWrap) mediaWrap.innerHTML = '';
@@ -126,7 +147,7 @@
     modal.querySelector('.p503-lightbox-title').textContent = title || '';
     showItem(startIndex || 0);
     modal.classList.add('open');
-    document.body.classList.add('p503-lightbox-lock');
+    window.p503LockScroll();
   };
 })();
 
@@ -173,7 +194,7 @@
   function closeHistoriaModal() {
     if (!modal) return;
     modal.classList.remove('open');
-    document.body.classList.remove('p503-lightbox-lock');
+    window.p503UnlockScroll();
   }
 
   function fotoBox(src, nombre, label, gradient) {
@@ -261,6 +282,24 @@
     contentEl.innerHTML = buildContentHtml(h);
     modal.querySelector('.p503-historia-scroll').scrollTop = 0;
 
+    // Fotos "Antes/Después" — se amplían con el mismo Lightbox único del
+    // sitio; si existen ambas, se agrupan en una sola galería de 2 fotos
+    // para poder recorrerlas con las flechas del Lightbox.
+    const antesDespues = [];
+    if (h.fotoAntes) antesDespues.push({ src: h.fotoAntes, isVideo: false, title: h.nombre });
+    if (h.fotoDespues) antesDespues.push({ src: h.fotoDespues, isVideo: false, title: h.nombre });
+    contentEl.querySelectorAll('.p503-historia-ba .ba-item').forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      item.classList.add('ba-item-clickable');
+      item.addEventListener('click', () => {
+        const idx = antesDespues.findIndex(it => it.src === img.getAttribute('src'));
+        if (typeof window.openP503Lightbox === 'function') {
+          window.openP503Lightbox(antesDespues, idx > -1 ? idx : 0, h.nombre);
+        }
+      });
+    });
+
     // La galería de esta historia reutiliza el mismo visor (lightbox) que
     // ya usa "Programas" — no hace falta un visor aparte.
     const galeria = Array.isArray(h.galeria) ? h.galeria : [];
@@ -272,7 +311,7 @@
     });
 
     modal.classList.add('open');
-    document.body.classList.add('p503-lightbox-lock');
+    window.p503LockScroll();
   };
 })();
 
@@ -315,7 +354,7 @@
   function closeContigoModal() {
     if (!modal) return;
     modal.classList.remove('open');
-    document.body.classList.remove('p503-lightbox-lock');
+    window.p503UnlockScroll();
   }
 
   function buildContentHtml(c) {
@@ -379,7 +418,7 @@
     contentEl.innerHTML = buildContentHtml(c);
     modal.querySelector('.p503-contigo-scroll').scrollTop = 0;
     modal.classList.add('open');
-    document.body.classList.add('p503-lightbox-lock');
+    window.p503LockScroll();
   };
 })();
 
@@ -423,7 +462,7 @@
   function closeCarruselModal() {
     if (!modal) return;
     modal.classList.remove('open');
-    document.body.classList.remove('p503-lightbox-lock');
+    window.p503UnlockScroll();
   }
 
   // 'foto' puede venir como una sola ruta (string) o como una lista de rutas
@@ -531,7 +570,7 @@
     initPhotoCarousel(contentEl);
     modal.querySelector('.p503-carrusel-scroll').scrollTop = 0;
     modal.classList.add('open');
-    document.body.classList.add('p503-lightbox-lock');
+    window.p503LockScroll();
   };
 })();
 
@@ -577,7 +616,7 @@
   function closeProgramaModal() {
     if (!modal) return;
     modal.classList.remove('open');
-    document.body.classList.remove('p503-lightbox-lock');
+    window.p503UnlockScroll();
   }
 
   // "queEs", "enQueConsiste" y "porQueExiste" pueden llegar como un solo
@@ -616,7 +655,7 @@
     contentEl.innerHTML = buildContentHtml(p);
     modal.querySelector('.p503-programa-scroll').scrollTop = 0;
     modal.classList.add('open');
-    document.body.classList.add('p503-lightbox-lock');
+    window.p503LockScroll();
   };
 })();
 
@@ -872,6 +911,22 @@ function initSiteInteractions() {
     });
   });
   refreshFavButtons();
+
+  // ===== Foto de las tarjetas de Adopciones — se amplía con el mismo
+  // Lightbox que ya usa el resto del sitio (portada y adopciones.html,
+  // ambas construidas con .pet-card). Se ignoran los clics sobre el botón
+  // de favoritos, que vive dentro de la misma foto. =====
+  document.querySelectorAll('.pet-card .pet-photo').forEach(photo => {
+    const img = photo.querySelector('img');
+    if (!img) return;
+    photo.addEventListener('click', (e) => {
+      if (e.target.closest('.pet-fav')) return;
+      const name = photo.closest('.pet-card').dataset.name || '';
+      if (typeof window.openP503Lightbox === 'function') {
+        window.openP503Lightbox([{ src: img.currentSrc || img.src, isVideo: false, title: name }], 0, name);
+      }
+    });
+  });
 
   // ===== Contador dinámico de animalitos disponibles (adopciones.html) =====
   const petCounterNum = document.getElementById('petCounterNum');

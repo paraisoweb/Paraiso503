@@ -184,7 +184,7 @@
 
   function urgenciaCardHtml(t) {
     const fotoHtml = t.foto
-      ? '<div class="urgencia-foto-wrap"><img src="' + escapeHtml(t.foto) + '" alt="' + escapeHtml(t.titulo || '') + '"></div>'
+      ? '<div class="urgencia-foto-wrap"><img src="' + escapeHtml(t.foto) + '" alt="' + escapeHtml(t.titulo || '') + '" loading="lazy" decoding="async"></div>'
       : '';
     const modalJson = escapeHtml(JSON.stringify(t.modal || {}));
     return (
@@ -316,7 +316,7 @@
     const insignia = p.insignia ? '<span class="p-badge">' + escapeHtml(p.insignia) + '</span>' : '';
     return (
       '<div class="prog-card" data-programa="' + serializarProgramaParaModal(p) + '" tabindex="0" role="button" aria-label="Conocer el programa ' + escapeHtml(p.titulo) + '">' +
-        '<div class="prog-photo"><img src="' + foto + '" alt="' + escapeHtml(p.titulo) + '"></div>' +
+        '<div class="prog-photo"><img src="' + foto + '" alt="' + escapeHtml(p.titulo) + '" loading="lazy" decoding="async"></div>' +
         '<div class="prog-body">' +
           insignia +
           '<div class="prog-head"><span class="prog-icon" style="background:' + escapeHtml(p.color) + '"><i class="fa-solid ' + escapeHtml(p.icono) + '"></i></span><h3>' + escapeHtml(p.titulo) + '</h3></div>' +
@@ -428,7 +428,7 @@
 
               '<div class="prog-top">' +
                 '<div class="prog-photo-wrap">' +
-                  '<div class="prog-photo"><img src="' + foto + '" alt="' + escapeHtml(p.titulo) + '"></div>' +
+                  '<div class="prog-photo"><img src="' + foto + '" alt="' + escapeHtml(p.titulo) + '" loading="lazy" decoding="async"></div>' +
                   badgeHtml +
                 '</div>' +
                 '<div class="prog-top-content">' +
@@ -472,7 +472,7 @@
     return (
       '<div class="pet-card reveal" data-species="' + escapeHtml(a.especie) + '" data-sex="' + escapeHtml(a.sexo) + '" data-age="' + escapeHtml(a.edad || 'cachorro') + '" data-name="' + escapeHtml(a.nombre) + '">' +
         '<div class="pet-photo">' +
-          '<img src="' + foto + '" alt="' + escapeHtml(a.nombre) + '">' +
+          '<img src="' + foto + '" alt="' + escapeHtml(a.nombre) + '" loading="lazy" decoding="async">' +
           '<span class="pet-status">' + escapeHtml(a.estado) + '</span>' +
           '<button class="pet-fav" data-name="' + escapeHtml(a.nombre) + '" aria-label="Agregar a favoritos"><i class="fa-regular fa-heart"></i></button>' +
         '</div>' +
@@ -591,8 +591,8 @@
     return (
       '<div class="caso-card" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
         '<div class="caso-ba">' +
-          '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes del rescate"><span class="ba-label">Antes</span></div>' +
-          '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después del rescate"><span class="ba-label">Después</span></div>' +
+          '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes del rescate" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>' +
+          '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>' +
         '</div>' +
         '<div class="caso-body">' +
           '<span class="status-badge status-' + h.estado + '">' + info.emoji + ' ' + info.label + '</span>' +
@@ -610,10 +610,10 @@
   function historiaCardHtmlCompleta(h) {
     const info = ESTADO_INFO[h.estado] || {};
     const antes = h.fotoAntes
-      ? '<div class="ba-item"><img src="' + h.fotoAntes + '" alt="Antes del rescate"><span class="ba-label">Antes</span></div>'
+      ? '<div class="ba-item"><img src="' + h.fotoAntes + '" alt="Antes del rescate" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>'
       : '<div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>';
     const despues = h.fotoDespues
-      ? '<div class="ba-item"><img src="' + h.fotoDespues + '" alt="Después del rescate"><span class="ba-label">Después</span></div>'
+      ? '<div class="ba-item"><img src="' + h.fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>'
       : '<div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>';
     return (
       '<div class="caso-card reveal" data-status="' + h.estado + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
@@ -705,7 +705,7 @@
       '</div>' +
       '<div class="contigo-photo">' +
         '<span class="contigo-photo-decor" aria-hidden="true"></span>' +
-        '<img src="' + foto + '" alt="' + escapeHtml(data.titulo || 'Programa Contigo') + '">' +
+        '<img src="' + foto + '" alt="' + escapeHtml(data.titulo || 'Programa Contigo') + '" loading="lazy" decoding="async">' +
         '<span class="contigo-badge" aria-hidden="true"><i class="fa-solid fa-paw"></i></span>' +
       '</div>';
   }
@@ -797,7 +797,7 @@
         featuredEl.setAttribute('data-search', buscable);
         featuredEl.innerHTML =
           '<div class="gal-featured-media" data-youtube="' + escapeHtml(esEjemplo ? '' : v.youtubeUrl) + '">' +
-            '<img src="' + escapeHtml(miniatura) + '" alt="' + escapeHtml(v.titulo || '') + '">' +
+            '<img src="' + escapeHtml(miniatura) + '" alt="' + escapeHtml(v.titulo || '') + '" loading="lazy" decoding="async">' +
             (esEjemplo ? '' : '<span class="gal-play-btn"><i class="fa-solid fa-play"></i></span>') +
           '</div>' +
           '<div class="gal-featured-content">' +

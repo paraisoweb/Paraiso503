@@ -72,6 +72,76 @@ window.PARAISO503_CONTENT.adopciones = {
       "descripcion": "Tierno y tranquilo. Le encanta dormir en lugares cálidos y recibir mimos.",
       "foto":"img/adopta/gato1.webp",
       "destacadoInicio": false
-    }
+    },
+    {
+      "nombre": "🐶 Cachorro 4",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro4.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorro 5",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro5.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorra 6",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro6.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorro 7",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro7.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorra 8",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro8.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorro 9",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro9.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "🐶 Cachorra 10",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad": "cachorro",
+      "estado": "Disponible",
+      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "foto":"img/adopta/perro10.webp",
+      "destacadoInicio": false
+    },
   ]
 };
