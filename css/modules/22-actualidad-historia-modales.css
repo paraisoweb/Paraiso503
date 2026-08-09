@@ -84,3 +84,84 @@
     transition:none !important;
   }
 }
+
+/* ===== Actualidad: ajuste fino móvil REAL ===== */
+@media (max-width:819px){
+  /* Tarjetas sin foto: baja claramente el bloque de contenido. */
+  .urgencia-slide .urgencia.urgencia-foto:not(:has(.urgencia-foto-wrap)) > .left{
+    padding-top:54px;
+  }
+
+  /* Tarjetas con foto: da aire entre la fotografía y el texto. */
+  .urgencia-slide .urgencia.urgencia-foto:has(.urgencia-foto-wrap) > .left{
+    padding-top:18px;
+  }
+
+  /* Las flechas quedan en una zona baja y no encima de títulos/párrafos. */
+  .urgencia-carousel .urgencia-nav{
+    top:68%;
+    width:29px;
+    height:29px;
+  }
+  .urgencia-carousel .urgencia-prev{left:-2px;}
+  .urgencia-carousel .urgencia-next{right:-2px;}
+
+  /* Vista compacta de mapa dentro de Flor Amarilla. */
+  .urgencia-con-mapa > .left{
+    padding-top:28px !important;
+  }
+  .urgencia-map{
+    margin:16px 0 8px;
+    border-radius:14px;
+    overflow:hidden;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.20);
+  }
+  .urgencia-map iframe{
+    display:block;
+    width:100%;
+    height:155px;
+    border:0;
+  }
+  .urgencia-map a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    padding:10px 12px;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    text-decoration:none;
+    background:rgba(30,61,43,.28);
+  }
+}
+
+/* En escritorio el mapa conserva una altura compacta. */
+@media (min-width:820px){
+  .urgencia-map{
+    margin-top:14px;
+    max-width:540px;
+    border-radius:14px;
+    overflow:hidden;
+    background:rgba(255,255,255,.12);
+  }
+  .urgencia-map iframe{
+    display:block;
+    width:100%;
+    height:170px;
+    border:0;
+  }
+  .urgencia-map a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    padding:9px 12px;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    text-decoration:none;
+    background:rgba(30,61,43,.28);
+  }
+}

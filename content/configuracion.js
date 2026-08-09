@@ -53,13 +53,6 @@ window.PARAISO503_CONTENT.configuracion = {
       "dato": "@paraiso503sv"
     },
     {
-      "nombre": "Instagram",
-      "icono": "fa-brands fa-instagram",
-      "color": "#C13584",
-      "url": "https://www.instagram.com/esperanzaanimal.503?igsh=MWU5ZHlienBwaGswMA==",
-      "dato": "@esperanzaanimal.503"
-    },
-    {
       "nombre": "Correo",
       "icono": "fa-solid fa-envelope",
       "color": "#4285F4",
@@ -180,13 +173,43 @@ window.PARAISO503_CONTENT.configuracion = {
       "id": "motos-ruta",
       "activa": true,
       "etiqueta": "🏍️ Ruta de Alimentación",
-      "titulo": "Una de nuestras motos está detenida",
-      "descripcion": "La Ruta de Alimentación depende de nuestras motos. Una ya está fuera de servicio y otra necesita atención para evitar que también se detenga.",
+      "titulo": "Nuestra ruta necesita volver a moverse",
+      "descripcion": "Una de nuestras motos está fuera de servicio y la otra necesita reparación. Ambas son fundamentales para llevar alimento a los animalitos que nos esperan cada día.",
       "foto": "",
-      "textoBoton": "Ver cómo ayudar",
+      "textoBoton": "Ayúdanos a volver a la ruta",
       "modal": {
         "titulo": "Necesitamos poner la ruta en movimiento",
-        "texto": "Una de las motos que utilizamos para llevar alimento y agua está detenida por problemas mecánicos, y otra necesita reparación para no quedar fuera de servicio. La reparación de una de ellas ronda los $250. Si tienes un taller, eres mecánico o conoces a alguien que pueda apoyarnos, escríbenos. Mantener estas motos funcionando significa poder seguir llegando a los animalitos que dependen de la Ruta de Alimentación.",
+        "texto": "Una de nuestras motos está detenida por problemas mecánicos y otra necesita reparación. Una de estas reparaciones ronda los $250.\n\nSi tienes un taller, eres mecánico o puedes apoyarnos con la reparación, escríbenos. También puedes ayudarnos aportando con una parte del costo.\n\nCada apoyo nos ayuda a mantener la Ruta de Alimentación en movimiento y seguir llegando a los animalitos que nos esperan.",
+        "foto": ""
+      }
+    },
+    {
+      "id": "ruta-flor-amarilla",
+      "activa": true,
+      "etiqueta": "🐾 Ruta de Alimentación",
+      "titulo": "Cada día llegamos a Flor Amarilla",
+      "descripcion": "Desde hace más de tres años recorremos Flor Amarilla, Ciudad Arce, llevando alimento diariamente a más de 100 animalitos que nos esperan en la comunidad.",
+      "foto": "",
+      "textoBoton": "Conocer nuestra ruta",
+      "mapaUrl": "https://maps.app.goo.gl/1PxXQWoGAzwKPxmk6",
+      "mapaEmbed": "https://www.google.com/maps?q=Cant%C3%B3n+Flor+Amarilla%2C+Flor+Amarilla%2C+Ciudad+Arce%2C+El+Salvador&output=embed",
+      "modal": {
+        "titulo": "Más de tres años alimentando en Flor Amarilla",
+        "texto": "Nuestra Ruta de Alimentación llega diariamente a Flor Amarilla, Ciudad Arce. Allí alimentamos a más de 100 animalitos que nos esperan cada día.\n\nDesde hace más de tres años mantenemos este recorrido de forma constante, llevando alimento y acompañamiento a los animales de la comunidad.\n\nUbicación: https://maps.app.goo.gl/1PxXQWoGAzwKPxmk6",
+        "foto": ""
+      }
+    },
+    {
+      "id": "alimentacion-hogar-paraiso",
+      "activa": true,
+      "etiqueta": "🍲 Hogar Paraíso",
+      "titulo": "Así preparamos su comida cada día",
+      "descripcion": "Más de 50 animalitos reciben sus porciones de concentrado acompañadas de macarrones o arroz y un paté preparado con ingredientes frescos, sin condimentos.",
+      "foto": "",
+      "textoBoton": "Conocer cómo los alimentamos",
+      "modal": {
+        "titulo": "La comida de nuestros animalitos",
+        "texto": "En Hogar Paraíso preparamos cada día la comida de más de 50 animalitos. Sus porciones incluyen concentrado, macarrones o arroz y un paté que preparamos con hígado o pata de pollo, acompañado de verduras como papa y zanahoria.\n\nTodo se prepara sin condimentos y se sirve en los horarios de alimentación de nuestros animalitos.",
         "foto": ""
       }
     },

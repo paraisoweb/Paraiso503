@@ -60,7 +60,7 @@ window.PARAISO503_CONTENT.programas = {
     "porQueExiste": "lista de párrafos (string[]) para la sección '¿Por qué existe?' en el detalle del programa",
     "comoAyuda": "lista de 4 objetos {icono, titulo} para la sección '¿Cómo ayuda este programa?' (icono = clase Font Awesome)",
     "impacto": "lista de 3 objetos {numero, texto} para la sección 'Impacto' (numero = dato destacado corto, texto = descripción breve)",
-    "galeria": "array de rutas a fotos o videos del programa (ej. 'img/programas/alimentacion/1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = se usan imágenes de referencia automáticas mientras no haya fotos reales."
+    "galeria": "array de rutas a fotos o videos del programa (ej. 'img/programas/alimentacion/1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = la sección Galería no se muestra hasta que agregues fotos o videos reales."
   },
   "programas": [
     {
@@ -117,7 +117,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "realizando rutas de alimentación de forma constante"
         }
       ],
-      "galeria": ["img/galeria/ruta1.webp","img/galeria/ruta2.webp","img/galeria/ruta3.webp"]
+      "galeria": []
     },
     {
       "id": "cancer",
@@ -171,7 +171,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "atención veterinaria continua junto a nuestro equipo médico"
         }
       ],
-      "galeria": ["img/galeria/cancer1.webp","img/galeria/cancer2.webp","img/galeria/cancer3.webp"]
+      "galeria": []
     },
     {
       "id": "adopciones-prog",
@@ -226,7 +226,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "cada adopción abre espacio para rescatar otra vida"
         }
       ],
-      "galeria": ["img/galeria/adopta1.webp","img/galeria/adopta2.webp","img/galeria/adopta3.webp"]
+      "galeria": []
     },
     {
       "id": "esterilizacion",
@@ -281,7 +281,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "cada esterilización previene camadas no deseadas"
         }
       ],
-      "galeria": ["img/galeria/esterilizacion1.webp","img/galeria/esterilizacion2.webp","img/galeria/esterilizacion3.webp"]
+      "galeria": []
     },
     {
       "id": "hogar",
@@ -337,7 +337,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "para animalitos que esperan una adopción responsable"
         }
       ],
-      "galeria": ["img/galeria/paraiso1.webp","img/galeria/paraiso2.webp","img/galeria/paraiso3.webp"]
+      "galeria": []
     },
     {
       "id": "veterinaria",

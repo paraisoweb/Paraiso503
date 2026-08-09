@@ -1474,3 +1474,17 @@ if (typeof window !== 'undefined') {
   };
   window.initSiteInteractions = initSiteInteractions;
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Evita que el botón flotante de WhatsApp tape los enlaces legales del footer.
+  const siteFooter = document.querySelector('footer');
+  if (siteFooter && 'IntersectionObserver' in window) {
+    const footerObserver = new IntersectionObserver((entries) => {
+      document.body.classList.toggle('footer-visible', entries[0].isIntersecting);
+    }, { threshold: 0.08 });
+    footerObserver.observe(siteFooter);
+  }
+
+});

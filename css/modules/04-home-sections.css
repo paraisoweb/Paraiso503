@@ -316,22 +316,22 @@ h2.section-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 6px;
   margin-top: 12px;
 }
 .urgencia-dots button {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   padding: 0;
   border: none;
-  border-radius: 50%;
-  background: rgba(30,61,43,0.18);
+  border-radius: 999px;
+  background: rgba(30,61,43,0.20);
   cursor: pointer;
-  transition: background .25s ease, transform .25s ease;
+  transition: width .25s ease, background .25s ease, opacity .25s ease;
 }
 .urgencia-dots button.active {
+  width: 22px;
   background: var(--clay);
-  transform: scale(1.25);
 }
 @media (prefers-reduced-motion: reduce) {
   .urgencia-track {

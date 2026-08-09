@@ -186,14 +186,21 @@
     const fotoHtml = t.foto
       ? '<div class="urgencia-foto-wrap"><img src="' + escapeHtml(t.foto) + '" alt="' + escapeHtml(t.titulo || '') + '" loading="lazy" decoding="async"></div>'
       : '';
+    const mapaHtml = t.mapaEmbed
+      ? '<div class="urgencia-map">' +
+          '<iframe src="' + escapeHtml(t.mapaEmbed) + '" title="Ubicación de ' + escapeHtml(t.titulo || 'la ruta') + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+          (t.mapaUrl ? '<a href="' + escapeHtml(t.mapaUrl) + '" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Flor Amarilla, Ciudad Arce · Ver ubicación</a>' : '') +
+        '</div>'
+      : '';
     const modalJson = escapeHtml(JSON.stringify(t.modal || {}));
     return (
-      '<div class="urgencia urgencia-foto reveal">' +
+      '<div class="urgencia urgencia-foto reveal' + (t.mapaEmbed ? ' urgencia-con-mapa' : '') + '">' +
         fotoHtml +
         '<div class="left">' +
           '<span class="tagtop">' + escapeHtml(t.etiqueta) + '</span>' +
           '<h3>' + escapeHtml(t.titulo) + '</h3>' +
           '<p class="urgencia-descripcion">' + escapeHtml(t.descripcion) + '</p>' +
+          mapaHtml +
         '</div>' +
         '<button class="btn-primary" type="button" data-carrusel-modal="' + modalJson + '">' + escapeHtml(t.textoBoton) + '</button>' +
       '</div>'
@@ -390,22 +397,19 @@
           : '<img src="' + src + '" alt="' + escapeHtml(p.titulo) + ' — foto ' + (idx + 1) + '" loading="lazy">';
         return '<div class="gallery-item" data-lightbox-index="' + idx + '">' + media + '</div>';
       };
-      let galleryHtml, hasMoreFotos, galeriaForLightbox;
-      if (galeria.length) {
-        // Solo se muestran las 3 primeras como vista previa; el resto se navega desde el lightbox.
-        galleryHtml = galeria.slice(0, 3).map(buildItem).join('');
-        hasMoreFotos = galeria.length > 3;
-        galeriaForLightbox = galeria.map(src => ({ src: src, isVideo: videoExt.test(src) }));
-      } else {
-        galleryHtml = [1, 2, 3].map(n =>
-          '<div class="gallery-item" data-lightbox-index="' + (n - 1) + '"><img src="' + placeholderImg('Galería ' + p.titulo + ' ' + n) + '" alt="' + escapeHtml(p.titulo) + ' — foto ' + n + '"></div>'
-        ).join('');
-        hasMoreFotos = false;
-        galeriaForLightbox = [1, 2, 3].map(n => ({ src: placeholderImg('Galería ' + p.titulo + ' ' + n), isVideo: false }));
-      }
+      // Si todavía no hay fotos reales, no mostramos la sección Galería.
+      // Basta con agregar rutas a p.galeria en content/programas.js para que
+      // aparezca automáticamente, sin tocar HTML, CSS ni este archivo.
+      const hasGaleria = galeria.length > 0;
+      const galleryHtml = hasGaleria ? galeria.slice(0, 3).map(buildItem).join('') : '';
+      const hasMoreFotos = galeria.length > 3;
+      const galeriaForLightbox = galeria.map(src => ({ src: src, isVideo: videoExt.test(src) }));
       const galleryDataAttr = escapeHtml(JSON.stringify(galeriaForLightbox));
       const verMasBtn = hasMoreFotos
         ? '<button class="btn-ver-fotos" type="button" data-gallery-start="3">Ver más fotos</button>'
+        : '';
+      const gallerySectionHtml = hasGaleria
+        ? '<div class="prog-gallery" data-gallery="' + galleryDataAttr + '" data-gallery-title="' + escapeHtml(p.titulo) + '"><h4>Galería</h4><div class="gallery-grid">' + galleryHtml + '</div>' + verMasBtn + '</div>'
         : '';
       const foto = p.foto || placeholderImg(p.titulo);
       const badgeHtml = p.etiquetaDestacado
@@ -443,7 +447,7 @@
 
               '<div class="prog-impact-gallery">' +
                 '<div class="prog-impact"><h4>Impacto</h4><div class="impact-grid">' + impactHtml + '</div></div>' +
-                '<div class="prog-gallery" data-gallery="' + galleryDataAttr + '" data-gallery-title="' + escapeHtml(p.titulo) + '"><h4>Galería</h4><div class="gallery-grid">' + galleryHtml + '</div>' + verMasBtn + '</div>' +
+                gallerySectionHtml +
               '</div>' +
 
             '</div>' +
