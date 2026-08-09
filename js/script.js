@@ -663,9 +663,10 @@ function initSiteInteractions() {
     const header = document.querySelector('header');
     const hero = document.querySelector('.hero');
     if (header && hero) {
-      const syncHeroOffset = () => { hero.style.marginTop = '-' + header.offsetHeight + 'px'; };
-      syncHeroOffset();
-      window.addEventListener('resize', syncHeroOffset);
+      // El header de la portada ahora es fixed y ya no ocupa espacio en el flujo.
+      // No aplicamos margen negativo al hero: así evitamos desplazamientos y
+      // mantenemos el header superpuesto de forma estable en todos los navegadores.
+      hero.style.marginTop = '0px';
       const onScroll = () => {
         if (window.scrollY > header.offsetHeight * 0.6) header.classList.add('scrolled');
         else header.classList.remove('scrolled');

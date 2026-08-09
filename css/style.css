@@ -5593,3 +5593,59 @@ body.home:has(footer:hover) .fab-whats{bottom:90px}
 
 body.footer-visible .fab-whats{bottom:118px}
 @media(min-width:820px){body.footer-visible .fab-whats{bottom:86px}}
+
+
+/* ===== Corrección definitiva del header fijo en la portada =====
+   En la home usamos position: fixed para que el header no dependa del
+   contenedor de scroll/overflow del navegador. Mantiene el fondo transparente
+   sobre el hero y el verde al desplazarse mediante la clase .scrolled. */
+body.home header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 80;
+}
+
+body.home .hero {
+  margin-top: 0 !important;
+}
+
+
+/* ===== Header fijo en todas las páginas principales ===== */
+body:not(.legal-page) header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  width:100%;
+}
+
+body:not(.legal-page):not(.home){
+  padding-top:64px;
+}
+
+/* En la portada el header inicia transparente y toma verde al hacer scroll. */
+body.home header{
+  background:transparent;
+}
+body.home header.scrolled{
+  background:rgba(18,40,27,.96);
+  box-shadow:0 4px 16px rgba(0,0,0,.14);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+/* En páginas internas se mantiene verde desde el inicio. */
+body:not(.home):not(.legal-page) header{
+  background:rgba(18,40,27,.98);
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+
+@media(max-width:819px){
+  body:not(.legal-page):not(.home){
+    padding-top:60px;
+  }
+}
