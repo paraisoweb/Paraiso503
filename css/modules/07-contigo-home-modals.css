@@ -1,0 +1,737 @@
+/* CONTIGO — banner de la portada (entre Historias y Cómo ayudar) */
+#contigo {
+  padding-top: 8px;
+}
+.contigo-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 28px 22px;
+  border-radius: 24px;
+  background: var(--cream-2);
+  box-shadow: 0 2px 14px rgba(30,61,43,0.06);
+  cursor: pointer;
+  transition: box-shadow .35s cubic-bezier(.22,1,.36,1), transform .35s cubic-bezier(.22,1,.36,1);
+}
+.contigo-banner:hover {
+  box-shadow: 0 14px 34px rgba(30,61,43,0.14);
+  transform: translateY(-3px);
+}
+.contigo-banner:active {
+  transform: translateY(-1px) scale(.995);
+}
+.contigo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 7px 16px 7px 12px;
+  border-radius: 999px;
+  background: rgba(30,61,43,0.07);
+  font-family: 'Caveat';
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.contigo-tag i {
+  color: var(--green-dark);
+  font-size: 13px;
+}
+.contigo-title {
+  margin: 0 0 12px;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.18;
+  color: var(--green-dark);
+}
+.contigo-title .hl {
+  color: var(--mustard);
+}
+.contigo-desc {
+  margin-bottom: 20px;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.contigo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 14px;
+  background: var(--green-dark);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.contigo-btn i {
+  transition: transform .25s cubic-bezier(.22,1,.36,1);
+}
+.contigo-banner:hover .contigo-btn {
+  background: var(--green-deep);
+  box-shadow: 0 8px 18px rgba(20,30,20,0.18);
+}
+.contigo-banner:hover .contigo-btn i {
+  transform: translateX(3px);
+}
+.contigo-photo {
+  position: relative;
+  align-self: center;
+}
+.contigo-photo-decor {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(62,122,78,0.16), transparent 55%),
+    radial-gradient(circle at 55% 55%, rgba(62,122,78,0.12), transparent 60%);
+}
+.contigo-photo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 10px 28px rgba(30,61,43,0.14);
+}
+.contigo-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: -14px;
+  left: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 17px;
+  box-shadow: 0 6px 16px rgba(30,61,43,0.18);
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.contigo-banner:hover .contigo-badge {
+  transform: scale(1.08) rotate(-8deg);
+}
+@media (min-width:820px) {
+  .contigo-banner {
+    flex-direction: row;
+    align-items: center;
+    gap: 6%;
+    padding: 40px 46px;
+  }
+  .contigo-text {
+    flex: 1.05;
+  }
+  .contigo-title {
+    font-size: 36px;
+  }
+  .contigo-desc {
+    font-size: 15.5px;
+  }
+  .contigo-photo {
+    flex: 1;
+    max-width: 440px;
+  }
+}
+
+/* MODAL DE CONTIGO — reutiliza la misma línea visual y el mismo mecanismo
+   (overlay + inner + close) que el modal de Historias, ver
+   .p503-historia-modal más abajo. */
+.p503-contigo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.p503-contigo-modal.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility 0s linear 0s;
+}
+.p503-contigo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,40,27,0.92);
+}
+.p503-contigo-inner {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 720px);
+  max-height: 88vh;
+  border-radius: 22px;
+  background: #fff;
+  overflow: hidden;
+  transform: scale(.96) translateY(8px);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.p503-contigo-modal.open .p503-contigo-inner {
+  transform: scale(1) translateY(0);
+}
+.p503-contigo-scroll {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.p503-contigo-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,30,20,0.18);
+  transition: background .25s ease, color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.p503-contigo-close:hover {
+  background: var(--green-dark);
+  color: #fff;
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(20,30,20,0.24);
+}
+.p503-contigo-photo {
+  height: 200px;
+}
+.p503-contigo-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.p503-contigo-photo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-deep));
+  color: rgba(255,255,255,0.35);
+  font-size: 46px;
+}
+.p503-contigo-body {
+  padding: 22px 22px 26px;
+}
+.p503-contigo-nombre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 6px;
+  font-size: 24px;
+  letter-spacing: -.01em;
+  color: var(--green-dark);
+}
+.p503-contigo-nombre i {
+  color: var(--green-dark);
+  font-size: 17px;
+}
+.p503-contigo-frase {
+  margin-bottom: 10px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.p503-contigo-desc {
+  margin-bottom: 20px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.p503-contigo-subtitle {
+  margin-bottom: 14px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--green-dark);
+}
+.p503-contigo-section {
+  margin-bottom: 20px;
+}
+.p503-contigo-servicios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.p503-contigo-servicio {
+  padding: 16px 14px;
+  border-radius: 14px;
+  background: var(--cream);
+  text-align: center;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+}
+.p503-contigo-servicio:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(30,61,43,0.1);
+}
+.p503-contigo-servicio .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+}
+.p503-contigo-servicio h5 {
+  margin-bottom: 4px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.p503-contigo-servicio p {
+  color: var(--ink-soft);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.p503-contigo-req {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--cream);
+}
+.p503-contigo-req-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(30,61,43,0.08);
+  color: var(--green-dark);
+  font-size: 14px;
+}
+.p503-contigo-req-body h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 15.5px;
+  color: var(--green-dark);
+}
+.p503-contigo-req-body h4 i {
+  color: var(--mustard);
+  font-size: 13px;
+}
+.p503-contigo-req-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.p503-contigo-req-body li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.p503-contigo-req-body li i {
+  margin-top: 2px;
+  color: var(--green-dark);
+  font-size: 12px;
+}
+.p503-contigo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.p503-contigo-btn-whats,
+.p503-contigo-btn-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-family: inherit;
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease, background .25s ease;
+}
+.p503-contigo-btn-whats {
+  background: var(--green-dark);
+  color: #fff;
+}
+.p503-contigo-btn-whats:hover {
+  background: var(--green-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(20,30,20,0.18);
+}
+.p503-contigo-btn-whats i {
+  font-size: 20px;
+}
+.p503-contigo-btn-info {
+  border: 1.5px solid rgba(30,61,43,0.16);
+  background: #fff;
+  color: var(--ink);
+}
+.p503-contigo-btn-info:hover {
+  border-color: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(30,61,43,0.1);
+}
+.p503-contigo-btn-info i {
+  color: var(--green-dark);
+  font-size: 19px;
+}
+.p503-contigo-btn-whats span,
+.p503-contigo-btn-info span {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.p503-contigo-btn-whats b,
+.p503-contigo-btn-info b {
+  font-size: 13.5px;
+}
+.p503-contigo-btn-whats small,
+.p503-contigo-btn-info small {
+  font-size: 11px;
+  opacity: .8;
+}
+@media (min-width:820px) {
+  .p503-contigo-photo {
+    height: 260px;
+  }
+  .p503-contigo-body {
+    padding: 26px 30px 30px;
+  }
+  .p503-contigo-servicios {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .p503-contigo-actions {
+    flex-direction: row;
+  }
+  .p503-contigo-btn-whats,
+  .p503-contigo-btn-info {
+    flex: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contigo-banner, .contigo-btn, .contigo-btn i, .contigo-badge,
+  .p503-contigo-inner, .p503-contigo-close, .p503-contigo-servicio,
+  .p503-contigo-btn-whats, .p503-contigo-btn-info {
+    transition: none !important;
+  }
+}
+
+/* MODAL DE TARJETA DEL CARRUSEL — reutilizable para las tarjetas
+   adicionales de "Urgencias de este mes" (Rescate reciente, y en el
+   futuro Adopciones / Historia destacada). Mismo patrón visual que el
+   modal de Contigo, de arriba, pero más simple: foto opcional + título
+   + texto breve. */
+.p503-carrusel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.p503-carrusel-modal.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility 0s linear 0s;
+}
+.p503-carrusel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,40,27,0.92);
+}
+.p503-carrusel-inner {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 560px);
+  max-height: 88vh;
+  border-radius: 22px;
+  background: #fff;
+  overflow: hidden;
+  transform: scale(.96) translateY(8px);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.p503-carrusel-modal.open .p503-carrusel-inner {
+  transform: scale(1) translateY(0);
+}
+.p503-carrusel-scroll {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.p503-carrusel-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,30,20,0.18);
+  transition: background .25s ease, color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.p503-carrusel-close:hover {
+  background: var(--green-dark);
+  color: #fff;
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(20,30,20,0.24);
+}
+.p503-carrusel-photo {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.p503-carrusel-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Mini carrusel de fotos del modal, cuando la tarjeta tiene varias imágenes
+   (ver 'modal.foto' como array en content/configuracion.js). Reutiliza el
+   mismo tamaño de .p503-carrusel-photo; solo agrega flechas sobre la foto
+   y puntos debajo. */
+.p503-carrusel-photo-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.p503-carrusel-photo-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.p503-carrusel-photo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.p503-carrusel-photo-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,20,10,0.18);
+  transform: translateY(-50%);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.p503-carrusel-photo-nav:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 16px rgba(20,20,10,0.24);
+}
+.p503-carrusel-photo-prev {
+  left: 10px;
+}
+.p503-carrusel-photo-next {
+  right: 10px;
+}
+.p503-carrusel-photo-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding-top: 12px;
+}
+.p503-carrusel-photo-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(30,61,43,0.18);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+.p503-carrusel-photo-dots button.active {
+  background: var(--clay);
+  transform: scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .p503-carrusel-photo-track {
+    transition: none !important;
+  }
+}
+.p503-carrusel-body {
+  padding: 22px 22px 26px;
+}
+.p503-carrusel-titulo {
+  margin: 4px 0 10px;
+  font-size: 22px;
+  letter-spacing: -.01em;
+  color: var(--green-dark);
+}
+.p503-carrusel-texto {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+@media (min-width:820px) {
+  .p503-carrusel-photo {
+    height: 240px;
+  }
+  .p503-carrusel-body {
+    padding: 26px 30px 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p503-carrusel-inner, .p503-carrusel-close {
+    transition: none !important;
+  }
+}
+
+/* MODAL DE TARJETA DE PROGRAMA (portada) — mismo patrón visual que el modal
+   de tarjeta del carrusel de arriba (overlay oscuro + tarjeta blanca
+   redondeada), pero con secciones de texto (¿Qué es?, ¿En qué consiste?,
+   ¿Por qué existe?) en vez de foto + párrafo único. */
+.p503-programa-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.p503-programa-modal.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility 0s linear 0s;
+}
+.p503-programa-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,40,27,0.92);
+}
+.p503-programa-inner {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 560px);
+  max-height: 88vh;
+  border-radius: 22px;
+  background: #fff;
+  overflow: hidden;
+  transform: scale(.96) translateY(8px);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.p503-programa-modal.open .p503-programa-inner {
+  transform: scale(1) translateY(0);
+}
+.p503-programa-scroll {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.p503-programa-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,30,20,0.18);
+  transition: background .25s ease, color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.p503-programa-close:hover {
+  background: var(--green-dark);
+  color: #fff;
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(20,30,20,0.24);
+}
+.p503-programa-body {
+  padding: 26px 22px;
+}
+.p503-programa-titulo {
+  margin: 4px 0 14px;
+  font-size: 22px;
+  letter-spacing: -.01em;
+  color: var(--green-dark);
+}
+.p503-programa-section {
+  margin-bottom: 18px;
+}
+.p503-programa-section h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+.p503-programa-section p {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+.p503-programa-section p:last-child {
+  margin-bottom: 0;
+}
+.p503-programa-cta {
+  margin-top: 4px;
+}
+@media (min-width:820px) {
+  .p503-programa-body {
+    padding: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p503-programa-inner, .p503-programa-close {
+    transition: none !important;
+  }
+}
+

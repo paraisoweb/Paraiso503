@@ -1,0 +1,401 @@
+/* STATS */
+.stats {
+  background: var(--green-deep);
+  color: #fff;
+}
+.stats-inner {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+.stat b {
+  display: block;
+  color: var(--mustard);
+  font-family: 'Fraunces';
+  font-size: 22px;
+  line-height: 1;
+}
+.stat span {
+  display: block;
+  margin-top: 4px;
+  color: #cfd6c9;
+  font-size: 11px;
+}
+.stat-icon {
+  display: none;
+}
+.stat-copy {
+  min-width: 0;
+}
+
+/* ===== Estadísticas renovadas SOLO EN MÓVIL ===== */
+@media (max-width:819px) {
+  .stats {
+    padding: 14px 14px 18px;
+    background: var(--green-deep);
+  }
+
+  .stats-inner {
+    position: relative;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 0;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(30,61,43,.98), rgba(18,40,27,.98));
+    box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    overflow: hidden;
+  }
+
+  .stat {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    min-height: 104px;
+    padding: 16px 14px;
+  }
+
+  .stat:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 0;
+    bottom: 16px;
+    width: 1px;
+    background: rgba(255,255,255,.12);
+  }
+
+  .stat:nth-child(-n+2)::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 1px;
+    background: rgba(255,255,255,.10);
+  }
+
+  .stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    color: var(--mustard);
+    font-size: 20px;
+  }
+
+  .stat b {
+    font-size: 25px;
+    letter-spacing: -.02em;
+  }
+
+  .stat span {
+    margin-top: 6px;
+    color: #e4e8df;
+    font-size: 11.5px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width:390px) {
+  .stats {
+    padding-inline: 10px;
+  }
+  .stats-inner {
+    padding: 7px;
+  }
+  .stat {
+    gap: 8px;
+    padding: 14px 10px;
+  }
+  .stat-icon {
+    flex-basis: 27px;
+    width: 27px;
+    height: 27px;
+    font-size: 17px;
+  }
+  .stat b {
+    font-size: 22px;
+  }
+  .stat span {
+    font-size: 10.5px;
+  }
+}
+
+section {
+  padding: 46px 20px;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.kicker {
+  color: var(--clay);
+  font-family: 'Caveat';
+  font-size: 22px;
+  font-weight: 700;
+}
+h2.section-title {
+  margin: 2px 0 10px;
+  font-size: 25px;
+  font-weight: 700;
+}
+.lede {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+/* URGENCIA DEL MES */
+.urgencia {
+  position: relative;
+  padding: 22px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--clay), #a94f2c);
+  color: #fff;
+  overflow: hidden;
+}
+.urgencia .tagtop {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.18);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+.urgencia h3 {
+  margin: 12px 0 8px;
+  font-size: 19px;
+}
+.urgencia p {
+  margin-bottom: 14px;
+  color: #fbe8de;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.urgencia .urgencia-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.urgencia .urgencia-lista li {
+  color: #fbe8de;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.urgencia .bar-track {
+  height: 8px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.25);
+  overflow: hidden;
+}
+.urgencia .bar-fill {
+  height: 100%;
+  width: 35%;
+  border-radius: 20px;
+  background: var(--mustard);
+}
+.urgencia .bar-label {
+  margin-bottom: 16px;
+  color: #fbe8de;
+  font-size: 11.5px;
+}
+.urgencia .placeholder-note {
+  margin-bottom: 14px;
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  font-style: italic;
+}
+.urgencia .btn-primary {
+  display: inline-block;
+  width: auto;
+  padding: 12px 22px;
+}
+/* CARRUSEL DE "URGENCIAS DE ESTE MES" — envuelve la(s) tarjeta(s) .urgencia
+   de arriba sin cambiar su diseño; solo agrega deslizamiento horizontal,
+   flechas y puntos cuando hay más de una tarjeta activa. */
+.urgencia-carousel {
+  position: relative;
+}
+.urgencia-viewport {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.urgencia-track {
+  display: flex;
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+  touch-action: pan-y;
+}
+.urgencia-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.urgencia-slide .urgencia {
+  height: 100%;
+}
+/* Variante de tarjeta con foto (ej. "Rescate reciente") */
+.urgencia.urgencia-foto {
+  display: flex;
+  flex-direction: column;
+}
+.urgencia .urgencia-foto-wrap {
+  height: 160px;
+  margin: -22px -22px 16px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.urgencia .urgencia-foto-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.urgencia-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--clay);
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,20,10,0.18);
+  transform: translateY(-50%);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.urgencia-nav:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 16px rgba(20,20,10,0.24);
+}
+.urgencia-prev {
+  left: -6px;
+}
+.urgencia-next {
+  right: -6px;
+}
+.urgencia-carousel.single .urgencia-nav,
+.urgencia-carousel.single .urgencia-dots {
+  display: none;
+}
+/* En móvil: botones más discretos y más pegados al borde de la tarjeta,
+   para que no tapen el contenido ni se vean flotando fuera de ella. Mismo
+   estilo (círculo blanco con sombra) y misma función; solo cambia tamaño
+   y posición. En escritorio queda igual que antes. */
+@media (max-width:819px) {
+  .urgencia-nav {
+    width: 27px;
+    height: 27px;
+    font-size: 11px;
+    box-shadow: 0 2px 8px rgba(20,20,10,0.16);
+  }
+  .urgencia-prev {
+    left: -3px;
+  }
+  .urgencia-next {
+    right: -3px;
+  }
+}
+.urgencia-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 12px;
+}
+.urgencia-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(30,61,43,0.18);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+.urgencia-dots button.active {
+  background: var(--clay);
+  transform: scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .urgencia-track {
+    transition: none !important;
+  }
+}
+/* QUIENES SOMOS */
+.somos-grid {
+  display: flex;
+  flex-direction: column;
+}
+.somos-photo {
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.timeline {
+  position: relative;
+  margin-top: 22px;
+  padding-left: 46px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(var(--clay),var(--green-dark));
+}
+.t-item {
+  position: relative;
+  margin-bottom: 26px;
+}
+.t-item:last-child {
+  margin-bottom: 0;
+}
+.t-dot {
+  position: absolute;
+  left: -46px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  font-size: 15px;
+}
+.t-item p {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.quote {
+  margin-top: 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--mustard);
+  color: var(--green-dark);
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-size: 17px;
+}
+.somos-text {
+  margin-top: 24px;
+}

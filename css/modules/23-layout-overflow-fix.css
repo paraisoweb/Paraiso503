@@ -1,0 +1,49 @@
+/* =============================================================================
+   AJUSTE DE ANCHO / OVERFLOW EN ESCRITORIO INTERMEDIO
+   Evita que el header fuerce unos píxeles extra de ancho en viewports de
+   escritorio estrechos (incluido "Sitio de escritorio" en teléfonos).
+   No cambia el diseño normal de móvil ni el escritorio amplio.
+   ============================================================================= */
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
+}
+
+nav,
+.logo,
+.desktop-links,
+.nav-right {
+  min-width: 0;
+}
+
+/* Entre tablet horizontal / escritorio estrecho, el conjunto logo + menú +
+   redes + CTAs podía superar el ancho disponible. Conservamos el menú de
+   escritorio, pero compactamos únicamente ese rango. */
+@media (min-width:820px) and (max-width:1099px) {
+  nav {
+    gap: 10px;
+  }
+
+  .desktop-links {
+    gap: 12px;
+  }
+
+  .desktop-links a {
+    font-size: 13px;
+  }
+
+  .nav-social {
+    display: none;
+  }
+
+  .nav-right {
+    flex-shrink: 0;
+  }
+}

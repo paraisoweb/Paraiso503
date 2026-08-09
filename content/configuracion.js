@@ -67,12 +67,14 @@ window.PARAISO503_CONTENT.configuracion = {
       "dato": "paraiso.prj@gmail.com"
     }
   ],
-  "_ayuda_donacion": "Cada arreglo (local, internacional, persona) es una pestaña de la sección 'Formas de donar'. 'numero' es opcional: si existe, la tarjeta muestra un botón para copiarlo. 'titular' es opcional: si existe, la tarjeta muestra un botón para copiar ese nombre (ej. el titular de una cuenta bancaria). 'url' es opcional: si existe, la tarjeta completa se convierte en un enlace que abre esa dirección (ej. PayPal) y no se deben combinar 'numero'/'titular' con 'url'.",
+  "_ayuda_donacion": "Cada arreglo (local, internacional, persona) es una pestaña de la sección 'Formas de donar'. 'numero' es opcional: si existe, la tarjeta muestra un botón para copiarlo. 'titular' es opcional: si existe, la tarjeta muestra un botón para copiar ese nombre (ej. el titular de una cuenta bancaria). 'url' es opcional: si existe, la tarjeta completa se convierte en un enlace que abre esa dirección (ej. PayPal) y no se deben combinar 'numero'/'titular' con 'url'. 'logo' permite mostrar el archivo de marca y 'marca' aplica ajustes visuales específicos del logo.",
   "donacion": {
     "local": [
       {
         "nombre": "Banco BAC",
         "icono": "fa-solid fa-building-columns",
+        "logo": "img/payment/bac.svg",
+        "marca": "bac",
         "descripcion": "Cuenta de ahorro",
         "titular": "Eder Martins",
         "numero": "114944333"
@@ -80,24 +82,32 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "Chivo Wallet",
         "icono": "fa-solid fa-mobile-screen",
+        "logo": "img/payment/chivo.png",
+        "marca": "chivo",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
       },
       {
         "nombre": "Nequi",
         "icono": "fa-solid fa-mobile-screen",
+        "logo": "img/payment/nequi-app.png",
+        "marca": "nequi",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
       },
       {
-        "nombre": "Nico",
+        "nombre": "n1co",
         "icono": "fa-solid fa-mobile-screen",
+        "logo": "img/payment/n1co.webp",
+        "marca": "n1co",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
       },
       {
         "nombre": "PayPal",
         "icono": "fa-brands fa-paypal",
+        "logo": "img/payment/paypal.png",
+        "marca": "paypal",
         "descripcion": "Dona desde cualquier parte del mundo de forma segura.",
         "url": "https://www.paypal.me/paraisodelosanimales"
       }
@@ -106,6 +116,8 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "PayPal",
         "icono": "fa-brands fa-paypal",
+        "logo": "img/payment/paypal.png",
+        "marca": "paypal",
         "descripcion": "Dona desde cualquier parte del mundo de forma segura.",
         "url": "https://www.paypal.me/paraisodelosanimales"
       },
@@ -128,7 +140,7 @@ window.PARAISO503_CONTENT.configuracion = {
       }
     ]
   },
-  "_ayuda_carruselUrgencia": "Estas son TODAS las tarjetas del carrusel 'Urgencias de este mes' de la portada, incluida la primera ('Necesidades prioritarias'). El orden en que aparecen en el carrusel es exactamente el orden de este arreglo: para reordenar las tarjetas en el futuro, solo mueve sus bloques aquí arriba o abajo — no hace falta tocar el HTML ni el JavaScript. Cada tarjeta necesita 'activa': true para aparecer en el carrusel; mientras esté en false queda preparada pero oculta. Para activar 'Adopciones' o 'Historia destacada' en el futuro, solo rellena sus campos y cambia 'activa' a true. Campos comunes a toda tarjeta: 'id', 'activa', 'etiqueta' (insignia pequeña arriba), 'titulo', 'descripcion' (texto breve). La tarjeta 'necesidades-prioritarias' es especial: lleva 'tipo': 'necesidadUrgente' y en vez de foto/botón-modal usa 'necesidades' (lista de líneas, cada una puede empezar con un emoji), 'montoRecaudado' y 'meta' (números; déjalos en null mientras no se sepa el dato del mes y la barra mostrará '$___ recaudados de $___' automáticamente) y 'textoBoton' (el botón lleva siempre a la sección #donar). Las demás tarjetas (tipo normal, sin 'tipo') usan 'foto' (ruta de imagen, opcional), 'textoBoton' y 'modal' (lo que se muestra al presionar el botón: 'titulo', 'texto' y 'foto' opcional).",
+  "_ayuda_carruselUrgencia": "Estas son TODAS las tarjetas del carrusel de actualidad de la portada, incluida la primera ('Necesidades prioritarias'). El orden en que aparecen en el carrusel es exactamente el orden de este arreglo: para reordenar las tarjetas en el futuro, solo mueve sus bloques aquí arriba o abajo — no hace falta tocar el HTML ni el JavaScript. Cada tarjeta necesita 'activa': true para aparecer en el carrusel; mientras esté en false queda preparada pero oculta. Al final hay dos espacios de reserva para futuras noticias. Para publicar uno, rellena sus campos y cambia 'activa' a true; mientras siga en false no aparece en la web. Campos comunes a toda tarjeta: 'id', 'activa', 'etiqueta' (insignia pequeña arriba), 'titulo', 'descripcion' (texto breve). La tarjeta 'necesidades-prioritarias' es especial: lleva 'tipo': 'necesidadUrgente' y en vez de foto/botón-modal usa 'necesidades' (lista de líneas, cada una puede empezar con un emoji), 'montoRecaudado' y 'meta' (números; déjalos en null mientras no se sepa el dato del mes y la barra mostrará '$___ recaudados de $___' automáticamente) y 'textoBoton' (el botón lleva siempre a la sección #donar). Las demás tarjetas (tipo normal, sin 'tipo') usan 'foto' (ruta de imagen, opcional), 'textoBoton' y 'modal' (lo que se muestra al presionar el botón: 'titulo', 'texto' y 'foto' opcional).",
   "carruselUrgencia": [
     {
       "id": "necesidades-prioritarias",
@@ -165,7 +177,21 @@ window.PARAISO503_CONTENT.configuracion = {
       }
     },
     {
-      "id": "adopciones",
+      "id": "motos-ruta",
+      "activa": true,
+      "etiqueta": "🏍️ Ruta de Alimentación",
+      "titulo": "Una de nuestras motos está detenida",
+      "descripcion": "La Ruta de Alimentación depende de nuestras motos. Una ya está fuera de servicio y otra necesita atención para evitar que también se detenga.",
+      "foto": "",
+      "textoBoton": "Ver cómo ayudar",
+      "modal": {
+        "titulo": "Necesitamos poner la ruta en movimiento",
+        "texto": "Una de las motos que utilizamos para llevar alimento y agua está detenida por problemas mecánicos, y otra necesita reparación para no quedar fuera de servicio. La reparación de una de ellas ronda los $250. Si tienes un taller, eres mecánico o conoces a alguien que pueda apoyarnos, escríbenos. Mantener estas motos funcionando significa poder seguir llegando a los animalitos que dependen de la Ruta de Alimentación.",
+        "foto": ""
+      }
+    },
+    {
+      "id": "actualidad-reserva-1",
       "activa": false,
       "etiqueta": "",
       "titulo": "",
@@ -175,7 +201,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "modal": { "titulo": "", "texto": "", "foto": "" }
     },
     {
-      "id": "historia-destacada",
+      "id": "actualidad-reserva-2",
       "activa": false,
       "etiqueta": "",
       "titulo": "",

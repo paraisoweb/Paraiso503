@@ -1,0 +1,155 @@
+/* =============================================================================
+   LIGHTBOX DE GALERÍA (programas.html) — mismo lenguaje visual del sitio
+   ============================================================================= */
+.p503-lightbox {
+  position: fixed;
+  inset: 0;
+  /* Debe quedar siempre por encima de cualquier modal del sitio (Historia,
+     Contigo, Carrusel, Programa — todos en z-index: 210), ya que el
+     Lightbox puede abrirse desde dentro de esos modales (p.ej. al hacer
+     clic en una foto de la galería de una Historia). */
+  z-index: 220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s;
+}
+.p503-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .35s cubic-bezier(.4,0,.2,1), visibility 0s linear 0s;
+}
+.p503-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,40,27,0.92);
+}
+.p503-lightbox-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(94vw, 900px);
+  max-height: 90vh;
+  transform: scale(.96);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.p503-lightbox.open .p503-lightbox-inner {
+  transform: scale(1);
+}
+.p503-lightbox-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 78vh;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.p503-lightbox-media img, .p503-lightbox-media video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+.p503-lightbox-media.is-switching img, .p503-lightbox-media.is-switching video {
+  opacity: 0;
+}
+.p503-lightbox-close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.p503-lightbox-close:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.06);
+}
+.p503-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background .2s ease, transform .2s ease;
+}
+.p503-lightbox-nav:hover {
+  background: var(--mustard);
+  color: var(--green-deep);
+  transform: translateY(-50%) scale(1.06);
+}
+.p503-lightbox-prev {
+  left: -8px;
+}
+.p503-lightbox-next {
+  right: -8px;
+}
+.p503-lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-top: 14px;
+  color: #f1efe4;
+  font-size: 12.5px;
+}
+.p503-lightbox-title {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-size: 14px;
+}
+.p503-lightbox-counter {
+  color: #cfd6c9;
+  white-space: nowrap;
+}
+body.p503-lightbox-lock {
+  overflow: hidden;
+}
+@media (min-width:820px) {
+  .p503-lightbox-prev {
+    left: -56px;
+  }
+  .p503-lightbox-next {
+    right: -56px;
+  }
+}
+@media (max-width:520px) {
+  .p503-lightbox-prev {
+    left: 6px;
+  }
+  .p503-lightbox-next {
+    right: 6px;
+  }
+  .p503-lightbox-close {
+    top: -42px;
+  }
+}

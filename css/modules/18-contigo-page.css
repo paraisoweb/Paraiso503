@@ -1,0 +1,230 @@
+/* =============================================================================
+   PROGRAMA CONTIGO — página completa (contigo.html)
+   Reutiliza los tokens de color/tipografía y el mismo lenguaje visual de
+   tarjetas (radio, sombras) que el resto del sitio. Estas reglas solo
+   afectan a las clases nuevas de esta página; no tocan header/footer/menú.
+   ============================================================================= */
+.contigo-hero-highlight {
+  display: block;
+  margin-top: 16px;
+  color: var(--mustard);
+  font-weight: 700;
+}
+.contigo-top-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px 0;
+}
+.contigo-card {
+  flex: 1;
+  padding: 24px 22px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 3px 14px rgba(30, 61, 43, 0.07);
+}
+.contigo-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.contigo-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 15px;
+}
+.contigo-card h3 {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+}
+.contigo-card p {
+  margin-bottom: 12px;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.contigo-card p:last-child {
+  margin-bottom: 0;
+}
+.contigo-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px 14px;
+}
+.contigo-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.contigo-step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  color: var(--green-dark);
+  font-size: 17px;
+}
+.contigo-step b {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.contigo-step span {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.contigo-help-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 22px auto 0;
+  padding: 0 16px;
+}
+.contigo-help-card {
+  padding: 24px 18px;
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(30, 61, 43, 0.05);
+}
+.contigo-help-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 17px;
+}
+.contigo-help-card h4 {
+  margin-bottom: 6px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.contigo-help-card p {
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.req-items.two-col {
+  display: flex;
+  flex-direction: column;
+}
+.contigo-closing {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 46px 16px 10px;
+  color: var(--green-dark);
+  text-align: center;
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.contigo-cta-wrap {
+  max-width: 1100px;
+  margin: 30px auto 0;
+  padding: 0 16px 50px;
+  text-align: center;
+}
+.contigo-cta-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 30px 24px;
+  border-radius: 22px;
+  background: var(--green-deep);
+  color: #fff;
+  text-align: center;
+}
+.contigo-cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  color: #25d366;
+  font-size: 22px;
+}
+.contigo-cta-bar b {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--mustard);
+}
+.contigo-cta-bar span {
+  color: #d9e0d4;
+  font-size: 13.5px;
+}
+.contigo-cta-note {
+  display: block;
+  margin-top: 14px;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+}
+@media (min-width: 820px) {
+  .contigo-top-grid {
+    flex-direction: row;
+    align-items: stretch;
+    padding-top: 50px;
+  }
+  .contigo-steps {
+    position: relative;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .contigo-steps::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 12%;
+    right: 12%;
+    z-index: 0;
+    border-top: 2px dashed rgba(30, 61, 43, 0.18);
+  }
+  .contigo-step-icon {
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(30, 61, 43, 0.06);
+  }
+  .contigo-help-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .req-items.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 22px;
+    row-gap: 12px;
+  }
+  .contigo-cta-bar {
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
+    padding: 26px 40px;
+  }
+}
+

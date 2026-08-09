@@ -1,0 +1,44 @@
+/* COMO AYUDAR */
+.ayudar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+.ayudar-card {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(30,61,43,0.05);
+}
+.ayudar-card .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+}
+.ayudar-card h4 {
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+.ayudar-card p {
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+/* DONAR */
+.donar {
+  background: var(--green-deep);
+  color: #fff;
+}
+.donar .kicker {
+  color: var(--mustard);
+}

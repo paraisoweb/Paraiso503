@@ -265,14 +265,21 @@
       const botonNumero = v.numero
         ? '<button class="copy-num" data-copy="' + escapeHtml(v.numero) + '">' + escapeHtml(v.numero) + ' <i class="fa-regular fa-copy"></i></button>'
         : '';
+      const marcaClass = v.marca ? ' brand-' + escapeHtml(v.marca) : '';
+      const icono = v.logo
+        ? '<div class="icon brand-icon' + marcaClass + '"><img class="brand-logo" src="' + escapeHtml(v.logo) + '" alt="" loading="lazy"></div>'
+        : '<div class="icon"><i class="' + escapeHtml(v.icono) + '"></i></div>';
+      const accion = v.url
+        ? '<span class="via-link-label">Cómo donar <i class="fa-solid fa-arrow-right"></i></span>'
+        : '';
       const inner =
-        '<div class="icon"><i class="' + escapeHtml(v.icono) + '"></i></div>' +
-        '<div><h4>' + escapeHtml(v.nombre) + '</h4><p>' + escapeHtml(v.descripcion) + '</p></div>' +
-        botonTitular + botonNumero;
+        icono +
+        '<div class="via-info"><h4>' + escapeHtml(v.nombre) + '</h4><p>' + escapeHtml(v.descripcion) + '</p></div>' +
+        botonTitular + botonNumero + accion;
       // Si la vía tiene "url", la tarjeta completa se vuelve un enlace
       // (ej. PayPal) en vez de mostrar botones de copiar.
       if (v.url) {
-        return '<a class="via-card" href="' + escapeHtml(v.url) + '" target="_blank" rel="noopener">' + inner + '</a>';
+        return '<a class="via-card via-card-link" href="' + escapeHtml(v.url) + '" target="_blank" rel="noopener">' + inner + '</a>';
       }
       return '<div class="via-card">' + inner + '</div>';
     }).join('');
@@ -282,27 +289,16 @@
      PROGRAMAS
      --------------------------------------------------------------------- */
 
-  // Datos del programa que necesita el modal que se abre al tocar la
-  // tarjeta en la portada (ver openP503ProgramaModal en js/script.js). Se
-  // deja listo con las mismas reglas de respaldo que usa el acordeón de
-  // programas.html, así que mientras "queEs" (u otros campos) no estén
-  // completos en content/programas.js, el modal muestra un aviso en vez de
-  // quedar vacío.
+  // Datos resumidos para el modal de programa de la portada.
+  // La página programas.html sigue usando el contenido completo de
+  // content/programas.js; aquí enviamos solamente una vista rápida para
+  // evitar duplicar todo el texto dentro del modal del inicio.
   function serializarProgramaParaModal(p) {
-    const queEsFallback = '[Completar: qué es el programa de ' + p.titulo + '.]';
-    const enQueConsisteFallback = '[Completar: en qué consiste el programa de ' + p.titulo + ' — actividades principales, frecuencia y alcance.]';
-    const porQueExisteFallback = '[Completar: la necesidad que atiende este programa y por qué nació.]';
-
-    const queEs = (p.queEs && (Array.isArray(p.queEs) ? p.queEs.length : String(p.queEs).trim())) ? p.queEs : queEsFallback;
-    const enQueConsiste = (Array.isArray(p.enQueConsiste) && p.enQueConsiste.length) ? p.enQueConsiste : enQueConsisteFallback;
-    const porQueExiste = (Array.isArray(p.porQueExiste) && p.porQueExiste.length) ? p.porQueExiste : porQueExisteFallback;
-
+    const resumen = String(p.descripcionLista || p.descripcionDetalle || p.queEs || '').trim();
     const datos = {
       id: p.id,
       titulo: p.titulo,
-      queEs: queEs,
-      enQueConsiste: enQueConsiste,
-      porQueExiste: porQueExiste,
+      resumen: resumen || 'Conoce este programa y el trabajo que realizamos para cambiar más vidas.',
       link: 'programas.html#' + p.id
     };
     return escapeHtml(JSON.stringify(datos));

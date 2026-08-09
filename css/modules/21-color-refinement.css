@@ -1,0 +1,75 @@
+/* =============================================================================
+   PARAÍSO 503 — SISTEMA DE COLOR REFINADO
+   Mantiene la paleta original y añade niveles de superficie para dar profundidad.
+   El amarillo queda reservado para acciones/estados activos y el naranja para Adopta.
+   ============================================================================= */
+
+:root {
+  --surface-green-base: #12281B;
+  --surface-green-raised: #183425;
+  --surface-green-card: #1C3A2A;
+  --surface-green-hover: #214532;
+  --border-green-soft: rgba(230,238,226,.13);
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-soft: #D5DBD1;
+  --action-gold: #F4B942;
+  --action-adopt: #C9683D;
+}
+
+/* Donaciones: profundidad sutil sin alterar la identidad */
+.donar {
+  background: var(--surface-green-base);
+}
+
+.donar .lede,
+.donar-note {
+  color: var(--text-on-dark-soft);
+}
+
+.donar .monthly-note {
+  border-color: rgba(244,185,66,.34);
+  background: rgba(244,185,66,.095);
+}
+
+.donar .tabs {
+  background: var(--surface-green-raised);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+}
+
+.donar .tab-btn:not(.active) {
+  color: var(--text-on-dark-soft);
+}
+
+.donar .tab-btn.active {
+  background: var(--action-gold);
+  color: var(--surface-green-base);
+}
+
+.donar .via-card {
+  border-color: var(--border-green-soft);
+  background: var(--surface-green-card);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+@media (hover:hover) {
+  .donar .via-card:hover {
+    border-color: rgba(244,185,66,.20);
+    background: var(--surface-green-hover);
+  }
+}
+
+.donar .copy-num {
+  border-color: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.085);
+}
+
+.donar .copy-num:hover {
+  border-color: rgba(244,185,66,.25);
+  background: rgba(244,185,66,.12);
+}
+
+/* Los CTA principales conservan el dorado; Adopta conserva el naranja. */
+.donar .btn-primary {
+  background: var(--action-gold);
+  color: var(--surface-green-base);
+}

@@ -1,0 +1,373 @@
+/* =============================================================================
+   MODAL DE HISTORIA (historias.html + portada) — mismo lenguaje visual del
+   lightbox de arriba, adaptado a un panel de contenido con scroll en vez de
+   un visor de una sola foto.
+   ============================================================================= */
+.p503-historia-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.p503-historia-modal.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility 0s linear 0s;
+}
+.p503-historia-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,40,27,0.92);
+}
+.p503-historia-inner {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 640px);
+  max-height: 88vh;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  transform: scale(.96) translateY(8px);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.p503-historia-modal.open .p503-historia-inner {
+  transform: scale(1) translateY(0);
+}
+.p503-historia-scroll {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.p503-historia-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,30,20,0.18);
+  transition: background .25s ease, color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.p503-historia-close:hover {
+  background: var(--green-dark);
+  color: #fff;
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(20,30,20,0.24);
+}
+.p503-historia-ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.p503-historia-ba .ba-item {
+  height: 190px;
+}
+.p503-historia-ba .ba-item.ba-item-clickable {
+  cursor: pointer;
+}
+.p503-historia-ba .ba-item:first-child {
+  border-right: 2px solid #fff;
+}
+.p503-historia-body {
+  padding: 22px 22px 26px;
+}
+.p503-historia-nombre {
+  margin: 4px 0 8px;
+  font-size: 22px;
+  letter-spacing: -.01em;
+}
+.p503-historia-frase {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--mustard);
+  border-radius: 0 10px 10px 0;
+  background: var(--cream-2);
+  color: var(--ink);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.p503-historia-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.p503-historia-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--cream);
+  font-size: 12.5px;
+  transition: background .25s ease;
+}
+.p503-historia-meta-item:hover {
+  background: var(--cream-2);
+}
+.p503-historia-meta-item i {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(30,61,43,0.08);
+  color: var(--green-dark);
+  font-size: 12px;
+}
+.p503-historia-meta-item span {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+.p503-historia-meta-item b {
+  display: block;
+  margin-top: 1px;
+  font-size: 13px;
+}
+.p503-historia-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(30,61,43,0.1);
+}
+.p503-historia-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--green-dark);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+}
+.p503-historia-section h4 i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: rgba(30,61,43,0.08);
+  font-size: 12px;
+}
+.p503-historia-section p {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+.p503-historia-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  list-style: none;
+}
+.p503-historia-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.p503-historia-list li i {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: rgba(30,61,43,0.1);
+  color: var(--green-dark);
+  font-size: 9px;
+}
+.p503-historia-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 4px;
+  list-style: none;
+}
+.p503-historia-timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 15px;
+  width: 2px;
+  background: rgba(30,61,43,0.15);
+}
+.p503-historia-timeline li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.p503-historia-timeline .tl-dot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 12px;
+  box-shadow: 0 0 0 4px rgba(30,61,43,0.08);
+  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.p503-historia-timeline li:hover .tl-dot {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 5px rgba(30,61,43,0.12);
+}
+.p503-historia-timeline .tl-content {
+  padding-top: 5px;
+}
+.p503-historia-timeline .tl-content b {
+  display: block;
+  font-size: 13.5px;
+}
+.p503-historia-timeline .tl-content span {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.p503-historia-gallery {
+  margin-bottom: 0;
+}
+.p503-historia-gallery .gallery-item {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,61,43,0.08);
+  transition: box-shadow .3s cubic-bezier(.22,1,.36,1), transform .3s cubic-bezier(.22,1,.36,1);
+}
+.p503-historia-gallery .gallery-item:hover {
+  box-shadow: 0 10px 20px rgba(30,61,43,0.18);
+  transform: translateY(-3px);
+}
+.p503-historia-gallery .gallery-item:has(video) {
+  position: relative;
+}
+.p503-historia-gallery .gallery-item:has(video)::after {
+  content: '\f04b';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  color: var(--green-dark);
+  font-size: 12px;
+  box-shadow: 0 4px 10px rgba(20,30,20,0.2);
+  pointer-events: none;
+}
+body.p503-lightbox-lock {
+  overflow: hidden;
+}
+@media (min-width:820px) {
+  /* En escritorio: modal un poco más ancho y fotos "Antes/Después" con más
+     protagonismo. En móvil (abajo) no se toca nada de esto. */
+  .p503-historia-inner {
+    width: min(90vw, 760px);
+  }
+  .p503-historia-ba .ba-item {
+    height: 260px;
+  }
+  .p503-historia-body {
+    padding: 30px 34px 34px;
+  }
+  .p503-historia-nombre {
+    font-size: 25px;
+  }
+  /* Lugar / Fecha / Diagnóstico en una sola fila horizontal, con espacio de
+     sobra para que el texto respire (en móvil se quedan como estaban, en
+     columna dentro de la fila que envuelve). */
+  .p503-historia-meta {
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+  .p503-historia-meta-item {
+    flex: 1;
+  }
+  /* Tratamientos a un costado, Historia al otro. Si una historia solo trae
+     uno de los dos, ese ocupa todo el ancho automáticamente. */
+  .p503-historia-twocol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0 36px;
+    align-items: start;
+  }
+  /* Línea de tiempo horizontal: los mismos datos e íconos, en fila en vez de
+     columna, con el conector cruzando por el centro de los círculos. */
+  .p503-historia-timeline {
+    flex-direction: row;
+    gap: 4px;
+    padding-left: 0;
+  }
+  .p503-historia-timeline::before {
+    top: 16px;
+    bottom: auto;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    height: 2px;
+  }
+  .p503-historia-timeline li {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .p503-historia-timeline .tl-content {
+    padding-top: 0;
+  }
+  .p503-historia-timeline .tl-content b {
+    font-size: 12.5px;
+    line-height: 1.3;
+  }
+  .p503-historia-timeline .tl-content span {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+  }
+}
+@media (max-width:520px) {
+  .p503-historia-inner {
+    max-height: 92vh;
+  }
+  .p503-historia-scroll {
+    max-height: 92vh;
+  }
+  .p503-historia-ba .ba-item {
+    height: 150px;
+  }
+  .p503-historia-body {
+    padding: 18px 16px 22px;
+  }
+}

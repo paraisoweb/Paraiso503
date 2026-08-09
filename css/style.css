@@ -1,4 +1,13 @@
 /* =============================================================================
+   PARAÍSO 503 — style.css (producción)
+   CSS unificado para una carga estable en navegador.
+
+   Los módulos originales se conservan en css/modules/ para mantenimiento.
+   Este archivo reúne esos módulos EN EL MISMO ORDEN de la cascada original.
+   ============================================================================= */
+
+/* ===== 01-base.css ===== */
+/* =============================================================================
    PARAÍSO 503 — style.css
    Archivo reorganizado: mismas reglas, mismos selectores, mismos valores.
    Solo se reordenaron propiedades dentro de cada selector, se corrigió la
@@ -57,6 +66,8 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===== 02-header.css ===== */
 /* NAV */
 header {
   position: sticky;
@@ -222,6 +233,8 @@ footer .brand .logo-placeholder {
 .desktop-links {
   display: none;
 }
+
+/* ===== 03-hero.css ===== */
 /* HERO */
 .hero {
   position: relative;
@@ -379,6 +392,68 @@ h1.hero-title {
   color: #fff;
   font-size: 26px;
 }
+
+/* ===== Pulido del hero SOLO EN MÓVIL =====
+   Mantiene escritorio intacto. Refuerza la lectura del contenido, da más aire
+   al bloque principal y mejora la jerarquía visual sobre la fotografía. */
+@media (max-width:819px) {
+  .hero {
+    min-height: 78vh;
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(90deg, rgba(8,22,14,.80) 0%, rgba(8,22,14,.48) 58%, rgba(8,22,14,.12) 100%),
+      linear-gradient(180deg, rgba(10,16,10,.12) 0%, rgba(10,16,10,.28) 42%, rgba(10,16,10,.88) 100%);
+  }
+
+  .hero-inner {
+    max-width: 520px;
+    padding: 34px 28px 76px;
+  }
+
+  .eyebrow {
+    margin-bottom: 8px;
+    font-size: 25px;
+  }
+
+  h1.hero-title {
+    max-width: 330px;
+    font-size: clamp(32px, 9.5vw, 42px);
+    line-height: 1.04;
+    letter-spacing: -.02em;
+  }
+
+  .hero-sub {
+    max-width: 325px;
+    margin: 18px 0 22px;
+    font-size: 15px;
+    line-height: 1.58;
+  }
+
+  .cta-row {
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .cta-row .btn-primary {
+    width: min(100%, 330px);
+    padding: 15px 20px;
+    border-radius: 13px;
+  }
+
+  .cta-row .btn-ghost {
+    width: min(100%, 280px);
+    padding: 12px 20px;
+    border-color: rgba(255,255,255,.62);
+  }
+
+  .scroll-cue-arrow {
+    bottom: 18px;
+  }
+}
+
+/* ===== 04-home-sections.css ===== */
 /* STATS */
 .stats {
   background: var(--green-deep);
@@ -405,6 +480,110 @@ h1.hero-title {
   color: #cfd6c9;
   font-size: 11px;
 }
+.stat-icon {
+  display: none;
+}
+.stat-copy {
+  min-width: 0;
+}
+
+/* ===== Estadísticas renovadas SOLO EN MÓVIL ===== */
+@media (max-width:819px) {
+  .stats {
+    padding: 14px 14px 18px;
+    background: var(--green-deep);
+  }
+
+  .stats-inner {
+    position: relative;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 0;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(30,61,43,.98), rgba(18,40,27,.98));
+    box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    overflow: hidden;
+  }
+
+  .stat {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    min-height: 104px;
+    padding: 16px 14px;
+  }
+
+  .stat:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 0;
+    bottom: 16px;
+    width: 1px;
+    background: rgba(255,255,255,.12);
+  }
+
+  .stat:nth-child(-n+2)::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 1px;
+    background: rgba(255,255,255,.10);
+  }
+
+  .stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    color: var(--mustard);
+    font-size: 20px;
+  }
+
+  .stat b {
+    font-size: 25px;
+    letter-spacing: -.02em;
+  }
+
+  .stat span {
+    margin-top: 6px;
+    color: #e4e8df;
+    font-size: 11.5px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width:390px) {
+  .stats {
+    padding-inline: 10px;
+  }
+  .stats-inner {
+    padding: 7px;
+  }
+  .stat {
+    gap: 8px;
+    padding: 14px 10px;
+  }
+  .stat-icon {
+    flex-basis: 27px;
+    width: 27px;
+    height: 27px;
+    font-size: 17px;
+  }
+  .stat b {
+    font-size: 22px;
+  }
+  .stat span {
+    font-size: 10.5px;
+  }
+}
+
 section {
   padding: 46px 20px;
 }
@@ -676,6 +855,8 @@ h2.section-title {
 .somos-text {
   margin-top: 24px;
 }
+
+/* ===== 05-programas-home.css ===== */
 /* PROGRAMAS */
 .programas {
   background: var(--cream-2);
@@ -824,6 +1005,8 @@ h2.section-title {
   font-size: 11.5px;
   text-align: center;
 }
+
+/* ===== 06-historias-home.css ===== */
 /* HISTORIAS DEL PARAISO */
 .historias-grid {
   display: flex;
@@ -974,6 +1157,8 @@ h2.section-title {
     gap: 24px;
   }
 }
+
+/* ===== 07-contigo-home-modals.css ===== */
 /* CONTIGO — banner de la portada (entre Historias y Cómo ayudar) */
 #contigo {
   padding-top: 8px;
@@ -1711,6 +1896,7 @@ h2.section-title {
   }
 }
 
+/* ===== 08-galeria-home.css ===== */
 /* GALERÍA (vista previa en la portada, entre Contigo y Cómo ayudar) */
 .galeria-grid {
   display: flex;
@@ -1748,6 +1934,7 @@ h2.section-title {
   }
 }
 
+/* ===== 09-ayudar-donar.css ===== */
 /* COMO AYUDAR */
 .ayudar-grid {
   display: flex;
@@ -1792,6 +1979,8 @@ h2.section-title {
 .donar .kicker {
   color: var(--mustard);
 }
+
+/* ===== 10-adopciones-page.css ===== */
 /* ADOPCIONES (adopciones.html) */
 .adopta-hero {
   padding: 34px 16px 30px;
@@ -1931,6 +2120,8 @@ h2.section-title {
     height: 240px;
   }
 }
+
+/* ===== 11-programas-page.css ===== */
 /* PROGRAMAS (programas.html) */
 .programas-hero {
   padding: 34px 16px 30px;
@@ -2516,6 +2707,8 @@ h2.section-title {
   font-size: 12px;
   text-align: center;
 }
+
+/* ===== 12-footer-redes.css ===== */
 /* REDES + FOOTER */
 .redes-grid {
   display: grid;
@@ -2782,6 +2975,8 @@ footer .bottom {
     bottom: 18px;
   }
 }
+
+/* ===== 13-adopciones-enhancements.css ===== */
 /* ===== Adopciones: contador, filtros y tarjetas compactas ===== */
 .pet-counter {
   display: inline-flex;
@@ -3078,6 +3273,8 @@ footer .bottom {
     flex: 1;
   }
 }
+
+/* ===== 14-microinteractions.css ===== */
 /* =============================================================================
    MICROINTERACCIONES — capa adicional de detalles sutiles
    No modifica colores, tipografías, layout ni estructura existentes.
@@ -3241,6 +3438,8 @@ header.scrolled {
     transition-duration: .01ms !important;
   }
 }
+
+/* ===== 15-lightbox.css ===== */
 /* =============================================================================
    LIGHTBOX DE GALERÍA (programas.html) — mismo lenguaje visual del sitio
    ============================================================================= */
@@ -3396,6 +3595,8 @@ body.p503-lightbox-lock {
     top: -42px;
   }
 }
+
+/* ===== 16-historia-modal.css ===== */
 /* =============================================================================
    MODAL DE HISTORIA (historias.html + portada) — mismo lenguaje visual del
    lightbox de arriba, adaptado a un panel de contenido con scroll en vez de
@@ -3769,6 +3970,8 @@ body.p503-lightbox-lock {
     padding: 18px 16px 22px;
   }
 }
+
+/* ===== 17-header-enhancements.css ===== */
 /* =============================================================================
    ENCABEZADO — colapso del texto "Paraíso 503" + botón "Síguenos" al bajar
    =============================================================================
@@ -3952,6 +4155,7 @@ header.scrolled-deep .nav-follow {
   transform: translateY(-2px);
 }
 
+/* ===== 18-contigo-page.css ===== */
 /* =============================================================================
    PROGRAMA CONTIGO — página completa (contigo.html)
    Reutiliza los tokens de color/tipografía y el mismo lenguaje visual de
@@ -4182,6 +4386,7 @@ header.scrolled-deep .nav-follow {
   }
 }
 
+/* ===== 19-galeria-page.css ===== */
 /* =============================================================================
    GALERÍA (galeria.html)
    Todas las clases de esta sección usan los mismos colores, tipografías y
@@ -4771,5 +4976,472 @@ header.scrolled-deep .nav-follow {
   .gal-photo-grid {
     grid-template-columns: repeat(5,1fr);
     gap: 20px;
+  }
+}
+
+/* ===== 20-donaciones-enhancements.css ===== */
+/* =============================================================================
+   FORMAS DE DONAR — PULIDO VISUAL
+   Mantiene la estructura, tabs y comportamiento responsive existentes.
+   Este módulo solo refina presentación, logos y controles de acción.
+   ============================================================================= */
+
+.donar .wrap {
+  position: relative;
+}
+
+.monthly-note {
+  min-height: 48px;
+  padding: 11px 14px;
+  border-color: rgba(244,185,66,.36);
+  border-radius: 13px;
+  background: rgba(244,185,66,.11);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.monthly-note > i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  color: var(--mustard);
+}
+
+.tabs {
+  gap: 6px;
+  padding: 5px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.055);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+}
+
+.tab-btn {
+  min-height: 42px;
+  border-radius: 11px;
+  transition: background .22s ease, color .22s ease, transform .18s ease;
+}
+
+.tab-btn:not(.active):hover {
+  background: rgba(255,255,255,.045);
+  color: #fff;
+}
+
+.tab-panel.active {
+  gap: 12px;
+}
+
+.via-card {
+  position: relative;
+  min-height: 84px;
+  gap: 14px;
+  padding: 14px 16px;
+  border-color: rgba(255,255,255,.13);
+  border-radius: 15px;
+  background: rgba(255,255,255,.055);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+.via-card .via-info {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.via-card h4 {
+  margin-bottom: 2px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.via-card p {
+  color: #d5dbd1;
+  line-height: 1.38;
+}
+
+.via-card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 17px;
+}
+
+.via-card .brand-icon {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: #fff;
+}
+
+.via-card .brand-logo {
+  display: block;
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.via-card .brand-bac .brand-logo,
+.via-card .brand-nequi .brand-logo,
+.via-card .brand-n1co .brand-logo {
+  width: 84%;
+  height: 84%;
+}
+
+.via-card .brand-n1co {
+  background: #111;
+}
+
+.via-card .brand-chivo .brand-logo {
+  width: 132%;
+  height: 132%;
+}
+
+.copy-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  margin-left: 0;
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.055);
+  border-radius: 9px;
+  background: rgba(255,255,255,.10);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .18s ease;
+}
+
+.copy-num:hover {
+  border-color: rgba(244,185,66,.28);
+  background: rgba(244,185,66,.14);
+}
+
+.copy-num i {
+  color: var(--mustard);
+  font-size: 11px;
+}
+
+.via-link-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(62,122,78,.75);
+  border-radius: 999px;
+  color: #8fd39d;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.via-card-link:hover .via-link-label {
+  border-color: rgba(143,211,157,.75);
+  background: rgba(62,122,78,.16);
+  color: #b7e8c1;
+}
+
+.via-link-label i {
+  font-size: 10px;
+  transition: transform .2s ease;
+}
+
+.via-card-link:hover .via-link-label i {
+  transform: translateX(2px);
+}
+
+.donar .wrap > .btn-primary {
+  border-radius: 13px;
+  box-shadow: none;
+}
+
+.donar-note {
+  margin-top: 20px;
+  color: #d5dbd1;
+}
+
+@media (min-width:820px) {
+  .tab-panel.active {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 14px;
+  }
+
+  .via-card {
+    min-height: 86px;
+    flex-wrap: nowrap;
+  }
+
+  .via-card .via-info {
+    min-width: 0;
+  }
+
+  .copy-num {
+    flex: 0 0 auto;
+  }
+
+  .via-card-link {
+    align-items: center;
+  }
+}
+
+@media (max-width:819px) {
+  .monthly-note {
+    padding: 10px 12px;
+  }
+
+  .via-card {
+    min-height: 82px;
+    padding: 14px;
+  }
+
+  .via-card .icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .via-card .via-info {
+    flex-basis: calc(100% - 58px);
+  }
+
+  .copy-num {
+    margin-left: 56px;
+  }
+
+  .via-link-label {
+    margin: 2px 0 0 56px;
+  }
+}
+
+@media (max-width:430px) {
+  .copy-num,
+  .via-link-label {
+    max-width: calc(100% - 56px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-btn, .copy-num, .via-link-label, .via-link-label i {
+    transition: none !important;
+  }
+}
+
+/* ===== 21-color-refinement.css ===== */
+/* =============================================================================
+   PARAÍSO 503 — SISTEMA DE COLOR REFINADO
+   Mantiene la paleta original y añade niveles de superficie para dar profundidad.
+   El amarillo queda reservado para acciones/estados activos y el naranja para Adopta.
+   ============================================================================= */
+
+:root {
+  --surface-green-base: #12281B;
+  --surface-green-raised: #183425;
+  --surface-green-card: #1C3A2A;
+  --surface-green-hover: #214532;
+  --border-green-soft: rgba(230,238,226,.13);
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-soft: #D5DBD1;
+  --action-gold: #F4B942;
+  --action-adopt: #C9683D;
+}
+
+/* Donaciones: profundidad sutil sin alterar la identidad */
+.donar {
+  background: var(--surface-green-base);
+}
+
+.donar .lede,
+.donar-note {
+  color: var(--text-on-dark-soft);
+}
+
+.donar .monthly-note {
+  border-color: rgba(244,185,66,.34);
+  background: rgba(244,185,66,.095);
+}
+
+.donar .tabs {
+  background: var(--surface-green-raised);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+}
+
+.donar .tab-btn:not(.active) {
+  color: var(--text-on-dark-soft);
+}
+
+.donar .tab-btn.active {
+  background: var(--action-gold);
+  color: var(--surface-green-base);
+}
+
+.donar .via-card {
+  border-color: var(--border-green-soft);
+  background: var(--surface-green-card);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+@media (hover:hover) {
+  .donar .via-card:hover {
+    border-color: rgba(244,185,66,.20);
+    background: var(--surface-green-hover);
+  }
+}
+
+.donar .copy-num {
+  border-color: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.085);
+}
+
+.donar .copy-num:hover {
+  border-color: rgba(244,185,66,.25);
+  background: rgba(244,185,66,.12);
+}
+
+/* Los CTA principales conservan el dorado; Adopta conserva el naranja. */
+.donar .btn-primary {
+  background: var(--action-gold);
+  color: var(--surface-green-base);
+}
+
+/* ===== 22-actualidad-historia-modales.css ===== */
+/* =============================================================================
+   PULIDO — Nuestra historia + carrusel de actualidad + modal breve de Programas
+   ============================================================================= */
+
+/* Nuestra historia: cada hito conserva el mismo tamaño y posición, pero gana
+   identidad visual. Los tonos pertenecen a la paleta existente de Paraíso 503. */
+.t-dot {
+  color:#fff;
+  box-shadow:0 4px 12px rgba(18,40,27,.14);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.t-dot--inicio {
+  background:var(--clay);
+}
+.t-dot--accion {
+  background:var(--mustard);
+  color:var(--green-deep);
+}
+.t-dot--futuro {
+  background:#3E7A4E;
+}
+.t-item:hover .t-dot {
+  transform:scale(1.06);
+  box-shadow:0 6px 16px rgba(18,40,27,.18);
+}
+
+/* El carrusel ahora funciona como bloque de actualidad. Las tarjetas sin foto
+   (por ejemplo, una alerta operativa sobre las motos) reciben un fondo con
+   profundidad sutil, sin cambiar el diseño de las tarjetas que sí llevan foto. */
+.urgencia.urgencia-foto:not(:has(.urgencia-foto-wrap)) {
+  background:linear-gradient(135deg,var(--clay),#a94f2c);
+}
+.urgencia.urgencia-foto:not(:has(.urgencia-foto-wrap)) .tagtop {
+  background:rgba(255,255,255,.18);
+}
+
+/* Modal de Programas: vista rápida, no repetición de la página completa. */
+.p503-programa-inner {
+  width:min(92vw,500px);
+}
+.p503-programa-body {
+  padding:30px 24px 26px;
+}
+.p503-programa-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  margin-bottom:8px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(244,185,66,.16);
+  color:#9b6520;
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.p503-programa-titulo {
+  margin:0 42px 10px 0;
+  font-size:24px;
+}
+.p503-programa-resumen {
+  margin:0 0 20px;
+  color:var(--ink-soft);
+  font-size:14.5px;
+  line-height:1.65;
+}
+.p503-programa-cta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  margin-top:0;
+}
+
+@media (min-width:820px) {
+  .p503-programa-body {
+    padding:34px 32px 30px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .t-dot {
+    transition:none !important;
+  }
+}
+/* =============================================================================
+   AJUSTE DE ANCHO / OVERFLOW EN ESCRITORIO INTERMEDIO
+   Evita que el header fuerce unos píxeles extra de ancho en viewports de
+   escritorio estrechos (incluido "Sitio de escritorio" en teléfonos).
+   No cambia el diseño normal de móvil ni el escritorio amplio.
+   ============================================================================= */
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
+}
+
+nav,
+.logo,
+.desktop-links,
+.nav-right {
+  min-width: 0;
+}
+
+/* Entre tablet horizontal / escritorio estrecho, el conjunto logo + menú +
+   redes + CTAs podía superar el ancho disponible. Conservamos el menú de
+   escritorio, pero compactamos únicamente ese rango. */
+@media (min-width:820px) and (max-width:1099px) {
+  nav {
+    gap: 10px;
+  }
+
+  .desktop-links {
+    gap: 12px;
+  }
+
+  .desktop-links a {
+    font-size: 13px;
+  }
+
+  .nav-social {
+    display: none;
+  }
+
+  .nav-right {
+    flex-shrink: 0;
   }
 }

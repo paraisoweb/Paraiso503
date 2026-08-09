@@ -1,0 +1,86 @@
+/* =============================================================================
+   PULIDO — Nuestra historia + carrusel de actualidad + modal breve de Programas
+   ============================================================================= */
+
+/* Nuestra historia: cada hito conserva el mismo tamaño y posición, pero gana
+   identidad visual. Los tonos pertenecen a la paleta existente de Paraíso 503. */
+.t-dot {
+  color:#fff;
+  box-shadow:0 4px 12px rgba(18,40,27,.14);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.t-dot--inicio {
+  background:var(--clay);
+}
+.t-dot--accion {
+  background:var(--mustard);
+  color:var(--green-deep);
+}
+.t-dot--futuro {
+  background:#3E7A4E;
+}
+.t-item:hover .t-dot {
+  transform:scale(1.06);
+  box-shadow:0 6px 16px rgba(18,40,27,.18);
+}
+
+/* El carrusel ahora funciona como bloque de actualidad. Las tarjetas sin foto
+   (por ejemplo, una alerta operativa sobre las motos) reciben un fondo con
+   profundidad sutil, sin cambiar el diseño de las tarjetas que sí llevan foto. */
+.urgencia.urgencia-foto:not(:has(.urgencia-foto-wrap)) {
+  background:linear-gradient(135deg,var(--clay),#a94f2c);
+}
+.urgencia.urgencia-foto:not(:has(.urgencia-foto-wrap)) .tagtop {
+  background:rgba(255,255,255,.18);
+}
+
+/* Modal de Programas: vista rápida, no repetición de la página completa. */
+.p503-programa-inner {
+  width:min(92vw,500px);
+}
+.p503-programa-body {
+  padding:30px 24px 26px;
+}
+.p503-programa-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  margin-bottom:8px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(244,185,66,.16);
+  color:#9b6520;
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.p503-programa-titulo {
+  margin:0 42px 10px 0;
+  font-size:24px;
+}
+.p503-programa-resumen {
+  margin:0 0 20px;
+  color:var(--ink-soft);
+  font-size:14.5px;
+  line-height:1.65;
+}
+.p503-programa-cta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  margin-top:0;
+}
+
+@media (min-width:820px) {
+  .p503-programa-body {
+    padding:34px 32px 30px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .t-dot {
+    transition:none !important;
+  }
+}

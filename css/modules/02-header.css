@@ -1,0 +1,165 @@
+/* NAV */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: rgba(18,40,27,0.96);
+  transition: background .35s ease, box-shadow .35s ease;
+}
+body.home header {
+  background: transparent;
+}
+body.home header.scrolled {
+  background: rgba(18,40,27,0.96);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+body.home header.menu-open {
+  background: rgba(18,40,27,0.96);
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+.logo .mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mustard);
+  font-size: 15px;
+}
+.logo .word {
+  font-family: 'Fraunces';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+}
+.logo .word span {
+  display: block;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  opacity: .7;
+}
+.logo-placeholder {
+  border: 1.5px dashed rgba(30,61,43,0.4);
+  background: rgba(255,255,255,0.5) !important;
+  color: var(--green-deep);
+  opacity: .55;
+}
+footer .brand .logo-placeholder {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--green-dark);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Íconos de redes sociales en el encabezado, solo en escritorio (mismo
+   lenguaje visual que .mobile-follow-icons del menú hamburguesa: círculo
+   sutil que se resalta en mostaza al pasar el cursor). Se colocan antes de
+   los botones Adopta/Dona dentro de .nav-right. */
+.nav-social {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-right: 4px;
+}
+.nav-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: #e9e6da;
+  font-size: 13px;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.nav-social a:hover {
+  background: var(--mustard);
+  color: var(--green-deep);
+  transform: translateY(-2px);
+}
+.nav-cta {
+  padding: 8px 12px;
+  border-radius: 22px;
+  background: var(--mustard);
+  color: var(--green-deep);
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.nav-cta-ghost {
+  background: var(--clay);
+  color: #fff;
+}
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+.mobile-menu {
+  max-height: 0;
+  background: rgba(18,40,27,0.98);
+  overflow: hidden;
+  transition: max-height .25s ease;
+}
+.mobile-menu.open {
+  max-height: 560px;
+}
+.mobile-menu ul {
+  padding: 6px 20px 16px;
+  list-style: none;
+}
+.mobile-menu li {
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu a {
+  display: block;
+  padding: 13px 4px;
+  color: #e9e6da;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+.mobile-menu a.nav-contigo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mobile-menu a.nav-contigo-link i {
+  font-size: 12px;
+  color: var(--mustard);
+}
+.desktop-links {
+  display: none;
+}

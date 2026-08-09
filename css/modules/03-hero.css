@@ -1,0 +1,217 @@
+/* HERO */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 80vh;
+}
+.hero .bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,16,10,0.15) 0%, rgba(10,16,10,0.55) 55%, rgba(10,16,10,0.92) 100%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 26px 20px 34px;
+}
+.eyebrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 2px;
+  color: var(--mustard);
+  font-family: 'Caveat';
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+}
+h1.hero-title {
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+/* ===== Indicador "descubre más" al pie del hero ===== */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  color: #f1efe4;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  opacity: .9;
+  transform: translateX(-50%);
+}
+.scroll-cue-line {
+  width: 26px;
+  height: 1px;
+  background: rgba(241,239,228,0.5);
+}
+.scroll-cue-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(241,239,228,0.55);
+  color: #f1efe4;
+  font-size: 13px;
+  cursor: pointer;
+  transform: translateX(-50%);
+  animation: cue-bounce 2.2s ease-in-out infinite;
+}
+@keyframes cue-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+.hero-sub {
+  max-width: 420px;
+  margin: 14px 0 20px;
+  color: #e9e6da;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+.cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 15px 22px;
+  border-radius: 14px;
+  border: none;
+  background: var(--mustard);
+  color: var(--green-deep);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-ghost {
+  padding: 13px 22px;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+.btn-outline-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1.5px solid var(--green-dark);
+  border-radius: 14px;
+  background: none;
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 13.5px;
+  text-align: center;
+  cursor: pointer;
+}
+/* FLOATING WHATSAPP BUTTON (unico) */
+.fab-whats {
+  position: fixed;
+  bottom: 20px;
+  right: 18px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #25D366;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  color: #fff;
+  font-size: 26px;
+}
+
+/* ===== Pulido del hero SOLO EN MÓVIL =====
+   Mantiene escritorio intacto. Refuerza la lectura del contenido, da más aire
+   al bloque principal y mejora la jerarquía visual sobre la fotografía. */
+@media (max-width:819px) {
+  .hero {
+    min-height: 78vh;
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(90deg, rgba(8,22,14,.80) 0%, rgba(8,22,14,.48) 58%, rgba(8,22,14,.12) 100%),
+      linear-gradient(180deg, rgba(10,16,10,.12) 0%, rgba(10,16,10,.28) 42%, rgba(10,16,10,.88) 100%);
+  }
+
+  .hero-inner {
+    max-width: 520px;
+    padding: 34px 28px 76px;
+  }
+
+  .eyebrow {
+    margin-bottom: 8px;
+    font-size: 25px;
+  }
+
+  h1.hero-title {
+    max-width: 330px;
+    font-size: clamp(32px, 9.5vw, 42px);
+    line-height: 1.04;
+    letter-spacing: -.02em;
+  }
+
+  .hero-sub {
+    max-width: 325px;
+    margin: 18px 0 22px;
+    font-size: 15px;
+    line-height: 1.58;
+  }
+
+  .cta-row {
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .cta-row .btn-primary {
+    width: min(100%, 330px);
+    padding: 15px 20px;
+    border-radius: 13px;
+  }
+
+  .cta-row .btn-ghost {
+    width: min(100%, 280px);
+    padding: 12px 20px;
+    border-color: rgba(255,255,255,.62);
+  }
+
+  .scroll-cue-arrow {
+    bottom: 18px;
+  }
+}

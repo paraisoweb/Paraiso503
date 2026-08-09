@@ -1,0 +1,59 @@
+/* =============================================================================
+   PARAÍSO 503 — style.css
+   Archivo reorganizado: mismas reglas, mismos selectores, mismos valores.
+   Solo se reordenaron propiedades dentro de cada selector, se corrigió la
+   indentación y se agruparon visualmente las secciones con comentarios.
+   ============================================================================= */
+
+/* ===== Reset y variables globales ===== */
+html {
+  scroll-behavior: smooth;
+}
+#somos, #programas, #adopciones, #historias, #ayudar, #donar, #redes {
+  scroll-margin-top: calc(var(--header-h, 70px) + 12px);
+}
+:root {
+  --green-dark: #1E3D2B;
+  --green-deep: #12281B;
+  --mustard: #F4B942;
+  --clay: #C9683D;
+  --cream: #F9FAF2;
+  --cream-2: #F3ECDD;
+  --ink: #20261F;
+  --ink-soft: #5B6459;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter',sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 {
+  font-family: 'Fraunces',serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ===== Utilidades ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}

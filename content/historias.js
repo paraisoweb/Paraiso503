@@ -89,26 +89,6 @@ window.PARAISO503_CONTENT.historias = {
       "destacadoInicio": true
     },
     {
-      "nombre": "Palomita",
-      "estado": "adoptado",
-      "frase": "",
-      "descripcion": "Su historia comenzó junto a la carretera hacia Sonsonate, donde fue encontrado desnutrido, en malas condiciones y con un alto riesgo de ser atropellado. Con tiempo, cuidados y dedicación, salió adelante. Hoy disfruta de la vida que siempre mereció, junto a una familia que lo ama.",
-      "historiaCompleta": "",
-      "fotoAntes":"img/historias/palomita1.webp",
-      "fotoDespues":"img/historias/palomita2.webp",
-      "lugarRescate": "Carretera hacia Sonsonate",
-      "fechaRescate": "",
-      "diagnostico": "",
-      "tratamientos": [],
-      "lineaTiempo": [
-        { "evento": "Rescate", "fecha": "18/09/2025" },
-        { "evento": "Recuperación", "fecha": "19/09/2025-2/10/2025" },
-        { "evento": "Adoptado", "fecha": "2/10/2025" }
-      ],
-      "galeria": [],
-      "destacadoInicio": false
-    },
-    {
       "nombre": "Toto",
       "estado": "tratamiento",
       "frase": "",
@@ -191,6 +171,26 @@ window.PARAISO503_CONTENT.historias = {
       ],
       "galeria": [],
       "destacadoInicio": false
-    }
+    },
+    {
+      "nombre": "Palomita",
+      "estado": "adoptado",
+      "frase": "",
+      "descripcion": "Su historia comenzó junto a la carretera hacia Sonsonate, donde fue encontrado desnutrido, en malas condiciones y con un alto riesgo de ser atropellado. Con tiempo, cuidados y dedicación, salió adelante. Hoy disfruta de la vida que siempre mereció, junto a una familia que lo ama.",
+      "historiaCompleta": "",
+      "fotoAntes":"img/historias/palomita1.webp",
+      "fotoDespues":"img/historias/palomita2.webp",
+      "lugarRescate": "Carretera hacia Sonsonate",
+      "fechaRescate": "",
+      "diagnostico": "",
+      "tratamientos": [],
+      "lineaTiempo": [
+        { "evento": "Rescate", "fecha": "18/09/2025" },
+        { "evento": "Recuperación", "fecha": "19/09/2025-2/10/2025" },
+        { "evento": "Adoptado", "fecha": "2/10/2025" }
+      ],
+      "galeria": [],
+      "destacadoInicio": false
+    },
   ]
 };

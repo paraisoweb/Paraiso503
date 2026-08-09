@@ -171,7 +171,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "atención veterinaria continua junto a nuestro equipo médico"
         }
       ],
-      "galeria": []
+      "galeria": ["img/galeria/cancer1.webp","img/galeria/cancer2.webp","img/galeria/cancer3.webp"]
     },
     {
       "id": "adopciones-prog",
@@ -226,7 +226,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "cada adopción abre espacio para rescatar otra vida"
         }
       ],
-      "galeria": []
+      "galeria": ["img/galeria/adopta1.webp","img/galeria/adopta2.webp","img/galeria/adopta3.webp"]
     },
     {
       "id": "esterilizacion",
@@ -281,7 +281,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "cada esterilización previene camadas no deseadas"
         }
       ],
-      "galeria": []
+      "galeria": ["img/galeria/esterilizacion1.webp","img/galeria/esterilizacion2.webp","img/galeria/esterilizacion3.webp"]
     },
     {
       "id": "hogar",
@@ -337,7 +337,7 @@ window.PARAISO503_CONTENT.programas = {
           "texto": "para animalitos que esperan una adopción responsable"
         }
       ],
-      "galeria": []
+      "galeria": ["img/galeria/paraiso1.webp","img/galeria/paraiso2.webp","img/galeria/paraiso3.webp"]
     },
     {
       "id": "veterinaria",

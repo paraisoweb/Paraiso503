@@ -619,31 +619,16 @@
     window.p503UnlockScroll();
   }
 
-  // "queEs", "enQueConsiste" y "porQueExiste" pueden llegar como un solo
-  // texto o como una lista de párrafos (string[]); esto normaliza ambos
-  // casos, igual que hace el acordeón de programas.html.
-  function parrafosHtml(valor) {
-    const lista = Array.isArray(valor) ? valor : (valor ? [valor] : []);
-    return lista.map(par => '<p>' + escapeHtmlLocal(par) + '</p>').join('');
-  }
-
+  // El modal de la portada es una vista rápida: un resumen breve y un
+  // acceso al detalle completo. El contenido largo se conserva únicamente
+  // en programas.html, donde sí tiene espacio para desarrollarse.
   function buildContentHtml(p) {
     return (
       '<div class="p503-programa-body">' +
+        '<span class="p503-programa-eyebrow">Resumen del programa</span>' +
         '<h3 class="p503-programa-titulo">' + escapeHtmlLocal(p.titulo || '') + '</h3>' +
-        '<div class="p503-programa-section">' +
-          '<h4>¿Qué es?</h4>' +
-          parrafosHtml(p.queEs) +
-        '</div>' +
-        '<div class="p503-programa-section">' +
-          '<h4>¿En qué consiste?</h4>' +
-          parrafosHtml(p.enQueConsiste) +
-        '</div>' +
-        '<div class="p503-programa-section">' +
-          '<h4>¿Por qué existe?</h4>' +
-          parrafosHtml(p.porQueExiste) +
-        '</div>' +
-        '<a class="btn-primary p503-programa-cta" href="' + escapeHtmlLocal(p.link || '#') + '">Conocer el programa completo</a>' +
+        '<p class="p503-programa-resumen">' + escapeHtmlLocal(p.resumen || '') + '</p>' +
+        '<a class="btn-primary p503-programa-cta" href="' + escapeHtmlLocal(p.link || '#') + '">Conocer el programa completo <i class="fa-solid fa-arrow-right"></i></a>' +
       '</div>'
     );
   }
