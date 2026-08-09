@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paraiso503.com/sitemap.xml
