@@ -5446,7 +5446,7 @@ nav,
   }
 }
 
-/* ===== Ajuste temporal de redes: Instagram oculto ===== */
+/* ===== Ajuste temporal de redes: tarjetas reorganizadas ===== */
 .redes-grid--paraiso{
   grid-template-columns:repeat(6,minmax(0,1fr));
 }
