@@ -224,12 +224,12 @@ window.PARAISO503_CONTENT.configuracion = {
       "etiqueta": "🏍️ Ruta de Alimentación",
       "titulo": "Nuestra ruta necesita volver a moverse",
       "descripcion": "Una de nuestras motos está fuera de servicio y la otra necesita reparación. Ambas son fundamentales para llevar alimento a los animalitos que nos esperan cada día.",
-      "foto": "",
+      "foto": "img/actualidad/taller1.webp",
       "textoBoton": "Conocer la necesidad",
       "modal": {
         "titulo": "Necesitamos poner la ruta en movimiento",
         "texto": "Una de nuestras motos está detenida por problemas mecánicos y otra necesita reparación. Una de estas reparaciones ronda los $250.\n\nSi tienes un taller, eres mecánico o puedes apoyarnos con la reparación, escríbenos. También puedes ayudarnos aportando con una parte del costo.\n\nCada apoyo nos ayuda a mantener la Ruta de Alimentación en movimiento y seguir llegando a los animalitos que nos esperan.",
-        "foto": ""
+        "foto": "img/actualidad/taller1.webp"
       }
     },
     {"id":"actualidad-reserva-1","activa":false,"etiqueta":"","titulo":"","descripcion":"","foto":"","textoBoton":"","modal":{"titulo":"","texto":"","foto":""}},
