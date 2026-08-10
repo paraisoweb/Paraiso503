@@ -26,13 +26,43 @@
    ============================================================================= */
 (function () {
   let lockCount = 0;
+  let savedScrollY = 0;
+  let previousScrollBehavior = '';
+
   window.p503LockScroll = function () {
     lockCount++;
+    if (lockCount !== 1) return;
+
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    previousScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+
     document.body.classList.add('p503-lightbox-lock');
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + savedScrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
   };
+
   window.p503UnlockScroll = function () {
     lockCount = Math.max(0, lockCount - 1);
-    if (lockCount === 0) document.body.classList.remove('p503-lightbox-lock');
+    if (lockCount !== 0) return;
+
+    document.body.classList.remove('p503-lightbox-lock');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+
+    /* Restauramos la posición con desplazamiento instantáneo. El sitio usa
+       scroll suave global, así que sin este ajuste el navegador anima el
+       regreso desde arriba y produce el salto visual al cerrar el modal. */
+    window.scrollTo({ top: savedScrollY, left: 0, behavior: 'instant' });
+    requestAnimationFrame(function () {
+      document.documentElement.style.scrollBehavior = previousScrollBehavior;
+    });
   };
 })();
 

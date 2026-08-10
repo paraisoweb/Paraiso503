@@ -510,6 +510,7 @@
      --------------------------------------------------------------------- */
 
   const ESTADO_INFO = {
+    rescate: { emoji: '🐾', label: 'Rescate reciente' },
     recuperado: { emoji: '💚', label: 'Recuperado' },
     adoptado: { emoji: '🏡', label: 'Adoptado' },
     tratamiento: { emoji: '🩺', label: 'En tratamiento' }
@@ -643,6 +644,19 @@
     const historiasGrid = document.getElementById('historiasGrid');
     if (historiasGrid) {
       historiasGrid.innerHTML = data.historias.map(historiaCardHtmlCompleta).join('');
+    }
+
+    const updateNote = document.getElementById('historiasUpdateNote');
+    if (updateNote) {
+      const fecha = data.ultimaActualizacion || '';
+      const mensaje = data.mensajeActualizacion || '';
+      updateNote.innerHTML =
+        '<div class="historias-update-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>' +
+        '<div class="historias-update-copy">' +
+          '<span class="historias-update-kicker">Seguimos escribiendo nuevas historias</span>' +
+          (fecha ? '<strong>Última actualización: ' + escapeHtml(fecha) + '</strong>' : '') +
+          (mensaje ? '<p>' + escapeHtml(mensaje) + '</p>' : '') +
+        '</div>';
     }
   }
 

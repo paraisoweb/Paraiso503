@@ -6453,3 +6453,148 @@ body:not(.home):not(.legal-page) header{
     margin-top:auto !important;
   }
 }
+
+
+/* ===== AJUSTES HEADER + HISTORIAS 2026-08-09 ===== */
+
+/* Header: solo escritorio. Se conserva el diseño, pero usamos un poco más
+   de ancho y espaciado uniforme entre cada opción. */
+@media (min-width:1100px){
+  body:not(.legal-page) > header > nav{
+    max-width:1240px;
+    padding-left:22px;
+    padding-right:22px;
+  }
+  body:not(.legal-page) .desktop-links{
+    gap:18px;
+    align-items:center;
+  }
+  body:not(.legal-page) .desktop-links > li{
+    display:flex;
+    align-items:center;
+    flex:0 0 auto;
+  }
+  body:not(.legal-page) .desktop-links > li > a{
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    white-space:nowrap;
+  }
+}
+
+/* Nuevo estado editorial para historias recién rescatadas. */
+.status-badge.status-rescate{
+  background:rgba(183,94,56,.13);
+  color:#9f4e2f;
+}
+
+/* Modal de historias: siempre por encima del header fijo. */
+.p503-historia-modal{
+  z-index:5000 !important;
+  overscroll-behavior:none;
+}
+.p503-historia-overlay{
+  z-index:0;
+}
+.p503-historia-inner{
+  z-index:1;
+  overscroll-behavior:contain;
+}
+.p503-historia-scroll{
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.p503-historia-close{
+  z-index:10 !important;
+}
+
+/* En móvil dejamos espacio real arriba/abajo para que la X nunca quede
+   debajo del header ni pegada al borde del navegador. */
+@media (max-width:819px){
+  .p503-historia-modal{
+    align-items:center;
+    padding:
+      max(18px, env(safe-area-inset-top))
+      12px
+      max(18px, env(safe-area-inset-bottom));
+  }
+  .p503-historia-inner{
+    width:min(100%,640px);
+    max-height:calc(100dvh - 36px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  .p503-historia-scroll{
+    max-height:calc(100dvh - 36px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  .p503-historia-close{
+    top:12px;
+    right:12px;
+  }
+}
+
+/* Aviso editorial al final de historias.html. */
+.historias-update-note{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  max-width:920px;
+  margin:34px auto 0;
+  padding:20px 22px;
+  border:1px solid rgba(30,61,43,.10);
+  border-radius:18px;
+  background:linear-gradient(135deg,#fff,#f6f2e9);
+  box-shadow:0 6px 22px rgba(30,61,43,.07);
+}
+.historias-update-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(169,87,52,.11);
+  color:#a95734;
+  font-size:17px;
+}
+.historias-update-copy{
+  min-width:0;
+}
+.historias-update-kicker{
+  display:block;
+  margin-bottom:4px;
+  color:#a95734;
+  font-family:'Caveat',cursive;
+  font-size:20px;
+  font-weight:700;
+}
+.historias-update-copy strong{
+  display:block;
+  color:var(--green-dark);
+  font-size:13px;
+}
+.historias-update-copy p{
+  margin:7px 0 0;
+  color:var(--ink-soft);
+  font-size:13.5px;
+  line-height:1.6;
+}
+@media(max-width:560px){
+  .historias-update-note{
+    margin-top:26px;
+    padding:17px;
+    gap:12px;
+  }
+  .historias-update-icon{
+    flex-basis:36px;
+    width:36px;
+    height:36px;
+    font-size:14px;
+  }
+}
+
+
+/* ===== LIGHTBOX ENCIMA DEL MODAL DE HISTORIAS =====
+   No modifica el modal de historia: solo eleva el visor de fotos cuando se abre. */
+.p503-lightbox{
+  z-index:6000 !important;
+}

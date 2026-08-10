@@ -21,8 +21,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Inter:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<link href="css/style.css?v=20260809-actualidad-v8" rel="stylesheet"/>
-
+<link href="css/style.css?v=20260809-historias-organizadas" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -84,7 +83,7 @@
 <button class="filter-btn" data-status="recuperado">💚 Recuperados</button>
 <button class="filter-btn" data-status="adoptado">🏡 Adoptados</button>
 <button class="filter-btn" data-status="tratamiento">🩺 En tratamiento</button>
-</div>
+<button class="filter-btn" data-status="rescate">🐾 Rescates recientes</button></div>
 </div>
 </div>
 <div class="wrap" style="padding-top:26px; padding-bottom:50px;">
@@ -162,7 +161,7 @@
 </div>
 </div>
 <!-- Para agregar más historias, copia y pega uno de estos bloques "caso-card" completo. Recuerda incluir data-status ("recuperado" / "adoptado" / "tratamiento") y la etiqueta status-badge correspondiente -->
-</div>
+</div><div aria-live="polite" class="historias-update-note" id="historiasUpdateNote"></div>
 <p class="no-results" id="noResultsHistorias" style="display:none;">No hay historias que coincidan con este filtro por ahora. Prueba con otra opción 🐾</p>
 </div>
 <footer>
@@ -184,25 +183,25 @@
 </nav>
 <hr/>
 <div class="bottom">
-  <span>© 2026 Paraíso 503.</span>
-  <nav class="legal-links" aria-label="Información legal">
-    <a href="privacidad.html">Privacidad</a>
-    <a href="cookies.html">Cookies</a>
-    <a href="terminos.html">Términos de uso</a>
-  </nav>
+<span>© 2026 Paraíso 503.</span>
+<nav aria-label="Información legal" class="legal-links">
+<a href="privacidad.html">Privacidad</a>
+<a href="cookies.html">Cookies</a>
+<a href="terminos.html">Términos de uso</a>
+</nav>
 </div>
 </footer>
 <!-- Confirma/actualiza el número de WhatsApp en el href de abajo cuando quieras -->
 <a aria-label="Escríbenos por WhatsApp" class="fab-whats" href="https://wa.me/50377476318?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Para%C3%ADso%20503."><i class="fa-brands fa-whatsapp"></i></a>
 <button aria-label="Volver al inicio" class="back-to-top" id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
 <!-- Contenido dinámico (JS en vez de JSON para que fetch() no falle al abrir el sitio con doble clic / file://) -->
-<script src="content/configuracion.js?v=20260809-actualidad-v8"></script>
-<script src="content/estadisticas.js?v=20260809-actualidad-v8"></script>
-<script src="content/programas.js?v=20260809-actualidad-v8"></script>
-<script src="content/adopciones.js?v=20260809-actualidad-v8"></script>
-<script src="content/historias.js?v=20260809-actualidad-v8"></script>
-<script src="content/contigo.js?v=20260809-actualidad-v8"></script>
-<script src="js/script.js?v=20260809-actualidad-v8"></script>
-<script src="js/content-loader.js?v=20260809-actualidad-v8"></script>
+<script src="content/configuracion.js?v=20260809-historias-fix"></script>
+<script src="content/estadisticas.js?v=20260809-historias-fix"></script>
+<script src="content/programas.js?v=20260809-historias-fix"></script>
+<script src="content/adopciones.js?v=20260809-historias-fix"></script>
+<script src="content/historias.js?v=20260809-historias-organizadas"></script>
+<script src="content/contigo.js?v=20260809-historias-fix"></script>
+<script src="js/script.js?v=20260809-modal-scroll-fix"></script>
+<script src="js/content-loader.js?v=20260809-historias-fix"></script>
 </body>
 </html>
