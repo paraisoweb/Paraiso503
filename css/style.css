@@ -5649,3 +5649,807 @@ body:not(.home):not(.legal-page) header{
     padding-top:60px;
   }
 }
+
+
+/* ===== ACTUALIDAD PARAISO 503 — 2026-08 ===== */
+#urgencia-wrap{
+  background:linear-gradient(180deg,#f8f6f1 0%,#f4eee6 100%);
+  padding-top:56px;
+  padding-bottom:56px;
+  scroll-margin-top:76px;
+}
+.actualidad-heading{
+  max-width:720px;
+  margin:0 auto 24px;
+  text-align:center;
+}
+.actualidad-heading .eyebrow{
+  display:inline-block;
+  margin-bottom:8px;
+  color:#a95734;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.actualidad-heading h2{
+  color:var(--green-dark);
+  font-size:clamp(27px,4vw,40px);
+  line-height:1.08;
+}
+.actualidad-heading p{
+  margin:9px auto 0;
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.6;
+}
+#urgencia-wrap .urgencia-viewport{border-radius:22px}
+#urgencia-wrap .urgencia{
+  min-height:360px;
+  border:1px solid rgba(30,61,43,.08);
+  border-top:4px solid #a95734;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 10px 32px rgba(30,61,43,.09);
+}
+#urgencia-wrap .urgencia .tagtop{
+  background:rgba(169,87,52,.10);
+  color:#93492c;
+}
+#urgencia-wrap .urgencia h3{
+  margin-top:9px;
+  color:var(--green-dark);
+  font-size:clamp(22px,3vw,30px);
+  line-height:1.12;
+}
+.urgencia-subtitulo{
+  margin-top:5px;
+  color:#a95734;
+  font-family:'Fraunces',serif;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.35;
+}
+#urgencia-wrap .urgencia-descripcion{
+  max-width:720px;
+  margin-top:10px;
+  font-size:13.5px;
+  line-height:1.65;
+}
+#urgencia-wrap .urgencia>.btn-primary,
+#urgencia-wrap .urgencia>a.btn-primary{
+  align-self:flex-start;
+  margin-top:auto;
+  background:#a95734;
+  box-shadow:0 6px 16px rgba(169,87,52,.20);
+}
+#urgencia-wrap .urgencia>.btn-primary:hover,
+#urgencia-wrap .urgencia>a.btn-primary:hover{background:#91472d}
+#urgencia-wrap .urgencia-dots button.active{background:#a95734}
+
+.p503-carrusel-scroll{
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.p503-carrusel-inner{overscroll-behavior:contain}
+.p503-carrusel-cierre{
+  margin-top:22px;
+  padding:18px;
+  border-left:3px solid #a95734;
+  border-radius:0 14px 14px 0;
+  background:#f8f4ef;
+}
+.p503-carrusel-cierre h4{
+  margin:0 0 8px;
+  color:var(--green-dark);
+  font-family:'Fraunces',serif;
+  font-size:18px;
+}
+.p503-carrusel-cierre p{
+  margin:0;
+  color:var(--ink);
+  font-size:13.5px;
+  line-height:1.65;
+}
+.p503-carrusel-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.p503-carrusel-actions a{
+  flex:1 1 190px;
+  justify-content:center;
+  text-align:center;
+}
+.p503-carrusel-actions .btn-primary{background:#a95734}
+.p503-carrusel-actions .btn-primary:hover{background:#91472d}
+
+@media(min-width:820px){
+  #urgencia-wrap{padding-top:70px;padding-bottom:70px}
+  #urgencia-wrap .urgencia.urgencia-foto{
+    display:grid;
+    grid-template-columns:minmax(310px,42%) 1fr;
+    grid-template-rows:1fr auto;
+    column-gap:0;
+    min-height:390px;
+    padding:0;
+    overflow:hidden;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    grid-column:1;
+    grid-row:1/3;
+    height:100%;
+    min-height:390px;
+    margin:0;
+    border-radius:18px 0 0 18px;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    grid-column:2;
+    grid-row:1;
+    padding:34px 38px 14px;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{
+    grid-column:2;
+    grid-row:2;
+    margin:0 38px 34px;
+    width:max-content;
+  }
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    padding:34px 38px;
+  }
+}
+@media(max-width:819px){
+  #urgencia-wrap{
+    padding:42px 0 48px;
+  }
+  #urgencia-wrap .wrap{
+    width:min(100% - 24px, var(--wrap));
+  }
+  .actualidad-heading{margin-bottom:18px;padding:0 8px}
+  #urgencia-wrap .urgencia{
+    min-height:0;
+    padding:20px;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto{
+    padding:20px;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    height:190px;
+    margin:-20px -20px 17px;
+  }
+  #urgencia-wrap .urgencia h3{font-size:23px}
+  .urgencia-subtitulo{font-size:14px}
+  #urgencia-wrap .urgencia-descripcion{font-size:13px;line-height:1.58}
+  #urgencia-wrap .urgencia>.btn-primary,
+  #urgencia-wrap .urgencia>a.btn-primary{
+    width:100%;
+    justify-content:center;
+    margin-top:18px;
+  }
+  .p503-carrusel-modal{
+    padding:10px;
+    overscroll-behavior:none;
+  }
+  .p503-carrusel-inner{
+    width:100%;
+    max-height:92dvh;
+  }
+  .p503-carrusel-scroll{
+    max-height:92dvh;
+  }
+  .p503-carrusel-actions{flex-direction:column}
+  .p503-carrusel-actions a{flex:auto;width:100%}
+}
+
+
+/* ===== CORRECCIONES VISUALES ACTUALIDAD v2 ===== */
+
+/* Texto de las tarjetas: fuerza contraste correcto sobre fondo blanco. */
+#urgencia-wrap .urgencia,
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia p,
+#urgencia-wrap .urgencia .urgencia-descripcion{
+  color:#354138 !important;
+}
+#urgencia-wrap .urgencia h3{
+  color:var(--green-dark) !important;
+}
+#urgencia-wrap .urgencia-subtitulo{
+  color:#a95734 !important;
+}
+#urgencia-wrap .urgencia .tagtop{
+  color:#93492c !important;
+}
+
+/* Botones del modal: el secundario ya no queda blanco/invisible. */
+.p503-carrusel-actions .btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:12px 18px;
+  border:1.5px solid rgba(30,61,43,.28);
+  border-radius:14px;
+  background:#f7f4ee;
+  color:var(--green-dark) !important;
+  font-weight:700;
+  text-decoration:none;
+}
+.p503-carrusel-actions .btn-secondary:hover{
+  background:#eef2ec;
+  border-color:rgba(30,61,43,.46);
+}
+
+/* El modal debe quedar por encima del header fijo y ser completamente
+   independiente del scroll de la página principal. */
+.p503-carrusel-modal{
+  z-index:3000 !important;
+  overscroll-behavior:contain;
+}
+.p503-carrusel-overlay{
+  z-index:0;
+}
+.p503-carrusel-inner{
+  z-index:1;
+  overscroll-behavior:contain;
+}
+
+/* En móvil dejamos aire real arriba y abajo, evitando que el modal se
+   "meta" bajo el header o quede pegado al borde de la pantalla. */
+@media(max-width:819px){
+  .p503-carrusel-modal{
+    align-items:center;
+    padding:
+      max(18px, env(safe-area-inset-top))
+      12px
+      max(18px, env(safe-area-inset-bottom));
+  }
+  .p503-carrusel-inner{
+    width:min(100%, 560px);
+    max-height:calc(100dvh - 36px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    border-radius:20px;
+  }
+  .p503-carrusel-scroll{
+    max-height:calc(100dvh - 36px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overscroll-behavior:contain;
+  }
+  .p503-carrusel-close{
+    top:12px;
+    right:12px;
+  }
+}
+
+
+/* ===== ACTUALIDAD v3 — tarjetas terracota, navegación limpia ===== */
+/* Solo afecta las tarjetas de Actualidad. Los modales conservan su diseño v2. */
+#urgencia-wrap .urgencia{
+  background:#a95734 !important;
+  border-color:rgba(92,42,25,.18) !important;
+  border-top-color:#a95734 !important;
+  color:#fff8ef !important;
+  box-shadow:0 12px 34px rgba(84,43,28,.16);
+}
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia p,
+#urgencia-wrap .urgencia .urgencia-descripcion,
+#urgencia-wrap .urgencia .urgencia-lista,
+#urgencia-wrap .urgencia .urgencia-lista li,
+#urgencia-wrap .urgencia .bar-label,
+#urgencia-wrap .urgencia .placeholder-note{
+  color:#fff8ef !important;
+}
+#urgencia-wrap .urgencia h3{
+  color:#fffdf8 !important;
+}
+#urgencia-wrap .urgencia-subtitulo{
+  color:#ffe1b0 !important;
+}
+#urgencia-wrap .urgencia .tagtop{
+  background:#fff4e7 !important;
+  color:#8f4229 !important;
+  border-color:rgba(255,255,255,.30) !important;
+}
+#urgencia-wrap .urgencia .bar-track{
+  background:rgba(255,255,255,.24) !important;
+}
+#urgencia-wrap .urgencia .bar-fill{
+  background:#ffd06a !important;
+}
+#urgencia-wrap .urgencia>.btn-primary,
+#urgencia-wrap .urgencia>a.btn-primary{
+  background:#fff2d5 !important;
+  color:#173c2d !important;
+  box-shadow:0 7px 18px rgba(68,31,19,.18) !important;
+}
+#urgencia-wrap .urgencia>.btn-primary:hover,
+#urgencia-wrap .urgencia>a.btn-primary:hover{
+  background:#ffe5ad !important;
+  color:#123326 !important;
+}
+#urgencia-wrap .urgencia-map a{
+  color:#fff8ef !important;
+}
+/* Las flechas se eliminan visualmente incluso si una versión en caché del HTML las conserva. */
+#urgencia-wrap .urgencia-nav{display:none !important}
+#urgencia-wrap .urgencia-dots{margin-top:14px}
+#urgencia-wrap .urgencia-dots button{background:rgba(30,61,43,.20)}
+#urgencia-wrap .urgencia-dots button.active{background:#a95734}
+
+/* En móvil: un poco de aire lateral sin estrechar demasiado la tarjeta. */
+@media(max-width:819px){
+  #urgencia-wrap .wrap{width:min(100% - 30px,var(--wrap))}
+}
+
+
+/* ===== ACTUALIDAD COMPACTA v4 ===== */
+
+/* La altura de cada tarjeta ahora depende de su contenido real. */
+#urgencia-wrap .urgencia,
+#urgencia-wrap .urgencia.urgencia-foto{
+  min-height:0 !important;
+  height:auto !important;
+}
+
+/* Evita desbordes de títulos, textos, listas y botones. */
+#urgencia-wrap .urgencia,
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia h3,
+#urgencia-wrap .urgencia p,
+#urgencia-wrap .urgencia li,
+#urgencia-wrap .urgencia-subtitulo,
+#urgencia-wrap .urgencia .btn-primary{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+#urgencia-wrap .urgencia .left{
+  min-width:0;
+}
+#urgencia-wrap .urgencia>.btn-primary,
+#urgencia-wrap .urgencia>a.btn-primary{
+  margin-top:18px !important;
+}
+
+/* En escritorio, las tarjetas con foto mantienen su composición horizontal,
+   pero sin forzar una altura innecesaria. */
+@media(min-width:820px){
+  #urgencia-wrap .urgencia.urgencia-foto{
+    min-height:0 !important;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    min-height:300px !important;
+    height:auto !important;
+  }
+
+  /* Flechas visibles en computadora. */
+  #urgencia-wrap .urgencia-nav{
+    display:flex !important;
+  }
+}
+
+/* En teléfono, las flechas desaparecen: swipe + puntos + autoplay. */
+@media(max-width:819px){
+  #urgencia-wrap .urgencia-nav{
+    display:none !important;
+  }
+
+  #urgencia-wrap .urgencia{
+    padding-bottom:20px;
+  }
+
+  #urgencia-wrap .urgencia>.btn-primary,
+  #urgencia-wrap .urgencia>a.btn-primary{
+    margin-bottom:0;
+  }
+}
+
+
+/* ===== ACTUALIDAD UNIFORME v5 ===== */
+
+/* Todas las tarjetas de Actualidad toman como plantilla visual la tarjeta
+   "Milagro en la carretera": misma zona de imagen y misma altura general. */
+#urgencia-wrap .urgencia-slide{
+  display:flex;
+}
+#urgencia-wrap .urgencia-slide .urgencia{
+  width:100%;
+}
+
+/* Tarjetas normales: imagen arriba en móvil y columna de imagen en escritorio. */
+#urgencia-wrap .urgencia.urgencia-foto{
+  min-height:0 !important;
+  height:auto !important;
+}
+#urgencia-wrap .urgencia-foto-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+    rgba(112,56,35,.18);
+  color:rgba(255,255,255,.38);
+  font-size:28px;
+}
+
+/* Necesidades prioritarias no usa modal/foto real, pero visualmente conserva
+   la misma altura de carrusel que el resto. */
+#urgencia-wrap .urgencia:not(.urgencia-foto){
+  min-height:0 !important;
+}
+
+/* Flechas: solo escritorio y por encima de cualquier recorte del carrusel. */
+@media(min-width:820px){
+  #urgencia-wrap .urgencia-carousel{
+    overflow:visible !important;
+  }
+  #urgencia-wrap .urgencia-viewport{
+    overflow:hidden !important;
+  }
+  #urgencia-wrap .urgencia-nav{
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    z-index:30 !important;
+    width:38px;
+    height:38px;
+    background:#fff;
+    color:#a95734;
+    border:1px solid rgba(169,87,52,.16);
+    box-shadow:0 5px 16px rgba(20,20,10,.18);
+  }
+  #urgencia-wrap .urgencia-prev{
+    left:-19px !important;
+  }
+  #urgencia-wrap .urgencia-next{
+    right:-19px !important;
+  }
+
+  #urgencia-wrap .urgencia.urgencia-foto{
+    min-height:390px !important;
+    height:390px !important;
+    grid-template-columns:minmax(310px,42%) 1fr;
+    grid-template-rows:1fr auto;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    height:390px !important;
+    min-height:390px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    overflow:auto;
+    scrollbar-width:thin;
+  }
+
+  /* La tarjeta especial conserva una altura equivalente. */
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    min-height:390px !important;
+    height:390px !important;
+    overflow:auto;
+  }
+}
+
+/* En teléfono todas mantienen exactamente la misma composición:
+   imagen reservada arriba + bloque terracota debajo. */
+@media(max-width:819px){
+  #urgencia-wrap .urgencia-nav{
+    display:none !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto{
+    min-height:455px !important;
+    height:455px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    overflow:hidden;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    flex:0 0 190px;
+    height:190px !important;
+    min-height:190px !important;
+    margin:-20px -20px 16px;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    flex:1 1 auto;
+    min-height:0;
+    overflow:auto;
+    padding-right:2px;
+    scrollbar-width:thin;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{
+    flex:0 0 auto;
+  }
+
+  /* Necesidades prioritarias mantiene altura pareja aunque no lleve foto. */
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    min-height:455px !important;
+    height:455px !important;
+    overflow:auto;
+  }
+}
+
+
+/* ===== FIX DEFINITIVO FLECHAS DESKTOP v6 ===== */
+@media (min-width:820px){
+  #urgencia-wrap{
+    overflow:visible !important;
+  }
+  #urgencia-wrap .urgencia-carousel{
+    position:relative !important;
+    overflow:visible !important;
+  }
+  #urgencia-wrap .urgencia-nav{
+    display:flex !important;
+    position:absolute !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:44px !important;
+    height:44px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:50% !important;
+    border:1px solid rgba(169,87,52,.22) !important;
+    background:#fffaf1 !important;
+    color:#b45d38 !important;
+    box-shadow:0 5px 18px rgba(0,0,0,.20) !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    z-index:999 !important;
+  }
+  #urgencia-wrap .urgencia-nav i,
+  #urgencia-wrap .urgencia-nav svg{
+    display:block !important;
+    color:#b45d38 !important;
+    fill:currentColor !important;
+    font-size:18px !important;
+  }
+  #urgencia-wrap .urgencia-prev{
+    left:-22px !important;
+    right:auto !important;
+  }
+  #urgencia-wrap .urgencia-next{
+    right:-22px !important;
+    left:auto !important;
+  }
+}
+@media (max-width:819px){
+  #urgencia-wrap .urgencia-nav{
+    display:none !important;
+  }
+}
+
+
+/* ===== TARJETAS SIN SCROLL INTERNO v7 ===== */
+/* El carrusel se mueve horizontalmente; el contenido de cada tarjeta nunca
+   crea su propio scroll vertical. La referencia visual es Milagro en la carretera. */
+#urgencia-wrap .urgencia,
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia.urgencia-foto>.left,
+#urgencia-wrap .urgencia:not(.urgencia-foto){
+  overflow:visible !important;
+  scrollbar-width:none !important;
+}
+#urgencia-wrap .urgencia .left::-webkit-scrollbar,
+#urgencia-wrap .urgencia.urgencia-foto>.left::-webkit-scrollbar,
+#urgencia-wrap .urgencia:not(.urgencia-foto)::-webkit-scrollbar{
+  display:none !important;
+}
+
+/* Desktop: misma altura base de Milagro, pero si algún contenido realmente
+   necesita unos píxeles extra, la tarjeta crece completa en vez de scrollear dentro. */
+@media(min-width:820px){
+  #urgencia-wrap .urgencia.urgencia-foto,
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    height:auto !important;
+    min-height:390px !important;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    height:auto !important;
+    min-height:390px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    overflow:visible !important;
+  }
+}
+
+/* Móvil: misma referencia de tamaño, sin panel de texto desplazable.
+   La tarjeta completa puede crecer sólo si el contenido lo exige. */
+@media(max-width:819px){
+  #urgencia-wrap .urgencia.urgencia-foto,
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    height:auto !important;
+    min-height:455px !important;
+    overflow:hidden !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    overflow:visible !important;
+    flex:0 0 auto !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{
+    margin-top:18px !important;
+  }
+}
+
+
+/* ===== ACTUALIDAD COMPACTA DEFINITIVA v8 ===== */
+
+/* Sin scroll interno en ninguna tarjeta. */
+#urgencia-wrap .urgencia,
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia.urgencia-foto>.left,
+#urgencia-wrap .urgencia:not(.urgencia-foto){
+  overflow:visible !important;
+  scrollbar-width:none !important;
+}
+
+/* Base compacta común: misma presencia visual en todo el carrusel. */
+#urgencia-wrap .urgencia{
+  box-sizing:border-box;
+}
+#urgencia-wrap .urgencia .left{
+  min-width:0;
+}
+#urgencia-wrap .urgencia h3{
+  margin-bottom:4px;
+}
+#urgencia-wrap .urgencia-descripcion{
+  margin-top:8px !important;
+}
+#urgencia-wrap .urgencia>.btn-primary,
+#urgencia-wrap .urgencia>a.btn-primary{
+  margin-top:14px !important;
+}
+
+/* Mapa más compacto para que Flor Amarilla no rompa la altura del carrusel. */
+#urgencia-wrap .urgencia-map{
+  margin-top:12px !important;
+}
+#urgencia-wrap .urgencia-map iframe{
+  height:145px !important;
+}
+#urgencia-wrap .urgencia-map a{
+  padding:8px 10px !important;
+  font-size:11px !important;
+}
+
+/* Desktop: flechas visibles DENTRO de los bordes del carrusel.
+   Así ningún overflow externo puede volver a recortarlas. */
+@media(min-width:820px){
+  #urgencia-wrap .urgencia-carousel{
+    position:relative !important;
+    overflow:visible !important;
+  }
+  #urgencia-wrap .urgencia-viewport{
+    overflow:hidden !important;
+  }
+  #urgencia-wrap .urgencia-nav{
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    position:absolute !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    width:40px !important;
+    height:40px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:50% !important;
+    border:1px solid rgba(169,87,52,.20) !important;
+    background:#fffaf1 !important;
+    color:#a95734 !important;
+    box-shadow:0 5px 16px rgba(0,0,0,.20) !important;
+    z-index:1000 !important;
+    pointer-events:auto !important;
+  }
+  #urgencia-wrap .urgencia-prev{left:12px !important;}
+  #urgencia-wrap .urgencia-next{right:12px !important;}
+  #urgencia-wrap .urgencia-nav i{
+    display:block !important;
+    color:#a95734 !important;
+    font-size:16px !important;
+  }
+
+  /* Tarjetas compactas. */
+  #urgencia-wrap .urgencia.urgencia-foto{
+    height:360px !important;
+    min-height:360px !important;
+    grid-template-columns:minmax(270px,36%) 1fr !important;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    height:360px !important;
+    min-height:360px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    padding:26px 30px 8px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{
+    margin:0 30px 26px !important;
+  }
+
+  /* Flor Amarilla sin imagen: usa todo el ancho para contenido y mapa. */
+  #urgencia-wrap .urgencia.urgencia-sin-imagen{
+    display:flex !important;
+    flex-direction:column !important;
+    height:360px !important;
+    min-height:360px !important;
+    padding:26px 34px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-sin-imagen>.left{
+    padding:0 !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-sin-imagen>.btn-primary{
+    margin-top:auto !important;
+  }
+
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    height:360px !important;
+    min-height:360px !important;
+    padding:26px 34px !important;
+  }
+}
+
+/* Móvil: compacta como Milagro, sin scroll interno.
+   Se conserva imagen cuando existe/está reservada, excepto Flor Amarilla. */
+@media(max-width:819px){
+  #urgencia-wrap .urgencia-nav{
+    display:none !important;
+  }
+
+  #urgencia-wrap .urgencia.urgencia-foto{
+    height:520px !important;
+    min-height:520px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    overflow:hidden !important;
+    padding:18px !important;
+  }
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{
+    flex:0 0 175px !important;
+    height:175px !important;
+    min-height:175px !important;
+    margin:-18px -18px 14px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.left{
+    flex:0 0 auto !important;
+    padding:0 !important;
+  }
+  #urgencia-wrap .urgencia h3{
+    font-size:22px !important;
+    line-height:1.08 !important;
+  }
+  #urgencia-wrap .urgencia-subtitulo{
+    font-size:13.5px !important;
+    line-height:1.25 !important;
+  }
+  #urgencia-wrap .urgencia-descripcion{
+    font-size:12.5px !important;
+    line-height:1.48 !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{
+    margin-top:auto !important;
+    width:100% !important;
+  }
+
+  /* Flor Amarilla: no hay bloque de imagen. */
+  #urgencia-wrap .urgencia.urgencia-sin-imagen{
+    height:520px !important;
+    min-height:520px !important;
+    padding:20px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-sin-imagen>.left{
+    padding:0 !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-sin-imagen>.btn-primary{
+    margin-top:auto !important;
+  }
+
+  #urgencia-wrap .urgencia:not(.urgencia-foto){
+    height:520px !important;
+    min-height:520px !important;
+    overflow:hidden !important;
+    padding:20px !important;
+  }
+  #urgencia-wrap .urgencia:not(.urgencia-foto)>.btn-primary{
+    margin-top:auto !important;
+  }
+}

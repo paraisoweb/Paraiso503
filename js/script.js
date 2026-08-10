@@ -499,11 +499,26 @@
           '<div class="p503-carrusel-photo-dots">' + dots + '</div>' +
         '</div>';
     }
+    const cierreHtml = (m.cierreTitulo || m.cierreTexto)
+      ? '<div class="p503-carrusel-cierre">' +
+          (m.cierreTitulo ? '<h4>' + escapeHtmlLocal(m.cierreTitulo) + '</h4>' : '') +
+          (m.cierreTexto ? '<p>' + escapeHtmlLocal(m.cierreTexto).replace(/\n/g, '<br>') + '</p>' : '') +
+        '</div>'
+      : '';
+    const acciones = Array.isArray(m.acciones) ? m.acciones : [];
+    const accionesHtml = acciones.length
+      ? '<div class="p503-carrusel-actions">' + acciones.map(function(a) {
+          const externo = a.tipo === 'externo';
+          return '<a class="' + (externo ? 'btn-secondary' : 'btn-primary') + '" href="' + escapeHtmlLocal(a.href || '#') + '"' +
+            (externo ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtmlLocal(a.texto || 'Conocer más') + '</a>';
+        }).join('') + '</div>'
+      : '';
     return (
       fotoHtml +
       '<div class="p503-carrusel-body">' +
         '<h3 class="p503-carrusel-titulo">' + escapeHtmlLocal(m.titulo || '') + '</h3>' +
         (m.texto ? '<p class="p503-carrusel-texto">' + escapeHtmlLocal(m.texto).replace(/\n/g, '<br>') + '</p>' : '') +
+        cierreHtml + accionesHtml +
       '</div>'
     );
   }
@@ -568,6 +583,15 @@
     const contentEl = modal.querySelector('.p503-carrusel-content');
     contentEl.innerHTML = buildContentHtml(m);
     initPhotoCarousel(contentEl);
+    contentEl.querySelectorAll('.p503-carrusel-actions a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        closeCarruselModal();
+        window.setTimeout(function() { target.scrollIntoView({behavior:'smooth', block:'start'}); }, 80);
+      });
+    });
     modal.querySelector('.p503-carrusel-scroll').scrollTop = 0;
     modal.classList.add('open');
     window.p503LockScroll();
@@ -1384,9 +1408,27 @@ function initSiteInteractions() {
         dots.forEach((d, di) => d.classList.toggle('active', di === index));
       }
 
-      if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-      if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
-      dots.forEach((d, di) => d.addEventListener('click', () => goTo(di)));
+      if (prevBtn) prevBtn.addEventListener('click', () => { goTo(index - 1); restartAuto(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { goTo(index + 1); restartAuto(); });
+      dots.forEach((d, di) => d.addEventListener('click', () => { goTo(di); restartAuto(); }));
+
+      // Rotación automática: suficientemente lenta para leer y se pausa al
+      // interactuar. Se desactiva si el usuario prefiere movimiento reducido.
+      let autoTimer = null;
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function stopAuto() {
+        if (autoTimer) { window.clearInterval(autoTimer); autoTimer = null; }
+      }
+      function startAuto() {
+        if (reduceMotion || slides.length <= 1 || autoTimer) return;
+        autoTimer = window.setInterval(() => goTo(index + 1), 7000);
+      }
+      function restartAuto() { stopAuto(); startAuto(); }
+      urgenciaCarousel.addEventListener('mouseenter', stopAuto);
+      urgenciaCarousel.addEventListener('mouseleave', startAuto);
+      urgenciaCarousel.addEventListener('focusin', stopAuto);
+      urgenciaCarousel.addEventListener('focusout', startAuto);
+      urgenciaCarousel.addEventListener('pointerdown', stopAuto);
 
       // Deslizar con el dedo (touch) o arrastrando con el mouse.
       let dragging = false;
@@ -1419,6 +1461,7 @@ function initSiteInteractions() {
       urgenciaTrack.addEventListener('pointercancel', endDrag);
 
       goTo(0);
+      startAuto();
     }
   }
 
