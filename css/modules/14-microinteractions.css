@@ -113,12 +113,47 @@ header.scrolled {
   pointer-events: none;
   transform: translateY(90px);
 }
+.fab-whats.fab-before-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(.9);
+}
 .fab-whats:hover {
   box-shadow: 0 8px 22px rgba(0,0,0,0.3);
   transform: scale(1.06);
 }
 .fab-whats.fab-hidden:hover {
   transform: translateY(90px);
+}
+.fab-whats.fab-before-content:hover {
+  transform: translateY(20px) scale(.9);
+}
+.fab-whats::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border: 2px solid rgba(37,211,102,.55);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.fab-whats.fab-attention {
+  animation: fab-gentle-nudge .85s ease both;
+}
+.fab-whats.fab-attention::after {
+  animation: fab-soft-halo .85s ease-out both;
+}
+@keyframes fab-gentle-nudge {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1); }
+  30% { transform: translateY(-1px) rotate(-4deg) scale(1.035); }
+  48% { transform: translateY(-1px) rotate(4deg) scale(1.035); }
+  66% { transform: translateY(0) rotate(-2deg) scale(1.02); }
+}
+@keyframes fab-soft-halo {
+  0% { opacity: 0; transform: scale(.92); }
+  28% { opacity: .75; }
+  100% { opacity: 0; transform: scale(1.28); }
 }
 /* Botón "Volver al inicio" */
 .back-to-top {
@@ -159,5 +194,9 @@ header.scrolled {
 @media (prefers-reduced-motion: reduce) {
   .reveal, .btn-primary, .btn-ghost, .btn-outline-dark, .adopt-btn, .nav-cta, .btn-toggle-progs, .btn-ver-detalle, .btn-ver-fotos, .pet-card, .caso-card, .ayudar-card, .red-card, .via-card, .req-col, .acc-item, .prog-photo img, .pet-photo img, .caso-ba .ba-item img, .pfc-photo img, .gallery-item img, .desktop-links a::after, .prog-icon, .prog-icon-lg, .pet-fav, .fab-whats, .back-to-top, header {
     transition-duration: .01ms !important;
+  }
+  .fab-whats.fab-attention,
+  .fab-whats.fab-attention::after {
+    animation: none !important;
   }
 }

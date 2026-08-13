@@ -757,10 +757,48 @@ function initSiteInteractions() {
   // se desplaza hacia abajo activamente, y reaparece al detenerse o al subir =====
   const fabWhats = document.querySelector('.fab-whats');
   if (fabWhats) {
+    const homeHero = document.body.classList.contains('home') ? document.querySelector('.hero') : null;
     let lastScrollY = window.scrollY;
     let hideTimer = null;
-    const showFab = () => fabWhats.classList.remove('fab-hidden');
+    let attentionTimer = null;
+    const reduceFabMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clearFabAttention = () => {
+      fabWhats.classList.remove('fab-attention');
+      if (attentionTimer) { window.clearTimeout(attentionTimer); attentionTimer = null; }
+    };
+    const triggerFabAttention = () => {
+      attentionTimer = null;
+      if (!document.hidden && !fabWhats.classList.contains('fab-hidden') && !fabWhats.classList.contains('fab-before-content')) {
+        fabWhats.classList.add('fab-attention');
+        window.setTimeout(() => fabWhats.classList.remove('fab-attention'), 900);
+      }
+      if (!reduceFabMotion && !document.hidden) {
+        attentionTimer = window.setTimeout(triggerFabAttention, 9000);
+      }
+    };
+    const scheduleFabAttention = () => {
+      clearFabAttention();
+      if (reduceFabMotion || document.hidden) return;
+      attentionTimer = window.setTimeout(triggerFabAttention, 9000);
+    };
+    const isAtPageEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    const updateFabForPageEnd = () => fabWhats.classList.toggle('fab-at-page-end', isAtPageEnd());
+    const showFab = () => {
+      if (isAtPageEnd()) {
+        fabWhats.classList.add('fab-at-page-end');
+        return;
+      }
+      fabWhats.classList.remove('fab-hidden', 'fab-at-page-end');
+    };
+    const updateFabForHero = () => {
+      if (!homeHero) return;
+      const revealAt = homeHero.offsetTop + (homeHero.offsetHeight * .78);
+      fabWhats.classList.toggle('fab-before-content', window.scrollY < revealAt);
+    };
     const onFabScroll = () => {
+      clearFabAttention();
+      updateFabForHero();
+      updateFabForPageEnd();
       const currentY = window.scrollY;
       const goingDown = currentY > lastScrollY + 4;
       const goingUp = currentY < lastScrollY - 4;
@@ -771,9 +809,23 @@ function initSiteInteractions() {
       }
       lastScrollY = currentY;
       clearTimeout(hideTimer);
-      hideTimer = setTimeout(showFab, 650); // reaparece al detenerse el scroll
+      hideTimer = setTimeout(() => {
+        showFab();
+        scheduleFabAttention();
+      }, 650); // reaparece al detenerse el scroll
     };
     window.addEventListener('scroll', onFabScroll, {passive:true});
+    window.addEventListener('resize', () => {
+      updateFabForHero();
+      updateFabForPageEnd();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearFabAttention();
+      else scheduleFabAttention();
+    });
+    updateFabForHero();
+    updateFabForPageEnd();
+    scheduleFabAttention();
   }
 
   // ===== Botón "Volver al inicio": aparece solo tras bajar una parte
@@ -848,19 +900,80 @@ function initSiteInteractions() {
 
   // ===== Menú móvil =====
   const mobileMenuEl = document.getElementById('mobileMenu');
-  document.getElementById('burgerBtn').addEventListener('click', () => {
-    const isOpen = mobileMenuEl.classList.toggle('open');
-    // Mientras el menú está abierto, el encabezado mantiene siempre el mismo
-    // color sólido (aunque estemos al inicio de la home), para que no se vea
-    // un fondo blanco de por medio al desplegarse.
-    if (headerEl) headerEl.classList.toggle('menu-open', isOpen);
+  const burgerBtn = document.getElementById('burgerBtn');
+  const burgerIcon = burgerBtn ? burgerBtn.querySelector('i') : null;
+  let mobileMenuOpen = false;
+
+  const setMobileMenu = (open) => {
+    if (!mobileMenuEl || !burgerBtn || mobileMenuOpen === open) return;
+    mobileMenuOpen = open;
+    mobileMenuEl.classList.toggle('open', open);
+    burgerBtn.classList.toggle('is-open', open);
+    burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burgerBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    if (burgerIcon) {
+      burgerIcon.classList.toggle('fa-bars', !open);
+      burgerIcon.classList.toggle('fa-xmark', open);
+    }
+    if (headerEl) headerEl.classList.toggle('menu-open', open);
+    if (open) window.p503LockScroll();
+    else window.p503UnlockScroll();
+  };
+
+  if (burgerBtn) burgerBtn.addEventListener('click', () => setMobileMenu(!mobileMenuOpen));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenuOpen) setMobileMenu(false);
   });
+
+  document.addEventListener('pointerdown', (e) => {
+    if (mobileMenuOpen && headerEl && !headerEl.contains(e.target)) setMobileMenu(false);
+  });
+
+  window.addEventListener('resize', () => {
+    if (mobileMenuOpen && window.innerWidth >= 820) setMobileMenu(false);
+  });
+
+  // En la portada, resalta en el menú la sección que realmente está visible.
+  // En las páginas independientes se conserva el aria-current escrito en su HTML.
+  if (document.body.classList.contains('home')) {
+    const mobileSectionLinks = Array.from(document.querySelectorAll('#mobileMenu a[href^="#"]'));
+    const trackedSections = mobileSectionLinks.map((link) => {
+      const section = document.querySelector(link.getAttribute('href'));
+      return section ? {link, section} : null;
+    }).filter(Boolean);
+    let sectionSpyQueued = false;
+
+    const updateActiveMobileSection = () => {
+      sectionSpyQueued = false;
+      // La sección activa es la que ocupa la parte superior útil de la página,
+      // justo debajo del encabezado fijo. Un margen corto evita que el cambio
+      // se adelante visualmente a la sección siguiente.
+      const headerBar = headerEl ? headerEl.querySelector('nav') : null;
+      const marker = (headerBar ? headerBar.offsetHeight : 0) + 24;
+      let active = trackedSections[0] || null;
+      trackedSections.forEach((item) => {
+        if (item.section.getBoundingClientRect().top <= marker) active = item;
+      });
+      mobileSectionLinks.forEach((link) => link.removeAttribute('aria-current'));
+      if (active) active.link.setAttribute('aria-current', 'page');
+    };
+
+    const queueSectionSpy = () => {
+      if (sectionSpyQueued) return;
+      sectionSpyQueued = true;
+      requestAnimationFrame(updateActiveMobileSection);
+    };
+    window.addEventListener('scroll', queueSectionSpy, {passive: true});
+    window.addEventListener('resize', queueSectionSpy);
+    updateActiveMobileSection();
+  }
+
   document.querySelectorAll('#mobileMenu a').forEach(a => {
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href') || '';
       const isSamePageAnchor = href.startsWith('#') && href.length > 1 && document.querySelector(href);
-      mobileMenuEl.classList.remove('open');
-      if (headerEl) headerEl.classList.remove('menu-open');
+      setMobileMenu(false);
       if (isSamePageAnchor) {
         // Evita que el navegador calcule el destino del scroll mientras el
         // menú todavía está colapsando: esperamos a que termine la
@@ -872,7 +985,7 @@ function initSiteInteractions() {
           const headerH = headerEl ? headerEl.offsetHeight : 0;
           const y = target.getBoundingClientRect().top + window.scrollY - headerH - 12;
           window.scrollTo({top: Math.max(y, 0), behavior: 'smooth'});
-        }, 260);
+        }, 280);
       }
     });
   });
@@ -1445,20 +1558,30 @@ function initSiteInteractions() {
       // Rotación automática: suficientemente lenta para leer y se pausa al
       // interactuar. Se desactiva si el usuario prefiere movimiento reducido.
       let autoTimer = null;
+      let resumeTimer = null;
       const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function stopAuto() {
         if (autoTimer) { window.clearInterval(autoTimer); autoTimer = null; }
       }
       function startAuto() {
-        if (reduceMotion || slides.length <= 1 || autoTimer) return;
+        if (reduceMotion || document.hidden || slides.length <= 1 || autoTimer) return;
         autoTimer = window.setInterval(() => goTo(index + 1), 7000);
       }
-      function restartAuto() { stopAuto(); startAuto(); }
+      function scheduleAutoResume() {
+        stopAuto();
+        if (resumeTimer) window.clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(startAuto, 8000);
+      }
+      function restartAuto() { scheduleAutoResume(); }
       urgenciaCarousel.addEventListener('mouseenter', stopAuto);
       urgenciaCarousel.addEventListener('mouseleave', startAuto);
       urgenciaCarousel.addEventListener('focusin', stopAuto);
-      urgenciaCarousel.addEventListener('focusout', startAuto);
+      urgenciaCarousel.addEventListener('focusout', scheduleAutoResume);
       urgenciaCarousel.addEventListener('pointerdown', stopAuto);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAuto();
+        else scheduleAutoResume();
+      });
 
       // Deslizar con el dedo (touch) o arrastrando con el mouse.
       let dragging = false;
@@ -1485,6 +1608,7 @@ function initSiteInteractions() {
         if (deltaX < -threshold) goTo(index + 1);
         else if (deltaX > threshold) goTo(index - 1);
         else goTo(index);
+        scheduleAutoResume();
       };
       urgenciaTrack.addEventListener('pointerup', endDrag);
       urgenciaTrack.addEventListener('pointerleave', endDrag);

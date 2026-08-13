@@ -22,6 +22,28 @@
   font-size: 14.5px;
   opacity: .85;
 }
+.adopta-hero .sanivet-adoption-credit {
+  max-width: 650px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  opacity: .78;
+}
+.sanivet-adoption-credit > i {
+  margin-right: 5px;
+  color: var(--mustard);
+}
+.sanivet-adoption-credit a {
+  color: var(--mustard);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(246,184,65,.45);
+  text-underline-offset: 3px;
+}
+.sanivet-adoption-credit a i {
+  margin-left: 3px;
+  font-size: .78em;
+}
 .pet-grid {
   display: flex;
   flex-direction: column;
@@ -121,6 +143,73 @@
   color: var(--ink-soft);
   font-size: 13.5px;
   line-height: 1.8;
+}
+.home-adoption-progress {
+  display: none;
+}
+@media (max-width:819px) {
+  #adopciones .pet-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    width: calc(100% + 16px);
+    margin-right: -16px;
+    padding-right: 14%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  #adopciones .pet-grid::-webkit-scrollbar {
+    display: none;
+  }
+  #adopciones .pet-grid .pet-card {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  /* Las tarjetas del carrusel no usan el desplazamiento vertical de entrada:
+     ese transform competía con el gesto horizontal al llegar a la sección. */
+  #adopciones .pet-grid .pet-card.reveal,
+  #adopciones .pet-grid .pet-card.reveal.show {
+    opacity: 1;
+    transform: none;
+    transition: box-shadow .25s ease;
+  }
+  .home-adoption-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .home-adoption-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .home-adoption-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(30,61,43,.22);
+    transition: width .2s ease, border-radius .2s ease, background .2s ease;
+  }
+  .home-adoption-dot.active {
+    width: 24px;
+    border-radius: 999px;
+    background: var(--clay);
+  }
+  .home-adoption-count {
+    min-width: 42px;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 700;
+  }
 }
 @media (min-width:820px) {
   .adopta-hero {

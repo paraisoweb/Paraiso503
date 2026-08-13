@@ -13,7 +13,7 @@ window.PARAISO503_CONTENT.estadisticas = {
   "estadisticas": [
     {
       "valor": "+300",
-      "etiqueta": "Vidas rescatadas"
+      "etiqueta": "Animalitos ayudados"
     },
     {
       "valor": "+160",

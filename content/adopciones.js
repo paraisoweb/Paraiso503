@@ -79,7 +79,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "De mirada curiosa y orejitas encantadoras. Busca una familia paciente que lo acompañe a crecer y descubrir el mundo.",
       "foto":"img/adopta/perro4.webp",
       "destacadoInicio": false
     },
@@ -89,7 +89,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Un pequeño de mirada dulce que espera un hogar donde pueda sentirse protegido, acompañado y muy querido.",
       "foto":"img/adopta/perro5.webp",
       "destacadoInicio": false
     },
@@ -99,7 +99,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "hembra",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Su carita expresiva y su lengua traviesa conquistan a cualquiera. Busca una familia que acompañe sus primeros juegos y aprendizajes.",
       "foto":"img/adopta/perro6.webp",
       "destacadoInicio": false
     },
@@ -109,7 +109,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Pequeño y de expresión tranquila. Está esperando crecer rodeado de protección, paciencia y mucho afecto.",
       "foto":"img/adopta/perro7.webp",
       "destacadoInicio": false
     },
@@ -119,7 +119,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "hembra",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Su mirada noble y su hocico oscuro la hacen inconfundible. Espera una familia que la cuide y la convierta en parte de su vida.",
       "foto":"img/adopta/perro8.webp",
       "destacadoInicio": false
     },
@@ -129,7 +129,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Un pequeño de pelaje canela y mirada atenta. Busca un hogar seguro donde pueda crecer acompañado y querido.",
       "foto":"img/adopta/perro9.webp",
       "destacadoInicio": false
     },
@@ -139,7 +139,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "hembra",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Hermoso cachorrito bebé, muy juguetón y cariñoso.",
+      "descripcion": "Su pelaje negro con detalles canela le da una apariencia única. Busca una familia responsable que le brinde estabilidad, cuidados y cariño.",
       "foto":"img/adopta/perro10.webp",
       "destacadoInicio": false
     },

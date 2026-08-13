@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Inter:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<link href="css/style.css?v=20260809-historias-organizadas" rel="stylesheet"/>
+<link href="css/style.css?v=20260813-footer-final" rel="stylesheet"/>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 <li><a href="programas.html">Programas</a></li>
 <li><a href="index.html#adopciones">Adopciones</a></li>
 <li><a href="index.html#historias">Historias</a></li>
-<li><a class="nav-contigo-link" href="#" id="navContigoLink"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+<li><a href="index.html#contigo" id="navContigoLink">Contigo</a></li>
 <li><a href="index.html#ayudar">Cómo ayudar</a></li>
 </ul>
 <div class="nav-right">
@@ -48,16 +48,17 @@
 </div>
 <a class="nav-cta nav-cta-ghost" href="adopciones.html">Adopta</a>
 <a class="nav-cta" href="index.html#donar">Dona</a>
-<button class="burger" id="burgerBtn"><i class="fa-solid fa-bars"></i></button>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú" class="burger" id="burgerBtn" type="button"><i class="fa-solid fa-bars"></i></button>
 </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
 <ul>
+<li><a href="index.html#inicio">Inicio</a></li>
 <li><a href="index.html#somos">Nosotros</a></li>
 <li><a href="programas.html">Programas</a></li>
 <li><a href="index.html#adopciones">Adopciones</a></li>
-<li><a href="index.html#historias">Historias</a></li>
-<li><a class="nav-contigo-link" href="#" id="navContigoLinkMobile"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+<li><a aria-current="page" href="historias.html">Historias</a></li>
+<li><a href="index.html#contigo" id="navContigoLinkMobile">Contigo</a></li>
 <li><a href="index.html#ayudar">Cómo ayudar</a></li>
 <li><a href="index.html#donar">Donar</a></li>
 </ul>
@@ -69,6 +70,7 @@
 <a aria-label="YouTube" href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I"><svg aria-hidden="true" class="social-ico" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="4" width="19" x="2.5" y="6"></rect><path d="M10.3 9.4 15.6 12l-5.3 2.6z" fill="currentColor" stroke="none"></path></svg></a>
 </div>
 </div>
+<p class="mobile-menu-message">Cada acción puede cambiar una vida.</p>
 </div>
 </header>
 <section class="adopta-hero">
@@ -132,13 +134,19 @@
 <p><i class="fa-regular fa-heart"></i> Cada imagen cuenta una historia. Gracias por ser parte de ellas.</p>
 </div>
 <footer>
-<div class="foot-top">
+<div class="footer-main">
+<div class="footer-identity">
 <div class="brand">
 <img alt="Paraíso 503" class="mark" src="img/logo/logo.webp"/>
 <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
 </div>
-<div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>
+<div class="footer-contact">
+<div class="loc"><i class="fa-solid fa-location-dot"></i><span>Ateos, La Libertad, El Salvador</span></div>
+<a href="mailto:paraiso.prj@gmail.com"><i class="fa-regular fa-envelope"></i><span>paraiso.prj@gmail.com</span></a>
 </div>
+</div>
+<div class="footer-navigation">
+<span class="footer-label">Explora</span>
 <nav class="foot-nav">
 <a href="index.html#somos">Nosotros</a>
 <a href="programas.html">Programas</a>
@@ -146,8 +154,9 @@
 <a href="index.html#historias">Historias</a>
 <a href="index.html#ayudar">Cómo ayudar</a>
 <a href="index.html#donar">Formas de donar</a>
-<a href="index.html#redes">Contacto</a>
 </nav>
+</div>
+</div>
 <hr/>
 <div class="bottom">
   <span>© 2026 Paraíso 503.</span>
@@ -169,7 +178,7 @@
 <script src="content/historias.js?v=20260809-historias-organizadas"></script>
 <script src="content/contigo.js?v=20260809-historias-fix"></script>
 <script src="content/galeria.js?v=20260809-historias-fix"></script>
-<script src="js/script.js?v=20260809-modal-scroll-fix"></script>
+<script src="js/script.js?v=20260813-footer-final"></script>
 <script src="js/content-loader.js?v=20260809-historias-fix"></script>
 </body>
 </html>

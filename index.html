@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Inter:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<link href="css/style.css?v=20260809-historias-organizadas" rel="stylesheet"/>
+<link href="css/style.css?v=20260813-footer-final" rel="stylesheet"/>
 <link as="image" fetchpriority="high" href="img/heroes/hero.webp" rel="preload"/>
 <script data-p503-seo="" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Paraíso 503","alternateName":"Paraíso de los Animales","url":"https://paraiso503.com/"}</script>
 <script data-p503-seo="" type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Paraíso 503","alternateName":"Paraíso de los Animales","url":"https://paraiso503.com/","logo":"https://paraiso503.com/img/logo/logo.webp","description":"Proyecto de rescate, alimentación, tratamiento, rehabilitación y adopción responsable de animales en El Salvador.","telephone":"+503 7747 6318","address":{"@type":"PostalAddress","addressRegion":"La Libertad","addressCountry":"SV"},"sameAs":["https://www.facebook.com/share/1DLVnJV9aw/","https://www.tiktok.com/@paraiso.503","https://youtube.com/@paraiso503sv"]}</script>
@@ -39,7 +39,7 @@
 <li><a href="#programas">Programas</a></li>
 <li><a href="#adopciones">Adopciones</a></li>
 <li><a href="#historias">Historias</a></li>
-<li><a class="nav-contigo-link" href="#contigo" id="navContigoLink"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+<li><a href="#contigo" id="navContigoLink">Contigo</a></li>
 <li><a href="#ayudar">Cómo ayudar</a></li>
 </ul>
 <div class="nav-right">
@@ -50,16 +50,17 @@
 </div>
 <a class="nav-cta nav-cta-ghost" href="adopciones.html">Adopta</a>
 <a class="nav-cta" href="#donar">Dona</a>
-<button class="burger" id="burgerBtn"><i class="fa-solid fa-bars"></i></button>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú" class="burger" id="burgerBtn" type="button"><i class="fa-solid fa-bars"></i></button>
 </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
 <ul>
-<li><a href="#inicio">Inicio</a><a href="#somos">Nosotros</a></li>
+<li><a aria-current="page" href="#inicio">Inicio</a></li>
+<li><a href="#somos">Nosotros</a></li>
 <li><a href="#programas">Programas</a></li>
 <li><a href="#adopciones">Adopciones</a></li>
 <li><a href="#historias">Historias</a></li>
-<li><a class="nav-contigo-link" href="#contigo" id="navContigoLinkMobile"><i class="fa-solid fa-heart"></i> Contigo <i class="fa-solid fa-heart"></i></a></li>
+<li><a href="#contigo" id="navContigoLinkMobile">Contigo</a></li>
 <li><a href="#ayudar">Cómo ayudar</a></li>
 <li><a href="#donar">Donar</a></li>
 </ul>
@@ -71,6 +72,7 @@
 <a aria-label="YouTube" href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I"><svg aria-hidden="true" class="social-ico" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="4" width="19" x="2.5" y="6"></rect><path d="M10.3 9.4 15.6 12l-5.3 2.6z" fill="currentColor" stroke="none"></path></svg></a>
 </div>
 </div>
+<p class="mobile-menu-message">Cada acción puede cambiar una vida.</p>
 </div>
 </header>
 <section class="hero" id="inicio">
@@ -79,9 +81,9 @@
 <div class="hero-inner">
 <div class="eyebrow"><i class="fa-solid fa-heart"></i> Donde cada vida importa</div>
 <h1 class="hero-title">Toda vida merece una segunda oportunidad</h1>
-<p class="hero-sub">Brindamos alimento, cuidados y esperanza a perros en situación de abandono. Con tu ayuda, podemos cambiar su historia.</p>
+<p class="hero-sub">Brindamos alimento, cuidados y esperanza a animalitos en situación de abandono. Con tu ayuda, podemos cambiar su historia.</p>
 <div class="cta-row">
-<a class="btn-primary" href="#programas">Conoce nuestros programas</a>
+<a class="btn-primary" href="#programas">Programas</a>
 <a class="btn-ghost" href="#donar">Dona ahora</a>
 </div>
 </div>
@@ -92,11 +94,11 @@
 </a>
 <a aria-label="Bajar" class="scroll-cue-arrow" href="#somos"><i class="fa-solid fa-chevron-down"></i></a>
 </section><div class="stats">
-<div class="stats-inner">
-<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-paw"></i><div class="stat-copy"><b>+300</b><span>animalitos rescatados</span></div></div>
-<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-bowl-food"></i><div class="stat-copy"><b>+160</b><span>perritos en la ruta de alimentación</span></div></div>
-<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-heart"></i><div class="stat-copy"><b>9</b><span>programas activos</span></div></div>
-<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-shield-heart"></i><div class="stat-copy"><b>100%</b><span>transparencia en el uso de donaciones</span></div></div>
+<div class="stats-inner reveal">
+<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-paw"></i><div class="stat-copy"><b>+300</b><span>Animalitos ayudados</span></div></div>
+<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-bowl-food"></i><div class="stat-copy"><b>+160</b><span>Animalitos alimentados cada día</span></div></div>
+<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-heart"></i><div class="stat-copy"><b>+12</b><span>programas activos</span></div></div>
+<div class="stat"><i aria-hidden="true" class="stat-icon fa-solid fa-shield-heart"></i><div class="stat-copy"><b>100%</b><span>Compromiso con la transparencia</span></div></div>
 </div>
 </div>
 <section id="urgencia-wrap">
@@ -171,15 +173,15 @@
 </div>
 </div>
 </div>
-<div class="toggle-row">
-<button aria-controls="restWrap" aria-expanded="false" class="btn-outline-dark btn-toggle-progs" id="toggleProgs">
+<div class="toggle-row toggle-row--single">
+<button aria-controls="restWrap" aria-expanded="false" class="btn-outline-dark btn-toggle-progs" id="toggleProgs" hidden>
 <span id="toggleLabel">Mostrar todos los programas</span>
 <span class="toggle-arrow" id="toggleArrow"><i class="fa-solid fa-chevron-down"></i></span>
 </button>
-<div class="or-divider"><span>o</span></div>
-<a class="btn-ver-detalle" href="programas.html"><i class="fa-solid fa-book-open"></i> Ver todos los programas en detalle</a>
+<div class="or-divider" hidden><span>o</span></div>
+<a class="btn-ver-detalle" href="programas.html"><i class="fa-solid fa-book-open"></i><span>Ver todos los programas en detalle</span><i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
 </div>
-<p class="toggle-hint">Te llevará a la página completa de programas.</p>
+<p class="toggle-hint" hidden>Te llevará a la página completa de programas.</p>
 <div class="rest-wrap" id="restWrap">
 <div class="prog-list" id="progListExpandibles">
 <div class="prog-card">
@@ -295,6 +297,7 @@
 </div>
 </div>
 </div>
+<div aria-label="Progreso del carrusel de adopciones" class="home-adoption-progress" id="homeAdoptionProgress"></div>
 <div class="historias-cta">
 <a class="btn-outline-dark" href="adopciones.html" style="display:inline-flex; width:auto;">Ver todos los perritos en adopción →</a>
 </div>
@@ -333,8 +336,8 @@
 </div>
 </div>
 </div>
-<div class="historias-cta">
-<a class="btn-outline-dark" href="historias.html" style="display:inline-flex; width:auto;">Conocer más historias →</a>
+<div class="historias-cta historias-cta--primary">
+<a class="historias-more-btn" href="historias.html"><i class="fa-solid fa-book-open"></i> Ver todas las historias <i class="fa-solid fa-arrow-right"></i></a>
 </div>
 <div class="sanivet-credit">
 <span class="sanivet-credit-icon"><i class="fa-solid fa-stethoscope"></i></span>
@@ -399,7 +402,6 @@
 <div class="kicker">Toda ayuda suma</div>
 <h2 class="section-title">Formas de donar</h2>
 <p class="lede">Elige el método que te resulte más cómodo. Cada aporte nos ayuda a seguir cambiando vidas.</p>
-<div class="monthly-note"><i class="fa-solid fa-hand-holding-heart"></i> 💛 Conviértete en donante mensual. Escríbenos por WhatsApp.</div>
 <div class="tabs">
 <button class="tab-btn active" data-tab="local">Local</button>
 <button class="tab-btn" data-tab="intl">Internacional</button>
@@ -420,7 +422,11 @@
 <div class="via-card"><div class="icon"><i class="fa-solid fa-paw"></i></div><div><h4>Visitas solidarias</h4><p>Visítanos, conoce a los perritos y comparte tu apoyo en persona — La Libertad, El Salvador.</p></div></div>
 <div class="via-card"><div class="icon"><i class="fa-solid fa-box"></i></div><div><h4>Donaciones físicas</h4><p>Si no puedes trasladarte, escríbenos y coordinamos la recolección.</p></div></div>
 </div>
-<a class="btn-primary" href="#redes" style="display:block; margin-top:20px;">Escríbenos por WhatsApp →</a>
+<div class="monthly-donor-cta">
+<span class="monthly-donor-icon"><i class="fa-regular fa-calendar"></i><i class="fa-regular fa-heart"></i></span>
+<div class="monthly-donor-copy"><h3>¿Quieres ayudar cada mes?</h3><p>Escríbenos por WhatsApp y te explicamos cómo convertirte en donante mensual.</p></div>
+<a class="monthly-donor-btn" href="https://wa.me/50377476318?text=Hola%2C%20quiero%20apoyar%20a%20Para%C3%ADso%20503%20como%20donante%20mensual.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%3F" rel="noopener" target="_blank">Quiero ser donante mensual <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 <p class="donar-note">Cada gesto de tu parte hace posible un futuro mejor para ellos. ¡Gracias por ser parte de Paraíso!</p>
 </div>
 </section>
@@ -430,32 +436,35 @@
 <h2 class="section-title">Síguenos y sé parte</h2>
 <div class="redes-grid redes-grid--paraiso">
 <!-- Cada tarjeta ya es un enlace: cambia el href="#" por el link real de cada red -->
-<a class="red-card" href="https://wa.me/50377476318"><div class="ico" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></div><h5>WhatsApp</h5><span>7747-6318</span></a>
 <a class="red-card" href="https://www.facebook.com/share/1DLVnJV9aw/"><div class="ico" style="background:#1877F2;"><i class="fa-brands fa-facebook-f"></i></div><h5>Facebook</h5><span>@paraiso.503</span></a>
 <a class="red-card" href="https://www.tiktok.com/@paraiso.503?_r=1&amp;_t=ZS-98MelIoNwgP"><div class="ico" style="background:#111;"><i class="fa-brands fa-tiktok"></i></div><h5>TikTok</h5><span>@paraiso.503</span></a>
 <a class="red-card" href="https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I"><div class="ico" style="background:#FF0000;"><i class="fa-brands fa-youtube"></i></div><h5>YouTube</h5><span>@paraiso503sv</span></a>
-<a class="red-card" href="mailto:paraiso.prj@gmail.com"><div class="ico" style="background:#4285F4;"><i class="fa-solid fa-envelope"></i></div><h5>Correo</h5><span>paraiso.prj@gmail.com</span></a>
 </div>
-<div class="redes-sanivet">
-<div class="kicker">Nuestra aliada veterinaria</div>
-<h3 class="section-title" style="font-size:22px;">Clínica Veterinaria Sanivet</h3>
-<p class="lede">Conoce nuestros casos clínicos, consejos de salud y el trabajo veterinario que hace posible muchas de las recuperaciones de Paraíso 503.</p>
-<div class="redes-grid redes-grid--sanivet">
-<!-- Redes oficiales de Clínica Veterinaria Sanivet -->
-<a class="red-card" href="https://www.facebook.com/share/19B9vBGdKC/" rel="noopener" target="_blank"><div class="ico" style="background:#1877F2;"><i class="fa-brands fa-facebook-f"></i></div><h5>Facebook</h5><span>Visitar Facebook</span></a>
-<a class="red-card" href="https://www.tiktok.com/@veterinariasanivet?_r=1&amp;_t=ZS-98k9EyuiCoe" rel="noopener" target="_blank"><div class="ico" style="background:#111;"><i class="fa-brands fa-tiktok"></i></div><h5>TikTok</h5><span>@veterinariasanivet</span></a>
+<div class="redes-sanivet sanivet-collab">
+<span class="sanivet-collab-icon"><i class="fa-solid fa-stethoscope"></i></span>
+<div class="sanivet-collab-copy"><div class="kicker">Atención veterinaria</div><h3>Clínica Veterinaria Sanivet</h3></div>
+<p class="sanivet-collab-description">En Clínica Veterinaria Sanivet se realizan consultas, exámenes y tratamientos de varios de los animalitos atendidos por Paraíso 503. Conoce su trabajo y sus recomendaciones de salud.</p>
+<div class="sanivet-collab-links">
+<a href="https://www.facebook.com/share/19B9vBGdKC/" rel="noopener" target="_blank"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+<a href="https://www.tiktok.com/@veterinariasanivet?_r=1&amp;_t=ZS-98k9EyuiCoe" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
 </div>
 </div>
 </div>
 </section>
 <footer>
-<div class="foot-top">
+<div class="footer-main">
+<div class="footer-identity">
 <div class="brand">
 <img alt="Paraíso 503" class="mark" src="img/logo/logo.webp"/>
 <div><b>Paraíso 503</b><div class="tag">Rescatamos, cuidamos y damos una segunda oportunidad.</div></div>
 </div>
-<div class="loc"><i class="fa-solid fa-location-dot"></i> La Libertad, El Salvador</div>
+<div class="footer-contact">
+<div class="loc"><i class="fa-solid fa-location-dot"></i><span>Ateos, La Libertad, El Salvador</span></div>
+<a href="mailto:paraiso.prj@gmail.com"><i class="fa-regular fa-envelope"></i><span>paraiso.prj@gmail.com</span></a>
 </div>
+</div>
+<div class="footer-navigation">
+<span class="footer-label">Explora</span>
 <nav class="foot-nav">
 <a href="#somos">Nosotros</a>
 <a href="programas.html">Programas</a>
@@ -463,8 +472,9 @@
 <a href="#historias">Historias</a>
 <a href="#ayudar">Cómo ayudar</a>
 <a href="#donar">Formas de donar</a>
-<a href="#redes">Contacto</a>
 </nav>
+</div>
+</div>
 <hr/>
 <div class="bottom">
 <span>© 2026 Paraíso 503.</span>
@@ -485,7 +495,7 @@
 <script src="content/adopciones.js?v=20260809-historias-fix"></script>
 <script src="content/historias.js?v=20260809-historias-organizadas"></script>
 <script src="content/contigo.js?v=20260809-historias-fix"></script>
-<script src="js/script.js?v=20260809-modal-scroll-fix"></script>
-<script src="js/content-loader.js?v=20260809-historias-fix"></script>
+<script src="js/script.js?v=20260813-footer-final"></script>
+<script src="js/content-loader.js?v=20260813-adopciones-estables"></script>
 </body>
 </html>

@@ -73,6 +73,28 @@
   margin-top: 22px;
   text-align: center;
 }
+.historias-cta--primary { margin-top: 26px; }
+.historias-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(100%,540px);
+  min-height: 54px;
+  margin: 0 auto;
+  padding: 0 22px;
+  border-radius: 14px;
+  background: var(--green-dark);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(30,61,43,.16);
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.historias-more-btn:hover {
+  background: var(--green-deep);
+  box-shadow: 0 10px 25px rgba(30,61,43,.2);
+  transform: translateY(-2px);
+}
 /* =============================================================================
    HISTORIAS DEL PARAÍSO — PULIDO VISUAL Y UX
    Bloque autocontenido: no toca la estructura ni la arquitectura de arriba,

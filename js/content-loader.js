@@ -144,8 +144,13 @@
   function renderEstadisticas(data) {
     const cont = document.querySelector('.stats-inner');
     if (!cont || !data || !Array.isArray(data.estadisticas)) return;
-    cont.innerHTML = data.estadisticas.map(s =>
-      '<div class="stat"><b>' + escapeHtml(s.valor) + '</b><span>' + escapeHtml(s.etiqueta) + '</span></div>'
+    const iconos = ['fa-paw', 'fa-bowl-food', 'fa-heart', 'fa-shield-heart'];
+    cont.innerHTML = data.estadisticas.map((s, index) =>
+      '<div class="stat">' +
+        '<i aria-hidden="true" class="stat-icon fa-solid ' + iconos[index % iconos.length] + '"></i>' +
+        '<b>' + escapeHtml(s.valor) + '</b>' +
+        '<span>' + escapeHtml(s.etiqueta) + '</span>' +
+      '</div>'
     ).join('');
   }
 
@@ -193,11 +198,14 @@
         '</div>'
       : '';
     const modalJson = escapeHtml(JSON.stringify(t.modal || {}));
+    const fechaHtml = t.fecha
+      ? '<span class="urgencia-fecha">' + escapeHtml(t.fecha) + '</span>'
+      : '';
     return (
       '<div class="urgencia urgencia-foto reveal' + (t.sinImagen ? ' urgencia-sin-imagen' : '') + (t.mapaEmbed ? ' urgencia-con-mapa' : '') + '">' +
         fotoHtml +
         '<div class="left">' +
-          '<span class="tagtop">' + escapeHtml(t.etiqueta) + '</span>' +
+          '<div class="urgencia-meta"><span class="tagtop">' + escapeHtml(t.etiqueta) + '</span>' + fechaHtml + '</div>' +
           '<h3>' + escapeHtml(t.titulo) + '</h3>' +
           (t.subtitulo ? '<div class="urgencia-subtitulo">' + escapeHtml(t.subtitulo) + '</div>' : '') +
           '<p class="urgencia-descripcion">' + escapeHtml(t.descripcion) + '</p>' +
@@ -487,6 +495,77 @@
     );
   }
 
+  // En la portada móvil, las tres adopciones destacadas se recorren a mano.
+  // Este control no usa temporizadores: conserva la lectura tranquila de cada
+  // ficha y actualiza puntos + contador según la tarjeta visible.
+  function initHomeAdoptionCarousel(grid) {
+    const progress = document.getElementById('homeAdoptionProgress');
+    if (!grid || !progress) return;
+
+    const cards = Array.from(grid.querySelectorAll('.pet-card'));
+    if (!cards.length) {
+      progress.innerHTML = '';
+      return;
+    }
+
+    progress.innerHTML =
+      '<div class="home-adoption-dots" role="group" aria-label="Elegir adopción">' +
+        cards.map((card, index) =>
+          '<button type="button" class="home-adoption-dot' + (index === 0 ? ' active' : '') + '" aria-label="Ver animalito ' + (index + 1) + '" aria-pressed="' + (index === 0 ? 'true' : 'false') + '"></button>'
+        ).join('') +
+      '</div>' +
+      '<span class="home-adoption-count" aria-live="polite">1 de ' + cards.length + '</span>';
+
+    const dots = Array.from(progress.querySelectorAll('.home-adoption-dot'));
+    const count = progress.querySelector('.home-adoption-count');
+    let framePending = false;
+
+    function setActive(index) {
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      count.textContent = (index + 1) + ' de ' + cards.length;
+    }
+
+    function updateFromScroll() {
+      const left = grid.scrollLeft;
+      let nearest = 0;
+      let nearestDistance = Infinity;
+      cards.forEach((card, index) => {
+        const distance = Math.abs(card.offsetLeft - grid.offsetLeft - left);
+        if (distance < nearestDistance) {
+          nearest = index;
+          nearestDistance = distance;
+        }
+      });
+      setActive(nearest);
+      framePending = false;
+    }
+
+    grid.addEventListener('scroll', () => {
+      if (!framePending) {
+        framePending = true;
+        window.requestAnimationFrame(updateFromScroll);
+      }
+    }, { passive: true });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        grid.scrollTo({ left: cards[index].offsetLeft - grid.offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    // Asegura que el primer dibujo del carrusel siempre comience en la
+    // primera tarjeta, incluso si el navegador restauró una posición previa.
+    grid.scrollLeft = 0;
+    window.requestAnimationFrame(() => {
+      grid.scrollLeft = 0;
+      setActive(0);
+    });
+  }
+
   function renderAdopciones(data, config) {
     if (!data || !Array.isArray(data.animalitos)) return;
     const whatsappAdopciones = (config && config.contacto && config.contacto.whatsappAdopciones) || '';
@@ -496,6 +575,7 @@
     if (previewGrid) {
       const destacados = data.animalitos.filter(a => a.destacadoInicio);
       previewGrid.innerHTML = destacados.map(a => petCardHtml(a, whatsappAdopciones)).join('');
+      initHomeAdoptionCarousel(previewGrid);
     }
 
     // Grilla completa en adopciones.html (con filtros)

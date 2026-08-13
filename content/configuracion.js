@@ -20,17 +20,10 @@ window.PARAISO503_CONTENT.configuracion = {
     "whatsappPrincipal": "50377476318",
     "whatsappAdopciones": "50374055877",
     "correo": "paraiso.prj@gmail.com",
-    "ubicacion": "La Libertad, El Salvador"
+    "ubicacion": "Ateos, La Libertad, El Salvador"
   },
   "_ayuda_redesSociales": "Para agregar/quitar una red social, agrega/quita un objeto de este arreglo. 'icono' es la clase de Font Awesome (https://fontawesome.com/icons).",
   "redesSociales": [
-    {
-      "nombre": "WhatsApp",
-      "icono": "fa-brands fa-whatsapp",
-      "color": "#25D366",
-      "url": "https://wa.me/50377476318",
-      "dato": "7747-6318"
-    },
     {
       "nombre": "Facebook",
       "icono": "fa-brands fa-facebook-f",
@@ -51,13 +44,6 @@ window.PARAISO503_CONTENT.configuracion = {
       "color": "#FF0000",
       "url": "https://youtube.com/@paraiso503sv?si=a-SLSISN2jKq_B2I",
       "dato": "@paraiso503sv"
-    },
-    {
-      "nombre": "Correo",
-      "icono": "fa-solid fa-envelope",
-      "color": "#4285F4",
-      "url": "mailto:paraiso.prj@gmail.com",
-      "dato": "paraiso.prj@gmail.com"
     }
   ],
   "_ayuda_donacion": "Cada arreglo (local, internacional, persona) es una pestaña de la sección 'Formas de donar'. 'numero' es opcional: si existe, la tarjeta muestra un botón para copiarlo. 'titular' es opcional: si existe, la tarjeta muestra un botón para copiar ese nombre (ej. el titular de una cuenta bancaria). 'url' es opcional: si existe, la tarjeta completa se convierte en un enlace que abre esa dirección (ej. PayPal) y no se deben combinar 'numero'/'titular' con 'url'. 'logo' permite mostrar el archivo de marca y 'marca' aplica ajustes visuales específicos del logo.",

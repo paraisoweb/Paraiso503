@@ -103,6 +103,13 @@
 .btn-toggle-progs {
   background: #fff;
 }
+/* Se conserva el control en el HTML por si vuelve a habilitarse en el futuro,
+   pero queda retirado por completo de la portada actual. */
+.toggle-row--single .btn-toggle-progs,
+.toggle-row--single .or-divider,
+.toggle-hint[hidden] {
+  display: none !important;
+}
 .toggle-arrow {
   display: inline-flex;
   transition: transform .3s ease;
@@ -145,4 +152,18 @@
   color: var(--ink-soft);
   font-size: 11.5px;
   text-align: center;
+}
+.toggle-row--single {
+  max-width: 680px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.toggle-row--single .btn-ver-detalle {
+  min-height: 58px;
+  justify-content: space-between;
+  padding: 16px 22px;
+  box-shadow: 0 8px 22px rgba(30,61,43,.16);
+}
+.toggle-row--single .btn-ver-detalle span {
+  flex: 1;
 }

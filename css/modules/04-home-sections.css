@@ -34,7 +34,7 @@
 /* ===== Estadísticas renovadas SOLO EN MÓVIL ===== */
 @media (max-width:819px) {
   .stats {
-    padding: 14px 14px 18px;
+    padding: 16px 14px 72px;
     background: var(--green-deep);
   }
 
@@ -42,64 +42,74 @@
     position: relative;
     grid-template-columns: repeat(2,minmax(0,1fr));
     gap: 0;
-    padding: 10px;
-    border: 1px solid rgba(255,255,255,.07);
+    padding: 12px;
+    border: 1px solid rgba(244,185,66,.16);
     border-radius: 22px;
-    background: linear-gradient(145deg, rgba(30,61,43,.98), rgba(18,40,27,.98));
-    box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    background: linear-gradient(145deg, rgba(30,61,43,.96), rgba(20,48,32,.98));
+    box-shadow: 0 10px 24px rgba(0,0,0,.13);
     overflow: hidden;
   }
 
   .stat {
     position: relative;
     display: flex;
-    align-items: flex-start;
-    gap: 11px;
-    min-height: 104px;
-    padding: 16px 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 126px;
+    padding: 15px 10px 17px;
+    text-align: center;
   }
 
   .stat:nth-child(odd)::after {
     content: '';
     position: absolute;
-    top: 16px;
+    top: 20px;
     right: 0;
-    bottom: 16px;
+    bottom: 20px;
     width: 1px;
-    background: rgba(255,255,255,.12);
+    background: rgba(244,185,66,.15);
   }
 
   .stat:nth-child(-n+2)::before {
     content: '';
     position: absolute;
-    left: 14px;
-    right: 14px;
+    right: 16px;
     bottom: 0;
+    left: 16px;
     height: 1px;
-    background: rgba(255,255,255,.10);
+    background: rgba(244,185,66,.15);
   }
 
   .stat-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 32px;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 7px;
     color: var(--mustard);
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .stat b {
-    font-size: 25px;
+    font-size: 29px;
     letter-spacing: -.02em;
   }
 
   .stat span {
-    margin-top: 6px;
+    max-width: 138px;
+    margin-top: 7px;
     color: #e4e8df;
     font-size: 11.5px;
-    line-height: 1.3;
+    line-height: 1.32;
+  }
+}
+
+@media (min-width:820px) {
+  .stats-inner.reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -108,20 +118,19 @@
     padding-inline: 10px;
   }
   .stats-inner {
-    padding: 7px;
+    padding: 9px;
   }
   .stat {
-    gap: 8px;
-    padding: 14px 10px;
+    min-height: 118px;
+    padding: 13px 7px 15px;
   }
   .stat-icon {
-    flex-basis: 27px;
-    width: 27px;
-    height: 27px;
-    font-size: 17px;
+    width: 22px;
+    height: 22px;
+    font-size: 15px;
   }
   .stat b {
-    font-size: 22px;
+    font-size: 26px;
   }
   .stat span {
     font-size: 10.5px;
@@ -336,6 +345,51 @@ h2.section-title {
 @media (prefers-reduced-motion: reduce) {
   .urgencia-track {
     transition: none !important;
+  }
+}
+
+/* Actualidad compacta: presentación de las tarjetas, no de sus modales. */
+.urgencia-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+.urgencia-fecha {
+  color: rgba(255,248,239,.76);
+  font-size: 11px;
+  font-weight: 600;
+}
+@media (max-width:819px) {
+  #urgencia-wrap .urgencia {
+    background: #9f4f31 !important;
+    border-color: rgba(78,34,21,.20) !important;
+    border-top-color: #9f4f31 !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto,
+  #urgencia-wrap .urgencia.urgencia-sin-imagen,
+  #urgencia-wrap .urgencia:not(.urgencia-foto) {
+    height: 480px !important;
+    min-height: 480px !important;
+  }
+  #urgencia-wrap .urgencia.urgencia-foto > .btn-primary,
+  #urgencia-wrap .urgencia.urgencia-sin-imagen > .btn-primary,
+  #urgencia-wrap .urgencia:not(.urgencia-foto) > .btn-primary {
+    margin-top: 16px !important;
+  }
+  #urgencia-wrap .urgencia-dots {
+    gap: 7px;
+    margin-top: 13px;
+  }
+  #urgencia-wrap .urgencia-dots button {
+    width: 8px;
+    height: 8px;
+    background: rgba(30,61,43,.28);
+  }
+  #urgencia-wrap .urgencia-dots button.active {
+    width: 28px;
+    background: #9f4f31;
   }
 }
 /* QUIENES SOMOS */

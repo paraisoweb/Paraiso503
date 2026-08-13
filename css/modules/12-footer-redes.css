@@ -265,6 +265,33 @@ footer .bottom {
   }
 }
 
+/* ===== Cierre compacto: Sanivet, footer institucional y WhatsApp ===== */
+.sanivet-collab{grid-template-columns:56px minmax(0,1fr);gap:10px 16px;max-width:1040px;padding:18px 20px}
+.sanivet-collab-icon{width:54px;height:54px;font-size:22px}
+.sanivet-collab-copy .kicker{font-size:19px;line-height:1.05}
+.sanivet-collab-copy h3{margin:3px 0 0;font-size:20px;line-height:1.12}
+.sanivet-collab-description{grid-column:1/-1;margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.5}
+.sanivet-collab-links{margin-top:2px}
+footer{padding:32px 22px 26px}
+footer .footer-main{display:grid;gap:28px;max-width:1120px;margin:0 auto}
+footer .footer-identity{display:grid;gap:17px}
+footer .footer-contact{display:grid;gap:10px}
+footer .footer-contact .loc,footer .footer-contact a{display:flex;align-items:center;gap:9px;color:#cfd6c9;font-size:12.5px}
+footer .footer-contact i{width:16px;color:var(--mustard);text-align:center}
+footer .footer-label{display:block;margin-bottom:12px;color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+footer nav.foot-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 20px;margin:0}
+footer hr{max-width:1120px;margin:24px auto 18px}
+footer .bottom{max-width:1120px;margin:0 auto}
+.fab-whats.fab-at-page-end{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(18px) scale(.88)!important}
+@media(min-width:820px){
+  .sanivet-collab{grid-template-columns:56px minmax(0,1fr) auto;gap:8px 18px;padding:18px 24px}
+  .sanivet-collab-copy{align-self:end}
+  .sanivet-collab-description{grid-column:2;align-self:start;max-width:660px}
+  .sanivet-collab-links{grid-column:3;grid-row:1/3;align-self:center;min-width:240px}
+  footer .footer-main{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);align-items:start}
+  footer nav.foot-nav{grid-template-columns:repeat(2,minmax(130px,1fr))}
+}
+
 /* ===== Ajuste temporal de redes: tarjetas reorganizadas ===== */
 .redes-grid--paraiso{
   grid-template-columns:repeat(6,minmax(0,1fr));
@@ -328,4 +355,195 @@ body.home:has(footer:hover) .fab-whats{bottom:90px}
   .legal-home-link{font-size:0}
   .legal-home-link i{font-size:16px}
   .legal-page .legal-header nav{padding-left:14px;padding-right:14px}
+}
+
+/* ===== Cierre final: donación mensual + redes + colaboración Sanivet ===== */
+.monthly-donor-cta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 14px;
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(135deg,#f4b942,#ffc955);
+  color: var(--green-deep);
+  box-shadow: 0 10px 28px rgba(0,0,0,.13);
+}
+.monthly-donor-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+}
+.monthly-donor-icon .fa-heart {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 3px;
+  border-radius: 50%;
+  background: #f8c75d;
+  font-size: 16px;
+}
+.monthly-donor-copy h3 { margin-bottom: 4px; font-size: 17px; }
+.monthly-donor-copy p { font-size: 12.5px; line-height: 1.5; }
+.monthly-donor-btn {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+  padding: 11px 16px;
+  border-radius: 14px;
+  background: var(--green-deep);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.monthly-donor-btn:hover {
+  background: var(--green-dark);
+  box-shadow: 0 8px 18px rgba(18,40,27,.22);
+  transform: translateY(-2px);
+}
+.redes-grid--paraiso {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.redes-grid--paraiso .red-card,
+.redes-grid--paraiso .red-card:nth-child(4),
+.redes-grid--paraiso .red-card:nth-child(5) { grid-column: auto; }
+.institutional-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 700px;
+  margin: 28px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(30,61,43,.13);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  text-align: center;
+}
+.institutional-contact span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(30,61,43,.1);
+  color: var(--green-dark);
+}
+.institutional-contact b { color: var(--green-dark); }
+.sanivet-collab {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px 18px;
+  max-width: 920px;
+  margin: 34px auto 0;
+  padding: 24px;
+  border: 1px solid rgba(201,104,61,.35);
+  border-radius: 24px;
+  background: linear-gradient(135deg,#fffdf8,#f6eddf);
+  box-shadow: 0 8px 24px rgba(30,61,43,.07);
+}
+.sanivet-collab-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border: 2px solid rgba(30,61,43,.22);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 27px;
+}
+.sanivet-collab-copy .kicker { margin-bottom: 2px; }
+.sanivet-collab-copy h3 {
+  margin-bottom: 6px;
+  color: var(--green-deep);
+  font-family: 'Fraunces',serif;
+  font-size: 22px;
+}
+.sanivet-collab-copy p { color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+.sanivet-collab-links {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+}
+.sanivet-collab-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid rgba(30,61,43,.22);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.sanivet-collab-links a:first-child i { color: #1877f2; }
+.sanivet-collab-links a:last-child i { color: #111; }
+@media (max-width:430px) {
+  .redes-grid--paraiso { gap: 10px; }
+  .redes-grid--paraiso .red-card { min-width: 0; padding: 18px 7px; }
+  .redes-grid--paraiso .red-card span { font-size: 9px; }
+  .institutional-contact { flex-wrap: wrap; }
+}
+@media (min-width:820px) {
+  .monthly-donor-cta {
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    padding: 20px 24px;
+  }
+  .monthly-donor-btn {
+    grid-column: auto;
+    max-width: 260px;
+    padding: 12px 22px;
+  }
+  .sanivet-collab {
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    padding: 28px 34px;
+  }
+  .sanivet-collab-links {
+    grid-column: auto;
+    min-width: 250px;
+  }
+}
+
+/* Ajustes finales con prioridad sobre los estilos anteriores. */
+.sanivet-collab{grid-template-columns:56px minmax(0,1fr);gap:10px 16px;max-width:1040px;padding:18px 20px}
+.sanivet-collab-icon{width:54px;height:54px;font-size:22px}
+.sanivet-collab-copy .kicker{font-size:19px;line-height:1.05}
+.sanivet-collab-copy h3{margin:3px 0 0;font-size:20px;line-height:1.12}
+.sanivet-collab-description{grid-column:1/-1;margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.5}
+.sanivet-collab-links{grid-column:1/-1;margin-top:2px}
+footer{padding:32px 22px 26px}
+footer .footer-main{display:grid;gap:28px;max-width:1120px;margin:0 auto}
+footer .footer-identity{display:grid;gap:17px}
+footer .footer-contact{display:grid;gap:10px}
+footer .footer-contact .loc,footer .footer-contact a{display:flex;align-items:center;gap:9px;color:#cfd6c9;font-size:12.5px}
+footer .footer-contact i{width:16px;color:var(--mustard);text-align:center}
+footer .footer-label{display:block;margin-bottom:12px;color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+footer nav.foot-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 20px;margin:0}
+footer hr{max-width:1120px;margin:24px auto 18px}
+footer .bottom{max-width:1120px;margin:0 auto}
+.fab-whats.fab-at-page-end{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(18px) scale(.88)!important}
+@media(min-width:820px){
+  .sanivet-collab{grid-template-columns:56px minmax(0,1fr) auto;gap:8px 18px;padding:18px 24px}
+  .sanivet-collab-copy{align-self:end}
+  .sanivet-collab-description{grid-column:2;align-self:start;max-width:660px}
+  .sanivet-collab-links{grid-column:3;grid-row:1/3;align-self:center;min-width:240px}
+  footer .footer-main{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);align-items:start}
+  footer nav.foot-nav{grid-template-columns:repeat(2,minmax(130px,1fr))}
 }

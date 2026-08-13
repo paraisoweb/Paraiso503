@@ -161,18 +161,28 @@ h1.hero-title {
    al bloque principal y mejora la jerarquía visual sobre la fotografía. */
 @media (max-width:819px) {
   .hero {
-    min-height: 78vh;
+    min-height: 100svh;
+    background: #0b2116;
+  }
+
+  .hero .bg {
+    bottom: auto;
+    height: 62svh;
+  }
+
+  .hero .bg img {
+    object-position: 68% center;
   }
 
   .hero::after {
     background:
-      linear-gradient(90deg, rgba(8,22,14,.80) 0%, rgba(8,22,14,.48) 58%, rgba(8,22,14,.12) 100%),
-      linear-gradient(180deg, rgba(10,16,10,.12) 0%, rgba(10,16,10,.28) 42%, rgba(10,16,10,.88) 100%);
+      linear-gradient(90deg, rgba(8,22,14,.20) 0%, rgba(8,22,14,.05) 58%, rgba(8,22,14,0) 100%),
+      linear-gradient(180deg, rgba(10,16,10,.05) 0%, rgba(10,16,10,.08) 34%, rgba(11,33,22,.94) 55%, #0b2116 70%);
   }
 
   .hero-inner {
     max-width: 520px;
-    padding: 34px 28px 76px;
+    padding: 34px 18px 32px;
   }
 
   .eyebrow {
@@ -181,37 +191,47 @@ h1.hero-title {
   }
 
   h1.hero-title {
-    max-width: 330px;
+    max-width: 310px;
     font-size: clamp(32px, 9.5vw, 42px);
     line-height: 1.04;
     letter-spacing: -.02em;
   }
 
   .hero-sub {
-    max-width: 325px;
+    max-width: 305px;
     margin: 18px 0 22px;
     font-size: 15px;
     line-height: 1.58;
   }
 
   .cta-row {
-    align-items: flex-start;
-    gap: 11px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 10px;
+    width: min(100%, 305px);
   }
 
   .cta-row .btn-primary {
-    width: min(100%, 330px);
-    padding: 15px 20px;
+    width: 100%;
+    padding: 14px 16px;
     border-radius: 13px;
   }
 
   .cta-row .btn-ghost {
-    width: min(100%, 280px);
-    padding: 12px 20px;
+    width: 100%;
+    padding: 12px 14px;
     border-color: rgba(255,255,255,.62);
   }
 
   .scroll-cue-arrow {
-    bottom: 18px;
+    display: none;
+  }
+
+  .fab-whats {
+    right: 14px;
+    bottom: 16px;
+    width: 58px;
+    height: 58px;
+    font-size: 27px;
   }
 }
