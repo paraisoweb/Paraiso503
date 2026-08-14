@@ -283,7 +283,7 @@
         : '';
       const marcaClass = v.marca ? ' brand-' + escapeHtml(v.marca) : '';
       const icono = v.logo
-        ? '<div class="icon brand-icon' + marcaClass + '"><img class="brand-logo" src="' + escapeHtml(v.logo) + '" alt="" loading="lazy"></div>'
+        ? '<div class="icon brand-icon' + marcaClass + '"><img class="brand-logo" src="' + escapeHtml(v.logo) + '" alt="Logo de ' + escapeHtml(v.nombre) + '" loading="lazy"></div>'
         : '<div class="icon"><i class="' + escapeHtml(v.icono) + '"></i></div>';
       const accion = v.url
         ? '<span class="via-link-label">Cómo donar <i class="fa-solid fa-arrow-right"></i></span>'
