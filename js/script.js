@@ -152,7 +152,7 @@
       const altText = (titleEl.textContent || 'Paraíso 503') + ' — foto ' + (currentIndex + 1);
       mediaWrap.innerHTML = item.isVideo
         ? '<video src="' + item.src + '" controls autoplay playsinline></video>'
-        : '<img src="' + item.src + '" alt="' + altText + '">';
+        : '<img src="' + item.src + '" alt="' + altText + '" loading="lazy" decoding="async">';
       counterEl.textContent = hasMultiple ? (currentIndex + 1) + ' / ' + items.length : '';
       prevBtn.style.display = hasMultiple ? '' : 'none';
       nextBtn.style.display = hasMultiple ? '' : 'none';
@@ -229,7 +229,7 @@
 
   function fotoBox(src, nombre, label, gradient) {
     return src
-      ? '<div class="ba-item"><img src="' + src + '" alt="' + label + ' del rescate — ' + escapeHtmlLocal(nombre) + '"><span class="ba-label">' + label + '</span></div>'
+      ? '<div class="ba-item"><img src="' + src + '" alt="' + label + ' del rescate — ' + escapeHtmlLocal(nombre) + '" loading="lazy" decoding="async"><span class="ba-label">' + label + '</span></div>'
       : '<div class="ba-item" style="background:' + gradient + ';"><span class="ba-label">' + label + '</span></div>';
   }
 
@@ -389,7 +389,7 @@
 
   function buildContentHtml(c) {
     const fotoHtml = c.foto
-      ? '<div class="p503-contigo-photo"><img src="' + c.foto + '" alt="' + escapeHtmlLocal(c.titulo) + '"></div>'
+      ? '<div class="p503-contigo-photo"><img src="' + c.foto + '" alt="' + escapeHtmlLocal(c.titulo) + '" loading="lazy" decoding="async"></div>'
       : '<div class="p503-contigo-photo p503-contigo-photo-fallback"><i class="fa-solid fa-paw"></i></div>';
 
     const serviciosHtml = (c.servicios && c.servicios.length)
@@ -510,11 +510,11 @@
     let fotoHtml = '';
     if (fotos.length === 1) {
       // Una sola imagen: mismo markup de siempre, sin flechas ni puntos.
-      fotoHtml = '<div class="p503-carrusel-photo"><img src="' + escapeHtmlLocal(fotos[0]) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '"></div>';
+      fotoHtml = '<div class="p503-carrusel-photo"><img src="' + escapeHtmlLocal(fotos[0]) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '" loading="lazy" decoding="async"></div>';
     } else if (fotos.length > 1) {
       // Varias imágenes: mini carrusel con flechas sobre la foto y puntos debajo.
       const slides = fotos.map((f) =>
-        '<div class="p503-carrusel-photo-slide"><img src="' + escapeHtmlLocal(f) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '"></div>'
+        '<div class="p503-carrusel-photo-slide"><img src="' + escapeHtmlLocal(f) + '" alt="' + escapeHtmlLocal(m.titulo || '') + '" loading="lazy" decoding="async"></div>'
       ).join('');
       const dots = fotos.map((f, i) =>
         '<button type="button" class="' + (i === 0 ? 'active' : '') + '" data-p503-photo-dot="' + i + '" aria-label="Ir a foto ' + (i + 1) + '"></button>'

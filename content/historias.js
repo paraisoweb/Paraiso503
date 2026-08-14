@@ -37,7 +37,7 @@
                         automáticamente — no hace falta indicar íconos.
      galeria           arreglo de rutas a fotos/videos adicionales de esta
                         historia, pensado para futuras ampliaciones (ej.
-                        "img/historias/solecita/1.jpg"). [] = esta sección se
+                        "img/historias/solecita/sol1.webp"). [] = esta sección se
                         oculta en el modal hasta que agregues imágenes. Se abren
                         en el mismo visor de fotos que ya usa "Programas".
      destacadoInicio   true = también aparece en la vista previa de la portada
@@ -57,7 +57,7 @@ window.PARAISO503_CONTENT.historias = {
     "frase": "frase corta representativa (opcional, '' para ocultarla)",
     "descripcion": "breve historia para la tarjeta: cómo llegó, qué le pasó y cómo está hoy",
     "historiaCompleta": "historia completa para el modal (opcional, '' = usa 'descripcion')",
-    "fotoAntes": "ruta a la foto real de 'antes' (ej. 'img/historias/caso1-antes.jpg'). Déjalo en null para usar una imagen de referencia automática",
+    "fotoAntes": "ruta a la foto real de 'antes' (ej. 'img/historias/solecita/sol1.webp'). Déjalo en null para usar una imagen de referencia automática",
     "fotoDespues": "ruta a la foto real de 'después'. Déjalo en null para usar una imagen de referencia automática",
     "lugarRescate": "lugar del rescate (opcional, '' para ocultarlo)",
     "fechaRescate": "fecha del rescate (opcional, '' para ocultarla)",

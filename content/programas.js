@@ -17,7 +17,7 @@
                          mientras no se complete)
      insignia           texto de la etiqueta destacada en la tarjeta de portada (null si no lleva)
      etiquetaDestacado  texto de la insignia sobre la foto en el detalle (null si no aplica)
-     foto               ruta a la foto real (ej. "img/programas/alimentacion.webp"); null = imagen de referencia
+     foto               ruta a la foto real (ej. "img/program/rutas.webp"); null = imagen de referencia
      vistaInicio        "destacado" | "expandible" | "detalle" — dónde aparece en la portada
      enQueConsiste      array de párrafos (texto) para la sección "¿En qué consiste?"
      porQueExiste       array de párrafos (texto) para la sección "¿Por qué existe?"
@@ -29,12 +29,12 @@
    No toques la primera línea ni la línea final "};".
 
    Para agregar fotos o videos a un programa, solo copia los archivos a una
-   carpeta (ej. img/programas/alimentacion/) y agrega sus rutas al arreglo
+   carpeta (ej. img/historias/los-chorros/) y agrega sus rutas al arreglo
    "galeria" de ese programa. No hace falta tocar HTML, CSS ni JS:
      "galeria": [
-       "img/programas/alimentacion/1.webp",
-       "img/programas/alimentacion/2.webp",
-       "img/programas/alimentacion/3.webp"
+       "img/historias/los-chorros/rescate1.webp",
+       "img/historias/los-chorros/rescate2.webp",
+       "img/historias/los-chorros/rescate3.webp"
      ]
    Se muestran las 3 primeras como miniaturas; si agregas más, el botón
    "Ver más fotos" revela el resto automáticamente. Videos (.mp4, .webm,
@@ -54,13 +54,13 @@ window.PARAISO503_CONTENT.programas = {
     "queEs": "texto (o lista de párrafos, string[]) para la sección '¿Qué es?' del modal que se abre al tocar la tarjeta del programa en la portada. Usa null mientras no se complete",
     "insignia": "texto de la etiqueta destacada en la tarjeta de portada (ej. 'Programa principal'). Usa null si no lleva etiqueta",
     "etiquetaDestacado": "texto de la insignia sobre la foto en el detalle del programa. Usa null si no aplica",
-    "foto": "ruta a la foto real del programa (ej. 'img/programas/alimentacion.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
+    "foto": "ruta a la foto real del programa (ej. 'img/program/rutas.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
     "vistaInicio": "controla dónde aparece en la portada — 'destacado': una de las 3 tarjetas visibles de inmediato · 'expandible': aparece al presionar 'Mostrar todos los programas' · 'detalle': solo aparece en la página de Programas, no en la portada",
     "enQueConsiste": "lista de párrafos (string[]) para la sección '¿En qué consiste?' en el detalle del programa",
     "porQueExiste": "lista de párrafos (string[]) para la sección '¿Por qué existe?' en el detalle del programa",
     "comoAyuda": "lista de 4 objetos {icono, titulo} para la sección '¿Cómo ayuda este programa?' (icono = clase Font Awesome)",
     "impacto": "lista de 3 objetos {numero, texto} para la sección 'Impacto' (numero = dato destacado corto, texto = descripción breve)",
-    "galeria": "array de rutas a fotos o videos del programa (ej. 'img/programas/alimentacion/1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = la sección Galería no se muestra hasta que agregues fotos o videos reales."
+    "galeria": "array de rutas a fotos o videos del programa (ej. 'img/historias/los-chorros/rescate1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = la sección Galería no se muestra hasta que agregues fotos o videos reales."
   },
   "programas": [
     {

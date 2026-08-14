@@ -175,7 +175,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "modal": {
         "titulo": "Más de tres años alimentando en Flor Amarilla",
         "texto": "Nuestra Ruta de Alimentación llega diariamente a Flor Amarilla, Ciudad Arce. Allí alimentamos a más de 100 animalitos que nos esperan cada día.\n\nDesde hace más de tres años mantenemos este recorrido de forma constante, llevando alimento y acompañamiento a los animales de la comunidad.",
-        "foto": "img/actualidad/ruta1.webp"
+        "foto": "img/program/rutas.webp"
       }
     },
     {

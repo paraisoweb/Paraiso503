@@ -14,7 +14,7 @@
      - etiqueta / titulo / texto / textoBoton : banner de la portada.
      - foto        : foto del banner (derecha). Mientras quede en null se usa
                      una imagen de referencia; en cuanto pongas una ruta real
-                     (ej. "img/contigo/contigo-banner.jpg") esa foto se usa.
+                     (ej. "img/Contigo/contigo.webp") esa foto se usa.
      - modal.foto  : foto superior del modal (misma idea que "foto").
      - modal.servicios : tarjetas de "¿Cómo podemos ayudarte?" (icono = clase
                      de Font Awesome, color = color de fondo del ícono).

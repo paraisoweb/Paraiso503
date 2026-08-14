@@ -6064,7 +6064,10 @@ body:not(.legal-page) header{
 }
 
 body:not(.legal-page):not(.home){
-  padding-top:64px;
+  /* El nav de escritorio mide 56px (32px de contenido + 24px de padding).
+     Usar la misma altura evita que el fondo crema del body forme una franja
+     entre el encabezado fijo y la portada de las páginas internas. */
+  padding-top:56px;
 }
 
 /* En la portada el header inicia transparente y toma verde al hacer scroll. */
@@ -6086,7 +6089,8 @@ body:not(.home):not(.legal-page) header{
 
 @media(max-width:819px){
   body:not(.legal-page):not(.home){
-    padding-top:60px;
+    /* En móvil el botón de menú mide 34px + 24px de padding del nav. */
+    padding-top:58px;
   }
 }
 

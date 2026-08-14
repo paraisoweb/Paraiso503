@@ -481,7 +481,7 @@
     return (
       '<div class="pet-card reveal" data-species="' + escapeHtml(a.especie) + '" data-sex="' + escapeHtml(a.sexo) + '" data-age="' + escapeHtml(a.edad || 'cachorro') + '" data-name="' + escapeHtml(a.nombre) + '">' +
         '<div class="pet-photo">' +
-          '<img src="' + foto + '" alt="' + escapeHtml(a.nombre) + '" loading="lazy" decoding="async">' +
+          '<img src="' + foto + '" alt="' + escapeHtml(a.alt || a.nombre) + '" loading="lazy" decoding="async">' +
           '<span class="pet-status">' + escapeHtml(a.estado) + '</span>' +
           '<button class="pet-fav" data-name="' + escapeHtml(a.nombre) + '" aria-label="Agregar a favoritos"><i class="fa-regular fa-heart"></i></button>' +
         '</div>' +
