@@ -509,6 +509,107 @@ h1.hero-title {
   }
 }
 
+/* Teléfonos angostos o con escala de texto grande.
+   Conserva la composición de la portada sin forzar cortes en los botones. */
+@media (max-width:390px) {
+  .hero {
+    min-height: max(100svh, 760px);
+  }
+
+  .hero .bg {
+    height: 59svh;
+    min-height: 430px;
+  }
+
+  .hero .bg img {
+    object-position: 65% center;
+  }
+
+  .hero-inner {
+    max-width: 100%;
+    padding: 30px 16px 68px;
+  }
+
+  .eyebrow {
+    font-size: clamp(21px, 6.5vw, 24px);
+  }
+
+  h1.hero-title {
+    max-width: 300px;
+    font-size: clamp(30px, 9vw, 36px);
+    line-height: 1.03;
+  }
+
+  .hero-sub {
+    max-width: 300px;
+    margin: 16px 0 20px;
+    font-size: clamp(14px, 4vw, 15px);
+    line-height: 1.5;
+  }
+
+  .cta-row {
+    grid-template-columns: minmax(0, 1.35fr) minmax(118px, 1fr);
+    width: 100%;
+    max-width: 300px;
+    gap: 8px;
+  }
+
+  .cta-row .btn-primary,
+  .cta-row .btn-ghost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 11px 10px;
+    line-height: 1.15;
+  }
+
+  .cta-row .btn-ghost {
+    white-space: nowrap;
+  }
+}
+
+/* Teléfonos móviles grandes, incluido iPhone 16 Pro Max (440px).
+   Aprovecha el ancho extra para reducir saltos de línea y mantener visibles
+   las llamadas a la acción, sin alterar la regla de teléfonos pequeños. */
+@media (min-width:391px) and (max-width:480px) {
+  .hero {
+    display: block;
+    min-height: 0;
+  }
+
+  .hero-inner {
+    max-width: 100%;
+    padding: 47svh 22px 24px;
+  }
+
+  h1.hero-title {
+    max-width: 370px;
+    font-size: clamp(36px, 9vw, 42px);
+  }
+
+  .hero-sub {
+    max-width: 365px;
+  }
+
+  .cta-row {
+    width: min(100%, 365px);
+  }
+
+  .cta-row .btn-primary,
+  .cta-row .btn-ghost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    line-height: 1.15;
+  }
+
+  .cta-row .btn-ghost {
+    white-space: nowrap;
+  }
+}
+
 /* ===== 04-home-sections.css ===== */
 /* STATS */
 .stats {
@@ -662,6 +763,20 @@ footer .bottom{max-width:1120px;margin:0 auto}
   .sanivet-collab-links{grid-column:3;grid-row:1/3;align-self:center;min-width:240px}
   footer .footer-main{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);align-items:start}
   footer nav.foot-nav{grid-template-columns:repeat(2,minmax(130px,1fr))}
+}
+
+/* Portada móvil definitiva: altura por contenido, texto sobre la parte baja
+   de la fotografía y margen corto antes de las estadísticas. */
+@media(max-width:819px){
+  body.home .hero{
+    display:block;
+    min-height:0;
+  }
+  body.home .hero-inner{
+    max-width:520px;
+    padding-top:42svh;
+    padding-bottom:24px;
+  }
 }
 
 @media (max-width:390px) {
