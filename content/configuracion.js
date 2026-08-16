@@ -172,7 +172,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Protección anual para",
       "tituloDestacado": "más de 60 animalitos",
       "descripcion": "Más de 60 animalitos dependen de Paraíso. Necesitamos apoyo para mantener al día su vacunación y protegerlos de enfermedades prevenibles.",
-      "foto": "img/actualidad/vacunacion1.webp",
+      "foto": "",
       "icono": "fa-solid fa-shield-dog",
       "textoBoton": "Conoce esta necesidad",
       "modal": {
@@ -236,7 +236,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Un hogar que necesita",
       "tituloDestacado": "sostenerse cada mes",
       "descripcion": "El espacio donde viven y se recuperan nuestros animalitos es alquilado. Sostenerlo cada mes permite que continúen protegidos y tranquilos.",
-      "foto": "img/actualidad/hogar1.webp",
+      "foto": "",
       "icono": "fa-solid fa-house-chimney-heart",
       "textoBoton": "Conoce el hogar que proteges",
       "modal": {

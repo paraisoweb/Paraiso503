@@ -1488,6 +1488,18 @@ function initSiteInteractions() {
     });
   });
 
+
+  // Si se llega desde un enlace como historias.html#milagro-en-la-carretera,
+  // abre directamente esa historia una vez que las tarjetas ya existen.
+  if (!window.p503StoryHashOpened && window.location.hash) {
+    const slug = decodeURIComponent(window.location.hash.slice(1));
+    const targetStory = document.querySelector('.caso-card[data-historia-slug="' + slug + '"]');
+    if (targetStory) {
+      window.p503StoryHashOpened = true;
+      window.setTimeout(() => targetStory.click(), 120);
+    }
+  }
+
   // ===== Programa Contigo: abre el modal reutilizable al hacer clic en
   // cualquier parte del banner (o al presionar el botón que hay dentro).
   // Los datos ya vienen listos en el atributo data-contigo del banner (ver
@@ -1703,3 +1715,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+// ===== Historia destacada de bienvenida =====
+(function () {
+  const STORY_KEY = 'p503-welcome-rescate-los-chorros-v1';
+  function initWelcomeStory() {
+    const modal = document.getElementById('p503WelcomeStory');
+    if (!modal || sessionStorage.getItem(STORY_KEY) === 'seen') return;
+
+    let lockedScrollY = 0;
+    const open = () => {
+      lockedScrollY = window.scrollY;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('p503-welcome-lock');
+      document.body.classList.add('p503-welcome-lock');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${lockedScrollY}px`;
+      document.body.style.width = '100%';
+    };
+    const close = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('p503-welcome-lock');
+      document.body.classList.remove('p503-welcome-lock');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, lockedScrollY);
+      sessionStorage.setItem(STORY_KEY, 'seen');
+    };
+
+    modal.querySelectorAll('[data-welcome-close]').forEach(el => el.addEventListener('click', close));
+    const action = modal.querySelector('.p503-welcome-action');
+    if (action) action.addEventListener('click', () => {
+      sessionStorage.setItem(STORY_KEY, 'seen');
+      document.documentElement.classList.remove('p503-welcome-lock');
+      document.body.classList.remove('p503-welcome-lock');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+    window.setTimeout(open, 450);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWelcomeStory);
+  else initWelcomeStory();
+})();

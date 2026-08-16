@@ -638,6 +638,10 @@
   // en el atributo data-historia de su tarjeta. El modal (js/script.js) lo
   // lee de ahí — así la tarjeta de la portada y la de historias.html
   // comparten exactamente el mismo modal reutilizable.
+  function historiaSlug(nombre) {
+    return String(nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
   function serializarHistoriaParaModal(h) {
     const info = ESTADO_INFO[h.estado] || {};
     const galeria = Array.isArray(h.galeria) ? h.galeria.filter(Boolean) : [];
@@ -672,7 +676,7 @@
     const fotoAntes = h.fotoAntes || placeholderImg('Antes (' + h.nombre + ')');
     const fotoDespues = h.fotoDespues || placeholderImg('Después (' + h.nombre + ')');
     return (
-      '<div class="caso-card" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
+      '<div class="caso-card" data-historia-slug="' + historiaSlug(h.nombre) + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
         '<div class="caso-ba">' +
           '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes del rescate" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>' +
           '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>' +
@@ -699,7 +703,7 @@
       ? '<div class="ba-item"><img src="' + h.fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>'
       : '<div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>';
     return (
-      '<div class="caso-card reveal" data-status="' + h.estado + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
+      '<div class="caso-card reveal" data-status="' + h.estado + '" data-historia-slug="' + historiaSlug(h.nombre) + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
         '<div class="caso-ba">' + antes + despues + '</div>' +
         '<div class="caso-body">' +
           '<span class="status-badge status-' + h.estado + '">' + info.emoji + ' ' + info.label + '</span>' +
