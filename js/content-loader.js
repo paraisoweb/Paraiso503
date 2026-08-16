@@ -190,7 +190,7 @@
   function urgenciaCardHtml(t) {
     const fotoHtml = t.foto
       ? '<div class="urgencia-foto-wrap"><img src="' + escapeHtml(t.foto) + '" alt="' + escapeHtml(t.titulo || '') + '" loading="lazy" decoding="async"></div>'
-      : (t.sinImagen ? '' : '<div class="urgencia-foto-wrap urgencia-foto-placeholder" aria-hidden="true"><i class="fa-solid fa-image"></i></div>');
+      : (t.sinImagen ? '' : '<div class="urgencia-foto-wrap urgencia-foto-placeholder" aria-hidden="true"><i class="' + escapeHtml(t.icono || 'fa-solid fa-paw') + '"></i><span>Fotografía próximamente</span></div>');
     const mapaHtml = t.mapaEmbed
       ? '<div class="urgencia-map">' +
           '<iframe src="' + escapeHtml(t.mapaEmbed) + '" title="Ubicación de ' + escapeHtml(t.titulo || 'la ruta') + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
@@ -201,12 +201,13 @@
     const fechaHtml = t.fecha
       ? '<span class="urgencia-fecha">' + escapeHtml(t.fecha) + '</span>'
       : '';
+    const tituloHtml = escapeHtml(t.titulo) + (t.tituloDestacado ? ' <span>' + escapeHtml(t.tituloDestacado) + '</span>' : '');
     return (
-      '<div class="urgencia urgencia-foto reveal' + (t.sinImagen ? ' urgencia-sin-imagen' : '') + (t.mapaEmbed ? ' urgencia-con-mapa' : '') + '">' +
+      '<div class="urgencia urgencia-foto reveal urgencia--' + escapeHtml(t.acento || 'verde') + (t.sinImagen ? ' urgencia-sin-imagen' : '') + (t.mapaEmbed ? ' urgencia-con-mapa' : '') + '">' +
         fotoHtml +
         '<div class="left">' +
           '<div class="urgencia-meta"><span class="tagtop">' + escapeHtml(t.etiqueta) + '</span>' + fechaHtml + '</div>' +
-          '<h3>' + escapeHtml(t.titulo) + '</h3>' +
+          '<h3>' + tituloHtml + '</h3>' +
           (t.subtitulo ? '<div class="urgencia-subtitulo">' + escapeHtml(t.subtitulo) + '</div>' : '') +
           '<p class="urgencia-descripcion">' + escapeHtml(t.descripcion) + '</p>' +
           mapaHtml +

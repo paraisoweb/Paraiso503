@@ -493,6 +493,7 @@
     if (!modal) return;
     modal.classList.remove('open');
     window.p503UnlockScroll();
+    document.dispatchEvent(new CustomEvent('p503:carrusel-modal-close'));
   }
 
   // 'foto' puede venir como una sola ruta (string) o como una lista de rutas
@@ -535,6 +536,19 @@
           (m.cierreTexto ? '<p>' + escapeHtmlLocal(m.cierreTexto).replace(/\n/g, '<br>') + '</p>' : '') +
         '</div>'
       : '';
+    const secciones = Array.isArray(m.secciones) ? m.secciones : [];
+    const seccionesHtml = secciones.length
+      ? '<div class="p503-carrusel-secciones">' + secciones.map(function(s) {
+          const items = Array.isArray(s.items) && s.items.length
+            ? '<ul>' + s.items.map(function(item) { return '<li>' + escapeHtmlLocal(item) + '</li>'; }).join('') + '</ul>'
+            : '';
+          return '<section>' +
+            (s.icono ? '<span class="p503-carrusel-section-icon"><i class="' + escapeHtmlLocal(s.icono) + '"></i></span>' : '') +
+            '<div>' + (s.titulo ? '<h4>' + escapeHtmlLocal(s.titulo) + '</h4>' : '') +
+            (s.texto ? '<p>' + escapeHtmlLocal(s.texto).replace(/\n/g, '<br>') + '</p>' : '') + items + '</div>' +
+          '</section>';
+        }).join('') + '</div>'
+      : '';
     const acciones = Array.isArray(m.acciones) ? m.acciones : [];
     const accionesHtml = acciones.length
       ? '<div class="p503-carrusel-actions">' + acciones.map(function(a) {
@@ -548,7 +562,7 @@
       '<div class="p503-carrusel-body">' +
         '<h3 class="p503-carrusel-titulo">' + escapeHtmlLocal(m.titulo || '') + '</h3>' +
         (m.texto ? '<p class="p503-carrusel-texto">' + escapeHtmlLocal(m.texto).replace(/\n/g, '<br>') + '</p>' : '') +
-        cierreHtml + accionesHtml +
+        seccionesHtml + cierreHtml + accionesHtml +
       '</div>'
     );
   }
@@ -625,6 +639,7 @@
     modal.querySelector('.p503-carrusel-scroll').scrollTop = 0;
     modal.classList.add('open');
     window.p503LockScroll();
+    document.dispatchEvent(new CustomEvent('p503:carrusel-modal-open'));
   };
 })();
 
@@ -1565,12 +1580,12 @@ function initSiteInteractions() {
       }
       function startAuto() {
         if (reduceMotion || document.hidden || slides.length <= 1 || autoTimer) return;
-        autoTimer = window.setInterval(() => goTo(index + 1), 7000);
+        autoTimer = window.setInterval(() => goTo(index + 1), 8000);
       }
       function scheduleAutoResume() {
         stopAuto();
         if (resumeTimer) window.clearTimeout(resumeTimer);
-        resumeTimer = window.setTimeout(startAuto, 8000);
+        resumeTimer = window.setTimeout(startAuto, 12000);
       }
       function restartAuto() { scheduleAutoResume(); }
       urgenciaCarousel.addEventListener('mouseenter', stopAuto);
@@ -1578,6 +1593,8 @@ function initSiteInteractions() {
       urgenciaCarousel.addEventListener('focusin', stopAuto);
       urgenciaCarousel.addEventListener('focusout', scheduleAutoResume);
       urgenciaCarousel.addEventListener('pointerdown', stopAuto);
+      document.addEventListener('p503:carrusel-modal-open', stopAuto);
+      document.addEventListener('p503:carrusel-modal-close', scheduleAutoResume);
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) stopAuto();
         else scheduleAutoResume();

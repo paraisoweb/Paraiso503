@@ -765,6 +765,114 @@ footer .bottom{max-width:1120px;margin:0 auto}
   footer nav.foot-nav{grid-template-columns:repeat(2,minmax(130px,1fr))}
 }
 
+/* ===== ACTUALIDAD v9 — prioridad final de color y tipografía ===== */
+#urgencia-wrap .urgencia{
+  border:1px solid #dfd2bd!important;
+  border-top:0!important;
+  background:#f5ebd9!important;
+  color:#34463b!important;
+  box-shadow:0 13px 30px rgba(30,61,43,.12)!important;
+}
+#urgencia-wrap .urgencia .left,
+#urgencia-wrap .urgencia p,
+#urgencia-wrap .urgencia .urgencia-descripcion{
+  color:#4f5f55!important;
+}
+#urgencia-wrap .urgencia h3{
+  margin-top:10px!important;
+  color:var(--green-dark)!important;
+  font-family:'Fraunces',serif!important;
+  font-size:24px!important;
+  line-height:1.08!important;
+  letter-spacing:-.012em;
+}
+#urgencia-wrap .urgencia h3 span{display:block;color:#c9683d!important}
+#urgencia-wrap .urgencia-subtitulo{color:#a95734!important;font-size:14px!important;line-height:1.35!important}
+#urgencia-wrap .urgencia .urgencia-descripcion{font-size:13.5px!important;line-height:1.62!important}
+#urgencia-wrap .urgencia .tagtop{border:0!important;background:rgba(255,255,255,.66)!important;color:#91482d!important}
+#urgencia-wrap .urgencia>.btn-primary,
+#urgencia-wrap .urgencia>a.btn-primary{
+  background:var(--green-dark)!important;
+  color:#fff!important;
+  box-shadow:0 7px 17px rgba(30,61,43,.15)!important;
+}
+#urgencia-wrap .urgencia>.btn-primary:hover,
+#urgencia-wrap .urgencia>a.btn-primary:hover{background:#284f3d!important;color:#fff!important}
+@media(max-width:819px){
+  #urgencia-wrap .urgencia h3{font-size:23px!important}
+  #urgencia-wrap .urgencia .urgencia-descripcion{font-size:13px!important;line-height:1.58!important}
+}
+
+/* ===== ACTUALIDAD v8 — tarjetas cálidas y modales organizados ===== */
+#urgencia-wrap{overflow:hidden!important;background:linear-gradient(180deg,#fbfaf5 0%,#f6f0e5 100%)!important}
+#urgencia-wrap .urgencia-viewport{border-radius:26px!important;filter:drop-shadow(0 16px 28px rgba(30,61,43,.11))}
+#urgencia-wrap .urgencia{
+  border:1px solid rgba(30,61,43,.09)!important;
+  border-top:0!important;
+  border-radius:26px!important;
+  background:#f6eddc!important;
+  color:#405046!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.8)!important;
+}
+#urgencia-wrap .urgencia .left,#urgencia-wrap .urgencia p,#urgencia-wrap .urgencia .urgencia-descripcion{color:#536158!important}
+#urgencia-wrap .urgencia h3{color:var(--green-dark)!important;font-family:'Fraunces',serif!important}
+#urgencia-wrap .urgencia h3 span{display:block;color:#c9683d!important}
+#urgencia-wrap .urgencia-subtitulo{color:#b85c38!important}
+#urgencia-wrap .urgencia .tagtop{border:0!important;background:rgba(30,61,43,.08)!important;color:var(--green-dark)!important}
+#urgencia-wrap .urgencia--dorado .tagtop{background:rgba(244,185,66,.20)!important;color:#8b5c12!important}
+#urgencia-wrap .urgencia--naranja .tagtop{background:rgba(201,104,61,.14)!important;color:#9b4b2d!important}
+#urgencia-wrap .urgencia-foto-wrap{position:relative;background:#e8dfcf!important}
+#urgencia-wrap .urgencia-foto-wrap::after{position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(30,61,43,.22));content:"";pointer-events:none}
+#urgencia-wrap .urgencia-foto-placeholder{flex-direction:column;gap:10px;background:linear-gradient(145deg,#e9e2d4,#dce7db)!important;color:rgba(30,61,43,.48)!important}
+#urgencia-wrap .urgencia-foto-placeholder i{font-size:38px}
+#urgencia-wrap .urgencia-foto-placeholder span{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+#urgencia-wrap .urgencia>.btn-primary,#urgencia-wrap .urgencia>a.btn-primary{
+  border-radius:14px!important;background:var(--green-dark)!important;color:#fff!important;box-shadow:0 8px 18px rgba(30,61,43,.14)!important
+}
+#urgencia-wrap .urgencia>.btn-primary:hover,#urgencia-wrap .urgencia>a.btn-primary:hover{background:#284f3d!important}
+#urgencia-wrap .urgencia-dots{display:flex;justify-content:center;gap:7px;margin-top:17px!important;padding:0!important}
+#urgencia-wrap .urgencia-dots button{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(30,61,43,.22)!important;transition:width .25s ease,background .25s ease}
+#urgencia-wrap .urgencia-dots button.active{width:24px;background:#c9683d!important}
+#urgencia-wrap .urgencia-nav{
+  display:flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;border:1px solid rgba(30,61,43,.12)!important;border-radius:50%!important;background:rgba(255,253,247,.94)!important;color:var(--green-dark)!important;box-shadow:0 6px 18px rgba(30,61,43,.16)!important;opacity:.92!important;visibility:visible!important;z-index:20!important
+}
+#urgencia-wrap .urgencia-nav i{color:inherit!important}
+#urgencia-wrap .urgencia-prev{left:10px!important}
+#urgencia-wrap .urgencia-next{right:10px!important}
+.p503-carrusel-inner{border-radius:26px;background:#fbfaf5;box-shadow:0 22px 70px rgba(11,34,24,.28)}
+.p503-carrusel-body{padding:28px 26px 30px}
+.p503-carrusel-titulo{margin-right:36px;color:var(--green-dark);font-family:'Fraunces',serif;font-size:clamp(25px,4vw,34px);line-height:1.1}
+.p503-carrusel-texto{margin-top:12px;color:#526057;font-size:14px;line-height:1.7}
+.p503-carrusel-secciones{display:grid;gap:12px;margin-top:22px}
+.p503-carrusel-secciones section{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;padding:16px;border:1px solid rgba(30,61,43,.09);border-radius:17px;background:#f5ecdc}
+.p503-carrusel-section-icon{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:#fff;color:#c9683d;box-shadow:0 4px 12px rgba(30,61,43,.08)}
+.p503-carrusel-secciones h4{margin:1px 0 6px;color:var(--green-dark);font-family:'Fraunces',serif;font-size:17px;line-height:1.2}
+.p503-carrusel-secciones p,.p503-carrusel-secciones li{color:#526057;font-size:12.5px;line-height:1.6}
+.p503-carrusel-secciones ul{display:grid;gap:5px;margin:8px 0 0;padding-left:18px}
+.p503-carrusel-cierre{border-left-color:#c9683d;background:#f3eadc}
+@media(min-width:820px){
+  #urgencia-wrap .urgencia.urgencia-foto{height:380px!important;min-height:380px!important;grid-template-columns:minmax(300px,40%) 1fr!important}
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{height:380px!important;min-height:380px!important;border-radius:26px 0 0 26px!important}
+  #urgencia-wrap .urgencia.urgencia-foto>.left{padding:32px 42px 10px!important}
+  #urgencia-wrap .urgencia.urgencia-foto>.btn-primary{margin:0 42px 32px!important}
+  #urgencia-wrap .urgencia-prev{left:14px!important}.urgencia-next{right:14px!important}
+  .p503-carrusel-body{padding:34px 36px 38px}
+}
+@media(max-width:819px){
+  #urgencia-wrap .wrap{width:min(100% - 28px,var(--wrap))!important}
+  #urgencia-wrap .urgencia.urgencia-foto{height:500px!important;min-height:500px!important;padding:20px!important}
+  #urgencia-wrap .urgencia .urgencia-foto-wrap{flex:0 0 190px!important;height:190px!important;min-height:190px!important;margin:-20px -20px 17px!important;border-radius:26px 26px 0 0!important}
+  #urgencia-wrap .urgencia.urgencia-foto>.left{padding:0!important}
+  #urgencia-wrap .urgencia h3{font-size:25px!important}
+  #urgencia-wrap .urgencia>.btn-primary{margin-top:15px!important}
+  #urgencia-wrap .urgencia-nav{top:112px!important;width:31px!important;height:44px!important;border-radius:14px!important;background:rgba(255,253,247,.78)!important;box-shadow:0 3px 12px rgba(30,61,43,.12)!important}
+  #urgencia-wrap .urgencia-prev{left:5px!important}.urgencia-next{right:5px!important}
+  .p503-carrusel-body{padding:25px 18px 27px}
+  .p503-carrusel-secciones section{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:14px}
+  .p503-carrusel-section-icon{width:36px;height:36px}
+}
+@media(prefers-reduced-motion:reduce){#urgencia-wrap .urgencia-track,#urgencia-wrap .urgencia-dots button{transition:none!important}}
+
 /* Portada móvil definitiva: altura por contenido, texto sobre la parte baja
    de la fotografía y margen corto antes de las estadísticas. */
 @media(max-width:819px){
@@ -5528,13 +5636,28 @@ header.scrolled-deep .nav-follow {
   height: 84%;
 }
 
+.via-card .brand-bac .brand-logo {
+  width: 88%;
+  height: 88%;
+}
+
+.via-card .brand-nequi .brand-logo {
+  width: 90%;
+  height: 90%;
+}
+
 .via-card .brand-n1co {
   background: #111;
 }
 
 .via-card .brand-chivo .brand-logo {
-  width: 132%;
-  height: 132%;
+  width: 90%;
+  height: 90%;
+}
+
+.via-card .brand-paypal .brand-logo {
+  width: 88%;
+  height: 88%;
 }
 
 .copy-num {
@@ -6365,14 +6488,14 @@ body:not(.home):not(.legal-page) header{
 }
 
 
-/* ===== ACTUALIDAD v3 — tarjetas terracota, navegación limpia ===== */
+/* ===== ACTUALIDAD v3 — tarjetas crema, navegación limpia ===== */
 /* Solo afecta las tarjetas de Actualidad. Los modales conservan su diseño v2. */
 #urgencia-wrap .urgencia{
-  background:#a95734 !important;
-  border-color:rgba(92,42,25,.18) !important;
-  border-top-color:#a95734 !important;
-  color:#fff8ef !important;
-  box-shadow:0 12px 34px rgba(84,43,28,.16);
+  background:#f5ebd9 !important;
+  border-color:#dfd2bd !important;
+  border-top-color:#dfd2bd !important;
+  color:#34463b !important;
+  box-shadow:0 12px 34px rgba(30,61,43,.13);
 }
 #urgencia-wrap .urgencia .left,
 #urgencia-wrap .urgencia p,
@@ -6381,13 +6504,13 @@ body:not(.home):not(.legal-page) header{
 #urgencia-wrap .urgencia .urgencia-lista li,
 #urgencia-wrap .urgencia .bar-label,
 #urgencia-wrap .urgencia .placeholder-note{
-  color:#fff8ef !important;
+  color:#4f5f55 !important;
 }
 #urgencia-wrap .urgencia h3{
-  color:#fffdf8 !important;
+  color:var(--green-dark) !important;
 }
 #urgencia-wrap .urgencia-subtitulo{
-  color:#ffe1b0 !important;
+  color:#a95734 !important;
 }
 #urgencia-wrap .urgencia .tagtop{
   background:#fff4e7 !important;
@@ -6402,17 +6525,17 @@ body:not(.home):not(.legal-page) header{
 }
 #urgencia-wrap .urgencia>.btn-primary,
 #urgencia-wrap .urgencia>a.btn-primary{
-  background:#fff2d5 !important;
-  color:#173c2d !important;
-  box-shadow:0 7px 18px rgba(68,31,19,.18) !important;
+  background:var(--green-dark) !important;
+  color:#fff !important;
+  box-shadow:0 7px 18px rgba(30,61,43,.16) !important;
 }
 #urgencia-wrap .urgencia>.btn-primary:hover,
 #urgencia-wrap .urgencia>a.btn-primary:hover{
-  background:#ffe5ad !important;
-  color:#123326 !important;
+  background:#284f3d !important;
+  color:#fff !important;
 }
 #urgencia-wrap .urgencia-map a{
-  color:#fff8ef !important;
+  color:var(--green-dark) !important;
 }
 /* Las flechas se eliminan visualmente incluso si una versión en caché del HTML las conserva. */
 #urgencia-wrap .urgencia-nav{display:none !important}
@@ -7047,9 +7170,9 @@ body:not(.home):not(.legal-page) header{
    Solo tarjetas del carrusel; los modales quedan intactos. */
 @media(max-width:819px){
   #urgencia-wrap .urgencia{
-    background:#9f4f31 !important;
-    border-color:rgba(78,34,21,.20) !important;
-    border-top-color:#9f4f31 !important;
+    background:#f5ebd9 !important;
+    border-color:#dfd2bd !important;
+    border-top-color:#dfd2bd !important;
   }
   #urgencia-wrap .urgencia.urgencia-foto,
   #urgencia-wrap .urgencia.urgencia-sin-imagen,
@@ -7073,7 +7196,7 @@ body:not(.home):not(.legal-page) header{
   }
   #urgencia-wrap .urgencia-dots button.active{
     width:28px !important;
-    background:#9f4f31 !important;
+    background:#c9683d !important;
   }
 }
 

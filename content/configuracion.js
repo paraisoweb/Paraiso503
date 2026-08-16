@@ -119,7 +119,7 @@ window.PARAISO503_CONTENT.configuracion = {
       }
     ]
   },
-  "_ayuda_carruselUrgencia": "Estas son TODAS las tarjetas del carrusel de actualidad de la portada, incluida la primera ('Necesidades prioritarias'). El orden en que aparecen en el carrusel es exactamente el orden de este arreglo: para reordenar las tarjetas en el futuro, solo mueve sus bloques aquí arriba o abajo — no hace falta tocar el HTML ni el JavaScript. Cada tarjeta necesita 'activa': true para aparecer en el carrusel; mientras esté en false queda preparada pero oculta. Al final hay dos espacios de reserva para futuras noticias. Para publicar uno, rellena sus campos y cambia 'activa' a true; mientras siga en false no aparece en la web. Campos comunes a toda tarjeta: 'id', 'activa', 'etiqueta' (insignia pequeña arriba), 'titulo', 'descripcion' (texto breve). La tarjeta 'necesidades-prioritarias' es especial: lleva 'tipo': 'necesidadUrgente' y en vez de foto/botón-modal usa 'necesidades' (lista de líneas, cada una puede empezar con un emoji), 'montoRecaudado' y 'meta' (números; déjalos en null mientras no se sepa el dato del mes y la barra mostrará '$___ recaudados de $___' automáticamente) y 'textoBoton' (el botón lleva siempre a la sección #donar). Las demás tarjetas (tipo normal, sin 'tipo') usan 'foto' (ruta de imagen, opcional), 'textoBoton' y 'modal' (lo que se muestra al presionar el botón: 'titulo', 'texto' y 'foto' opcional).",
+  "_ayuda_carruselUrgencia": "Actualidad de la portada. Solo aparecen las tarjetas con 'activa': true y respetan el orden de este arreglo. Para cambiar una fotografía, edita 'foto'; para usar dos imágenes dentro del modal, coloca ambas rutas en 'modal.foto'. Si todavía no hay imagen, deja 'foto' vacío: aparecerá un espacio preparado. 'tituloDestacado' colorea una frase breve del título. El modal admite introducción en 'texto', bloques en 'secciones', cierre y acciones opcionales. Las tarjetas antiguas permanecen abajo con 'activa': false para poder reutilizarlas.",
   "carruselUrgencia": [
     {
       "id": "rescate-los-chorros",
@@ -132,33 +132,60 @@ window.PARAISO503_CONTENT.configuracion = {
       "textoBoton": "Conoce su historia",
       "modal": {
         "titulo": "Milagro en la carretera",
-        "texto": "Durante nuestro recorrido conocimos a un señor que ha dedicado parte de su vida a cuidar a más de 25 perritos. Hoy enfrenta una situación difícil: debido a las obras que se realizan en la carretera de Los Chorros, debe abandonar el lugar donde ha permanecido con ellos.\n\nPara una sola persona, cuidar tantos animalitos representa una enorme responsabilidad. Al conocer su situación, nos acercamos y decidimos sumar esfuerzos para ayudarlo y proteger especialmente a los cachorros más vulnerables.\n\nLlevarlos con nosotros significa alejarlos de los riesgos de crecer cerca de una carretera transitada. En Paraíso 503 recibirán alimentación adecuada, revisión veterinaria, los cuidados y medicamentos que necesiten, su esquema de vacunación y seguimiento durante su crecimiento.\n\nEl objetivo final es que, cuando estén preparados, puedan encontrar familias responsables y hogares permanentes.\n\nEste rescate no termina cuando llegan al refugio. Apenas comienza una nueva etapa para ellos.",
+        "texto": "Durante nuestro recorrido conocimos a un señor que ha dedicado parte de su vida a cuidar a más de 25 perritos. Hoy enfrenta una situación difícil: debido a las obras que se realizan en la carretera de Los Chorros, debe abandonar el lugar donde ha permanecido con ellos.\n\nPara una sola persona, cuidar tantos animalitos representa una enorme responsabilidad. Al conocer su situación, nos acercamos y decidimos sumar esfuerzos para ayudarlo y proteger especialmente a los cachorros más vulnerables.\n\nLlevarlos con nosotros significa alejarlos de los riesgos de crecer cerca de una carretera transitada. En Paraíso 503 recibirán alimentación adecuada, revisión veterinaria, vitaminas, los cuidados y medicamentos que necesiten, su esquema de vacunación y seguimiento durante su crecimiento.\n\nEl objetivo final es que, cuando estén preparados, puedan encontrar familias responsables y hogares permanentes.\n\nEste rescate no termina cuando llegan al refugio. Apenas comienza una nueva etapa para ellos.",
         "cierreTitulo": "Este rescate apenas comienza",
         "cierreTexto": "Recibir a estos cachorros significa asumir su alimentación, atención veterinaria, vacunas, medicamentos y cuidados hasta que estén preparados para encontrar un hogar responsable.\n\nParaíso 503 trabaja cada día con muchos animalitos que dependen de este proyecto. Tu apoyo es muy importante para que podamos dar continuidad a este rescate y seguir respondiendo cuando otro animal nos necesite.\n\nCada aporte, cada visita y cada persona que comparte nuestro trabajo nos ayuda a seguir adelante.",
-        "foto": ["img/actualidad/rescate1.webp","img/actualidad/rescate2.webp","img/actualidad/rescate3.webp","img/actualidad/rescate4.webp",],
-        "acciones": [
-          {"texto":"Conoce cómo ayudar","href":"#ayudar","tipo":"interno"},
-          {"texto":"Sigue el caso en TikTok","href":"https://www.tiktok.com/@paraiso.503","tipo":"externo"}
-        ]
+        "foto": ["img/actualidad/rescate1.webp","img/actualidad/rescate2.webp","img/actualidad/rescate3.webp","img/actualidad/rescate4.webp"]
       }
     },
     {
       "id": "visita-solidaria",
       "activa": true,
       "etiqueta": "🤝 Visita solidaria",
-      "titulo": "Las puertas de Paraíso 503 están abiertas",
-      "descripcion": "Ven a conocer nuestro hogar, comparte con los animalitos y descubre de cerca el trabajo que realizamos cada día en La Libertad, El Salvador.",
+      "acento": "naranja",
+      "titulo": "Conoce el lugar donde",
+      "tituloDestacado": "cada vida importa",
+      "descripcion": "Visita el Hogar Paraíso, conoce las historias de nuestros animalitos y comparte con ellos mientras descubres el trabajo que realizamos cada día.",
       "foto": "img/actualidad/visita1.webp",
-      "textoBoton": "Quiero conocer el Paraíso",
+      "textoBoton": "Conoce cómo visitarnos",
       "modal": {
-        "titulo": "Visita Solidaria Paraíso 503",
-        "texto": "Estamos en Ateos, La Libertad, El Salvador. Puedes venir a conocer a nuestros animalitos, compartir con ellos y ver de cerca el trabajo que realizamos cada día.\n\nEstamos necesitando apoyo con alimentos como: concentrado para perros, arroz, macarrones, hígado, patas de pollo y verduras; también productos de limpieza que utilizamos diariamente en el refugio.\n\nPara cuidados veterinarios recibimos vitaminas e insumos médicos. Si deseas apoyar con medicamentos o antiparasitarios, te recomendamos coordinarlos previamente con nosotros para saber qué necesitan los animalitos en ese momento.",
+        "titulo": "Una visita que también transforma vidas",
+        "texto": "Las visitas solidarias permiten conocer de cerca el Hogar Paraíso, descubrir las historias de nuestros animalitos, saber cómo han evolucionado y compartir un momento con ellos.",
+        "secciones": [
+          {"titulo":"Puedes venir en familia","icono":"fa-solid fa-people-roof","texto":"Recibimos adultos, familias y niños. Queremos que cada visita sea una oportunidad para acercarse al proyecto y conocer el valor de cuidar y respetar a los animalitos."},
+          {"titulo":"¿Qué puedes traer?","icono":"fa-solid fa-hand-holding-heart","texto":"Puedes apoyarnos con la donación que esté dentro de tus posibilidades.","items":["Alimento concentrado y otros ingredientes.","Productos de limpieza.","Vitaminas y otros artículos consultados previamente."]},
+          {"titulo":"Coordinación por WhatsApp","icono":"fa-brands fa-whatsapp","texto":"Las visitas se realizan con cita previa. Por WhatsApp coordinamos el día y el horario, compartimos la ubicación y te orientamos para que puedas llegar sin dificultad."}
+        ],
         "cierreTitulo": "¿Quieres visitarnos?",
-        "cierreTexto": "Escríbenos para coordinar tu visita o conocer qué necesitamos actualmente. Tu compañía y tu apoyo también forman parte de esta historia.",
+        "cierreTexto": "Escríbenos para coordinar tu visita y consultar qué necesitamos actualmente. Tu compañía y tu apoyo también forman parte de esta historia.",
         "foto": "img/actualidad/visita1.webp",
         "acciones": [
           {"texto":"Escríbenos por WhatsApp","href":"https://wa.me/50377476318?text=Hola%2C%20me%20gustar%C3%ADa%20coordinar%20una%20visita%20solidaria%20a%20Para%C3%ADso%20503.","tipo":"externo"}
         ]
+      }
+    },
+    {
+      "id": "vacunacion-anual",
+      "activa": true,
+      "acento": "dorado",
+      "etiqueta": "🩺 Salud y prevención",
+      "titulo": "Protección anual para",
+      "tituloDestacado": "más de 60 animalitos",
+      "descripcion": "Más de 60 animalitos dependen de Paraíso. Necesitamos apoyo para mantener al día su vacunación y protegerlos de enfermedades prevenibles.",
+      "foto": "img/actualidad/vacunacion1.webp",
+      "icono": "fa-solid fa-shield-dog",
+      "textoBoton": "Conoce esta necesidad",
+      "modal": {
+        "titulo": "Vacunación anual para más de 60 animalitos",
+        "texto": "Más de 60 animalitos dependen de Paraíso para recibir alimentación, protección y seguimiento veterinario. Algunos permanecen en el Hogar Paraíso y otros reciben atención temporal en la veterinaria, según sus necesidades.",
+        "secciones": [
+          {"titulo":"¿Por qué es importante vacunarlos?","icono":"fa-solid fa-syringe","texto":"La vacunación ayuda a prevenir enfermedades que pueden afectar gravemente su salud, especialmente cuando conviven varios animalitos o llegan nuevos casos que también necesitan protección."},
+          {"titulo":"Un compromiso que se renueva cada año","icono":"fa-solid fa-calendar-check","texto":"Cada animalito necesita valoración y un esquema indicado por la veterinaria. Mantener esta protección al día representa una necesidad constante para el proyecto."},
+          {"titulo":"Necesitamos tu apoyo","icono":"fa-solid fa-heart","texto":"No fijamos una cantidad específica. Cada colaboración puede ayudarnos a continuar protegiendo su salud y brindarles el seguimiento responsable que necesitan."}
+        ],
+        "cierreTitulo": "Cada vacuna significa protección",
+        "cierreTexto": "Prevenir también es cuidar. Tu apoyo nos permite continuar protegiendo a más de 60 vidas que dependen de Paraíso.",
+        "foto": []
       }
     },
     {
@@ -181,15 +208,48 @@ window.PARAISO503_CONTENT.configuracion = {
     {
       "id": "alimentacion-hogar-paraiso",
       "activa": true,
+      "acento": "verde",
       "etiqueta": "🍲 Hogar Paraíso",
-      "titulo": "Así preparamos su comida cada día",
-      "descripcion": "Más de 50 animalitos reciben sus porciones de concentrado acompañadas de macarrones o arroz y un paté preparado con ingredientes frescos, sin condimentos.",
+      "titulo": "Alimentamos más de 60 vidas",
+      "tituloDestacado": "cada día",
+      "descripcion": "En el Hogar Paraíso compramos alimento concentrado y diariamente cocinamos una preparación complementaria para sostener su alimentación.",
       "foto": "img/actualidad/alimentacion1.webp",
       "textoBoton": "Conocer cómo los alimentamos",
       "modal": {
-        "titulo": "La comida de nuestros animalitos",
-        "texto": "En Hogar Paraíso preparamos cada día la comida de más de 50 animalitos. Sus porciones incluyen concentrado, macarrones o arroz y un paté que preparamos con hígado o pata de pollo, acompañado de verduras como papa y zanahoria.\n\nTodo se prepara sin condimentos y se sirve en los horarios de alimentación de nuestros animalitos.",
-        "foto": "img/actualidad/alimentacion2.webp"
+        "titulo": "Alimentación preparada todos los días",
+        "texto": "Alimentar a más de 60 animalitos requiere trabajo, organización y recursos cada día. En el Hogar Paraíso compramos alimento concentrado y también cocinamos una preparación complementaria.",
+        "secciones": [
+          {"titulo":"¿Qué preparamos?","icono":"fa-solid fa-kitchen-set","texto":"Diariamente cocinamos arroz blanco o macarrones y los acompañamos con patas de pollo o hígado. También incorporamos verduras como zanahoria y papa, según la preparación del día."},
+          {"titulo":"Necesidades diferentes","icono":"fa-solid fa-bowl-food","texto":"Algunos animalitos, por su edad o condición de salud, necesitan alimentos especiales indicados por la veterinaria."},
+          {"titulo":"Un esfuerzo diario","icono":"fa-solid fa-sack-dollar","texto":"La compra de concentrado y de los ingredientes utilizados para cocinar representa aproximadamente $40 diarios. A esto se suma el trabajo de preparar, servir y limpiar después de cada alimentación."}
+        ],
+        "cierreTitulo": "Tu ayuda mantiene llenos sus platos",
+        "cierreTexto": "Cada colaboración nos ayuda a continuar alimentando a quienes dependen de Paraíso todos los días.",
+        "foto": ["img/actualidad/alimentacion1.webp","img/actualidad/alimentacion2.webp"]
+      }
+    },
+    {
+      "id": "hogar-que-los-protege",
+      "activa": true,
+      "acento": "naranja",
+      "etiqueta": "🏠 Hogar Paraíso",
+      "titulo": "Un hogar que necesita",
+      "tituloDestacado": "sostenerse cada mes",
+      "descripcion": "El espacio donde viven y se recuperan nuestros animalitos es alquilado. Sostenerlo cada mes permite que continúen protegidos y tranquilos.",
+      "foto": "img/actualidad/hogar1.webp",
+      "icono": "fa-solid fa-house-chimney-heart",
+      "textoBoton": "Conoce el hogar que proteges",
+      "modal": {
+        "titulo": "El hogar que los protege",
+        "texto": "El Hogar Paraíso funciona en un espacio alquilado. Allí muchos animalitos pueden vivir tranquilos, descansar, alimentarse y recuperarse mientras reciben los cuidados que necesitan.",
+        "secciones": [
+          {"titulo":"Un espacio para estar seguros","icono":"fa-solid fa-house-circle-check","texto":"El hogar les brinda protección, áreas de descanso y un lugar donde acompañar sus recuperaciones y atender sus necesidades diarias."},
+          {"titulo":"Gastos que deben cubrirse cada mes","icono":"fa-solid fa-receipt","texto":"Además del alquiler mensual, necesitamos cubrir servicios esenciales.","items":["Agua y electricidad.","Gas para cocinar sus alimentos.","Internet para mantener funcionando las cámaras de vigilancia.","Mantenimiento básico del espacio."]},
+          {"titulo":"Más de 60 vidas dependen de Paraíso","icono":"fa-solid fa-paw","texto":"Si el proyecto no pudiera sostener este espacio, muchos animalitos volverían a quedar vulnerables. Mantener el Hogar Paraíso significa conservar el lugar que hoy los protege."}
+        ],
+        "cierreTitulo": "Ayúdanos a mantener su hogar",
+        "cierreTexto": "Cada apoyo contribuye a que este espacio continúe siendo un lugar seguro para los animalitos que dependen de nosotros.",
+        "foto": []
       }
     },
     {
