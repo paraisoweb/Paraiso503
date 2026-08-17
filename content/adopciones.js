@@ -41,9 +41,9 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Cariñoso, tranquilo y muy sociable. Le encanta estar acompañado.",
+      "descripcion": "Dulce, sociable y de mirada tranquila. Busca una familia responsable con quien crecer acompañado, protegido y muy querido.",
       "alt": "Cachorro canela de ojos claros disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/cachorro-canela-ojos-claros-adopcion.webp",
+      "foto": "img/adopta/cachorro-canela-ojos-claros-adopcion.webp",
       "destacadoInicio": true
     },
     {
@@ -52,20 +52,20 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "hembra",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Muy dulce y juguetona. Se lleva bien con otros perritos.",
+      "descripcion": "Cariñosa y juguetona, disfruta compartir con otros perritos. Espera un hogar donde pueda crecer con paciencia, cuidados y mucho cariño.",
       "alt": "Cachorra de pelaje crema disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/cachorra-crema-adopcion.webp",
+      "foto": "img/adopta/cachorra-crema-adopcion.webp",
       "destacadoInicio": true
     },
     {
-      "nombre": "🐶 Cachorro 3",
+      "nombre": "🐶 Cachorra 3",
       "especie": "perro",
-      "sexo": "macho",
+      "sexo": "hembra",
       "edad": "cachorro",
       "estado": "Disponible",
-      "descripcion": "Cachorro alegre, curioso y lleno de energía. Ideal para una familia activa.",
-      "alt": "Cachorro café disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/cachorro-cafe-adopcion.webp",
+      "descripcion": "Alegre, curiosa y con mucha energía para descubrir el mundo. Busca una familia que la acompañe en sus juegos, aprendizajes y crecimiento.",
+      "alt": "Cachorra de pelaje café disponible para adopción responsable en Paraíso 503",
+      "foto": "img/adopta/cachorro-cafe-adopcion.webp",
       "destacadoInicio": true
     },
     {
@@ -74,86 +74,9 @@ window.PARAISO503_CONTENT.adopciones = {
       "sexo": "macho",
       "edad": "adulto",
       "estado": "Disponible",
-      "descripcion": "Tierno y tranquilo. Le encanta dormir en lugares cálidos y recibir mimos.",
+      "descripcion": "Tranquilo y cariñoso, disfruta los rincones cómodos y recibir atención. Busca un hogar responsable donde pueda sentirse seguro y acompañado.",
       "alt": "Gato atigrado disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/gato-atigrado-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorro 4",
-      "especie": "perro",
-      "sexo": "macho",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "De mirada curiosa y orejitas encantadoras. Busca una familia paciente que lo acompañe a crecer y descubrir el mundo.",
-      "alt": "Cachorro canela de orejas grandes disponible para adopción en Paraíso 503",
-      "foto":"img/adopta/cachorro-canela-orejas-grandes-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorro 5",
-      "especie": "perro",
-      "sexo": "macho",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Un pequeño de mirada dulce que espera un hogar donde pueda sentirse protegido, acompañado y muy querido.",
-      "alt": "Cachorro canela sostenido en brazos disponible para adopción en Paraíso 503",
-      "foto":"img/adopta/cachorro-canela-en-brazos-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorra 6",
-      "especie": "perro",
-      "sexo": "hembra",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Su carita expresiva y su lengua traviesa conquistan a cualquiera. Busca una familia que acompañe sus primeros juegos y aprendizajes.",
-      "alt": "Cachorra crema de expresión juguetona disponible para adopción en Paraíso 503",
-      "foto":"img/adopta/cachorra-crema-juguetona-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorro 7",
-      "especie": "perro",
-      "sexo": "macho",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Pequeño y de expresión tranquila. Está esperando crecer rodeado de protección, paciencia y mucho afecto.",
-      "alt": "Cachorro crema de perfil disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/cachorro-crema-perfil-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorra 8",
-      "especie": "perro",
-      "sexo": "hembra",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Su mirada noble y su hocico oscuro la hacen inconfundible. Espera una familia que la cuide y la convierta en parte de su vida.",
-      "alt": "Cachorra crema de hocico oscuro disponible para adopción en Paraíso 503",
-      "foto":"img/adopta/cachorra-crema-hocico-oscuro-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorro 9",
-      "especie": "perro",
-      "sexo": "macho",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Un pequeño de pelaje canela y mirada atenta. Busca un hogar seguro donde pueda crecer acompañado y querido.",
-      "alt": "Cachorro canela con lazo disponible para adopción responsable en Paraíso 503",
-      "foto":"img/adopta/cachorro-canela-lazo-adopcion.webp",
-      "destacadoInicio": false
-    },
-    {
-      "nombre": "🐶 Cachorra 10",
-      "especie": "perro",
-      "sexo": "hembra",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Su pelaje negro con detalles canela le da una apariencia única. Busca una familia responsable que le brinde estabilidad, cuidados y cariño.",
-      "alt": "Cachorra negra con detalles canela disponible para adopción en Paraíso 503",
-      "foto":"img/adopta/cachorra-negra-canela-adopcion.webp",
+      "foto": "img/adopta/gato-atigrado-adopcion.webp",
       "destacadoInicio": false
     },
   ]
