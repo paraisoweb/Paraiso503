@@ -13,7 +13,7 @@
      edad             "cachorro" o "adulto" — se usa para el filtro de edad y para la insignia de la tarjeta
      estado           texto que se muestra en la etiqueta sobre la foto, ej. "Disponible"
      descripcion      descripción breve y cercana del animalito
-     foto             ruta a la foto real (ej. "img/adopta/cachorro-canela-ojos-claros-adopcion.webp"); null = imagen de referencia
+     foto             ruta a la foto real (ej. "/img/adopta/cachorro-canela-ojos-claros-adopcion.webp"); null = imagen de referencia
      alt              descripción accesible de lo que aparece en la fotografía
      destacadoInicio  true = también aparece en la vista previa de la portada
 
@@ -30,7 +30,7 @@ window.PARAISO503_CONTENT.adopciones = {
     "edad": "'cachorro' o 'adulto' — se usa para el filtro de edad y para la insignia que se muestra en la tarjeta",
     "estado": "texto que se muestra en la etiqueta sobre la foto, ej. 'Disponible'",
     "descripcion": "descripción breve y cercana del animalito",
-    "foto": "ruta a la foto real (ej. 'img/adopta/cachorro-canela-ojos-claros-adopcion.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
+    "foto": "ruta a la foto real (ej. '/img/adopta/cachorro-canela-ojos-claros-adopcion.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
     "alt": "descripción breve y precisa de lo que aparece en la fotografía",
     "destacadoInicio": "true para que también aparezca en la vista previa de la portada, false para que solo aparezca en la página de Adopciones"
   },
@@ -43,7 +43,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "estado": "Disponible",
       "descripcion": "Dulce, sociable y de mirada tranquila. Busca una familia responsable con quien crecer acompañado, protegido y muy querido.",
       "alt": "Cachorro canela de ojos claros disponible para adopción responsable en Paraíso 503",
-      "foto": "img/adopta/cachorro-canela-ojos-claros-adopcion.webp",
+      "foto": "/img/adopta/cachorro-canela-ojos-claros-adopcion.webp",
       "destacadoInicio": true
     },
     {
@@ -54,7 +54,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "estado": "Disponible",
       "descripcion": "Cariñosa y juguetona, disfruta compartir con otros perritos. Espera un hogar donde pueda crecer con paciencia, cuidados y mucho cariño.",
       "alt": "Cachorra de pelaje crema disponible para adopción responsable en Paraíso 503",
-      "foto": "img/adopta/cachorra-crema-adopcion.webp",
+      "foto": "/img/adopta/cachorra-crema-adopcion.webp",
       "destacadoInicio": true
     },
     {
@@ -65,7 +65,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "estado": "Disponible",
       "descripcion": "Alegre, curiosa y con mucha energía para descubrir el mundo. Busca una familia que la acompañe en sus juegos, aprendizajes y crecimiento.",
       "alt": "Cachorra de pelaje café disponible para adopción responsable en Paraíso 503",
-      "foto": "img/adopta/cachorro-cafe-adopcion.webp",
+      "foto": "/img/adopta/cachorro-cafe-adopcion.webp",
       "destacadoInicio": true
     },
     {
@@ -76,7 +76,7 @@ window.PARAISO503_CONTENT.adopciones = {
       "estado": "Disponible",
       "descripcion": "Tranquilo y cariñoso, disfruta los rincones cómodos y recibir atención. Busca un hogar responsable donde pueda sentirse seguro y acompañado.",
       "alt": "Gato atigrado disponible para adopción responsable en Paraíso 503",
-      "foto": "img/adopta/gato-atigrado-adopcion.webp",
+      "foto": "/img/adopta/gato-atigrado-adopcion.webp",
       "destacadoInicio": false
     },
   ]

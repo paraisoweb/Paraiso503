@@ -34,7 +34,7 @@
      categoria    debe coincidir con un "id" de la lista de categorías.
      titulo       texto corto que aparece sobre la foto (opcional, "" = se
                   usa solo el nombre de la categoría).
-     imagen       ruta a la foto (ej. "img/galeria/paraiso1.webp").
+     imagen       ruta a la foto (ej. "/img/galeria/paraiso1.webp").
      fecha        texto libre para mostrar debajo del título (opcional).
 
    Se muestran las primeras 10 fotos que coincidan con el filtro activo; el
@@ -86,33 +86,33 @@ window.PARAISO503_CONTENT.galeria = {
   ],
 
   "fotos": [
-    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "img/galeria/ruta1.webp", "fecha": "25 de junio, 2025" },
-    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "img/galeria/ruta2.webp", "fecha": "22 de junio, 2025" },
-    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "img/galeria/ruta3.webp", "fecha": "18 de junio, 2025" },
-    { "categoria": "alimentacion", "titulo": "Entrega de alimento",  "imagen": "img/program/rutas.webp", "fecha": "12 de junio, 2025" },
-    { "categoria": "alimentacion", "titulo": "Atención en la ruta",  "imagen": "img/program/atencion.webp", "fecha": "5 de junio, 2025" },
-    { "categoria": "alimentacion", "titulo": "Voluntarios en ruta",  "imagen": "img/program/voluntario.webp", "fecha": "30 de mayo, 2025" },
+    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "/img/galeria/ruta1.webp", "fecha": "25 de junio, 2025" },
+    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "/img/galeria/ruta2.webp", "fecha": "22 de junio, 2025" },
+    { "categoria": "alimentacion", "titulo": "Ruta de Alimentación", "imagen": "/img/galeria/ruta3.webp", "fecha": "18 de junio, 2025" },
+    { "categoria": "alimentacion", "titulo": "Entrega de alimento",  "imagen": "/img/program/rutas.webp", "fecha": "12 de junio, 2025" },
+    { "categoria": "alimentacion", "titulo": "Atención en la ruta",  "imagen": "/img/program/atencion.webp", "fecha": "5 de junio, 2025" },
+    { "categoria": "alimentacion", "titulo": "Voluntarios en ruta",  "imagen": "/img/program/voluntario.webp", "fecha": "30 de mayo, 2025" },
 
-    { "categoria": "cancer", "titulo": "Lucha contra el Cáncer",   "imagen": "img/program/cancer.webp", "fecha": "20 de junio, 2025" },
-    { "categoria": "cancer", "titulo": "Rehabilitación",           "imagen": "img/program/rehabilitacion.webp", "fecha": "14 de junio, 2025" },
-    { "categoria": "cancer", "titulo": "Jornada de esterilización", "imagen": "img/program/esterilizacion.webp", "fecha": "8 de junio, 2025" },
-    { "categoria": "cancer", "titulo": "Transparencia en tratamientos", "imagen": "img/program/transparencia.webp", "fecha": "1 de junio, 2025" },
+    { "categoria": "cancer", "titulo": "Lucha contra el Cáncer",   "imagen": "/img/program/cancer.webp", "fecha": "20 de junio, 2025" },
+    { "categoria": "cancer", "titulo": "Rehabilitación",           "imagen": "/img/program/rehabilitacion.webp", "fecha": "14 de junio, 2025" },
+    { "categoria": "cancer", "titulo": "Jornada de esterilización", "imagen": "/img/program/esterilizacion.webp", "fecha": "8 de junio, 2025" },
+    { "categoria": "cancer", "titulo": "Transparencia en tratamientos", "imagen": "/img/program/transparencia.webp", "fecha": "1 de junio, 2025" },
 
-    { "categoria": "adopciones", "titulo": "Adopciones Responsables", "imagen": "img/program/adopta.webp", "fecha": "18 de junio, 2025" },
-    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "img/adopta/cachorro-canela-ojos-claros-adopcion.webp", "fecha": "15 de junio, 2025" },
-    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "img/adopta/cachorra-crema-adopcion.webp", "fecha": "10 de junio, 2025" },
-    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "img/adopta/gato-atigrado-adopcion.webp", "fecha": "3 de junio, 2025" },
-    { "categoria": "adopciones", "titulo": "Visita de seguimiento",   "imagen": "img/program/visita.webp", "fecha": "28 de mayo, 2025" },
+    { "categoria": "adopciones", "titulo": "Adopciones Responsables", "imagen": "/img/program/adopta.webp", "fecha": "18 de junio, 2025" },
+    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "/img/adopta/cachorro-canela-ojos-claros-adopcion.webp", "fecha": "15 de junio, 2025" },
+    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "/img/adopta/cachorra-crema-adopcion.webp", "fecha": "10 de junio, 2025" },
+    { "categoria": "adopciones", "titulo": "Nuevo hogar",             "imagen": "/img/adopta/gato-atigrado-adopcion.webp", "fecha": "3 de junio, 2025" },
+    { "categoria": "adopciones", "titulo": "Visita de seguimiento",   "imagen": "/img/program/visita.webp", "fecha": "28 de mayo, 2025" },
 
-    { "categoria": "hogar", "titulo": "Hogar Paraíso", "imagen": "img/program/paraiso.webp", "fecha": "15 de junio, 2025" },
-    { "categoria": "hogar", "titulo": "Un día en el refugio", "imagen": "img/program/familia.webp", "fecha": "9 de junio, 2025" },
-    { "categoria": "hogar", "titulo": "Rincón de descanso", "imagen": "img/adopta/cachorro-cafe-adopcion.webp", "fecha": "2 de junio, 2025" },
-    { "categoria": "hogar", "titulo": "Nuestro equipo", "imagen": "img/nosotros/nosotros.webp", "fecha": "27 de mayo, 2025" },
+    { "categoria": "hogar", "titulo": "Hogar Paraíso", "imagen": "/img/program/paraiso.webp", "fecha": "15 de junio, 2025" },
+    { "categoria": "hogar", "titulo": "Un día en el refugio", "imagen": "/img/program/familia.webp", "fecha": "9 de junio, 2025" },
+    { "categoria": "hogar", "titulo": "Rincón de descanso", "imagen": "/img/adopta/cachorro-cafe-adopcion.webp", "fecha": "2 de junio, 2025" },
+    { "categoria": "hogar", "titulo": "Nuestro equipo", "imagen": "/img/nosotros/nosotros.webp", "fecha": "27 de mayo, 2025" },
 
-    { "categoria": "historias", "titulo": "Antes del rescate", "imagen": "img/historias/solecita/sol1.webp", "fecha": "10 de junio, 2025" },
-    { "categoria": "historias", "titulo": "Después del tratamiento", "imagen": "img/historias/solecita/sol2.webp", "fecha": "10 de junio, 2025" },
-    { "categoria": "historias", "titulo": "Segunda oportunidad", "imagen": "img/heroes/hero.webp", "fecha": "4 de junio, 2025" },
-    { "categoria": "historias", "titulo": "Programa Contigo", "imagen": "img/Contigo/contigo.webp", "fecha": "29 de mayo, 2025" }
+    { "categoria": "historias", "titulo": "Antes del rescate", "imagen": "/img/historias/solecita/sol1.webp", "fecha": "10 de junio, 2025" },
+    { "categoria": "historias", "titulo": "Después del tratamiento", "imagen": "/img/historias/solecita/sol2.webp", "fecha": "10 de junio, 2025" },
+    { "categoria": "historias", "titulo": "Segunda oportunidad", "imagen": "/img/heroes/hero.webp", "fecha": "4 de junio, 2025" },
+    { "categoria": "historias", "titulo": "Programa Contigo", "imagen": "/img/Contigo/contigo.webp", "fecha": "29 de mayo, 2025" }
   ],
 
   "videoDestacado": {

@@ -37,7 +37,7 @@
                         automáticamente — no hace falta indicar íconos.
      galeria           arreglo de rutas a fotos/videos adicionales de esta
                         historia, pensado para futuras ampliaciones (ej.
-                        "img/historias/solecita/sol1.webp"). [] = esta sección se
+                        "/img/historias/solecita/sol1.webp"). [] = esta sección se
                         oculta en el modal hasta que agregues imágenes. Se abren
                         en el mismo visor de fotos que ya usa "Programas".
      destacadoInicio   true = también aparece en la vista previa de la portada
@@ -57,7 +57,7 @@ window.PARAISO503_CONTENT.historias = {
     "frase": "frase corta representativa (opcional, '' para ocultarla)",
     "descripcion": "breve historia para la tarjeta: cómo llegó, qué le pasó y cómo está hoy",
     "historiaCompleta": "historia completa para el modal (opcional, '' = usa 'descripcion')",
-    "fotoAntes": "ruta a la foto real de 'antes' (ej. 'img/historias/solecita/sol1.webp'). Déjalo en null para usar una imagen de referencia automática",
+    "fotoAntes": "ruta a la foto real de 'antes' (ej. '/img/historias/solecita/sol1.webp'). Déjalo en null para usar una imagen de referencia automática",
     "fotoDespues": "ruta a la foto real de 'después'. Déjalo en null para usar una imagen de referencia automática",
     "lugarRescate": "lugar del rescate (opcional, '' para ocultarlo)",
     "fechaRescate": "fecha del rescate (opcional, '' para ocultarla)",
@@ -74,8 +74,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "Una nueva oportunidad comenzó en Los Chorros.",
       "descripcion": "Durante nuestro recorrido conocimos a un señor que cuida a más de 25 perritos junto a la carretera de Los Chorros. Ante la situación que enfrenta por las obras de la zona, Paraíso 503 decidió sumar esfuerzos y recibir a los cachorros más vulnerables para brindarles protección, alimentación y atención.",
       "historiaCompleta": "Durante nuestro recorrido conocimos a un señor que ha dedicado parte de su vida a cuidar a más de 25 perritos. Hoy enfrenta una situación difícil: debido a las obras que se realizan en la carretera de Los Chorros, debe abandonar el lugar donde ha permanecido con ellos.\n\nPara una sola persona, cuidar tantos animalitos representa una enorme responsabilidad. Al conocer su situación, nos acercamos y decidimos sumar esfuerzos para ayudarlo y proteger especialmente a los cachorros más vulnerables.\n\nLlevarlos con nosotros significa alejarlos de los riesgos de crecer cerca de una carretera transitada. En Paraíso 503 recibirán alimentación adecuada, revisión veterinaria, los cuidados y medicamentos que necesiten, su esquema de vacunación y seguimiento durante su crecimiento.\n\nEl objetivo final es que, cuando estén preparados, puedan encontrar familias responsables y hogares permanentes.\n\nEste rescate no termina cuando llegan al refugio. Apenas comienza una nueva etapa para ellos.",
-      "fotoAntes": "img/historias/los-chorros/rescate1.webp",
-      "fotoDespues": "img/historias/los-chorros/rescate2.webp",
+      "fotoAntes": "/img/historias/los-chorros/rescate1.webp",
+      "fotoDespues": "/img/historias/los-chorros/rescate2.webp",
       "lugarRescate": "Los Chorros, La Libertad",
       "fechaRescate": "Agosto 2026",
       "diagnostico": "",
@@ -86,7 +86,7 @@ window.PARAISO503_CONTENT.historias = {
         { "evento": "Atención veterinaria", "fecha": "En proceso" },
         { "evento": "Preparación para adopción", "fecha": "Próximamente" }
       ],
-      "galeria": ["img/historias/los-chorros/rescate3.webp", "img/historias/los-chorros/rescate4.webp"],
+      "galeria": ["/img/historias/los-chorros/rescate3.webp", "/img/historias/los-chorros/rescate4.webp"],
       "destacadoInicio": false
     },
     {
@@ -95,8 +95,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "De un diagnóstico crítico a una segunda oportunidad.",
       "descripcion": "Cuando Sol llegó desde Chalatenango, su estado era crítico. Enfrentaba un tumor de Sticker y una infección severa, lo que convirtió su recuperación en un gran desafío. Después de seis sesiones de quimioterapia, cuidados constantes y su esterilización, hoy está completamente recuperada.",
       "historiaCompleta": "",
-      "fotoAntes":"img/historias/solecita/sol1.webp",
-      "fotoDespues":"img/historias/solecita/sol2.webp",
+      "fotoAntes":"/img/historias/solecita/sol1.webp",
+      "fotoDespues":"/img/historias/solecita/sol2.webp",
       "lugarRescate": "Chalatenango",
       "fechaRescate": "",
       "diagnostico": "Tumor de Sticker con infección severa asociada.",
@@ -108,7 +108,7 @@ window.PARAISO503_CONTENT.historias = {
         { "evento": "Esterilización", "detalle": "Procedimiento exitoso" },
         { "evento": "Recuperación", "detalle": "Completada con éxito" }
       ],
-      "galeria": [ "img/historias/solecita/sol3.webp", "img/historias/solecita/sol4.webp", "img/historias/solecita/sol5.webp" ],
+      "galeria": [ "/img/historias/solecita/sol3.webp", "/img/historias/solecita/sol4.webp", "/img/historias/solecita/sol5.webp" ],
       "destacadoInicio": true
     },
     {
@@ -117,8 +117,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "",
       "descripcion": "La historia de Toto aún se está escribiendo. Llegó con un tumor perianal de gran tamaño y una antigua fractura de cadera, dos condiciones que requieren un manejo cuidadoso. Hoy continúa en tratamiento y a la espera de nuevos exámenes para poder realizar su cirugía. Cada avance es un paso más hacia la recuperación que tanto merece.",
       "historiaCompleta": "",
-      "fotoAntes":"img/historias/toto/toto1.webp",
-      "fotoDespues": "img/historias/toto/toto2.webp",
+      "fotoAntes":"/img/historias/toto/toto1.webp",
+      "fotoDespues": "/img/historias/toto/toto2.webp",
       "lugarRescate": "",
       "fechaRescate": "",
       "diagnostico": "Tumor perianal de gran tamaño y fractura de cadera antigua.",
@@ -128,7 +128,7 @@ window.PARAISO503_CONTENT.historias = {
         { "evento": "Diagnóstico", "fecha": "22/06/2026" },
         { "evento": "Continúa en tratamiento", "fecha": "23/06/2026-actualidad" }
       ],
-      "galeria": ["img/historias/toto/toto3.webp",],
+      "galeria": ["/img/historias/toto/toto3.webp",],
       "destacadoInicio": true
     },
     {
@@ -137,8 +137,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "De un atropello a una nueva oportunidad.",
       "descripcion": "Jack fue encontrado siendo un cachorro tras sufrir un atropello en Colón. Recibió atención veterinaria inmediata, tratamiento y un vendaje de Robert Jones que le permitió recuperarse. Hoy disfruta de una nueva oportunidad y espera encontrar una familia que le brinde un hogar lleno de amor.",
       "historiaCompleta": "Jack fue encontrado siendo apenas un cachorro, luego de ser atropellado en Colón. Llegó con una fractura y un estado de salud delicado, por lo que recibió atención veterinaria inmediata. Tras realizarle los exámenes correspondientes, permaneció hospitalizado con fluidoterapia y posteriormente se le colocó un vendaje de Robert Jones para estabilizar su lesión. Gracias a semanas de cuidados y seguimiento, logró recuperarse. Hoy es un perrito alegre, lleno de energía y espera encontrar una familia que le brinde el hogar que siempre ha merecido.",
-      "fotoAntes":"img/historias/jack/jack1.webp",
-      "fotoDespues": "img/historias/jack/jack2.webp",
+      "fotoAntes":"/img/historias/jack/jack1.webp",
+      "fotoDespues": "/img/historias/jack/jack2.webp",
       "lugarRescate": "",
       "fechaRescate": "",
       "diagnostico": "Fractura por atropello y deshidratación severa.",
@@ -158,8 +158,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "Vencí al moquillo",
       "descripcion": "Conchita fue rescatada en la carretera Los Chorros mientras realizábamos una de nuestras rutas de alimentación. Tras su rescate fue diagnosticada con moquillo y enfrentó un largo proceso de recuperación que incluso le impidió caminar. Gracias a cuidados constantes, terapia, alimentación y mucho amor, logró recuperarse y hoy vive feliz junto a nosotros.",
       "historiaCompleta": "Conchita fue rescatada durante una de nuestras rutas de alimentación en la carretera Los Chorros. Desde el primer momento notamos que estaba desorientada y en un estado delicado, por lo que fue trasladada de inmediato a la veterinaria. Tras los exámenes correspondientes, fue diagnosticada con moquillo, una enfermedad que puso a prueba su fortaleza. Durante semanas permaneció en tratamiento, aislamiento y cuidados constantes. Con el tiempo presentó complicaciones neurológicas que le impidieron caminar, pero nunca dejó de luchar. Día tras día recibió terapia, alimentación especial y el acompañamiento necesario para volver a ponerse de pie. Poco a poco recuperó su movilidad y sus ganas de vivir. Hoy Conchita ha vencido al moquillo y disfruta de una vida feliz, rodeada del cariño de quienes nunca dejaron de creer en ella.",
-      "fotoAntes":"img/historias/conchita/conchita1.webp",
-      "fotoDespues": "img/historias/conchita/conchita2.webp",
+      "fotoAntes":"/img/historias/conchita/conchita1.webp",
+      "fotoDespues": "/img/historias/conchita/conchita2.webp",
       "lugarRescate": "",
       "fechaRescate": "",
       "diagnostico": "Moquillo canino con complicaciones neurológicas.",
@@ -170,7 +170,7 @@ window.PARAISO503_CONTENT.historias = {
         { "evento": "Rehabilitación", "fecha": "06/05/2022-14/12/2022" },
         { "evento": "Recuperación", "fecha": "14/12/2022-actualidad" }
       ],
-      "galeria": ["img/historias/conchita/conchita3.webp", "img/historias/conchita/conchita4.webp", "img/historias/conchita/conchita5.webp"],
+      "galeria": ["/img/historias/conchita/conchita3.webp", "/img/historias/conchita/conchita4.webp", "/img/historias/conchita/conchita5.webp"],
       "destacadoInicio": false
     },
     {
@@ -179,8 +179,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "Seguimos luchando, porque rendirse nunca ha sido una opción.",
       "descripcion": "La historia de Canelita aún se está escribiendo. Llegó con un avanzado Tumor de Sticker, desnutrición e infecciones que comprometían seriamente su salud. Hoy continúa en tratamiento y cada sesión representa una nueva oportunidad para seguir luchando.",
       "historiaCompleta": "Canelita fue rescatada en un estado muy delicado, con desnutrición severa, un Tumor de Sticker avanzado y múltiples infecciones que comprometían su salud. Tras realizarle los exámenes necesarios, inició un tratamiento intensivo que hasta la fecha incluye doce sesiones de quimioterapia, controles veterinarios y cuidados constantes. Aunque ha mostrado avances importantes, el cáncer aún no ha desaparecido por completo y su recuperación continúa. Hoy seguimos luchando a su lado, y cada apoyo que recibimos nos acerca un poco más a darle la oportunidad de vencer esta enfermedad.",
-      "fotoAntes":"img/historias/canelita/canelita1.webp",
-      "fotoDespues": "img/historias/canelita/canelita2.webp",
+      "fotoAntes":"/img/historias/canelita/canelita1.webp",
+      "fotoDespues": "/img/historias/canelita/canelita2.webp",
       "lugarRescate": "",
       "fechaRescate": "",
       "diagnostico": "Tumor de Sticker avanzado, desnutrición e infecciones asociadas.",
@@ -201,8 +201,8 @@ window.PARAISO503_CONTENT.historias = {
       "frase": "",
       "descripcion": "Su historia comenzó junto a la carretera hacia Sonsonate, donde fue encontrado desnutrido, en malas condiciones y con un alto riesgo de ser atropellado. Con tiempo, cuidados y dedicación, salió adelante. Hoy disfruta de la vida que siempre mereció, junto a una familia que lo ama.",
       "historiaCompleta": "",
-      "fotoAntes":"img/historias/palomita/palomita1.webp",
-      "fotoDespues":"img/historias/palomita/palomita2.webp",
+      "fotoAntes":"/img/historias/palomita/palomita1.webp",
+      "fotoDespues":"/img/historias/palomita/palomita2.webp",
       "lugarRescate": "Carretera hacia Sonsonate",
       "fechaRescate": "",
       "diagnostico": "",

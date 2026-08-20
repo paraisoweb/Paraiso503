@@ -17,7 +17,7 @@
                          mientras no se complete)
      insignia           texto de la etiqueta destacada en la tarjeta de portada (null si no lleva)
      etiquetaDestacado  texto de la insignia sobre la foto en el detalle (null si no aplica)
-     foto               ruta a la foto real (ej. "img/program/rutas.webp"); null = imagen de referencia
+     foto               ruta a la foto real (ej. "/img/program/rutas.webp"); null = imagen de referencia
      vistaInicio        "destacado" | "expandible" | "detalle" — dónde aparece en la portada
      enQueConsiste      array de párrafos (texto) para la sección "¿En qué consiste?"
      porQueExiste       array de párrafos (texto) para la sección "¿Por qué existe?"
@@ -32,9 +32,9 @@
    carpeta (ej. img/historias/los-chorros/) y agrega sus rutas al arreglo
    "galeria" de ese programa. No hace falta tocar HTML, CSS ni JS:
      "galeria": [
-       "img/historias/los-chorros/rescate1.webp",
-       "img/historias/los-chorros/rescate2.webp",
-       "img/historias/los-chorros/rescate3.webp"
+       "/img/historias/los-chorros/rescate1.webp",
+       "/img/historias/los-chorros/rescate2.webp",
+       "/img/historias/los-chorros/rescate3.webp"
      ]
    Se muestran las 3 primeras como miniaturas; si agregas más, el botón
    "Ver más fotos" revela el resto automáticamente. Videos (.mp4, .webm,
@@ -54,13 +54,13 @@ window.PARAISO503_CONTENT.programas = {
     "queEs": "texto (o lista de párrafos, string[]) para la sección '¿Qué es?' del modal que se abre al tocar la tarjeta del programa en la portada. Usa null mientras no se complete",
     "insignia": "texto de la etiqueta destacada en la tarjeta de portada (ej. 'Programa principal'). Usa null si no lleva etiqueta",
     "etiquetaDestacado": "texto de la insignia sobre la foto en el detalle del programa. Usa null si no aplica",
-    "foto": "ruta a la foto real del programa (ej. 'img/program/rutas.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
+    "foto": "ruta a la foto real del programa (ej. '/img/program/rutas.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
     "vistaInicio": "controla dónde aparece en la portada — 'destacado': una de las 3 tarjetas visibles de inmediato · 'expandible': aparece al presionar 'Mostrar todos los programas' · 'detalle': solo aparece en la página de Programas, no en la portada",
     "enQueConsiste": "lista de párrafos (string[]) para la sección '¿En qué consiste?' en el detalle del programa",
     "porQueExiste": "lista de párrafos (string[]) para la sección '¿Por qué existe?' en el detalle del programa",
     "comoAyuda": "lista de 4 objetos {icono, titulo} para la sección '¿Cómo ayuda este programa?' (icono = clase Font Awesome)",
     "impacto": "lista de 3 objetos {numero, texto} para la sección 'Impacto' (numero = dato destacado corto, texto = descripción breve)",
-    "galeria": "array de rutas a fotos o videos del programa (ej. 'img/historias/los-chorros/rescate1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = la sección Galería no se muestra hasta que agregues fotos o videos reales."
+    "galeria": "array de rutas a fotos o videos del programa (ej. '/img/historias/los-chorros/rescate1.webp'). Se muestran las 3 primeras y el resto aparece al presionar 'Ver más fotos'. Videos: usa una ruta con extensión .mp4/.webm/.mov/.ogg/.m4v y se reproducen con controles. Vacío = la sección Galería no se muestra hasta que agregues fotos o videos reales."
   },
   "programas": [
     {
@@ -73,7 +73,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "La Ruta de Alimentación es el programa que nos lleva, día tras día, a las calles donde muchos animalitos sobreviven solos. Recorremos comunidades enteras llevando comida y agua, y aprovechamos cada visita para detectar quiénes necesitan un rescate o atención médica urgente. Es el primer paso de casi todas nuestras historias de esperanza.",
       "insignia": "El corazón de Paraíso",
       "etiquetaDestacado": "El corazón de Paraíso 503",
-      "foto": "img/program/rutas.webp",
+      "foto": "/img/program/rutas.webp",
       "vistaInicio": "destacado",
       "enQueConsiste": [
         "La Ruta de Alimentación se realiza todos los días en Flora Amarilla y zonas aledañas de San Juan Opico y Lourdes Colón. Además, semanalmente visitamos comunidades en Santa Ana, Sonsonate, Ahuachapán y San Salvador, y realizamos recorridos periódicos hacia San Vicente y San Miguel.",
@@ -129,7 +129,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que acompaña a animalitos con cáncer, principalmente Tumor Venéreo Transmisible, brindándoles diagnóstico, tratamiento y seguimiento junto a nuestra veterinaria aliada Sanivet. Creemos que una enfermedad no debe significar el final de una historia, sino el inicio de una nueva oportunidad de vida.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/cancer.webp",
+      "foto":"/img/program/cancer.webp",
       "vistaInicio": "destacado",
       "enQueConsiste": [
         "Nuestro programa está enfocado principalmente en el tratamiento del Tumor Venéreo Transmisible (TVT), uno de los cánceres más comunes en perros rescatados. Además, atendemos casos de tumores mamarios, sarcomas y otras enfermedades oncológicas que requieren atención especializada.",
@@ -183,7 +183,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que conecta a animalitos rescatados con familias responsables, a través de entrevistas, evaluaciones y seguimiento antes y después de la adopción. Cada hogar que se abre no solo cambia una vida: también libera espacio para rescatar a otra.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/adopta.webp",
+      "foto":"/img/program/adopta.webp",
       "vistaInicio": "destacado",
       "enQueConsiste": [
         "El proceso de adopción está diseñado para garantizar el bienestar de cada animalito. Antes de entregar una adopción, realizamos entrevistas, evaluaciones y un seguimiento para conocer a la familia interesada y asegurarnos de que pueda ofrecer un hogar seguro y responsable.",
@@ -238,7 +238,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que impulsa jornadas de esterilización seguras para perros y gatos, en coordinación con Sanivet, con acompañamiento completo durante la recuperación. Cada procedimiento previene camadas no deseadas y ayuda a reducir el abandono animal.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/esterilizacion.webp",
+      "foto":"/img/program/esterilizacion.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Realizamos campañas de esterilización en coordinación con la veterinaria Sanivet, brindando a perros y gatos la oportunidad de acceder a un procedimiento seguro y acompañado por profesionales.",
@@ -293,7 +293,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el refugio donde los animalitos rescatados encuentran seguridad, alimento y cariño mientras se recuperan o esperan una familia. Un espacio pensado para sanar, recobrar la confianza y prepararse para una nueva etapa de vida.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/paraiso.webp",
+      "foto":"/img/program/paraiso.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Hogar Paraíso alberga a animalitos que han superado situaciones de abandono, maltrato, enfermedades, accidentes o tratamientos médicos complejos, como los pacientes que lograron recuperarse del cáncer y otras enfermedades.",
@@ -349,7 +349,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que brinda diagnóstico, tratamiento y seguimiento médico a animalitos rescatados y también a mascotas de familias con pocos recursos. Porque la salud es siempre el primer paso para cambiar una vida.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/atencion.webp",
+      "foto":"/img/program/atencion.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Cada animalito que llega a Paraíso 503 recibe una evaluación veterinaria para conocer su estado de salud y determinar el tratamiento que necesita.",
@@ -404,7 +404,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que acompaña a familias de escasos recursos con alimento, medicamentos y orientación veterinaria para sus mascotas. Porque ayudar a una familia a seguir cuidando a su animalito también es una forma de prevenir el abandono.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/familia.webp",
+      "foto":"/img/program/familia.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Muchas familias desean cuidar a sus animalitos, pero en ocasiones enfrentan dificultades para cubrir gastos como alimento, medicamentos o atención veterinaria.",
@@ -460,7 +460,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que abre las puertas de Hogar Paraíso para que más personas conozcan de cerca nuestro trabajo, convivan con los animalitos y descubran sus historias de recuperación. Una experiencia que construye confianza y conciencia sobre el bienestar animal.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/visita.webp",
+      "foto":"/img/program/visita.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Las personas que participan en una Visita Solidaria tienen la oportunidad de recorrer Hogar Paraíso, conocer a los animalitos rescatados y observar cómo se desarrolla el trabajo diario del proyecto.",
@@ -515,7 +515,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el compromiso de mostrar con claridad cómo se usa cada donación y el impacto real que genera. Compartimos avances, resultados e información sobre nuestra gestión, porque la confianza se construye con hechos, todos los días.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/transparencia.webp",
+      "foto":"/img/program/transparencia.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "A través de este programa compartimos información sobre el desarrollo de nuestros proyectos, las actividades realizadas y el destino de los recursos que recibimos. Publicamos resultados, avances, fotografías y reportes que permiten conocer cómo se transforma cada apoyo en alimento, tratamientos médicos, rescates, rehabilitación y bienestar para nuestros animalitos.",
@@ -570,7 +570,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que acompaña a animalitos que necesitan tiempo, cuidados y paciencia para sanar física y emocionalmente después de un rescate. Porque recuperar la salud no siempre basta: muchos también necesitan volver a confiar.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/rehabilitacion.webp",
+      "foto":"/img/program/rehabilitacion.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Recibimos animalitos que han sufrido accidentes, abandono, maltrato, desnutrición, fracturas, enfermedades o condiciones que requieren un proceso de recuperación prolongado.",
@@ -625,7 +625,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa de respuesta inmediata ante casos de abandono, accidentes y maltrato. Actuamos rápido, ya sea durante nuestras Rutas de Alimentación o por reportes de la comunidad, para brindar atención cuando más se necesita.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/rescate.webp",
+      "foto":"/img/program/rescate.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Muchos de nuestros rescates nacen durante las Rutas de Alimentación. Mientras recorremos diferentes comunidades, identificamos animalitos que necesitan ayuda y les damos seguimiento hasta encontrar el momento adecuado para ponerlos a salvo. También recibimos reportes de la comunidad a través de nuestras redes sociales y otros medios de contacto. Cuando se trata de casos graves o urgentes, evaluamos la situación y actuamos lo más pronto posible para brindar la atención que el animalito necesita.",
@@ -679,7 +679,7 @@ window.PARAISO503_CONTENT.programas = {
       "queEs": "Es el programa que reúne a personas dispuestas a dar su tiempo, esfuerzo y cariño para apoyar la labor diaria de Paraíso 503: alimentación, paseos, limpieza y mucho más. Cada voluntario se convierte en parte de esta familia y transforma vidas, incluida la suya.",
       "insignia": null,
       "etiquetaDestacado": null,
-      "foto":"img/program/voluntario.webp",
+      "foto":"/img/program/voluntario.webp",
       "vistaInicio": "expandible",
       "enQueConsiste": [
         "Las personas que forman parte de nuestro programa de voluntariado tienen la oportunidad de vivir de cerca la experiencia de ayudar a los animalitos de Paraíso 503.",

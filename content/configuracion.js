@@ -52,7 +52,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "Banco BAC",
         "icono": "fa-solid fa-building-columns",
-        "logo": "img/payment/bac.svg",
+        "logo": "/img/payment/bac.svg",
         "marca": "bac",
         "descripcion": "Cuenta de ahorro",
         "titular": "Eder Martins",
@@ -61,7 +61,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "Chivo Wallet",
         "icono": "fa-solid fa-mobile-screen",
-        "logo": "img/payment/chivo.png",
+        "logo": "/img/payment/chivo.png",
         "marca": "chivo",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
@@ -69,7 +69,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "Nequi",
         "icono": "fa-solid fa-mobile-screen",
-        "logo": "img/payment/nequi-app.png",
+        "logo": "/img/payment/nequi-app.png",
         "marca": "nequi",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
@@ -77,7 +77,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "n1co",
         "icono": "fa-solid fa-mobile-screen",
-        "logo": "img/payment/n1co.webp",
+        "logo": "/img/payment/n1co.webp",
         "marca": "n1co",
         "descripcion": "Ingresa este número en la app",
         "numero": "7171-4259"
@@ -85,7 +85,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "PayPal",
         "icono": "fa-brands fa-paypal",
-        "logo": "img/payment/paypal.png",
+        "logo": "/img/payment/paypal.png",
         "marca": "paypal",
         "descripcion": "Dona desde cualquier parte del mundo de forma segura.",
         "url": "https://www.paypal.me/paraisodelosanimales"
@@ -95,7 +95,7 @@ window.PARAISO503_CONTENT.configuracion = {
       {
         "nombre": "PayPal",
         "icono": "fa-brands fa-paypal",
-        "logo": "img/payment/paypal.png",
+        "logo": "/img/payment/paypal.png",
         "marca": "paypal",
         "descripcion": "Dona desde cualquier parte del mundo de forma segura.",
         "url": "https://www.paypal.me/paraisodelosanimales"
@@ -128,14 +128,14 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Milagro en la carretera",
       "subtitulo": "El rescate de los cachorros de Los Chorros",
       "descripcion": "Conocimos a un señor que cuida a más de 25 perritos junto a la carretera de Los Chorros. Ante el riesgo que enfrentan por las obras y el tránsito, nos acercamos para sumar esfuerzos y dar una nueva oportunidad a los más pequeños.",
-      "foto": "img/actualidad/rescate1.webp",
+      "foto": "/img/actualidad/rescate1.webp",
       "textoBoton": "Conoce su historia",
       "modal": {
         "titulo": "Milagro en la carretera",
         "texto": "Durante nuestro recorrido conocimos a un señor que ha dedicado parte de su vida a cuidar a más de 25 perritos. Hoy enfrenta una situación difícil: debido a las obras que se realizan en la carretera de Los Chorros, debe abandonar el lugar donde ha permanecido con ellos.\n\nPara una sola persona, cuidar tantos animalitos representa una enorme responsabilidad. Al conocer su situación, nos acercamos y decidimos sumar esfuerzos para ayudarlo y proteger especialmente a los cachorros más vulnerables.\n\nLlevarlos con nosotros significa alejarlos de los riesgos de crecer cerca de una carretera transitada. En Paraíso 503 recibirán alimentación adecuada, revisión veterinaria, vitaminas, los cuidados y medicamentos que necesiten, su esquema de vacunación y seguimiento durante su crecimiento.\n\nEl objetivo final es que, cuando estén preparados, puedan encontrar familias responsables y hogares permanentes.\n\nEste rescate no termina cuando llegan al refugio. Apenas comienza una nueva etapa para ellos.",
         "cierreTitulo": "Este rescate apenas comienza",
         "cierreTexto": "Recibir a estos cachorros significa asumir su alimentación, atención veterinaria, vacunas, medicamentos y cuidados hasta que estén preparados para encontrar un hogar responsable.\n\nParaíso 503 trabaja cada día con muchos animalitos que dependen de este proyecto. Tu apoyo es muy importante para que podamos dar continuidad a este rescate y seguir respondiendo cuando otro animal nos necesite.\n\nCada aporte, cada visita y cada persona que comparte nuestro trabajo nos ayuda a seguir adelante.",
-        "foto": ["img/actualidad/rescate1.webp","img/actualidad/rescate2.webp","img/actualidad/rescate3.webp","img/actualidad/rescate4.webp"]
+        "foto": ["/img/actualidad/rescate1.webp","/img/actualidad/rescate2.webp","/img/actualidad/rescate3.webp","/img/actualidad/rescate4.webp"]
       }
     },
     {
@@ -146,7 +146,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Conoce el lugar donde",
       "tituloDestacado": "cada vida importa",
       "descripcion": "Visita el Hogar Paraíso, conoce las historias de nuestros animalitos y comparte con ellos mientras descubres el trabajo que realizamos cada día.",
-      "foto": "img/actualidad/visita1.webp",
+      "foto": "/img/actualidad/visita1.webp",
       "textoBoton": "Conoce cómo visitarnos",
       "modal": {
         "titulo": "Una visita que también transforma vidas",
@@ -158,7 +158,7 @@ window.PARAISO503_CONTENT.configuracion = {
         ],
         "cierreTitulo": "¿Quieres visitarnos?",
         "cierreTexto": "Escríbenos para coordinar tu visita y consultar qué necesitamos actualmente. Tu compañía y tu apoyo también forman parte de esta historia.",
-        "foto": "img/actualidad/visita1.webp",
+        "foto": "/img/actualidad/visita1.webp",
         "acciones": [
           {"texto":"Escríbenos por WhatsApp","href":"https://wa.me/50377476318?text=Hola%2C%20me%20gustar%C3%ADa%20coordinar%20una%20visita%20solidaria%20a%20Para%C3%ADso%20503.","tipo":"externo"}
         ]
@@ -172,7 +172,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Protección anual para",
       "tituloDestacado": "más de 60 animalitos",
       "descripcion": "Más de 60 animalitos dependen de Paraíso. Necesitamos apoyo para mantener al día su vacunación y protegerlos de enfermedades prevenibles.",
-      "foto": "img/actualidad/vacunacion1.webp",
+      "foto": "/img/actualidad/vacunacion1.webp",
       "icono": "fa-solid fa-shield-dog",
       "textoBoton": "Conoce esta necesidad",
       "modal": {
@@ -202,7 +202,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "modal": {
         "titulo": "Más de tres años alimentando en Flor Amarilla",
         "texto": "Nuestra Ruta de Alimentación llega diariamente a Flor Amarilla, Ciudad Arce. Allí alimentamos a más de 100 animalitos que nos esperan cada día.\n\nDesde hace más de tres años mantenemos este recorrido de forma constante, llevando alimento y acompañamiento a los animales de la comunidad.",
-        "foto": "img/program/rutas.webp"
+        "foto": "/img/program/rutas.webp"
       }
     },
     {
@@ -213,7 +213,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Alimentamos más de 60 vidas",
       "tituloDestacado": "cada día",
       "descripcion": "En el Hogar Paraíso compramos alimento concentrado y diariamente cocinamos una preparación complementaria para sostener su alimentación.",
-      "foto": "img/actualidad/alimentacion1.webp",
+      "foto": "/img/actualidad/alimentacion1.webp",
       "textoBoton": "Conocer cómo los alimentamos",
       "modal": {
         "titulo": "Alimentación preparada todos los días",
@@ -225,7 +225,7 @@ window.PARAISO503_CONTENT.configuracion = {
         ],
         "cierreTitulo": "Tu ayuda mantiene llenos sus platos",
         "cierreTexto": "Cada colaboración nos ayuda a continuar alimentando a quienes dependen de Paraíso todos los días.",
-        "foto": ["img/actualidad/alimentacion1.webp","img/actualidad/alimentacion2.webp"]
+        "foto": ["/img/actualidad/alimentacion1.webp","/img/actualidad/alimentacion2.webp"]
       }
     },
     {
@@ -236,7 +236,7 @@ window.PARAISO503_CONTENT.configuracion = {
       "titulo": "Un hogar que necesita",
       "tituloDestacado": "sostenerse cada mes",
       "descripcion": "El espacio donde viven y se recuperan nuestros animalitos es alquilado. Sostenerlo cada mes permite que continúen protegidos y tranquilos.",
-      "foto": "img/actualidad/hogar1.webp",
+      "foto": "/img/actualidad/hogar1.webp",
       "icono": "fa-solid fa-house-chimney-heart",
       "textoBoton": "Conoce el hogar que proteges",
       "modal": {
@@ -270,12 +270,12 @@ window.PARAISO503_CONTENT.configuracion = {
       "etiqueta": "🏍️ Ruta de Alimentación",
       "titulo": "Nuestra ruta necesita volver a moverse",
       "descripcion": "Una de nuestras motos está fuera de servicio y la otra necesita reparación. Ambas son fundamentales para llevar alimento a los animalitos que nos esperan cada día.",
-      "foto": "img/actualidad/taller1.webp",
+      "foto": "/img/actualidad/taller1.webp",
       "textoBoton": "Conocer la necesidad",
       "modal": {
         "titulo": "Necesitamos poner la ruta en movimiento",
         "texto": "Una de nuestras motos está detenida por problemas mecánicos y otra necesita reparación. Una de estas reparaciones ronda los $250.\n\nSi tienes un taller, eres mecánico o puedes apoyarnos con la reparación, escríbenos. También puedes ayudarnos aportando con una parte del costo.\n\nCada apoyo nos ayuda a mantener la Ruta de Alimentación en movimiento y seguir llegando a los animalitos que nos esperan.",
-        "foto": "img/actualidad/taller1.webp"
+        "foto": "/img/actualidad/taller1.webp"
       }
     },
     {"id":"actualidad-reserva-1","activa":false,"etiqueta":"","titulo":"","descripcion":"","foto":"","textoBoton":"","modal":{"titulo":"","texto":"","foto":""}},
