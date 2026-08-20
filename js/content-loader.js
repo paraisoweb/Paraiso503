@@ -14,7 +14,7 @@
      - Cambiar un número/estadística -> content/estadisticas.js
      - Cambiar teléfono, redes, formas de donar, necesidad del mes
                                   -> content/configuracion.js
-     - Nueva foto/video en galeria.html -> content/galeria.js
+     - Nueva foto/video en /galeria/ -> content/galeria.js
 
    Cada archivo trae comentarios explicando cada campo. El contenido está
    escrito en formato JSON dentro de una pequeña asignación de JavaScript
@@ -28,12 +28,12 @@
    funciona igual en ambos escenarios.
 
    Los 5 archivos de /content/ se cargan con <script> ANTES que este
-   archivo en cada página (ver el final de index.html, programas.html,
-   adopciones.html e historias.html), así que al ejecutarse este script los
+   archivo en cada página (ver el final de /, /programas/,
+   /adopciones/ e /historias/), así que al ejecutarse este script los
    datos ya están disponibles de forma síncrona en window.PARAISO503_CONTENT.
 
    Este script detecta solo los contenedores que existen en la página actual
-   (index.html, programas.html, adopciones.html, historias.html), así que es
+   (/, /programas/, /adopciones/, /historias/), así que es
    seguro incluirlo en las 4 páginas sin importar qué secciones tenga cada una.
    ============================================================================= */
 
@@ -46,7 +46,7 @@
   // o si puede confiar en que content-loader.js lo hará al terminar de
   // renderizar. Esto evita depender de un temporizador "a ciegas" que
   // podría dispararse antes de que los JSON terminen de cargar (el bug
-  // que dejaba el acordeón de programas.html vacío en conexiones lentas).
+  // que dejaba el acordeón de /programas/ vacío en conexiones lentas).
   window.__p503ContentLoaderPresent = true;
 
   /* ---------------------------------------------------------------------
@@ -307,7 +307,7 @@
      --------------------------------------------------------------------- */
 
   // Datos resumidos para el modal de programa de la portada.
-  // La página programas.html sigue usando el contenido completo de
+  // La página /programas/ sigue usando el contenido completo de
   // content/programas.js; aquí enviamos solamente una vista rápida para
   // evitar duplicar todo el texto dentro del modal del inicio.
   function serializarProgramaParaModal(p) {
@@ -316,14 +316,14 @@
       id: p.id,
       titulo: p.titulo,
       resumen: resumen || 'Conoce este programa y el trabajo que realizamos para cambiar más vidas.',
-      link: 'programas.html#' + p.id
+      link: '/programas/#' + p.id
     };
     return escapeHtml(JSON.stringify(datos));
   }
 
-  // Tarjeta de programa tal como se ve en la portada (index.html). Toda la
+  // Tarjeta de programa tal como se ve en la portada (/). Toda la
   // tarjeta abre el modal con el resumen del programa (ver js/script.js);
-  // el botón "Conocer el programa" sigue llevando directo a programas.html.
+  // el botón "Conocer el programa" sigue llevando directo a /programas/.
   function programCardHtml(p) {
     const foto = p.foto || placeholderImg(p.titulo);
     const insignia = p.insignia ? '<span class="p-badge">' + escapeHtml(p.insignia) + '</span>' : '';
@@ -334,7 +334,7 @@
           insignia +
           '<div class="prog-head"><span class="prog-icon" style="background:' + escapeHtml(p.color) + '"><i class="fa-solid ' + escapeHtml(p.icono) + '"></i></span><h3>' + escapeHtml(p.titulo) + '</h3></div>' +
           '<p>' + escapeHtml(p.descripcionLista) + '</p>' +
-          '<a class="prog-link" href="programas.html#' + escapeHtml(p.id) + '">Conocer el programa</a>' +
+          '<a class="prog-link" href="/programas/#' + escapeHtml(p.id) + '">Conocer el programa</a>' +
         '</div>' +
       '</div>'
     );
@@ -353,7 +353,7 @@
     if (contExpandibles) contExpandibles.innerHTML = expandibles.map(programCardHtml).join('');
   }
 
-  // Acordeón completo de programas.html (índice de pastillas + detalle)
+  // Acordeón completo de /programas/ (índice de pastillas + detalle)
   function renderProgramasAccordion(data) {
     const progIndexEl = document.getElementById('progIndex');
     const progAccordionEl = document.getElementById('progAccordion');
@@ -571,7 +571,7 @@
     if (!data || !Array.isArray(data.animalitos)) return;
     const whatsappAdopciones = (config && config.contacto && config.contacto.whatsappAdopciones) || '';
 
-    // Vista previa en la portada (index.html): solo los destacados
+    // Vista previa en la portada (/): solo los destacados
     const previewGrid = document.querySelector('#adopciones .pet-grid');
     if (previewGrid) {
       const destacados = data.animalitos.filter(a => a.destacadoInicio);
@@ -579,7 +579,7 @@
       initHomeAdoptionCarousel(previewGrid);
     }
 
-    // Grilla completa en adopciones.html (con filtros)
+    // Grilla completa en /adopciones/ (con filtros)
     const petGrid = document.getElementById('petGrid');
     if (petGrid) {
       petGrid.innerHTML = data.animalitos.map(a => petCardHtml(a, whatsappAdopciones)).join('');
@@ -636,7 +636,7 @@
   // Prepara el objeto completo de una historia (con fotos y galería ya
   // resueltas, listas para usar directamente) y lo serializa para guardarlo
   // en el atributo data-historia de su tarjeta. El modal (js/script.js) lo
-  // lee de ahí — así la tarjeta de la portada y la de historias.html
+  // lee de ahí — así la tarjeta de la portada y la de /historias/
   // comparten exactamente el mismo modal reutilizable.
   function historiaSlug(nombre) {
     return String(nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -691,7 +691,7 @@
     );
   }
 
-  // Versión usada en historias.html: incluye data-status para el filtro.
+  // Versión usada en /historias/: incluye data-status para el filtro.
   // Mientras no haya foto real, usa la misma caja de degradado de color que
   // tenía originalmente esta página (en vez de la imagen de referencia).
   function historiaCardHtmlCompleta(h) {
@@ -718,14 +718,14 @@
   function renderHistorias(data) {
     if (!data || !Array.isArray(data.historias)) return;
 
-    // Vista previa en la portada (index.html)
+    // Vista previa en la portada (/)
     const previewGrid = document.querySelector('#historias .historias-grid');
     if (previewGrid) {
       const destacadas = data.historias.filter(h => h.destacadoInicio);
       previewGrid.innerHTML = destacadas.map(historiaCardHtmlPreview).join('');
     }
 
-    // Grilla completa en historias.html (con filtro de estado)
+    // Grilla completa en /historias/ (con filtro de estado)
     const historiasGrid = document.getElementById('historiasGrid');
     if (historiasGrid) {
       historiasGrid.innerHTML = data.historias.map(historiaCardHtmlCompleta).join('');
@@ -770,7 +770,7 @@
       servicios: Array.isArray(m.servicios) ? m.servicios : [],
       requisitos: Array.isArray(m.requisitos) ? m.requisitos.filter(Boolean) : [],
       mensajeWhatsapp: m.mensajeWhatsapp || '',
-      enlacePagina: m.enlacePagina || 'contigo.html'
+      enlacePagina: m.enlacePagina || '/contigo/'
     };
     return JSON.stringify(datos);
   }
@@ -801,7 +801,7 @@
         '<span class="kicker contigo-tag"><i class="fa-solid fa-heart"></i> ' + escapeHtml(data.etiqueta || 'Contigo') + '</span>' +
         '<h2 class="contigo-title">' + tituloConResaltado(data.titulo, data.resaltado) + '</h2>' +
         '<p class="contigo-desc">' + escapeHtml(data.texto || '') + '</p>' +
-        '<a class="contigo-btn" href="' + escapeHtml((data.modal && data.modal.enlacePagina) || 'contigo.html') + '">' + escapeHtml(data.textoBoton || 'Ver más sobre el programa') + ' <i class="fa-solid fa-arrow-right"></i></a>' +
+        '<a class="contigo-btn" href="' + escapeHtml((data.modal && data.modal.enlacePagina) || '/contigo/') + '">' + escapeHtml(data.textoBoton || 'Ver más sobre el programa') + ' <i class="fa-solid fa-arrow-right"></i></a>' +
       '</div>' +
       '<div class="contigo-photo">' +
         '<span class="contigo-photo-decor" aria-hidden="true"></span>' +
@@ -811,7 +811,7 @@
   }
 
   /* ---------------------------------------------------------------------
-     GALERÍA (galeria.html) — fotos, video destacado, videos recientes y
+     GALERÍA (/galeria/) — fotos, video destacado, videos recientes y
      playlists. Todo se genera desde content/galeria.js: para agregar una
      foto o un video nuevo solo se edita ese archivo (ver sus comentarios).
 

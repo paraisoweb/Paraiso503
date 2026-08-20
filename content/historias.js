@@ -2,7 +2,7 @@
    CONTENIDO: HISTORIAS DE ÉXITO — Paraíso 503
    =============================================================================
    Para agregar una nueva historia, copia uno de estos objetos y complétalo.
-   Aparecerá automáticamente en "historias.html" (con su modal "Conocer su
+   Aparecerá automáticamente en "/historias/" (con su modal "Conocer su
    historia"), y también en la portada si "destacadoInicio" es true (solo las
    primeras 2 destacadas se muestran en la portada).
 
@@ -50,7 +50,7 @@ window.PARAISO503_CONTENT = window.PARAISO503_CONTENT || {};
 window.PARAISO503_CONTENT.historias = {
   "ultimaActualizacion": "9 de agosto de 2026",
   "mensajeActualizacion": "Paraíso 503 tiene muchas historias que todavía queremos compartir. En los próximos días iremos agregando nuevos rescates, avances y segundas oportunidades. Vuelve pronto para conocerlas.",
-  "_ayuda": "Para agregar una nueva historia, copia uno de estos objetos y complétalo. Aparecerá automáticamente en 'historias.html' (con su modal 'Conocer su historia'), y también en la portada si 'destacadoInicio' es true (solo las primeras 2 destacadas se muestran en la portada). Cualquier campo opcional que dejes vacío simplemente no se muestra en el modal.",
+  "_ayuda": "Para agregar una nueva historia, copia uno de estos objetos y complétalo. Aparecerá automáticamente en '/historias/' (con su modal 'Conocer su historia'), y también en la portada si 'destacadoInicio' es true (solo las primeras 2 destacadas se muestran en la portada). Cualquier campo opcional que dejes vacío simplemente no se muestra en el modal.",
   "_ayuda_campos": {
     "nombre": "nombre del perrito o gatito",
     "estado": "'rescate', 'tratamiento', 'recuperado' o 'adoptado' — controla la etiqueta de color, el filtro, y se muestra como 'Estado actual' en el modal",

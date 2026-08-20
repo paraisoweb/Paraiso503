@@ -1,7 +1,7 @@
 /* =============================================================================
    CONTENIDO: PROGRAMA CONTIGO — Paraíso 503
    =============================================================================
-   Este archivo controla el banner "Contigo" de la portada (index.html) y el
+   Este archivo controla el banner "Contigo" de la portada (/) y el
    modal informativo que se abre al hacer clic en él. Ambos se generan desde
    este mismo contenido (ver js/content-loader.js -> renderContigo), así que
    editar un texto aquí lo actualiza en los dos lugares a la vez.
@@ -61,6 +61,6 @@ window.PARAISO503_CONTENT.contigo = {
     ],
 
     "mensajeWhatsapp": "¡Hola! Rescaté / encontré un animal en la calle y me gustaría recibir orientación sobre el programa Contigo.",
-    "enlacePagina": "contigo.html"
+    "enlacePagina": "/contigo/"
   }
 };

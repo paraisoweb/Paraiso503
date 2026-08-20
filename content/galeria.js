@@ -1,9 +1,9 @@
 /* =============================================================================
    CONTENIDO: GALERÍA — Paraíso 503
    =============================================================================
-   Todo el contenido de "galeria.html" (fotos, video destacado, videos
+   Todo el contenido de "/galeria/" (fotos, video destacado, videos
    recientes y playlists) se genera automáticamente a partir de este archivo.
-   NUNCA necesitas tocar galeria.html, css/style.css ni los archivos de /js
+   NUNCA necesitas tocar /galeria/, css/style.css ni los archivos de /js
    para agregar contenido nuevo.
 
    >>> PARA EDITAR EL CONTENIDO, CAMBIA SOLO LOS VALORES DE ABAJO. <<<
@@ -75,7 +75,7 @@
    ============================================================================= */
 window.PARAISO503_CONTENT = window.PARAISO503_CONTENT || {};
 window.PARAISO503_CONTENT.galeria = {
-  "_ayuda": "Para agregar una foto nueva, copia uno de los objetos de 'fotos' y complétalo. Para activar un video de ejemplo, solo pega tu enlace de YouTube en su 'youtubeUrl'. No hace falta tocar galeria.html, css/style.css ni ningún archivo de /js.",
+  "_ayuda": "Para agregar una foto nueva, copia uno de los objetos de 'fotos' y complétalo. Para activar un video de ejemplo, solo pega tu enlace de YouTube en su 'youtubeUrl'. No hace falta tocar /galeria/, css/style.css ni ningún archivo de /js.",
 
   "categorias": [
     { "id": "alimentacion", "nombre": "Ruta de Alimentación",     "icono": "fa-bone",       "color": "#3E7A4E", "playlistUrl": "" },

@@ -419,7 +419,7 @@
 
     const whatsappNumero = (window.PARAISO503_CONTENT && window.PARAISO503_CONTENT.configuracion && window.PARAISO503_CONTENT.configuracion.contacto && window.PARAISO503_CONTENT.configuracion.contacto.whatsappPrincipal) || '';
     const mensaje = encodeURIComponent(c.mensajeWhatsapp || '¡Hola! Me gustaría recibir orientación sobre el programa Contigo.');
-    const enlacePagina = c.enlacePagina || 'contigo.html';
+    const enlacePagina = c.enlacePagina || '/contigo/';
 
     return (
       fotoHtml +
@@ -645,13 +645,13 @@
 
 /* =============================================================================
    MODAL DE TARJETA DE PROGRAMA (portada) — modal único y reutilizable para
-   las tarjetas de "Nuestros Programas" en la portada (index.html). Se
+   las tarjetas de "Nuestros Programas" en la portada (/). Se
    construye una sola vez y se rellena con el JSON que content-loader.js ya
    dejó listo en el atributo data-programa de cada tarjeta (ver
    serializarProgramaParaModal en js/content-loader.js), así que agregar o
    editar un programa en content/programas.js nunca requiere tocar este
    archivo. El botón "Conocer el programa" de la tarjeta sigue funcionando
-   igual: enlaza directo a programas.html#id sin pasar por este modal (el
+   igual: enlaza directo a /programas/#id sin pasar por este modal (el
    listener que abre el modal, más abajo, lo excluye explícitamente).
    ============================================================================= */
 (function () {
@@ -690,7 +690,7 @@
 
   // El modal de la portada es una vista rápida: un resumen breve y un
   // acceso al detalle completo. El contenido largo se conserva únicamente
-  // en programas.html, donde sí tiene espacio para desarrollarse.
+  // en /programas/, donde sí tiene espacio para desarrollarse.
   function buildContentHtml(p) {
     return (
       '<div class="p503-programa-body">' +
@@ -759,7 +759,7 @@ function initSiteInteractions() {
   }
 
   // ===== Logo: vuelve suavemente al inicio de la página en la home, o navega
-  // al Home (index.html) con normalidad desde el resto de páginas =====
+  // al Home (/) con normalidad desde el resto de páginas =====
   const logoHome = document.getElementById('logoHome');
   if (logoHome && document.body.classList.contains('home')) {
     logoHome.addEventListener('click', (e) => {
@@ -1081,7 +1081,7 @@ function initSiteInteractions() {
   refreshFavButtons();
 
   // ===== Foto de las tarjetas de Adopciones — se amplía con el mismo
-  // Lightbox que ya usa el resto del sitio (portada y adopciones.html,
+  // Lightbox que ya usa el resto del sitio (portada y /adopciones/,
   // ambas construidas con .pet-card). Se ignoran los clics sobre el botón
   // de favoritos, que vive dentro de la misma foto. =====
   document.querySelectorAll('.pet-card .pet-photo').forEach(photo => {
@@ -1096,7 +1096,7 @@ function initSiteInteractions() {
     });
   });
 
-  // ===== Contador dinámico de animalitos disponibles (adopciones.html) =====
+  // ===== Contador dinámico de animalitos disponibles (/adopciones/) =====
   const petCounterNum = document.getElementById('petCounterNum');
   if (petCounterNum) {
     const totalPets = document.querySelectorAll('#petGrid .pet-card').length;
@@ -1158,7 +1158,7 @@ function initSiteInteractions() {
     window.applyPetFilters();
   }
 
-  // ===== Filtro de Historias (historias.html) =====
+  // ===== Filtro de Historias (/historias/) =====
   const historiasGrid = document.getElementById('historiasGrid');
   const statusFilterEl = document.getElementById('statusFilter');
   if (historiasGrid && statusFilterEl) {
@@ -1182,7 +1182,7 @@ function initSiteInteractions() {
     }));
   }
 
-  // ===== Galería (galeria.html) =====
+  // ===== Galería (/galeria/) =====
   // El HTML (filtros, tarjetas de fotos/videos, video destacado y playlists)
   // ya fue generado por js/content-loader.js a partir de content/galeria.js
   // antes de que esta función se ejecute. Aquí solo se activa el
@@ -1315,7 +1315,7 @@ function initSiteInteractions() {
     aplicarFiltros();
   }
 
-  // ===== Acordeón de Programas (programas.html) =====
+  // ===== Acordeón de Programas (/programas/) =====
   // El HTML del acordeón (#progAccordion) y del índice de pastillas (#progIndex)
   // ya fue generado por js/content-loader.js a partir de content/programas.json
   // antes de que esta función se ejecute. Aquí solo se activa el comportamiento.
@@ -1445,7 +1445,7 @@ function initSiteInteractions() {
   // ===== Tarjetas de Programas en la portada: al tocar cualquier parte de
   // la tarjeta (excepto el botón "Conocer el programa") se abre el modal
   // con el resumen del programa. El botón "Conocer el programa" no se toca:
-  // sigue siendo un enlace normal a programas.html#id =====
+  // sigue siendo un enlace normal a /programas/#id =====
   document.querySelectorAll('.prog-card[data-programa]').forEach(card => {
     const abrirProgramaModal = () => {
       let datos = null;
@@ -1469,7 +1469,7 @@ function initSiteInteractions() {
 
   // ===== Historias del Paraíso: abre el modal reutilizable al hacer clic en
   // la tarjeta o en el botón "Conocer su historia" (en la portada y en
-  // historias.html). Los datos de cada historia ya vienen listos en el
+  // /historias/). Los datos de cada historia ya vienen listos en el
   // atributo data-historia de la tarjeta (ver js/content-loader.js) =====
   document.querySelectorAll('.caso-card[data-historia]').forEach(card => {
     const abrir = () => {
@@ -1489,7 +1489,7 @@ function initSiteInteractions() {
   });
 
 
-  // Si se llega desde un enlace como historias.html#milagro-en-la-carretera,
+  // Si se llega desde un enlace como /historias/#milagro-en-la-carretera,
   // abre directamente esa historia una vez que las tarjetas ya existen.
   if (!window.p503StoryHashOpened && window.location.hash) {
     const slug = decodeURIComponent(window.location.hash.slice(1));
@@ -1672,7 +1672,7 @@ function initSiteInteractions() {
 // Importante: ya NO usamos un temporizador fijo como respaldo. Antes, un
 // setTimeout de 2.5s ejecutaba initSiteInteractions() si content-loader.js
 // tardaba más que eso en responder (típico en conexiones móviles lentas),
-// dejando el acordeón de programas.html vacío porque las tarjetas todavía
+// dejando el acordeón de /programas/ vacío porque las tarjetas todavía
 // no existían en el DOM en ese momento. Ahora content-loader.js avisa de
 // forma síncrona (window.__p503ContentLoaderPresent) que se va a encargar
 // de llamar a initSiteInteractions() él mismo, así que el respaldo solo
@@ -1718,9 +1718,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ===== Historia destacada de bienvenida =====
+// Cambia a true cuando quieras volver a mostrar automáticamente este modal.
+// El HTML, estilos y contenido se conservan intactos para poder reactivarlo.
 (function () {
+  const WELCOME_STORY_ENABLED = false;
   const STORY_KEY = 'p503-welcome-rescate-los-chorros-v1';
   function initWelcomeStory() {
+    if (!WELCOME_STORY_ENABLED) return;
+
     const modal = document.getElementById('p503WelcomeStory');
     if (!modal || sessionStorage.getItem(STORY_KEY) === 'seen') return;
 

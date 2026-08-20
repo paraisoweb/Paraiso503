@@ -6,7 +6,7 @@
    No hace falta tocar el HTML ni el resto del JS.
 
    Campos de cada programa:
-     id                 identificador único, usado en enlaces como programas.html#id
+     id                 identificador único, usado en enlaces como /programas/#id
      icono              clase de icono Font Awesome, ej. fa-bone
      color              color del icono en formato hexadecimal
      titulo             nombre del programa
@@ -45,7 +45,7 @@ window.PARAISO503_CONTENT = window.PARAISO503_CONTENT || {};
 window.PARAISO503_CONTENT.programas = {
   "_ayuda": "Para agregar un programa nuevo, copia uno de estos objetos, cámbiale el 'id' (sin espacios ni tildes, se usa como enlace #id) y complétalo. No hace falta tocar el HTML ni el JS.",
   "_ayuda_campos": {
-    "id": "identificador único, usado en enlaces como programas.html#id",
+    "id": "identificador único, usado en enlaces como /programas/#id",
     "icono": "clase de icono Font Awesome, ej. fa-bone",
     "color": "color del icono en formato hexadecimal",
     "titulo": "nombre del programa",
