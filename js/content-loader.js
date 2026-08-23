@@ -490,7 +490,7 @@
           '<div class="pet-name-row"><h3>' + escapeHtml(a.nombre) + '</h3><span class="pet-sex"><i class="fa-solid ' + iconoSexo + '"></i> ' + labelSexo + '</span></div>' +
           '<div class="pet-tags"><span class="pet-age">' + labelEdad + '</span></div>' +
           '<p>' + escapeHtml(a.descripcion) + '</p>' +
-          '<a class="adopt-btn" href="https://wa.me/' + whatsappAdopciones + '?text=' + mensaje + '"><i class="fa-brands fa-whatsapp"></i> Adóptame</a>' +
+          '<a class="adopt-btn" href="/solicitud-adopcion/?animalito=' + encodeURIComponent(a.nombre) + '"><i class="fa-solid fa-paw"></i> Adóptame</a>' +
         '</div>' +
       '</div>'
     );
@@ -583,6 +583,10 @@
     const petGrid = document.getElementById('petGrid');
     if (petGrid) {
       petGrid.innerHTML = data.animalitos.map(a => petCardHtml(a, whatsappAdopciones)).join('');
+      const petCounterNum = document.getElementById('petCounterNum');
+      if (petCounterNum) petCounterNum.textContent = data.animalitos.length;
+      if (typeof window.applyPetFilters === 'function') window.applyPetFilters();
+      document.dispatchEvent(new CustomEvent('p503:adopciones-rendered'));
     }
   }
 

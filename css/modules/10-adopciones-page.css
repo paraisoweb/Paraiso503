@@ -226,3 +226,28 @@
     height: 240px;
   }
 }
+
+
+/* ===== Adopciones: microanimaciones premium 2026-08-23 ===== */
+@media (prefers-reduced-motion:no-preference){
+ body.adopciones-page .adopta-hero-bg img{animation:p503HeroBreathe 7s cubic-bezier(.2,.65,.3,1) both}
+ body.adopciones-page .adopta-hero-content{animation:p503HeroContent .68s cubic-bezier(.2,.72,.25,1) .08s both}
+ .p503-motion-ready body.adopciones-page .premium-reveal{opacity:0;transform:translateY(13px);transition:opacity .52s ease,transform .52s cubic-bezier(.2,.72,.25,1),box-shadow .25s ease;transition-delay:var(--reveal-delay,0ms)}
+ .p503-motion-ready body.adopciones-page .premium-reveal.premium-show{opacity:1;transform:translateY(0)}
+ body.adopciones-page .premium-filter-pulse .pet-card:not(.hidden){animation:p503FilterSettle .24s ease both}
+ body.adopciones-page .filter-btn,body.adopciones-page .fav-toggle{transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .16s ease}
+ body.adopciones-page .filter-btn:active,body.adopciones-page .fav-toggle:active,body.adopciones-page .adopt-btn:active{transform:scale(.975)}
+ body.adopciones-page .pet-fav.active i{animation:p503HeartPop .28s cubic-bezier(.2,.8,.3,1)}
+ @media (hover:hover) and (pointer:fine){
+  body.adopciones-page .pet-card.premium-show:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(30,61,43,.11)}
+  body.adopciones-page .adopt-btn:hover{transform:translateY(-1px)}
+ }
+}
+@keyframes p503HeroBreathe{from{transform:scale(1.012)}to{transform:scale(1.028)}}
+@keyframes p503HeroContent{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes p503FilterSettle{from{opacity:.78;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@keyframes p503HeartPop{0%{transform:scale(1)}55%{transform:scale(1.16)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){
+ body.adopciones-page .adopta-hero-bg img,body.adopciones-page .adopta-hero-content,body.adopciones-page .pet-fav i{animation:none!important}
+ .p503-motion-ready body.adopciones-page .premium-reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
