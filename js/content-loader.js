@@ -488,7 +488,7 @@
         '</div>' +
         '<div class="pet-body">' +
           '<div class="pet-name-row"><h3>' + escapeHtml(a.nombre) + '</h3><span class="pet-sex"><i class="fa-solid ' + iconoSexo + '"></i> ' + labelSexo + '</span></div>' +
-          '<div class="pet-tags"><span class="pet-age">' + labelEdad + '</span></div>' +
+          '<div class="pet-tags"><span class="pet-age">' + labelEdad + '</span>' + (a.esterilizado ? '<span class="pet-sterilized"><i class="fa-solid fa-circle-check"></i> ' + (a.sexo === 'hembra' ? 'Esterilizada' : 'Esterilizado') + '</span>' : '') + '</div>' +
           '<p>' + escapeHtml(a.descripcion) + '</p>' +
           '<a class="adopt-btn" href="/solicitud-adopcion/?animalito=' + encodeURIComponent(a.nombre) + '"><i class="fa-solid fa-paw"></i> Adóptame</a>' +
         '</div>' +

@@ -1,83 +1,26 @@
 /* =============================================================================
    CONTENIDO: ADOPCIONES — Paraíso 503
-   =============================================================================
-   Para agregar un nuevo animalito en adopción, copia uno de estos objetos y
-   complétalo con sus datos. Aparecerá automáticamente en la página de
-   Adopciones, y también en la portada si "destacadoInicio" es true (solo
-   los primeros 3 destacados se muestran en la portada).
-
-   Campos de cada animalito:
-     nombre           nombre del animalito
-     especie          "perro" o "gato" — se usa para el filtro de tipo de animal
-     sexo             "macho" o "hembra" — se usa para el filtro de sexo
-     edad             "cachorro" o "adulto" — se usa para el filtro de edad y para la insignia de la tarjeta
-     estado           texto que se muestra en la etiqueta sobre la foto, ej. "Disponible"
-     descripcion      descripción breve y cercana del animalito
-     foto             ruta a la foto real (ej. "/img/adopta/cachorro-canela-ojos-claros-adopcion.webp"); null = imagen de referencia
-     alt              descripción accesible de lo que aparece en la fotografía
-     destacadoInicio  true = también aparece en la vista previa de la portada
-
-   >>> PARA EDITAR EL CONTENIDO, CAMBIA SOLO LOS VALORES DE ABAJO. <<<
-   No toques la primera línea ni la línea final "};".
+   Edita aquí nombres, sexo, edad, estado, esterilización, descripción y foto.
    ============================================================================= */
 window.PARAISO503_CONTENT = window.PARAISO503_CONTENT || {};
 window.PARAISO503_CONTENT.adopciones = {
-  "_ayuda": "Para agregar un nuevo animalito en adopción, copia uno de estos objetos y complétalo con sus datos. Aparecerá automáticamente en la página de Adopciones, y también en la portada si 'destacadoInicio' es true (solo los primeros 3 destacados se muestran en la portada).",
-  "_ayuda_campos": {
-    "nombre": "nombre del animalito",
-    "especie": "'perro' o 'gato' — se usa para el filtro de tipo de animal",
-    "sexo": "'macho' o 'hembra' — se usa para el filtro de sexo",
-    "edad": "'cachorro' o 'adulto' — se usa para el filtro de edad y para la insignia que se muestra en la tarjeta",
-    "estado": "texto que se muestra en la etiqueta sobre la foto, ej. 'Disponible'",
-    "descripcion": "descripción breve y cercana del animalito",
-    "foto": "ruta a la foto real (ej. '/img/adopta/cachorro-canela-ojos-claros-adopcion.webp'). Déjalo en null para usar una imagen de referencia automática mientras no haya foto",
-    "alt": "descripción breve y precisa de lo que aparece en la fotografía",
-    "destacadoInicio": "true para que también aparezca en la vista previa de la portada, false para que solo aparezca en la página de Adopciones"
-  },
   "animalitos": [
-    {
-      "nombre": "🐶 Cachorro 1",
-      "especie": "perro",
-      "sexo": "macho",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Dulce, sociable y de mirada tranquila. Busca una familia responsable con quien crecer acompañado, protegido y muy querido.",
-      "alt": "Cachorro canela de ojos claros disponible para adopción responsable en Paraíso 503",
-      "foto": "/img/adopta/cachorro-canela-ojos-claros-adopcion.webp",
-      "destacadoInicio": true
-    },
-    {
-      "nombre": "🐶 Cachorra 2",
-      "especie": "perro",
-      "sexo": "hembra",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Cariñosa y juguetona, disfruta compartir con otros perritos. Espera un hogar donde pueda crecer con paciencia, cuidados y mucho cariño.",
-      "alt": "Cachorra de pelaje crema disponible para adopción responsable en Paraíso 503",
-      "foto": "/img/adopta/cachorra-crema-adopcion.webp",
-      "destacadoInicio": true
-    },
-    {
-      "nombre": "🐶 Cachorra 3",
-      "especie": "perro",
-      "sexo": "hembra",
-      "edad": "cachorro",
-      "estado": "Disponible",
-      "descripcion": "Alegre, curiosa y con mucha energía para descubrir el mundo. Busca una familia que la acompañe en sus juegos, aprendizajes y crecimiento.",
-      "alt": "Cachorra de pelaje café disponible para adopción responsable en Paraíso 503",
-      "foto": "/img/adopta/cachorro-cafe-adopcion.webp",
-      "destacadoInicio": true
-    },
-    {
-      "nombre": "🐱 Gatito 1",
-      "especie": "gato",
-      "sexo": "macho",
-      "edad": "adulto",
-      "estado": "Disponible",
-      "descripcion": "Tranquilo y cariñoso, disfruta los rincones cómodos y recibir atención. Busca un hogar responsable donde pueda sentirse seguro y acompañado.",
-      "alt": "Gato atigrado disponible para adopción responsable en Paraíso 503",
-      "foto": "/img/adopta/gato-atigrado-adopcion.webp",
-      "destacadoInicio": false
-    },
+    {"nombre":"🐶 Roma","especie":"perro","sexo":"hembra","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Dulce y atenta, con una mirada que conquista rápido. Busca una familia responsable con quien crecer rodeada de cariño, cuidados y nuevas aventuras.","alt":"Roma, cachorra disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/roma-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Nico","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Curioso, noble y lleno de energía para aprender. Nico espera un hogar donde pueda crecer acompañado y convertirse en un gran compañero de vida.","alt":"Nico, cachorro disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/nico-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Pecas","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Alegre y expresivo, siempre listo para descubrir algo nuevo. Pecas busca una familia paciente que disfrute acompañarlo durante su crecimiento.","alt":"Pecas, cachorro disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/pecas-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Bruno","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":true,"descripcion":"Simpático, cariñoso y con una personalidad encantadora. Bruno está listo para encontrar una familia que le brinde compañía, protección y mucho amor.","alt":"Bruno, cachorro esterilizado disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/bruno-adopcion.webp","destacadoInicio":true},
+    {"nombre":"🐶 Milo","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Tierno y observador, Milo disfruta sentirse acompañado. Busca un hogar responsable donde pueda crecer seguro y compartir muchos buenos momentos.","alt":"Milo, cachorro disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/milo-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Mía","especie":"perro","sexo":"hembra","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Pequeña, dulce y de mirada curiosa. Mía espera una familia que la acompañe con paciencia, cuidados y todo el cariño que merece.","alt":"Mía, cachorra disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/mia-adopcion.webp","destacadoInicio":true},
+    {"nombre":"🐶 Toby","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Curioso y sensible, Toby está descubriendo el mundo paso a paso. Busca una familia que quiera crecer junto a él y hacerlo parte de su hogar.","alt":"Toby, cachorro disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/toby-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Kira","especie":"perro","sexo":"hembra","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Tranquila y encantadora, Kira disfruta observar todo a su alrededor. Espera un hogar donde pueda sentirse protegida, querida y acompañada.","alt":"Kira, cachorra disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/kira-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Teo","especie":"perro","sexo":"macho","edad":"cachorro","estado":"Disponible","esterilizado":false,"descripcion":"Cariñoso y de mirada noble, Teo busca una familia responsable con quien compartir juegos, aprendizajes y una vida llena de compañía.","alt":"Teo, cachorro disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/teo-adopcion.webp","destacadoInicio":true},
+    {"nombre":"🐶 Jack","especie":"perro","sexo":"macho","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Noble y tranquilo, Jack disfruta la compañía y está listo para una nueva etapa. Está esterilizado y espera una familia responsable que le brinde estabilidad y cariño.","alt":"Jack, perro adulto esterilizado disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/jack-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Coco","especie":"perro","sexo":"macho","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Cariñoso y de mirada serena, Coco busca un hogar donde pueda sentirse acompañado y querido. Está esterilizado y listo para encontrar una familia responsable.","alt":"Coco, perro adulto esterilizado disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/coco-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Lola","especie":"perro","sexo":"hembra","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Dulce y encantadora, Lola tiene una presencia muy especial. Está esterilizada y espera una familia que le ofrezca seguridad, paciencia y mucho cariño.","alt":"Lola, perrita adulta esterilizada disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/lola-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Muñeca","especie":"perro","sexo":"hembra","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Tierna y tranquila, Muñeca está lista para compartir una nueva etapa junto a una familia responsable. Está esterilizada y espera un hogar lleno de compañía y cuidados.","alt":"Muñeca, perrita adulta esterilizada disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/muneca-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Olivia","especie":"perro","sexo":"hembra","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Noble y serena, Olivia está lista para comenzar una nueva etapa. Busca un hogar responsable donde pueda sentirse segura y recibir el cariño que merece.","alt":"Olivia, perrita adulta esterilizada disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/olivia-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Nina","especie":"perro","sexo":"hembra","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Amigable y expresiva, Nina tiene una energía muy especial. Está esterilizada y espera una familia que le ofrezca estabilidad, compañía y mucho cariño.","alt":"Nina, perrita adulta esterilizada disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/nina-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐶 Princesa","especie":"perro","sexo":"hembra","edad":"adulto","estado":"Disponible","esterilizado":true,"descripcion":"Dulce y de mirada tierna, Princesa busca una oportunidad para formar parte de una familia. Está esterilizada y lista para recibir un hogar responsable.","alt":"Princesa, perrita adulta esterilizada disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/princesa-adopcion.webp","destacadoInicio":false},
+    {"nombre":"🐱 Tom","especie":"gato","sexo":"macho","edad":"adulto","estado":"Disponible","esterilizado":false,"descripcion":"Tranquilo y cariñoso, disfruta los rincones cómodos y recibir atención. Busca un hogar responsable donde pueda sentirse seguro y acompañado.","alt":"Tom, gato atigrado disponible para adopción responsable en Paraíso 503","foto":"/img/adopta/gato-atigrado-adopcion.webp","destacadoInicio":false}
   ]
 };
