@@ -7557,3 +7557,110 @@ body.adopciones-page{background:#fbfaf5}
 .prog-icon--emoji .p503-emoji{font-size:18px}
 .prog-icon-lg.prog-icon--emoji .p503-emoji{font-size:24px}
 .ayudar-card .icon .p503-emoji{font-size:19px}
+
+/* ===== 2026-08-27 — Reestructura visual de Programas ===== */
+body.programas-page{background:#fbfaf5;padding-top:0!important}
+body.programas-page header{position:fixed;top:0;left:0;right:0;background:transparent;box-shadow:none}
+body.programas-page header.scrolled{background:rgba(18,40,27,.96);box-shadow:0 4px 16px rgba(0,0,0,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.programas-page header.menu-open{background:rgba(18,40,27,.98)}
+.programas-hero-photo{position:relative;display:flex;align-items:flex-end;min-height:68svh;padding:0;overflow:hidden;background:var(--green-deep);text-align:left}
+.programas-hero-bg{position:absolute;inset:0}
+.programas-hero-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+.programas-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,19,13,.05) 0%,rgba(12,30,20,.16) 30%,rgba(16,42,29,.58) 58%,rgba(16,42,29,.9) 76%,rgba(16,42,29,1) 100%)}
+.programas-hero-content{position:relative;z-index:2;width:100%;padding:48px 20px 22px;color:#fff}
+.programas-hero-photo .kicker{margin:0 0 5px;color:var(--mustard);font-family:'Caveat';font-size:25px;font-weight:700}
+.programas-hero-photo h1{max-width:560px;margin:0 0 10px;color:#fff;font-family:'Fraunces';font-size:34px;line-height:1.08}
+.programas-hero-photo p{max-width:570px;margin:0;color:#f4f1e8;font-size:14px;line-height:1.55;opacity:.96}
+.programas-counter{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 14px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(255,255,255,.13);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);color:#fff;font-size:12px;font-weight:700}
+.programas-counter i{color:var(--mustard)}
+.programas-catalogo{max-width:1180px;margin:0 auto;padding:44px 18px 64px}
+.programas-catalogo-head{max-width:690px;margin:0 auto 34px;text-align:center}
+.programas-catalogo-kicker{display:block;margin-bottom:5px;color:var(--clay);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.programas-catalogo-head h2{margin:0 0 9px;color:var(--ink);font-family:'Fraunces';font-size:29px;line-height:1.15}
+.programas-catalogo-head p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.6}
+.programas-grid{display:grid;grid-template-columns:1fr;gap:30px}
+.programa-summary-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid rgba(30,61,43,.07);border-radius:4px;box-shadow:10px 10px 0 rgba(169,218,216,.48),0 8px 24px rgba(30,61,43,.07);overflow:hidden}
+.programa-summary-photo{aspect-ratio:16/10;overflow:hidden;background:#e8e6dc}
+.programa-summary-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.programa-summary-body{display:flex;flex:1;flex-direction:column;padding:23px 22px 24px}
+.programa-summary-body h3{margin:0 0 10px;color:var(--ink);font-family:'Fraunces';font-size:23px;line-height:1.15}
+.programa-summary-body p{margin:0 0 22px;color:var(--ink-soft);font-size:14px;line-height:1.62}
+.programa-summary-link{align-self:flex-start;margin-top:auto;padding:10px 22px;border-radius:999px;background:var(--green-deep);color:#fff;font-size:12px;font-weight:800;letter-spacing:.035em;text-transform:uppercase;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.programa-summary-link:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 5px 12px rgba(30,61,43,.16)}
+.programa-summary-card:hover .programa-summary-photo img{transform:scale(1.025)}
+body.programas-page .prog-final-cta{padding:0 18px 64px}
+body.programas-page .prog-final-cta .wrap{max-width:1100px;margin:0 auto}
+@media (min-width:760px){
+ .programas-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 28px}
+}
+@media (min-width:980px){
+ .programas-hero-photo{min-height:560px;align-items:center}
+ .programas-hero-bg img{object-position:center 50%}
+ .programas-hero-photo::after{background:linear-gradient(90deg,rgba(12,31,21,.92) 0%,rgba(12,31,21,.72) 38%,rgba(12,31,21,.2) 70%,rgba(12,31,21,.08) 100%)}
+ .programas-hero-content{max-width:1180px;margin:0 auto;padding:92px 42px 62px}
+ .programas-hero-photo h1{font-size:48px}
+ .programas-hero-photo p{font-size:15px}
+ .programas-catalogo{padding:62px 32px 82px}
+ .programas-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 30px}
+ .programa-summary-body{padding:24px 24px 26px}
+}
+@media (max-width:759px){
+ .programas-catalogo{padding:38px 20px 58px}
+ .programas-catalogo-head{margin-bottom:28px}
+ .programas-catalogo-head h2{font-size:27px}
+ .programas-grid{gap:34px}
+ .programa-summary-card{box-shadow:8px 8px 0 rgba(169,218,216,.52),0 7px 20px rgba(30,61,43,.07)}
+ .programa-summary-photo{aspect-ratio:16/10}
+ .programa-summary-body{padding:22px 21px 23px}
+ .programa-summary-body h3{font-size:24px}
+ .programa-summary-body p{font-size:14px}
+ body.programas-page .prog-final-cta{padding:0 20px 56px}
+}
+@media (prefers-reduced-motion:reduce){.programa-summary-photo img{transition:none!important}}
+
+/* ===== 2026-08-27 — Pulido móvil + SEO visual de Programas ===== */
+body.programas-page header{transition:background-color .28s ease,box-shadow .28s ease,backdrop-filter .28s ease}
+@media (max-width:759px){
+ body.programas-page header:not(.scrolled):not(.menu-open){background:linear-gradient(180deg,rgba(8,25,16,.38),rgba(8,25,16,.08) 72%,transparent);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+ .programas-hero-photo{min-height:74svh}
+ .programas-hero-bg img{object-position:center 44%}
+ .programas-hero-content{padding:56px 20px 14px}
+ .programas-catalogo{padding-top:30px}
+ .programas-catalogo-head{margin-bottom:25px}
+}
+@media (min-width:980px){
+ .programa-summary-body{min-height:245px}
+}
+
+/* ===== 2026-08-27 — Cierre visual Programas + tarjetas del Inicio ===== */
+/* En móvil, el mensaje de portada respira un poco más abajo sobre la fotografía. */
+@media (max-width:759px){
+ body.programas-page .programas-hero-content{transform:translateY(10px)}
+}
+
+/* Inicio: los programas destacados adoptan el lenguaje visual del nuevo catálogo. */
+body.home #programas .prog-list{gap:34px 28px;align-items:stretch}
+body.home #programas .prog-card{
+ position:relative;display:flex;flex-direction:column;height:100%;overflow:visible;
+ border:1px solid rgba(30,61,43,.07);border-radius:4px;background:#fff;
+ box-shadow:9px 9px 0 rgba(169,218,216,.48),0 8px 24px rgba(30,61,43,.07);
+}
+body.home #programas .prog-photo{overflow:hidden;border-radius:4px 4px 0 0;aspect-ratio:16/10}
+body.home #programas .prog-photo img{width:100%;height:100%;object-fit:cover}
+body.home #programas .prog-body{display:flex;flex:1;flex-direction:column;padding:22px 22px 24px}
+body.home #programas .prog-head{margin:0 0 9px}
+body.home #programas .prog-head .prog-icon{display:none}
+body.home #programas .p-badge{display:none}
+body.home #programas .prog-head h3{margin:0;font-family:'Fraunces';font-size:23px;line-height:1.15;color:var(--ink)}
+body.home #programas .prog-body p{margin:0 0 20px;line-height:1.6;color:var(--ink-soft)}
+body.home #programas .prog-link{
+ align-self:flex-start;margin-top:auto;padding:10px 18px;border-radius:999px;background:var(--green-deep);
+ color:#fff;font-size:11px;font-weight:800;letter-spacing:.025em;text-transform:uppercase;text-decoration:none;
+}
+body.home #programas .prog-link:hover{background:var(--green-dark);transform:translateY(-1px)}
+@media (max-width:759px){
+ body.home #programas .prog-list{grid-template-columns:1fr;gap:34px}
+ body.home #programas .prog-card{box-shadow:8px 8px 0 rgba(169,218,216,.52),0 7px 20px rgba(30,61,43,.07)}
+ body.home #programas .prog-body{padding:21px 20px 22px}
+ body.home #programas .prog-head h3{font-size:23px}
+}

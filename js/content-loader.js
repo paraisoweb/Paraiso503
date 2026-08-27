@@ -306,6 +306,9 @@
      PROGRAMAS
      --------------------------------------------------------------------- */
 
+  const programaUrls = {'alimentacion':'/programas/ruta-alimentacion/','cancer':'/programas/lucha-contra-cancer/','adopciones-prog':'/programas/adopciones-responsables/','esterilizacion':'/programas/esterilizacion/','hogar':'/programas/hogar-paraiso/','veterinaria':'/programas/atencion-veterinaria/','apoyo':'/programas/apoyo-familias/','visitas':'/programas/visitas-solidarias/','transparencia':'/programas/transparencia/','rehabilitacion':'/programas/rehabilitacion-recuperacion/','emergencias':'/programas/rescate-emergencias/','voluntariado':'/programas/voluntariado/'};
+  function programaUrl(id) { return programaUrls[id] || '/programas/'; }
+
   // Datos resumidos para el modal de programa de la portada.
   // La página /programas/ sigue usando el contenido completo de
   // content/programas.js; aquí enviamos solamente una vista rápida para
@@ -316,7 +319,7 @@
       id: p.id,
       titulo: p.titulo,
       resumen: resumen || 'Conoce este programa y el trabajo que realizamos para cambiar más vidas.',
-      link: '/programas/#' + p.id
+      link: programaUrl(p.id)
     };
     return escapeHtml(JSON.stringify(datos));
   }
@@ -334,7 +337,7 @@
           insignia +
           '<div class="prog-head"><span class="prog-icon prog-icon--emoji" style="background:' + escapeHtml(p.color) + '">' + (p.emoji ? '<span class="p503-emoji" aria-hidden="true">' + escapeHtml(p.emoji) + '</span>' : '<i class="fa-solid ' + escapeHtml(p.icono) + '"></i>') + '</span><h3>' + escapeHtml(p.titulo) + '</h3></div>' +
           '<p>' + escapeHtml(p.descripcionLista) + '</p>' +
-          '<a class="prog-link" href="/programas/#' + escapeHtml(p.id) + '">Conocer el programa</a>' +
+          '<a class="prog-link" href="' + programaUrl(p.id) + '">Conocer el programa</a>' +
         '</div>' +
       '</div>'
     );
@@ -351,6 +354,40 @@
 
     if (contDestacados) contDestacados.innerHTML = destacados.map(programCardHtml).join('');
     if (contExpandibles) contExpandibles.innerHTML = expandibles.map(programCardHtml).join('');
+  }
+
+  // Catálogo visual de /programas/: resumen + enlace a la futura página individual.
+  function renderProgramasCatalogo(data) {
+    const cont = document.getElementById('progCards');
+    if (!cont || !data || !Array.isArray(data.programas)) return;
+    cont.innerHTML = data.programas.map(p => {
+      const foto = p.foto || placeholderImg(p.titulo);
+      const altPorPrograma = {
+        alimentacion: 'Perro recibiendo alimento durante la Ruta de Alimentación de Paraíso 503',
+        cancer: 'Animalito atendido por el programa de lucha contra el cáncer de Paraíso 503',
+        'adopciones-prog': 'Animalito del programa de Adopciones Responsables de Paraíso 503',
+        esterilizacion: 'Atención del programa de esterilización de Paraíso 503',
+        hogar: 'Animalitos protegidos en el Hogar Paraíso',
+        veterinaria: 'Animalito recibiendo atención veterinaria con apoyo de Paraíso 503',
+        apoyo: 'Familia apoyada por Paraíso 503 para el cuidado de sus animalitos',
+        visitas: 'Visita solidaria al proyecto de rescate animal Paraíso 503',
+        transparencia: 'Registro del trabajo y recursos utilizados por Paraíso 503',
+        rehabilitacion: 'Animalito en rehabilitación y recuperación con Paraíso 503',
+        emergencias: 'Animalito atendido durante un rescate de emergencia de Paraíso 503',
+        voluntariado: 'Apoyo voluntario a animalitos atendidos por Paraíso 503'
+      };
+      const fotoAlt = altPorPrograma[p.id] || ('Programa ' + p.titulo + ' de Paraíso 503');
+      return (
+        '<article class="programa-summary-card reveal" id="' + escapeHtml(p.id) + '">' +
+          '<div class="programa-summary-photo"><img src="' + foto + '" alt="' + escapeHtml(fotoAlt) + '" loading="lazy" decoding="async"></div>' +
+          '<div class="programa-summary-body">' +
+            '<h3>' + escapeHtml(p.titulo) + '</h3>' +
+            '<p>' + escapeHtml(p.descripcionLista) + '</p>' +
+            '<a class="programa-summary-link" href="' + programaUrl(p.id) + '" aria-label="Conocer el programa ' + escapeHtml(p.titulo) + '">Conocer el programa</a>' +
+          '</div>' +
+        '</article>'
+      );
+    }).join('');
   }
 
   // Acordeón completo de /programas/ (índice de pastillas + detalle)
@@ -1017,6 +1054,7 @@
     safeRender('configuracion', () => renderConfiguracion(config));
     safeRender('estadisticas', () => renderEstadisticas(estadisticas));
     safeRender('programas (portada)', () => renderProgramasIndex(programas));
+    safeRender('programas (catálogo)', () => renderProgramasCatalogo(programas));
     safeRender('programas (acordeón)', () => renderProgramasAccordion(programas));
     safeRender('adopciones', () => renderAdopciones(adopciones, config));
     safeRender('historias', () => renderHistorias(historias));

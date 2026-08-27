@@ -740,9 +740,9 @@ function initSiteInteractions() {
   }
 
   // ===== Header transparente sobre el hero (solo en la home) que se pone verde al hacer scroll =====
-  if (document.body.classList.contains('home')) {
+  if (document.body.classList.contains('home') || document.body.classList.contains('programas-page')) {
     const header = document.querySelector('header');
-    const hero = document.querySelector('.hero');
+    const hero = document.body.classList.contains('programas-page') ? document.querySelector('.programas-hero-photo') : document.querySelector('.hero');
     if (header && hero) {
       // El header de la portada ahora es fixed y ya no ocupa espacio en el flujo.
       // No aplicamos margen negativo al hero: así evitamos desplazamientos y
