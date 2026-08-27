@@ -332,7 +332,7 @@
         '<div class="prog-photo"><img src="' + foto + '" alt="' + escapeHtml(p.titulo) + '" loading="lazy" decoding="async"></div>' +
         '<div class="prog-body">' +
           insignia +
-          '<div class="prog-head"><span class="prog-icon" style="background:' + escapeHtml(p.color) + '"><i class="fa-solid ' + escapeHtml(p.icono) + '"></i></span><h3>' + escapeHtml(p.titulo) + '</h3></div>' +
+          '<div class="prog-head"><span class="prog-icon prog-icon--emoji" style="background:' + escapeHtml(p.color) + '">' + (p.emoji ? '<span class="p503-emoji" aria-hidden="true">' + escapeHtml(p.emoji) + '</span>' : '<i class="fa-solid ' + escapeHtml(p.icono) + '"></i>') + '</span><h3>' + escapeHtml(p.titulo) + '</h3></div>' +
           '<p>' + escapeHtml(p.descripcionLista) + '</p>' +
           '<a class="prog-link" href="/programas/#' + escapeHtml(p.id) + '">Conocer el programa</a>' +
         '</div>' +
@@ -429,7 +429,7 @@
       return (
         '<div class="acc-item reveal" id="' + p.id + '">' +
           '<button class="acc-header" type="button" aria-expanded="false" aria-controls="panel-' + p.id + '">' +
-            '<span class="prog-icon" style="background:' + p.color + '"><i class="fa-solid ' + p.icono + '"></i></span>' +
+            '<span class="prog-icon prog-icon--emoji" style="background:' + p.color + '">' + (p.emoji ? '<span class="p503-emoji" aria-hidden="true">' + escapeHtml(p.emoji) + '</span>' : '<i class="fa-solid ' + p.icono + '"></i>') + '</span>' +
             '<span class="acc-header-text"><span class="acc-title">' + escapeHtml(p.titulo) + '</span><span class="acc-sub">' + escapeHtml(p.descripcionLista) + '</span></span>' +
             '<span class="acc-chevron"><i class="fa-solid fa-chevron-down"></i></span>' +
           '</button>' +
@@ -442,7 +442,7 @@
                   badgeHtml +
                 '</div>' +
                 '<div class="prog-top-content">' +
-                  '<span class="prog-icon-lg" style="background:' + p.color + '"><i class="fa-solid ' + p.icono + '"></i></span>' +
+                  '<span class="prog-icon-lg prog-icon--emoji" style="background:' + p.color + '">' + (p.emoji ? '<span class="p503-emoji" aria-hidden="true">' + escapeHtml(p.emoji) + '</span>' : '<i class="fa-solid ' + p.icono + '"></i>') + '</span>' +
                   '<h3 class="prog-title-lg">' + escapeHtml(p.titulo) + '</h3>' +
                   '<p class="prog-desc-lg">' + escapeHtml(p.descripcionDetalle) + '</p>' +
                   '<div class="prog-divider"></div>' +
@@ -471,6 +471,10 @@
      ADOPCIONES
      --------------------------------------------------------------------- */
 
+  function slugifyPetName(nombre) {
+    return String(nombre || '').replace(/^[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+\s*/, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ñ/g, 'n').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
   function petCardHtml(a, whatsappAdopciones) {
     const foto = a.foto || placeholderImg(a.nombre);
     const iconoSexo = a.sexo === 'hembra' ? 'fa-venus' : 'fa-mars';
@@ -490,7 +494,7 @@
           '<div class="pet-name-row"><h3>' + escapeHtml(a.nombre) + '</h3><span class="pet-sex"><i class="fa-solid ' + iconoSexo + '"></i> ' + labelSexo + '</span></div>' +
           '<div class="pet-tags"><span class="pet-age">' + labelEdad + '</span>' + (a.esterilizado ? '<span class="pet-sterilized"><i class="fa-solid fa-circle-check"></i> ' + (a.sexo === 'hembra' ? 'Esterilizada' : 'Esterilizado') + '</span>' : '') + '</div>' +
           '<p>' + escapeHtml(a.descripcion) + '</p>' +
-          '<a class="adopt-btn" href="/solicitud-adopcion/?animalito=' + encodeURIComponent(a.nombre) + '"><i class="fa-solid fa-paw"></i> Adóptame</a>' +
+          '<a class="adopt-btn" href="/adopciones/' + slugifyPetName(a.nombre) + '/"><i class="fa-solid fa-paw"></i> Conóceme</a>' +
         '</div>' +
       '</div>'
     );

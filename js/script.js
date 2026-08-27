@@ -37,7 +37,9 @@
     previousScrollBehavior = document.documentElement.style.scrollBehavior;
     document.documentElement.style.scrollBehavior = 'auto';
 
+    document.documentElement.classList.add('p503-lightbox-lock');
     document.body.classList.add('p503-lightbox-lock');
+    document.documentElement.style.overscrollBehavior = 'none';
     document.body.style.position = 'fixed';
     document.body.style.top = '-' + savedScrollY + 'px';
     document.body.style.left = '0';
@@ -49,7 +51,9 @@
     lockCount = Math.max(0, lockCount - 1);
     if (lockCount !== 0) return;
 
+    document.documentElement.classList.remove('p503-lightbox-lock');
     document.body.classList.remove('p503-lightbox-lock');
+    document.documentElement.style.overscrollBehavior = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.left = '';
@@ -131,6 +135,14 @@
         showItem(currentIndex + (dx < 0 ? 1 : -1));
       }
     }, { passive: true });
+
+
+    // Mientras el visor está abierto, ningún gesto táctil debe llegar a la
+    // página de fondo. Esto evita el rebote/overscroll y el gesto de recarga
+    // del navegador en móvil, sin impedir el swipe horizontal del visor.
+    modal.addEventListener('touchmove', (e) => {
+      if (modal.classList.contains('open')) e.preventDefault();
+    }, { passive: false });
   }
 
   function showItem(idx) {

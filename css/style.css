@@ -4096,8 +4096,17 @@ header.scrolled {
   color: #cfd6c9;
   white-space: nowrap;
 }
+html.p503-lightbox-lock,
 body.p503-lightbox-lock {
   overflow: hidden;
+  overscroll-behavior: none;
+}
+html.p503-lightbox-lock {
+  height: 100%;
+}
+.p503-lightbox.open {
+  touch-action: none;
+  overscroll-behavior: none;
 }
 @media (min-width:820px) {
   .p503-lightbox-prev {
@@ -7541,3 +7550,10 @@ body.adopciones-page{background:#fbfaf5}
  body.adopciones-page .adopta-hero-bg img,body.adopciones-page .adopta-hero-content,body.adopciones-page .pet-fav i{animation:none!important}
  .p503-motion-ready body.adopciones-page .premium-reveal{opacity:1!important;transform:none!important;transition:none!important}
 }
+
+/* v9 — Emojis cálidos en contenido (sin alterar controles de interfaz). */
+.p503-emoji{display:inline-flex;align-items:center;justify-content:center;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-style:normal}
+.t-dot .p503-emoji{font-size:18px}
+.prog-icon--emoji .p503-emoji{font-size:18px}
+.prog-icon-lg.prog-icon--emoji .p503-emoji{font-size:24px}
+.ayudar-card .icon .p503-emoji{font-size:19px}

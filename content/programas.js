@@ -65,6 +65,7 @@ window.PARAISO503_CONTENT.programas = {
   "programas": [
     {
       "id": "alimentacion",
+      "emoji": "🦴",
       "icono": "fa-bone",
       "color": "#3E7A4E",
       "titulo": "Ruta de Alimentación",
@@ -121,6 +122,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "cancer",
+      "emoji": "🎗️",
       "icono": "fa-ribbon",
       "color": "#8B5FBF",
       "titulo": "Lucha contra el Cáncer",
@@ -175,6 +177,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "adopciones-prog",
+      "emoji": "🏠",
       "icono": "fa-house",
       "color": "#E08B7D",
       "titulo": "Adopciones Responsables",
@@ -230,6 +233,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "esterilizacion",
+      "emoji": "✂️",
       "icono": "fa-scissors",
       "color": "#2F9E8F",
       "titulo": "Esterilización",
@@ -285,6 +289,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "hogar",
+      "emoji": "❤️",
       "icono": "fa-heart",
       "color": "#D9636B",
       "titulo": "Hogar Paraíso",
@@ -341,6 +346,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "veterinaria",
+      "emoji": "🩺",
       "icono": "fa-stethoscope",
       "color": "#3E7FBF",
       "titulo": "Atención Veterinaria",
@@ -396,6 +402,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "apoyo",
+      "emoji": "🤝",
       "icono": "fa-handshake-angle",
       "color": "#E08A3D",
       "titulo": "Apoyo a Familias de Bajos Recursos",
@@ -452,6 +459,7 @@ window.PARAISO503_CONTENT.programas = {
     },
     {
       "id": "visitas",
+      "emoji": "🚚",
       "icono": "fa-truck",
       "color": "#D9A62E",
       "titulo": "Visitas Solidarias",
