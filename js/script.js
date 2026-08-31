@@ -17,9 +17,8 @@
 
 /* =============================================================================
    BLOQUEO DE SCROLL COMPARTIDO — el Lightbox y los distintos modales del
-   sitio (Historia, Contigo, Carrusel, Programa) pueden abrirse unos encima
-   de otros (p.ej. el Lightbox se abre desde dentro del modal de Historia
-   al hacer clic en una foto de su galería). Se usa un contador en vez de
+   sitio (Contigo, Carrusel, Programa) pueden abrirse unos encima
+   de otros (por ejemplo cuando un visor se abre desde otro componente). Se usa un contador en vez de
    una sola clase booleana para que cerrar el que quedó abierto más arriba
    no desbloquee el scroll del body si todavía queda otro modal abierto
    debajo — así siempre se "regresa" correctamente al contenido anterior.
@@ -188,170 +187,6 @@
     items = galleryItems;
     modal.querySelector('.p503-lightbox-title').textContent = title || '';
     showItem(startIndex || 0);
-    modal.classList.add('open');
-    window.p503LockScroll();
-  };
-})();
-
-/* =============================================================================
-   MODAL DE HISTORIA — modal único y reutilizable para "Historias del
-   Paraíso". Se construye una sola vez (igual que el lightbox de arriba) y se
-   rellena con los datos que content-loader.js ya dejó listos en el atributo
-   data-historia de cada tarjeta ".caso-card", así que agregar una historia
-   nueva en content/historias.js nunca requiere tocar este archivo.
-
-   Cada sección del modal (diagnóstico, tratamientos, línea de tiempo,
-   galería, etc.) solo se muestra si la historia trae contenido para ella.
-   La galería reutiliza el mismo visor de fotos/videos (openP503Lightbox)
-   que ya usa la sección de Programas.
-   ============================================================================= */
-(function () {
-  let modal = null;
-
-  function escapeHtmlLocal(str) {
-    return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function buildModal() {
-    if (modal) return;
-    modal = document.createElement('div');
-    modal.className = 'p503-historia-modal';
-    modal.innerHTML =
-      '<div class="p503-historia-overlay"></div>' +
-      '<div class="p503-historia-inner">' +
-        '<button class="p503-historia-close" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>' +
-        '<div class="p503-historia-scroll"><div class="p503-historia-content"></div></div>' +
-      '</div>';
-    document.body.appendChild(modal);
-
-    modal.querySelector('.p503-historia-overlay').addEventListener('click', closeHistoriaModal);
-    modal.querySelector('.p503-historia-close').addEventListener('click', closeHistoriaModal);
-    document.addEventListener('keydown', (e) => {
-      if (modal.classList.contains('open') && e.key === 'Escape') closeHistoriaModal();
-    });
-  }
-
-  function closeHistoriaModal() {
-    if (!modal) return;
-    modal.classList.remove('open');
-    window.p503UnlockScroll();
-  }
-
-  function fotoBox(src, nombre, label, gradient) {
-    return src
-      ? '<div class="ba-item"><img src="' + src + '" alt="' + label + ' del rescate — ' + escapeHtmlLocal(nombre) + '" loading="lazy" decoding="async"><span class="ba-label">' + label + '</span></div>'
-      : '<div class="ba-item" style="background:' + gradient + ';"><span class="ba-label">' + label + '</span></div>';
-  }
-
-  function buildContentHtml(h) {
-    const antes = fotoBox(h.fotoAntes, h.nombre, 'Antes', 'linear-gradient(135deg,#3a2a1a,#2a1a10)');
-    const despues = fotoBox(h.fotoDespues, h.nombre, 'Después', 'linear-gradient(135deg,#1E3D2B,#3E7A4E)');
-
-    const fraseHtml = h.frase
-      ? '<p class="p503-historia-frase">“' + escapeHtmlLocal(h.frase) + '”</p>'
-      : '';
-
-    const metaItems = [];
-    if (h.lugarRescate) {
-      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-location-dot"></i><div><span>Lugar del rescate</span><b>' + escapeHtmlLocal(h.lugarRescate) + '</b></div></div>');
-    }
-    if (h.fechaRescate) {
-      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-calendar-day"></i><div><span>Fecha del rescate</span><b>' + escapeHtmlLocal(h.fechaRescate) + '</b></div></div>');
-    }
-    if (h.diagnostico) {
-      metaItems.push('<div class="p503-historia-meta-item"><i class="fa-solid fa-stethoscope"></i><div><span>Diagnóstico</span><b>' + escapeHtmlLocal(h.diagnostico) + '</b></div></div>');
-    }
-    const metaHtml = metaItems.length ? '<div class="p503-historia-meta">' + metaItems.join('') + '</div>' : '';
-
-    const tratamientosHtml = (h.tratamientos && h.tratamientos.length)
-      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-kit-medical"></i> Tratamientos</h4><ul class="p503-historia-list">' +
-          h.tratamientos.map(t => '<li><i class="fa-solid fa-check"></i>' + escapeHtmlLocal(t) + '</li>').join('') +
-        '</ul></div>'
-      : '';
-
-    const timelineHtml = (h.lineaTiempo && h.lineaTiempo.length)
-      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-timeline"></i> Línea de tiempo</h4><ol class="p503-historia-timeline">' +
-          h.lineaTiempo.map(ev =>
-            '<li><span class="tl-dot"><i class="fa-solid ' + ev.icono + '"></i></span><div class="tl-content"><b>' + escapeHtmlLocal(ev.evento) + '</b>' +
-            (ev.fecha ? '<span>' + escapeHtmlLocal(ev.fecha) + '</span>' : '') + '</div></li>'
-          ).join('') +
-        '</ol></div>'
-      : '';
-
-    const historiaHtml = h.historiaCompleta
-      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-book-open"></i> Su historia</h4><p>' + escapeHtmlLocal(h.historiaCompleta) + '</p></div>'
-      : '';
-
-    // En escritorio, Tratamientos e Historia se acomodan lado a lado (uno a
-    // cada costado) si hay espacio; en móvil siguen apilados como siempre.
-    // Si una historia solo trae uno de los dos, ese ocupa todo el ancho.
-    const colsHtml = (tratamientosHtml || historiaHtml)
-      ? '<div class="p503-historia-twocol">' + tratamientosHtml + historiaHtml + '</div>'
-      : '';
-
-    const galeria = Array.isArray(h.galeria) ? h.galeria : [];
-    const galeriaHtml = galeria.length
-      ? '<div class="p503-historia-section"><h4><i class="fa-solid fa-images"></i> Galería</h4><div class="gallery-grid p503-historia-gallery">' +
-          galeria.map((item, idx) => {
-            const media = item.isVideo
-              ? '<video src="' + item.src + '" muted playsinline preload="metadata"></video>'
-              : '<img src="' + item.src + '" alt="' + escapeHtmlLocal(h.nombre) + ' — foto ' + (idx + 1) + '" loading="lazy">';
-            return '<div class="gallery-item" data-lightbox-index="' + idx + '">' + media + '</div>';
-          }).join('') +
-        '</div></div>'
-      : '';
-
-    return (
-      '<div class="p503-historia-ba">' + antes + despues + '</div>' +
-      '<div class="p503-historia-body">' +
-        '<span class="status-badge status-' + h.estado + '">' + h.estadoEmoji + ' ' + escapeHtmlLocal(h.estadoLabel) + '</span>' +
-        '<h3 class="p503-historia-nombre">' + escapeHtmlLocal(h.nombre) + '</h3>' +
-        fraseHtml +
-        metaHtml +
-        colsHtml +
-        timelineHtml +
-        galeriaHtml +
-      '</div>'
-    );
-  }
-
-  window.openP503HistoriaModal = function (h) {
-    if (!h) return;
-    buildModal();
-    const contentEl = modal.querySelector('.p503-historia-content');
-    contentEl.innerHTML = buildContentHtml(h);
-    modal.querySelector('.p503-historia-scroll').scrollTop = 0;
-
-    // Fotos "Antes/Después" — se amplían con el mismo Lightbox único del
-    // sitio; si existen ambas, se agrupan en una sola galería de 2 fotos
-    // para poder recorrerlas con las flechas del Lightbox.
-    const antesDespues = [];
-    if (h.fotoAntes) antesDespues.push({ src: h.fotoAntes, isVideo: false, title: h.nombre });
-    if (h.fotoDespues) antesDespues.push({ src: h.fotoDespues, isVideo: false, title: h.nombre });
-    contentEl.querySelectorAll('.p503-historia-ba .ba-item').forEach(item => {
-      const img = item.querySelector('img');
-      if (!img) return;
-      item.classList.add('ba-item-clickable');
-      item.addEventListener('click', () => {
-        const idx = antesDespues.findIndex(it => it.src === img.getAttribute('src'));
-        if (typeof window.openP503Lightbox === 'function') {
-          window.openP503Lightbox(antesDespues, idx > -1 ? idx : 0, h.nombre);
-        }
-      });
-    });
-
-    // La galería de esta historia reutiliza el mismo visor (lightbox) que
-    // ya usa "Programas" — no hace falta un visor aparte.
-    const galeria = Array.isArray(h.galeria) ? h.galeria : [];
-    contentEl.querySelectorAll('.p503-historia-gallery .gallery-item').forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const idx = parseInt(thumb.dataset.lightboxIndex, 10) || 0;
-        if (typeof window.openP503Lightbox === 'function') window.openP503Lightbox(galeria, idx, h.nombre);
-      });
-    });
-
     modal.classList.add('open');
     window.p503LockScroll();
   };
@@ -740,9 +575,13 @@ function initSiteInteractions() {
   }
 
   // ===== Header transparente sobre el hero (solo en la home) que se pone verde al hacer scroll =====
-  if (document.body.classList.contains('home') || document.body.classList.contains('programas-page')) {
+  if (document.body.classList.contains('home') || document.body.classList.contains('programas-page') || document.body.classList.contains('donar-page')) {
     const header = document.querySelector('header');
-    const hero = document.body.classList.contains('programas-page') ? document.querySelector('.programas-hero-photo') : document.querySelector('.hero');
+    const hero = document.body.classList.contains('programas-page')
+      ? document.querySelector('.programas-hero-photo')
+      : document.body.classList.contains('donar-page')
+        ? document.querySelector('.donarHero')
+        : document.querySelector('.hero');
     if (header && hero) {
       // El header de la portada ahora es fixed y ya no ocupa espacio en el flujo.
       // No aplicamos margen negativo al hero: así evitamos desplazamientos y
@@ -1174,8 +1013,20 @@ function initSiteInteractions() {
   const historiasGrid = document.getElementById('historiasGrid');
   const statusFilterEl = document.getElementById('statusFilter');
   if (historiasGrid && statusFilterEl) {
+    const filterBar = statusFilterEl.closest('.historias-filter-bar');
+    const resultsAnchor = document.getElementById('historiasResults');
     const statusBtns = statusFilterEl.querySelectorAll('.filter-btn');
     const noResultsHistorias = document.getElementById('noResultsHistorias');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Garantiza que la fila móvil comience mostrando "Todos", incluso si el
+    // navegador intenta restaurar la posición horizontal tras recargar.
+    const resetStatusStrip = () => {
+      statusFilterEl.scrollTo({ left: 0, behavior: 'auto' });
+    };
+    resetStatusStrip();
+    requestAnimationFrame(resetStatusStrip);
+    window.addEventListener('pageshow', resetStatusStrip);
 
     const applyStatusFilter = (status) => {
       let visibleCount = 0;
@@ -1187,11 +1038,56 @@ function initSiteInteractions() {
       if (noResultsHistorias) noResultsHistorias.style.display = visibleCount === 0 ? 'block' : 'none';
     };
 
+    const keepActiveFilterVisible = (btn) => {
+      btn.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    };
+
+    const scrollToResults = () => {
+      if (!resultsAnchor) return;
+      requestAnimationFrame(() => {
+        resultsAnchor.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      });
+    };
+
     statusBtns.forEach(btn => btn.addEventListener('click', () => {
       statusBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       applyStatusFilter(btn.dataset.status);
+      keepActiveFilterVisible(btn);
+      scrollToResults();
     }));
+
+    // Barra persistente de filtros. Se fija al tocar el header y el slot conserva
+    // exactamente su espacio original para evitar saltos en PC y teléfono.
+    if (filterBar) {
+      const filterSlot = document.getElementById('historiasFilterSlot');
+      const updatePersistentFilter = () => {
+        if (!filterSlot) return;
+        const header = document.querySelector('header');
+        const headerBottom = header ? Math.round(header.getBoundingClientRect().bottom) : 0;
+        const slotRect = filterSlot.getBoundingClientRect();
+        const shouldStick = slotRect.top <= headerBottom;
+
+        document.documentElement.style.setProperty('--historias-header-bottom', headerBottom + 'px');
+        document.documentElement.style.setProperty('--historias-filter-left', Math.round(slotRect.left) + 'px');
+        document.documentElement.style.setProperty('--historias-filter-width', Math.round(slotRect.width) + 'px');
+
+        filterBar.classList.toggle('is-stuck', shouldStick);
+        filterSlot.style.minHeight = shouldStick ? Math.ceil(filterBar.offsetHeight) + 'px' : '';
+      };
+
+      window.addEventListener('scroll', updatePersistentFilter, { passive: true });
+      window.addEventListener('resize', updatePersistentFilter);
+      window.addEventListener('pageshow', updatePersistentFilter);
+      requestAnimationFrame(updatePersistentFilter);
+    }
   }
 
   // ===== Galería (/galeria/) =====
@@ -1478,39 +1374,6 @@ function initSiteInteractions() {
       }
     });
   });
-
-  // ===== Historias del Paraíso: abre el modal reutilizable al hacer clic en
-  // la tarjeta o en el botón "Conocer su historia" (en la portada y en
-  // /historias/). Los datos de cada historia ya vienen listos en el
-  // atributo data-historia de la tarjeta (ver js/content-loader.js) =====
-  document.querySelectorAll('.caso-card[data-historia]').forEach(card => {
-    const abrir = () => {
-      let historia = null;
-      try { historia = JSON.parse(card.dataset.historia); } catch (e) { historia = null; }
-      if (historia && typeof window.openP503HistoriaModal === 'function') {
-        window.openP503HistoriaModal(historia);
-      }
-    };
-    card.addEventListener('click', abrir);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        abrir();
-      }
-    });
-  });
-
-
-  // Si se llega desde un enlace como /historias/#milagro-en-la-carretera,
-  // abre directamente esa historia una vez que las tarjetas ya existen.
-  if (!window.p503StoryHashOpened && window.location.hash) {
-    const slug = decodeURIComponent(window.location.hash.slice(1));
-    const targetStory = document.querySelector('.caso-card[data-historia-slug="' + slug + '"]');
-    if (targetStory) {
-      window.p503StoryHashOpened = true;
-      window.setTimeout(() => targetStory.click(), 120);
-    }
-  }
 
   // ===== Programa Contigo: abre el modal reutilizable al hacer clic en
   // cualquier parte del banner (o al presionar el botón que hay dentro).

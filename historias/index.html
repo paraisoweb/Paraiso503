@@ -34,9 +34,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Inter:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<link href="/css/style.css?v=20260816-welcome-v3" rel="stylesheet"/>
+<link href="/css/style.css?v=20260831-formspree-v1" rel="stylesheet"/>
 </head>
-<body>
+<body class="historias-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7D4BGZR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -89,23 +89,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="mobile-menu-message">Cada acción puede cambiar una vida.</p>
 </div>
 </header>
-<section class="adopta-hero" id="historias-paraiso">
+<section class="historias-hero" id="historias-paraiso">
+<div class="historias-hero-orb historias-hero-orb--one" aria-hidden="true"></div>
+<div class="historias-hero-orb historias-hero-orb--two" aria-hidden="true"></div>
+<div class="historias-hero-inner">
 <div class="kicker">Del olvido a una segunda oportunidad</div>
 <h1>Historias del Paraíso</h1>
-<p>Cada rescate es la prueba de que sí se puede. Estas son todas las historias que hemos ido documentando.</p>
+<p>Cada rescate es la prueba de que sí se puede. Estas son algunas de las <span class="historias-marker">historias que hemos ido documentando.</span></p>
+</div>
 </section>
-<div class="filter-bar">
+<div class="historias-filter-slot" id="historiasFilterSlot">
+<div class="filter-bar historias-filter-bar">
 <div class="filter-group">
-<span class="filter-label">Estado</span>
+<span class="filter-label">Explora por estado</span>
 <div class="filter-btns" id="statusFilter">
 <button class="filter-btn active" data-status="todos">Todos</button>
-<button class="filter-btn" data-status="recuperado">💚 Recuperados</button>
-<button class="filter-btn" data-status="adoptado">🏡 Adoptados</button>
-<button class="filter-btn" data-status="tratamiento">🩺 En tratamiento</button>
-<button class="filter-btn" data-status="rescate">🐾 Rescates recientes</button></div>
+<button class="filter-btn" data-status="recuperado">Recuperados</button>
+<button class="filter-btn" data-status="adoptado">Adoptados</button>
+<button class="filter-btn" data-status="tratamiento">En tratamiento</button>
+<button class="filter-btn" data-status="rescate">Rescates recientes</button>
 </div>
 </div>
-<div class="wrap" style="padding-top:26px; padding-bottom:50px;">
+</div>
+</div>
+<div class="historias-main">
+<div class="historias-results-anchor" id="historiasResults" aria-hidden="true"></div>
+<div class="historias-list-head reveal">
+<div>
+<span class="historias-list-kicker">Historias que seguimos escribiendo</span>
+<h2>Conoce sus historias.</h2>
+</div>
+<p>Cada rescate tiene un comienzo distinto, pero todos comparten algo: una oportunidad de cambiar su historia.</p>
+</div>
 <div class="historias-grid" id="historiasGrid">
 <!-- Historia 1 -->
 <div class="caso-card reveal" data-status="recuperado">
@@ -138,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
 </div>
 <div class="caso-body">
-<span class="status-badge status-tratamiento">🩺 En tratamiento</span>
+<span class="status-badge status-tratamiento">En tratamiento</span>
 <h4>[Nombre del perrito]</h4>
 <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
 </div>
@@ -174,13 +189,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>
 </div>
 <div class="caso-body">
-<span class="status-badge status-tratamiento">🩺 En tratamiento</span>
+<span class="status-badge status-tratamiento">En tratamiento</span>
 <h4>[Nombre del perrito]</h4>
 <p>[Completar: breve historia — cómo llegó, qué le pasó y cómo está hoy.]</p>
 </div>
 </div>
 <!-- Para agregar más historias, copia y pega uno de estos bloques "caso-card" completo. Recuerda incluir data-status ("recuperado" / "adoptado" / "tratamiento") y la etiqueta status-badge correspondiente -->
-</div><div aria-live="polite" class="historias-update-note" id="historiasUpdateNote"></div>
+</div>
+<div aria-live="polite" class="historias-update-note" id="historiasUpdateNote"></div>
 <p class="no-results" id="noResultsHistorias" style="display:none;">No hay historias que coincidan con este filtro por ahora. Prueba con otra opción 🐾</p>
 </div>
 <footer>
@@ -225,9 +241,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/content/estadisticas.js?v=20260809-historias-fix"></script>
 <script src="/content/programas.js?v=20260809-historias-fix"></script>
 <script src="/content/adopciones.js?v=20260809-historias-fix"></script>
-<script src="/content/historias.js?v=20260809-historias-organizadas"></script>
+<script src="/content/historias.js?v=20260830-historias-final"></script>
 <script src="/content/contigo.js?v=20260809-historias-fix"></script>
-<script src="/js/script.js?v=20260816-welcome-v3"></script>
-<script src="/js/content-loader.js?v=20260816-story-link"></script>
+<script src="/js/script.js?v=20260830-historias-final"></script>
+<script src="/js/content-loader.js?v=20260830-historias-final"></script>
 </body>
 </html>

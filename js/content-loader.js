@@ -632,7 +632,7 @@
   }
 
   /* ---------------------------------------------------------------------
-     HISTORIAS DE ÉXITO
+     HISTORIAS DEL PARAÍSO — tarjetas con enlace directo
      --------------------------------------------------------------------- */
 
   const ESTADO_INFO = {
@@ -642,138 +642,47 @@
     tratamiento: { emoji: '🩺', label: 'En tratamiento' }
   };
 
-  // Reconoce la extensión de archivo para decidir si un elemento de la
-  // galería se muestra como foto o como video (mismo criterio que ya usa
-  // la galería de "Programas").
-  const HISTORIA_VIDEO_EXT = /\.(mp4|webm|mov|ogg|m4v)(\?.*)?$/i;
-
-  // Íconos automáticos para la línea de tiempo: el texto de "evento" (sin
-  // acentos ni mayúsculas) se busca aquí; si no hay coincidencia, se usa un
-  // ícono genérico (fa-paw). Así, agregar un evento nuevo en historias.js
-  // nunca requiere tocar este archivo — como mucho, el ícono será genérico
-  // hasta que alguien decida agregar una coincidencia nueva a este mapa.
-  const ICONOS_LINEA_TIEMPO = {
-    'rescate': 'fa-hand-holding-heart',
-  'primera consulta': 'fa-stethoscope',
-  'consulta': 'fa-stethoscope',
-  'diagnostico': 'fa-magnifying-glass',
-  'inicio del tratamiento': 'fa-syringe',
-  'medicacion': 'fa-pills',
-  'tratamiento': 'fa-pills',
-  'quimioterapia': 'fa-syringe',
-  'seguimiento medico': 'fa-stethoscope',
-  'rehabilitacion': 'fa-person-walking',
-  'cirugia': 'fa-kit-medical',
-  'esterilizacion': 'fa-syringe',
-  'recuperacion': 'fa-heart-pulse',
-  'alta medica': 'fa-clipboard-check',
-  'adoptado': 'fa-house',
-  'busca un hogar': 'fa-house',
-  'continua en tratamiento': 'fa-hourglass-half'
-  };
-  function iconoLineaTiempo(evento) {
-    const key = String(evento || '')
-      .toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // quita acentos
-    return ICONOS_LINEA_TIEMPO[key] || 'fa-paw';
-  }
-
-  // Prepara el objeto completo de una historia (con fotos y galería ya
-  // resueltas, listas para usar directamente) y lo serializa para guardarlo
-  // en el atributo data-historia de su tarjeta. El modal (js/script.js) lo
-  // lee de ahí — así la tarjeta de la portada y la de /historias/
-  // comparten exactamente el mismo modal reutilizable.
   function historiaSlug(nombre) {
     return String(nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   }
 
-  function serializarHistoriaParaModal(h) {
+  function historiaCardHtml(h, completa) {
     const info = ESTADO_INFO[h.estado] || {};
-    const galeria = Array.isArray(h.galeria) ? h.galeria.filter(Boolean) : [];
-    const galeriaModal = galeria.map(src => ({ src: src, isVideo: HISTORIA_VIDEO_EXT.test(src) }));
-    const lineaTiempo = Array.isArray(h.lineaTiempo) ? h.lineaTiempo.filter(ev => ev && ev.evento) : [];
-    const datos = {
-      nombre: h.nombre,
-      estado: h.estado,
-      estadoEmoji: info.emoji || '',
-      estadoLabel: info.label || h.estado,
-      frase: h.frase || '',
-      historiaCompleta: h.historiaCompleta || h.descripcion || '',
-      fotoAntes: h.fotoAntes || null,
-      fotoDespues: h.fotoDespues || null,
-      lugarRescate: h.lugarRescate || '',
-      fechaRescate: h.fechaRescate || '',
-      diagnostico: h.diagnostico || '',
-      tratamientos: Array.isArray(h.tratamientos) ? h.tratamientos.filter(Boolean) : [],
-      lineaTiempo: lineaTiempo.map(ev => ({
-        evento: ev.evento,
-        fecha: ev.fecha || '',
-        icono: iconoLineaTiempo(ev.evento)
-      })),
-      galeria: galeriaModal
-    };
-    return escapeHtml(JSON.stringify(datos));
-  }
-
-  // Versión usada en la portada: caja "antes/después" con foto de referencia
-  function historiaCardHtmlPreview(h) {
-    const info = ESTADO_INFO[h.estado] || {};
+    const slug = h.slug || historiaSlug(h.nombre);
+    const paginaHistoria = '/historias/' + slug + '/';
     const fotoAntes = h.fotoAntes || placeholderImg('Antes (' + h.nombre + ')');
     const fotoDespues = h.fotoDespues || placeholderImg('Después (' + h.nombre + ')');
+    const reveal = completa ? ' reveal' : '';
+    const status = completa ? ' data-status="' + h.estado + '"' : '';
     return (
-      '<div class="caso-card" data-historia-slug="' + historiaSlug(h.nombre) + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
+      '<a class="caso-card caso-card-link' + reveal + '" href="' + paginaHistoria + '"' + status + ' data-historia-slug="' + slug + '" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
         '<div class="caso-ba">' +
-          '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes del rescate" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>' +
-          '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>' +
+          '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>' +
+          '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>' +
         '</div>' +
         '<div class="caso-body">' +
-          '<span class="status-badge status-' + h.estado + '">' + info.emoji + ' ' + info.label + '</span>' +
+          '<span class="status-badge status-' + h.estado + '">' + (info.emoji || '') + ' ' + (info.label || h.estado) + '</span>' +
           '<h4>' + escapeHtml(h.nombre) + '</h4>' +
           '<p>' + escapeHtml(h.descripcion) + '</p>' +
-          '<button class="btn-historia" type="button">Conocer su historia <i class="fa-solid fa-arrow-right"></i></button>' +
+          '<span class="btn-historia">Conocer su historia <i class="fa-solid fa-arrow-right"></i></span>' +
         '</div>' +
-      '</div>'
-    );
-  }
-
-  // Versión usada en /historias/: incluye data-status para el filtro.
-  // Mientras no haya foto real, usa la misma caja de degradado de color que
-  // tenía originalmente esta página (en vez de la imagen de referencia).
-  function historiaCardHtmlCompleta(h) {
-    const info = ESTADO_INFO[h.estado] || {};
-    const antes = h.fotoAntes
-      ? '<div class="ba-item"><img src="' + h.fotoAntes + '" alt="Antes del rescate" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>'
-      : '<div class="ba-item" style="background:linear-gradient(135deg,#3a2a1a,#2a1a10);"><span class="ba-label">Antes</span></div>';
-    const despues = h.fotoDespues
-      ? '<div class="ba-item"><img src="' + h.fotoDespues + '" alt="Después del rescate" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>'
-      : '<div class="ba-item" style="background:linear-gradient(135deg,#1E3D2B,#3E7A4E);"><span class="ba-label">Después</span></div>';
-    return (
-      '<div class="caso-card reveal" data-status="' + h.estado + '" data-historia-slug="' + historiaSlug(h.nombre) + '" data-historia="' + serializarHistoriaParaModal(h) + '" tabindex="0" role="button" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
-        '<div class="caso-ba">' + antes + despues + '</div>' +
-        '<div class="caso-body">' +
-          '<span class="status-badge status-' + h.estado + '">' + info.emoji + ' ' + info.label + '</span>' +
-          '<h4>' + escapeHtml(h.nombre) + '</h4>' +
-          '<p>' + escapeHtml(h.descripcion) + '</p>' +
-          '<button class="btn-historia" type="button">Conocer su historia <i class="fa-solid fa-arrow-right"></i></button>' +
-        '</div>' +
-      '</div>'
+      '</a>'
     );
   }
 
   function renderHistorias(data) {
     if (!data || !Array.isArray(data.historias)) return;
+    const activas = data.historias.filter(h => h && h.activo !== false);
 
-    // Vista previa en la portada (/)
     const previewGrid = document.querySelector('#historias .historias-grid');
     if (previewGrid) {
-      const destacadas = data.historias.filter(h => h.destacadoInicio);
-      previewGrid.innerHTML = destacadas.map(historiaCardHtmlPreview).join('');
+      const destacadas = activas.filter(h => h.destacadoInicio);
+      previewGrid.innerHTML = destacadas.map(h => historiaCardHtml(h, false)).join('');
     }
 
-    // Grilla completa en /historias/ (con filtro de estado)
     const historiasGrid = document.getElementById('historiasGrid');
     if (historiasGrid) {
-      historiasGrid.innerHTML = data.historias.map(historiaCardHtmlCompleta).join('');
+      historiasGrid.innerHTML = activas.map(h => historiaCardHtml(h, true)).join('');
     }
 
     const updateNote = document.getElementById('historiasUpdateNote');
@@ -794,17 +703,9 @@
      PROGRAMA CONTIGO — banner de la portada + modal informativo
      --------------------------------------------------------------------- */
 
-  // El modal (js/script.js) necesita los mismos datos que ya tenemos aquí,
-  // así que los serializamos en el atributo data-contigo del banner —
-  // exactamente el mismo mecanismo que ya usa el modal de "Historias" (ver
-  // serializarHistoriaParaModal más arriba). Así, agregar o quitar una
-  // tarjeta de servicio en content/contigo.js nunca requiere tocar el JS.
-  // OJO: a diferencia de serializarHistoriaParaModal (que se concatena
-  // dentro de un string de HTML y por eso sí necesita escapeHtml para las
-  // comillas), aquí el resultado se asigna con banner.setAttribute(), que
-  // ya maneja cualquier carácter especial por sí mismo — así que el JSON
-  // se guarda tal cual, sin escapar, o el navegador no podría volver a
-  // interpretarlo con JSON.parse().
+  // El modal de Contigo usa los datos del banner mediante data-contigo.
+  // Se asignan directamente con setAttribute(), por lo que el JSON se conserva
+  // sin escapes adicionales y puede leerse con JSON.parse().
   function serializarContigoParaModal(c, fotoBanner) {
     const m = c.modal || {};
     const datos = {
@@ -1078,6 +979,13 @@
     window.__p503ContentLoaderDone = true;
     if (typeof window.initSiteInteractions === 'function') {
       window.initSiteInteractions();
+      try {
+        const historiaSolicitada = new URLSearchParams(window.location.search).get('historia');
+        if (historiaSolicitada) {
+          const card = document.querySelector('.caso-card[data-historia-slug="' + historiaSolicitada.toLowerCase().trim() + '"]');
+          if (card) setTimeout(() => card.click(), 80);
+        }
+      } catch (e) {}
     }
   }
 
