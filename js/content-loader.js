@@ -190,7 +190,7 @@
   function urgenciaCardHtml(t) {
     const fotoHtml = t.foto
       ? '<div class="urgencia-foto-wrap"><img src="' + escapeHtml(t.foto) + '" alt="' + escapeHtml(t.titulo || '') + '" loading="lazy" decoding="async"></div>'
-      : (t.sinImagen ? '' : '<div class="urgencia-foto-wrap urgencia-foto-placeholder" aria-hidden="true"><i class="' + escapeHtml(t.icono || 'fa-solid fa-paw') + '"></i><span>Fotografía próximamente</span></div>');
+      : '';
     const mapaHtml = t.mapaEmbed
       ? '<div class="urgencia-map">' +
           '<iframe src="' + escapeHtml(t.mapaEmbed) + '" title="Ubicación de ' + escapeHtml(t.titulo || 'la ruta') + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
@@ -402,18 +402,18 @@
     // faltara todavía el contenido real en content/programas.js (campos
     // enQueConsiste, porQueExiste, comoAyuda, impacto).
     const benefitPoolFallback = [
-      { icon: 'fa-bowl-food', label: '[Beneficio 1]' },
-      { icon: 'fa-droplet', label: '[Beneficio 2]' },
-      { icon: 'fa-notes-medical', label: '[Beneficio 3]' },
-      { icon: 'fa-house-chimney-heart', label: '[Beneficio 4]' }
+      { icon: 'fa-bowl-food', label: 'Atención directa' },
+      { icon: 'fa-droplet', label: 'Seguimiento' },
+      { icon: 'fa-notes-medical', label: 'Cuidados necesarios' },
+      { icon: 'fa-house-chimney-heart', label: 'Protección y bienestar' }
     ];
     const impactPoolFallback = [
-      { icon: 'fa-paw', label: '[Completar indicador 1]' },
-      { icon: 'fa-chart-line', label: '[Completar indicador 2]' },
-      { icon: 'fa-calendar-check', label: '[Completar indicador 3]' }
+      { icon: 'fa-paw', label: 'Trabajo realizado por Paraíso 503' },
+      { icon: 'fa-chart-line', label: 'Seguimiento continuo del programa' },
+      { icon: 'fa-calendar-check', label: 'Acciones realizadas según cada necesidad' }
     ];
-    const enQueConsisteFallback = (p) => ['[Completar: en qué consiste el programa de ' + p.titulo + ' — actividades principales, frecuencia y alcance.]'];
-    const porQueExisteFallback = ['[Completar: la necesidad que atiende este programa y por qué nació.]'];
+    const enQueConsisteFallback = (p) => [p.descripcionDetalle || p.descripcionLista || ('Conoce el trabajo que realizamos mediante ' + p.titulo + '.')];
+    const porQueExisteFallback = ['Este programa responde a necesidades reales de los animalitos que atendemos y forma parte del trabajo permanente de Paraíso 503.'];
 
     // ---- Índice rápido (pastillas) ----
     progIndexEl.innerHTML = programs.map(p =>
@@ -425,7 +425,7 @@
       const enQueConsiste = (Array.isArray(p.enQueConsiste) && p.enQueConsiste.length) ? p.enQueConsiste : enQueConsisteFallback(p);
       const porQueExiste = (Array.isArray(p.porQueExiste) && p.porQueExiste.length) ? p.porQueExiste : porQueExisteFallback;
       const comoAyuda = (Array.isArray(p.comoAyuda) && p.comoAyuda.length) ? p.comoAyuda.map(b => ({ icon: b.icono, label: b.titulo })) : benefitPoolFallback;
-      const impacto = (Array.isArray(p.impacto) && p.impacto.length) ? p.impacto.map(i => ({ icon: 'fa-paw', num: i.numero, label: i.texto })) : impactPoolFallback.map(i => ({ icon: i.icon, num: '[Dato]', label: i.label }));
+      const impacto = (Array.isArray(p.impacto) && p.impacto.length) ? p.impacto.map(i => ({ icon: 'fa-paw', num: i.numero, label: i.texto })) : impactPoolFallback.map(i => ({ icon: i.icon, num: 'Paraíso 503', label: i.label }));
 
       const enQueConsisteHtml = enQueConsiste.map(par => '<p>' + escapeHtml(par) + '</p>').join('');
       const porQueExisteHtml = porQueExiste.map(par => '<p>' + escapeHtml(par) + '</p>').join('');

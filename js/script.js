@@ -743,27 +743,6 @@ function initSiteInteractions() {
     onGalScroll();
   }
 
-  // ===== Galería (vista previa en la portada): las 4 fotos abren el mismo
-  // visor/lightbox reutilizable que ya usa el resto del sitio. Cuando se
-  // reemplacen los src de ejemplo por fotos reales, esto sigue funcionando
-  // sin cambios. =====
-  const galeriaPreviewGrid = document.getElementById('galeriaPreviewGrid');
-  if (galeriaPreviewGrid) {
-    const galeriaPreviewItems = Array.from(galeriaPreviewGrid.querySelectorAll('.galeria-preview-item'));
-    const galeriaPreviewImages = galeriaPreviewItems.map(item => {
-      const img = item.querySelector('img');
-      return { src: img ? img.getAttribute('src') : '', isVideo: false };
-    });
-    galeriaPreviewItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const idx = parseInt(item.dataset.lightboxIndex, 10) || 0;
-        if (typeof window.openP503Lightbox === 'function') {
-          window.openP503Lightbox(galeriaPreviewImages, idx, 'Galería del Paraíso');
-        }
-      });
-    });
-  }
-
   // ===== Menú móvil =====
   const mobileMenuEl = document.getElementById('mobileMenu');
   const burgerBtn = document.getElementById('burgerBtn');

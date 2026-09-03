@@ -29,7 +29,7 @@ body.donar-page #ayudar,body.donar-page #local,body.donar-page #extranjero{scrol
 
 /* ¿Cómo quieres ayudar? */
 .donation-redesign .choose{padding:82px 20px 62px;background:var(--cream)}
-.donation-redesign .choose>h2{margin:0;font-size:40px;max-width:330px}
+.donation-redesign .choose>h1{margin:0;font-size:40px;max-width:330px}
 .donation-redesign .choice-wrap{margin-top:28px;display:grid;gap:13px}
 .donation-redesign .choice{
   position:relative;overflow:hidden;min-height:128px;padding:20px;border-radius:28px 28px 28px 9px;
@@ -158,8 +158,8 @@ body.donar-page #ayudar,body.donar-page #local,body.donar-page #extranjero{scrol
   body.donar-page #ayudar,body.donar-page #local,body.donar-page #extranjero{scroll-margin-top:70px}
 
   .donation-redesign .choose{padding:76px 5vw 86px}
-  .donation-redesign .choose>h2,.donation-redesign .choice-wrap{width:min(1040px,100%);margin-left:auto;margin-right:auto}
-  .donation-redesign .choose>h2{font-size:54px}
+  .donation-redesign .choose>h1,.donation-redesign .choice-wrap{width:min(1040px,100%);margin-left:auto;margin-right:auto}
+  .donation-redesign .choose>h1{font-size:54px}
   .donation-redesign .choice-wrap{margin-top:28px;grid-template-columns:repeat(3,1fr);gap:20px}
   .donation-redesign .choice{min-height:158px;padding:24px 27px;border-radius:32px 32px 32px 10px}
   .donation-redesign .choice strong{font-size:28px}.donation-redesign .choice>span:not(.tag){font-size:16px}.donation-redesign .choice .scribble{font-size:62px}
