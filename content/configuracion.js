@@ -253,18 +253,6 @@ window.PARAISO503_CONTENT.configuracion = {
       }
     },
     {
-      "id": "necesidades-prioritarias",
-      "activa": true,
-      "tipo": "necesidadUrgente",
-      "etiqueta": "⚡ Urgencias de este mes",
-      "titulo": "Necesidades prioritarias",
-      "descripcion": "Este mes estamos cubriendo gastos esenciales para que nuestros animalitos sigan recibiendo atención. Tu apoyo nos ayuda a mantenerlos seguros y continuar con sus tratamientos.",
-      "necesidades": ["🏠 Pago del alquiler de Paraíso.","💧 Pago de agua y energía eléctrica.","💉 Quimioterapias para 4 perritos.","🩺 Exámenes, cirugía y hospitalización de Toto."],
-      "montoRecaudado": null,
-      "meta": null,
-      "textoBoton": "Conocer cómo ayudar"
-    },
-    {
       "id": "motos-ruta",
       "activa": true,
       "etiqueta": "🏍️ Ruta de Alimentación",

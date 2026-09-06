@@ -6,7 +6,7 @@
    ============================================================================= */
 window.PARAISO503_CONTENT = window.PARAISO503_CONTENT || {};
 window.PARAISO503_CONTENT.historias = {
-  "ultimaActualizacion": "30 de agosto de 2026",
+  "ultimaActualizacion": "5 de septiembre de 2026",
   "mensajeActualizacion": "Seguimos documentando rescates, tratamientos, recuperaciones y adopciones. Cada historia individual reúne el proceso real de uno de nuestros animalitos.",
   "historias": [
     {
@@ -18,6 +18,17 @@ window.PARAISO503_CONTENT.historias = {
       "descripcion": "Historia temporalmente fuera de publicación mientras preparamos su versión completa.",
       "fotoAntes": "/img/historias/los-chorros/rescate1.webp",
       "fotoDespues": "/img/historias/los-chorros/rescate2.webp",
+      "destacadoInicio": false
+    },
+    {
+      "nombre": "Cuto",
+      "slug": "cuto",
+      "activo": true,
+      "estado": "tratamiento",
+      "frase": "De la calle a recibir la atención que necesitaba.",
+      "descripcion": "Cuto fue atropellado en Tonacatepeque y sufrió lesiones graves en sus patas. Hoy recibe atención veterinaria en Sanivet y su recuperación apenas comienza.",
+      "fotoAntes": "/img/historias/cuto/antes.webp",
+      "fotoDespues": "/img/historias/cuto/cuto-3.webp",
       "destacadoInicio": false
     },
     {
@@ -81,7 +92,7 @@ window.PARAISO503_CONTENT.historias = {
       "activo": true,
       "estado": "tratamiento",
       "frase": "Una vida que hoy se sostiene con cuidados.",
-      "descripcion": "Emma fue rescatada en Soyapango con una herida infestada. Es positiva a FIV y FeLV y hoy recibe alimentación especial, seguimiento y cuidados permanentes en Sanivet.",
+      "descripcion": "Emma fue rescatada en Soyapango con una herida infestada. Es positiva a FIV y FeLV y actualmente permanece resguardada en Sanivet, cerca de la atención que necesita.",
       "fotoAntes": "/img/historias/emma/antes.jpg",
       "fotoDespues": "/img/historias/emma/ahora.jpg",
       "destacadoInicio": false

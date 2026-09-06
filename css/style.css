@@ -371,6 +371,7 @@ h1.hero-title {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 26px;
 }
 .btn-primary {
   display: block;
@@ -513,7 +514,7 @@ h1.hero-title {
    Conserva la composición de la portada sin forzar cortes en los botones. */
 @media (max-width:390px) {
   .hero {
-    min-height: max(100svh, 760px);
+    min-height: max(92svh, 680px);
   }
 
   .hero .bg {
@@ -527,7 +528,7 @@ h1.hero-title {
 
   .hero-inner {
     max-width: 100%;
-    padding: 30px 16px 68px;
+    padding: 30px 16px 36px;
   }
 
   .eyebrow {
@@ -883,7 +884,7 @@ footer .bottom{max-width:1120px;margin:0 auto}
   body.home .hero-inner{
     max-width:520px;
     padding-top:42svh;
-    padding-bottom:24px;
+    padding-bottom:8px;
   }
 }
 
