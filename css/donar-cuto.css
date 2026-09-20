@@ -1,0 +1,75 @@
+:root{--cuto-ink:#44362d;--cuto-green:#173f32;--cuto-cream:#f7f1e6;--cuto-paper:#fffaf1;--cuto-rust:#a95638;--cuto-gold:#efbd48;--cuto-line:#dfd3c1}
+.donar-cuto-page{background:var(--cuto-cream);color:var(--cuto-ink)}
+.donar-cuto-page main{overflow:hidden}
+.cuto-campaign-wrap{width:min(1160px,calc(100% - 48px));margin:0 auto}
+.cuto-campaign-hero{padding:150px 0 82px;background:linear-gradient(140deg,#f8f2e8 0%,#f1e5d3 100%)}
+.cuto-campaign-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(42px,7vw,86px);align-items:center}
+.cuto-back{display:inline-flex;align-items:center;gap:9px;margin-bottom:38px;color:var(--cuto-green);font-size:13px;font-weight:700}
+.cuto-eyebrow{display:block;color:var(--cuto-rust);font-size:12px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+.cuto-campaign-copy h1{max-width:650px;margin:16px 0 22px;color:var(--cuto-green);font-family:'Fraunces',serif;font-size:clamp(48px,6.2vw,76px);font-weight:500;line-height:.98}
+.cuto-campaign-copy>p{max-width:610px;margin:0;color:#554d46;font-size:18px;line-height:1.72}
+.cuto-primary-cta,.cuto-story-button{display:inline-flex;align-items:center;gap:12px;margin-top:28px;border-radius:999px;background:var(--cuto-green);color:#fff;padding:14px 21px;font-size:14px;font-weight:800;transition:transform .2s ease,background .2s ease}
+.cuto-primary-cta:hover,.cuto-story-button:hover{background:#215742;transform:translateY(-2px)}
+.cuto-campaign-cover{position:relative;margin:0}
+.cuto-campaign-cover img{display:block;width:100%;height:min(660px,70vw);object-fit:cover;object-position:center 52%;border-radius:150px 22px 22px 22px;box-shadow:0 24px 64px rgba(55,43,32,.16)}
+.cuto-campaign-cover figcaption,.cuto-xray figcaption{margin-top:11px;color:#776d64;font-size:12px;line-height:1.45}
+.cuto-donation{padding:88px 0;background:var(--cuto-paper)}
+.cuto-section-heading{max-width:760px;margin:0 auto 42px;text-align:center}
+.cuto-section-heading>span{color:var(--cuto-rust);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.cuto-section-heading h2,.cuto-update-copy h2,.cuto-story-link h2{margin:10px 0 13px;color:#4c3527;font-family:'Fraunces',serif;font-size:clamp(34px,4.5vw,52px);font-weight:500;line-height:1.05}
+.cuto-section-heading p{margin:0 auto;max-width:680px;color:#6b625b;line-height:1.68}
+.cuto-methods{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:16px;align-items:stretch}
+.cuto-method{display:flex;min-height:290px;flex-direction:column;border:1px solid #e6dbc9;border-radius:23px;background:#fff;padding:26px;box-shadow:0 16px 40px rgba(74,55,38,.06)}
+.cuto-method-logo{height:40px;margin-bottom:23px}.cuto-method-logo img{width:auto;max-width:120px;height:34px;object-fit:contain}
+.cuto-method>span,.wallet-detail>span{color:#7a7068;font-size:12px}.cuto-method>strong{margin:11px 0 6px;color:var(--cuto-green);font-family:'Fraunces',serif;font-size:28px}.cuto-method>small{color:#71675f}
+.cuto-copy,.cuto-paypal{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;border:0;border-radius:999px;background:#f1e7d9;color:#493d34;padding:11px 16px;font:700 13px 'Inter',sans-serif;cursor:pointer}
+.cuto-paypal{background:#e9f1f8;color:#173c67}.cuto-paypal:hover,.cuto-copy:hover{filter:brightness(.97)}
+.wallet-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.wallet-tab{display:flex;min-width:0;flex-direction:column;align-items:center;gap:6px;border:1px solid #e7ded1;border-radius:14px;background:#fff;padding:10px 5px;color:#51483f;font:700 11px 'Inter',sans-serif;cursor:pointer}
+.wallet-tab img{width:auto;max-width:56px;height:24px;object-fit:contain}.wallet-tab.active{border-color:#b78355;background:#f8f0e5;box-shadow:inset 0 0 0 1px #b78355}
+.wallet-detail{display:flex;flex:1;flex-direction:column;align-items:flex-start;border-radius:17px;background:#f8f3eb;padding:18px;transition:opacity .14s ease}.wallet-detail.changing{opacity:.4}.wallet-detail strong{margin:6px 0 15px;color:#4c3527;font-size:19px}.wallet-detail small{color:#81766d;font-size:11px}.wallet-detail b{margin-top:5px;color:var(--cuto-green);font-size:23px;letter-spacing:.04em}.wallet-detail .cuto-copy{width:100%;margin-top:auto}
+.cuto-method-note{margin:20px 0 0;text-align:center;color:#7c7168;font-size:12px}
+.cuto-mobile-after-donation{display:none}
+.cuto-update{padding:90px 0;background:#e9dfcc}
+.cuto-update-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:clamp(42px,7vw,88px);align-items:center}
+.cuto-xray{margin:0}.cuto-xray img{display:block;width:100%;aspect-ratio:1.05/1;object-fit:cover;border:9px solid #fff;border-radius:20px;box-shadow:0 18px 50px rgba(50,38,27,.14)}
+.cuto-update-copy p{color:#5f554d;font-size:17px;line-height:1.72}
+.cuto-current-need{margin-top:25px;border-left:4px solid var(--cuto-gold);border-radius:0 15px 15px 0;background:#fff8ec;padding:18px 21px}.cuto-current-need strong{display:block;color:#493529;margin-bottom:5px}.cuto-current-need p{margin:0;font-size:14px;line-height:1.58}
+.cuto-story-link{padding:96px 0;background:var(--cuto-cream)}
+.cuto-story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(48px,8vw,96px);align-items:center}
+.cuto-story-link p{max-width:600px;color:#615850;font-size:17px;line-height:1.7}
+.cuto-story-photos{position:relative;height:410px}.cuto-story-photos img{position:absolute;display:block;object-fit:cover;border:8px solid #fff;box-shadow:0 17px 42px rgba(57,43,31,.15)}
+.cuto-story-photo-a{top:0;left:3%;width:58%;height:325px;transform:rotate(-3deg)}.cuto-story-photo-b{right:2%;bottom:0;width:58%;height:280px;transform:rotate(4deg)}
+.cuto-trust{padding:32px 0;background:var(--cuto-green);color:#f9f3e9;text-align:center}.cuto-trust strong{display:block;font-family:'Fraunces',serif;font-size:22px}.cuto-trust p{margin:7px auto 0;max-width:700px;color:#dce5df;font-size:13px;line-height:1.6}.cuto-trust a{color:#f6c963;text-decoration:underline;text-underline-offset:3px}
+.donar-cuto-page .toast{position:fixed;z-index:2000;left:50%;bottom:24px;transform:translate(-50%,20px);border-radius:999px;background:#173f32;color:#fff;padding:11px 17px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:.25s ease}.donar-cuto-page .toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.cuto-campaign-hero{padding-top:125px}.cuto-campaign-hero-grid,.cuto-update-grid,.cuto-story-grid{grid-template-columns:1fr}.cuto-campaign-copy{order:0}.cuto-campaign-cover{order:1;width:min(84%,580px);margin:0 auto}.cuto-campaign-cover img{height:auto;aspect-ratio:3/4}.cuto-methods{grid-template-columns:1fr 1fr}.cuto-method-paypal{grid-column:1/-1;min-height:230px}.cuto-update-grid{gap:34px}.cuto-xray{width:min(82%,620px);margin:0 auto}.cuto-story-photos{width:min(88%,610px);margin:0 auto}}
+@media(max-width:620px){
+  .donar-cuto-page{overflow-x:hidden}
+  .cuto-campaign-wrap{width:calc(100% - 34px);max-width:1160px}
+  .cuto-campaign-hero{padding:52px 0 22px}
+  .cuto-back{margin-bottom:23px}
+  .cuto-campaign-copy h1{margin-bottom:0;font-size:43px}
+  .cuto-campaign-copy>p,.cuto-primary-cta,.cuto-campaign-cover{display:none}
+  .cuto-donation{padding:18px 0 58px}
+  .cuto-update,.cuto-story-link{padding:64px 0}
+  .cuto-section-heading,.cuto-method-note{display:none}
+  .cuto-methods{width:100%;min-width:0;grid-template-columns:minmax(0,1fr)}
+  .cuto-method,.cuto-method-paypal{width:100%;min-width:0;max-width:100%;grid-column:auto;min-height:255px;overflow:hidden;padding:22px}
+  .cuto-method-wallet{min-height:335px}
+  .wallet-tabs,.wallet-detail,.wallet-tab{min-width:0;max-width:100%}
+  .cuto-mobile-after-donation{display:block;margin-top:42px}
+  .cuto-mobile-after-donation figure{margin:0}
+  .cuto-mobile-after-donation img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 52%;border-radius:92px 14px 14px 14px;box-shadow:0 20px 48px rgba(55,43,32,.14)}
+  .cuto-mobile-after-donation figcaption{margin-top:10px;color:#776d64;font-size:11px;line-height:1.45}
+  .cuto-mobile-after-donation p{margin:24px 0 0;color:#554d46;font-size:16px;line-height:1.7}
+  .cuto-xray{width:100%}
+  .cuto-xray img{border-width:6px;border-radius:15px}
+  .cuto-update-copy p,.cuto-story-link p{font-size:16px}
+  .cuto-story-photos{width:100%;height:330px}
+  .cuto-story-photo-a{height:270px}
+  .cuto-story-photo-b{height:225px}
+  .cuto-story-button{line-height:1.35}
+  .cuto-trust{text-align:left}
+  .wallet-tab{padding:9px 3px}
+}
+@media(prefers-reduced-motion:reduce){.cuto-primary-cta,.cuto-story-button{transition:none}}

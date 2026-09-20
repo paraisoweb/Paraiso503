@@ -1560,6 +1560,25 @@ h2.section-title {
   font-size: 13px;
   line-height: 1.55;
 }
+.historias-method {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0 0 28px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(30,61,43,.12);
+  border-bottom: 1px solid rgba(30,61,43,.12);
+}
+.historias-method article {
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr);
+  gap: 12px;
+  padding-right: 18px;
+}
+.historias-method article + article {border-left:1px solid rgba(30,61,43,.1);padding-left:18px}
+.historias-method span {color:var(--clay);font-family:'Fraunces';font-size:22px;line-height:1}
+.historias-method h3 {margin:0 0 6px;color:var(--ink);font-family:'Fraunces';font-size:17px;line-height:1.2}
+.historias-method p {margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.55}
 .historias-grid {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
@@ -1743,6 +1762,11 @@ h2.section-title {
   .historias-results-anchor { scroll-margin-top: 154px; }
   .historias-list-head h2 { font-size: 32px; }
   .historias-list-head > p { margin-top: 8px; }
+  .historias-method {grid-template-columns:1fr;gap:0;margin:0 5px 22px;padding:4px 0}
+  .historias-method article {padding:17px 0;grid-template-columns:38px minmax(0,1fr)}
+  .historias-method article + article {border-left:0;border-top:1px solid rgba(30,61,43,.1);padding-left:0}
+  .historias-method h3 {font-size:18px}
+  .historias-method p {font-size:13px}
   .historias-grid { grid-template-columns: 1fr; gap: 13px; }
   .caso-card { border-radius: 19px; }
   .caso-ba .ba-item { height: 210px; }
@@ -2818,7 +2842,7 @@ h2.section-title {
 }
 
 /* ===== 11-programas-page.css ===== */
-/* PROGRAMAS (programas.html) */
+/* PROGRAMAS (/programas/) */
 .programas-hero {
   padding: 34px 16px 30px;
   background: var(--green-deep);
@@ -4176,7 +4200,7 @@ header.scrolled {
 
 /* ===== 15-lightbox.css ===== */
 /* =============================================================================
-   LIGHTBOX DE GALERÍA (programas.html) — mismo lenguaje visual del sitio
+   LIGHTBOX DE GALERÍA (/programas/) — mismo lenguaje visual del sitio
    ============================================================================= */
 .p503-lightbox {
   position: fixed;
@@ -4551,7 +4575,7 @@ header.scrolled-deep .nav-follow {
 
 /* ===== 18-contigo-page.css ===== */
 /* =============================================================================
-   PROGRAMA CONTIGO — página completa (contigo.html)
+   PROGRAMA CONTIGO — página completa (/contigo/)
    Reutiliza los tokens de color/tipografía y el mismo lenguaje visual de
    tarjetas (radio, sombras) que el resto del sitio. Estas reglas solo
    afectan a las clases nuevas de esta página; no tocan header/footer/menú.
@@ -4610,6 +4634,23 @@ header.scrolled-deep .nav-follow {
 .contigo-card p:last-child {
   margin-bottom: 0;
 }
+.contigo-faq {
+  max-width: 1100px;
+  margin: 48px auto 0;
+  padding: 42px 16px 0;
+  border-top: 1px solid rgba(30,61,43,.12);
+}
+.contigo-faq-head {max-width:620px;margin:0 auto 24px;text-align:center}
+.contigo-faq-head > span {display:block;margin-bottom:5px;color:var(--clay);font-size:11px;font-weight:800;letter-spacing:.09em}
+.contigo-faq-head h2 {margin:0;color:var(--ink);font-family:'Fraunces';font-size:30px;line-height:1.15}
+.contigo-faq-head p {margin:10px 0 0;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+.contigo-faq-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.contigo-faq details {border:1px solid rgba(30,61,43,.11);border-radius:15px;background:#fff;box-shadow:0 2px 9px rgba(30,61,43,.04);overflow:hidden}
+.contigo-faq summary {position:relative;padding:19px 48px 19px 20px;color:var(--ink);font-size:14px;font-weight:800;line-height:1.35;cursor:pointer;list-style:none}
+.contigo-faq summary::-webkit-details-marker {display:none}
+.contigo-faq summary::after {content:'+';position:absolute;top:50%;right:20px;transform:translateY(-50%);color:var(--green-dark);font-size:22px;font-weight:500}
+.contigo-faq details[open] summary::after {content:'−'}
+.contigo-faq details p {margin:0;padding:0 20px 19px;color:var(--ink-soft);font-size:13.5px;line-height:1.65}
 .contigo-steps {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -4778,6 +4819,12 @@ header.scrolled-deep .nav-follow {
     text-align: left;
     padding: 26px 40px;
   }
+}
+@media (max-width:819px){
+  .contigo-faq {margin-top:38px;padding-top:34px}
+  .contigo-faq-head {text-align:left;margin-bottom:19px}
+  .contigo-faq-head h2 {font-size:27px}
+  .contigo-faq-grid {grid-template-columns:1fr}
 }
 
 /* ===== 19-galeria-page.css ===== */
@@ -6912,7 +6959,7 @@ body:not(.home):not(.legal-page) header{
   
 }
 
-/* Aviso editorial al final de historias.html. */
+/* Aviso editorial al final de /historias/. */
 .historias-update-note{
   display:flex;
   gap:16px;
@@ -7383,6 +7430,19 @@ body.programas-page header.menu-open{background:rgba(18,40,27,.98)}
 .programas-catalogo-kicker{display:block;margin-bottom:5px;color:var(--clay);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .programas-catalogo-head h2{margin:0 0 9px;color:var(--ink);font-family:'Fraunces';font-size:29px;line-height:1.15}
 .programas-catalogo-head p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.6}
+.programas-journey{margin:0 0 48px;padding:30px 26px;border:1px solid rgba(30,61,43,.08);border-radius:24px;background:#f8f4e9}
+.programas-journey-head{max-width:680px;margin:0 auto 26px;text-align:center}
+.programas-journey-head>span{display:block;margin-bottom:6px;color:var(--clay);font-size:11px;font-weight:800;letter-spacing:.09em}
+.programas-journey-head h3{margin:0;color:var(--ink);font-family:'Fraunces';font-size:27px;line-height:1.15}
+.programas-journey-head p{margin:10px auto 0;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+.programas-journey-grid{display:grid;grid-template-columns:1fr;gap:0}
+.programas-journey-grid article{position:relative;display:grid;grid-template-columns:36px 32px minmax(0,1fr);column-gap:11px;align-items:start;padding:18px 0;border-top:1px solid rgba(30,61,43,.1)}
+.programas-journey-grid article:first-child{border-top:0}
+.programas-journey-grid b{color:var(--clay);font-family:'Fraunces';font-size:17px;font-weight:600;line-height:28px}
+.programas-journey-grid i{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--green-deep);color:#fff;font-size:12px}
+.programas-journey-grid h4{grid-column:3;margin:0 0 5px;color:var(--ink);font-family:'Fraunces';font-size:18px;line-height:1.2}
+.programas-journey-grid p{grid-column:3;margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.55}
+.programas-journey-note{max-width:760px;margin:22px auto 0;padding-top:20px;border-top:1px solid rgba(30,61,43,.1);color:var(--ink-soft);font-size:12.5px;line-height:1.6;text-align:center}
 .programas-grid{display:grid;grid-template-columns:1fr;gap:30px}
 .programa-summary-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid rgba(30,61,43,.07);border-radius:4px;box-shadow:10px 10px 0 rgba(169,218,216,.48),0 8px 24px rgba(30,61,43,.07);overflow:hidden}
 .programa-summary-photo{aspect-ratio:16/10;overflow:hidden;background:#e8e6dc}
@@ -7396,6 +7456,8 @@ body.programas-page header.menu-open{background:rgba(18,40,27,.98)}
 body.programas-page .prog-final-cta{padding:0 18px 64px}
 body.programas-page .prog-final-cta .wrap{max-width:1100px;margin:0 auto}
 @media (min-width:760px){
+ .programas-journey-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+ .programas-journey-grid article:nth-child(2){border-top:0}
  .programas-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 28px}
 }
 @media (min-width:980px){
@@ -7406,6 +7468,13 @@ body.programas-page .prog-final-cta .wrap{max-width:1100px;margin:0 auto}
  .programas-hero-photo h1{font-size:48px}
  .programas-hero-photo p{font-size:15px}
  .programas-catalogo{padding:62px 32px 82px}
+ .programas-journey{padding:34px 32px 30px}
+ .programas-journey-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+ .programas-journey-grid article,.programas-journey-grid article:nth-child(2){display:flex;flex-direction:column;align-items:center;padding:0 18px;border-top:0;border-left:1px solid rgba(30,61,43,.1);text-align:center}
+ .programas-journey-grid article:first-child{border-left:0}
+ .programas-journey-grid b{margin-bottom:8px;line-height:1}
+ .programas-journey-grid i{margin-bottom:12px}
+ .programas-journey-grid h4,.programas-journey-grid p{grid-column:auto}
  .programas-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 30px}
  .programa-summary-body{padding:24px 24px 26px}
 }
@@ -7413,6 +7482,10 @@ body.programas-page .prog-final-cta .wrap{max-width:1100px;margin:0 auto}
  .programas-catalogo{padding:38px 20px 58px}
  .programas-catalogo-head{margin-bottom:28px}
  .programas-catalogo-head h2{font-size:27px}
+ .programas-journey{margin:0 0 40px;padding:25px 20px;border-radius:20px}
+ .programas-journey-head{text-align:left;margin-bottom:18px}
+ .programas-journey-head h3{font-size:24px}
+ .programas-journey-note{text-align:left}
  .programas-grid{gap:34px}
  .programa-summary-card{box-shadow:8px 8px 0 rgba(169,218,216,.52),0 7px 20px rgba(30,61,43,.07)}
  .programa-summary-photo{aspect-ratio:16/10}

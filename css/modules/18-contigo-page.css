@@ -1,5 +1,5 @@
 /* =============================================================================
-   PROGRAMA CONTIGO — página completa (contigo.html)
+   PROGRAMA CONTIGO — página completa (/contigo/)
    Reutiliza los tokens de color/tipografía y el mismo lenguaje visual de
    tarjetas (radio, sombras) que el resto del sitio. Estas reglas solo
    afectan a las clases nuevas de esta página; no tocan header/footer/menú.
@@ -227,4 +227,3 @@
     padding: 26px 40px;
   }
 }
-
