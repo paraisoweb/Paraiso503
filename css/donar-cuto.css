@@ -33,7 +33,11 @@
 .cuto-update{padding:90px 0;background:#e9dfcc}
 .cuto-update-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:clamp(42px,7vw,88px);align-items:center}
 .cuto-xray{margin:0}.cuto-xray img{display:block;width:100%;aspect-ratio:1.05/1;object-fit:cover;border:9px solid #fff;border-radius:20px;box-shadow:0 18px 50px rgba(50,38,27,.14)}
+.cuto-cirugia-fotos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:4px;width:100%;aspect-ratio:4/3;overflow:hidden;border:8px solid #fff;border-radius:20px;background:#151515;box-shadow:0 18px 50px rgba(50,38,27,.14)}
+.cuto-cirugia .cuto-cirugia-fotos img{width:100%;height:100%;min-width:0;min-height:0;aspect-ratio:auto;object-fit:cover;object-position:center 62%;border:0;border-radius:0;box-shadow:none}
+.cuto-cirugia .cuto-cirugia-fotos img:nth-child(2){object-fit:contain;background:#151515}
 .cuto-update-copy p{color:#5f554d;font-size:17px;line-height:1.72}
+.cuto-cirugia .cuto-update-copy strong{color:var(--cuto-green)}
 .cuto-current-need{margin-top:25px;border-left:4px solid var(--cuto-gold);border-radius:0 15px 15px 0;background:#fff8ec;padding:18px 21px}.cuto-current-need strong{display:block;color:#493529;margin-bottom:5px}.cuto-current-need p{margin:0;font-size:14px;line-height:1.58}
 .cuto-story-link{padding:96px 0;background:var(--cuto-cream)}
 .cuto-story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(48px,8vw,96px);align-items:center}
@@ -50,8 +54,17 @@
   .cuto-back{margin-bottom:23px}
   .cuto-campaign-copy h1{margin-bottom:0;font-size:43px}
   .cuto-campaign-copy>p,.cuto-primary-cta,.cuto-campaign-cover{display:none}
+  .donar-valentino-page .cuto-campaign-cover{display:block;width:100%;margin:24px auto 0}
+  .donar-valentino-page .cuto-campaign-cover img{height:auto;max-height:390px;aspect-ratio:4/3;object-fit:cover;object-position:center 49%;border-radius:20px}
+  .donar-valentino-page .cuto-mobile-after-donation{margin-top:26px}
+  .donar-valentino-page .cuto-mobile-after-donation p{margin-top:0}
+  .cuto-cirugia .cuto-update-grid{gap:19px}
+  .cuto-cirugia-fotos{border-width:6px;border-radius:15px}
+  .cuto-cirugia .cuto-update-copy h2{font-size:33px}
+  .cuto-cirugia .cuto-current-need{margin-top:18px}
   .cuto-donation{padding:18px 0 58px}
   .cuto-update,.cuto-story-link{padding:64px 0}
+  .cuto-cirugia{padding:28px 0 36px}
   .cuto-section-heading,.cuto-method-note{display:none}
   .cuto-methods{width:100%;min-width:0;grid-template-columns:minmax(0,1fr)}
   .cuto-method,.cuto-method-paypal{width:100%;min-width:0;max-width:100%;grid-column:auto;min-height:255px;overflow:hidden;padding:22px}

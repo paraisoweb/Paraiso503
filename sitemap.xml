@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://paraiso503.com/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://paraiso503.com/programas/</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://paraiso503.com/historias/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://paraiso503.com/contigo/</loc>
@@ -95,5 +95,6 @@
   <url><loc>https://paraiso503.com/historias/nina/</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://paraiso503.com/historias/conchita/</loc><lastmod>2026-08-30</lastmod></url>
 
-  <url><loc>https://paraiso503.com/historias/cuto/</loc><lastmod>2026-09-05</lastmod></url>
+  <url><loc>https://paraiso503.com/historias/cuto/</loc><lastmod>2026-09-21</lastmod></url>
+  <url><loc>https://paraiso503.com/historias/valentino/</loc><lastmod>2026-09-21</lastmod></url>
 </urlset>

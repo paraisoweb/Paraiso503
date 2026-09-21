@@ -652,13 +652,15 @@
     const paginaHistoria = '/historias/' + slug + '/';
     const fotoAntes = h.fotoAntes || placeholderImg('Antes (' + h.nombre + ')');
     const fotoDespues = h.fotoDespues || placeholderImg('Después (' + h.nombre + ')');
+    const etiquetaAntes = h.etiquetaAntes || 'Antes';
+    const etiquetaDespues = h.etiquetaDespues || 'Después';
     const reveal = completa ? ' reveal' : '';
     const status = completa ? ' data-status="' + h.estado + '"' : '';
     return (
       '<a class="caso-card caso-card-link' + reveal + '" href="' + paginaHistoria + '"' + status + ' data-historia-slug="' + slug + '" aria-label="Conocer la historia de ' + escapeHtml(h.nombre) + '">' +
         '<div class="caso-ba">' +
-          '<div class="ba-item"><img src="' + fotoAntes + '" alt="Antes de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">Antes</span></div>' +
-          '<div class="ba-item"><img src="' + fotoDespues + '" alt="Después de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">Después</span></div>' +
+          '<div class="ba-item"><img src="' + fotoAntes + '" alt="' + escapeHtml(etiquetaAntes) + ' de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">' + escapeHtml(etiquetaAntes) + '</span></div>' +
+          '<div class="ba-item"><img src="' + fotoDespues + '" alt="' + escapeHtml(etiquetaDespues) + ' de ' + escapeHtml(h.nombre) + '" loading="lazy" decoding="async"><span class="ba-label">' + escapeHtml(etiquetaDespues) + '</span></div>' +
         '</div>' +
         '<div class="caso-body">' +
           '<span class="status-badge status-' + h.estado + '">' + (info.emoji || '') + ' ' + (info.label || h.estado) + '</span>' +
