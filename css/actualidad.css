@@ -40,7 +40,6 @@
   box-shadow:0 18px 45px rgba(35,55,42,.10);
 }
 .actualidad-destacada + .actualidad-destacada{margin-top:26px}
-.actualidad-destacada--valentino .actualidad-destacada-foto img{object-position:center 50%}
 .actualidad-destacada-foto{position:relative;min-height:520px;background:#d9d3c7;overflow:hidden}
 .actualidad-destacada-foto img{width:100%;height:100%;object-fit:cover;object-position:center 48%;display:block}
 .actualidad-destacada--cuto .actualidad-destacada-foto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:4px;background:#f3e8d5}

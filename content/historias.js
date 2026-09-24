@@ -10,19 +10,6 @@ window.PARAISO503_CONTENT.historias = {
   "mensajeActualizacion": "Seguimos documentando rescates, tratamientos, recuperaciones y adopciones. Cada historia individual reúne el proceso real de uno de nuestros animalitos.",
   "historias": [
     {
-      "nombre": "Valentino",
-      "slug": "valentino",
-      "activo": true,
-      "estado": "tratamiento",
-      "frase": "Su condición es delicada, pero todavía responde con fuerza.",
-      "descripcion": "Valentino fue encontrado en Merliot con una grave infección de gusano barrenador en el rostro. Hoy recibe atención veterinaria, come con normalidad y continúa luchando.",
-      "fotoAntes": "/img/historias/valentino/portada-protegida.jpg",
-      "fotoDespues": "/img/historias/valentino/portada-protegida.jpg",
-      "etiquetaAntes": "Al llegar",
-      "etiquetaDespues": "En tratamiento",
-      "destacadoInicio": false
-    },
-    {
       "nombre": "Milagro en la carretera",
       "slug": "milagro-en-la-carretera",
       "activo": false,
